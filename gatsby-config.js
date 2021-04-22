@@ -8,6 +8,8 @@ module.exports = {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
+          '@assets': 'src/assets',
+          '@components': 'src/components',
           '@images': 'src/images',
           '@pages': 'src/pages',
           '@styles': 'src/styles'
@@ -49,16 +51,18 @@ module.exports = {
         SymLinksIfOwnerMatch: false,
         host: 'dbowland.com', // if 'www' is set to 'false', be sure to also remove it here!
         ErrorDocument: `
-          ErrorDocument 400 400/index.html
-          ErrorDocument 401 401/index.html
-          ErrorDocument 403 403/index.html
-          ErrorDocument 404 404/index.html
-          ErrorDocument 500 500/index.html
+          ErrorDocument 400 /400
+          ErrorDocument 401 /401
+          ErrorDocument 403 /403
+          ErrorDocument 404 /404
+          ErrorDocument 500 /500
         `,
         redirect: [
-          'Redirect 301 /github https://github.com/davidbowland',
-          'Redirect 301 /linkedin https://www.linkedin.com/in/david-bowland-257980a1/',
-          'Redirect 301 /seancarrollama https://drive.google.com/file/d/1g-VP1P0n2F3XlksaqS4O0CUe6lrL7neV/view?usp=sharing',
+          'RewriteRule ^github https://github.com/davidbowland [R=301,NC,L]',
+          'RewriteRule ^linked\\-?in https://www.linkedin.com/in/david-bowland-257980a1/ [R=301,NC,L]',
+          'RewriteRule ^seancarrollama https://drive.google.com/file/d/1g-VP1P0n2F3XlksaqS4O0CUe6lrL7neV/view?usp=sharing [R=301,NC,L]',
+          'RewriteRule ^formsubmit /form-submit [R=301,NC,L]',
+          'RewriteRule ^form-submit /static/form-submit [P,NC]',
         ],
         custom: `
 # Don't allow cookies to be access by JavaScript or on insecure connections
