@@ -6,6 +6,7 @@ Gatsby implementation of dbowland.com.
 
 1. [Node 16](https://nodejs.org/en/)
 1. [NPM](https://www.npmjs.com/)
+1. [Inetutils](https://www.gnu.org/software/inetutils/)
 
 ## Commands
 

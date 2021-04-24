@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'David Bowland',
-    siteUrl: 'https://dbowland.com/'
+    siteUrl: 'https://dbowland.com/',
   },
   plugins: [
     {
@@ -12,12 +12,11 @@ module.exports = {
           '@components': 'src/components',
           '@images': 'src/images',
           '@pages': 'src/pages',
-          '@styles': 'src/styles'
+          '@scss': 'src/scss',
+          '@styles': 'src/styles',
         },
-        extensions: [
-          'js', 'jsx', 'ts', 'tsx'
-        ],
-      }
+        extensions: ['js', 'jsx', 'ts', 'tsx'],
+      },
     },
     'gatsby-plugin-sass',
     'gatsby-plugin-image',
@@ -78,6 +77,6 @@ Header set X-Frame-Options SAMEORIGIN
 Header set X-Content-Security-Policy "allow 'self'; script-src www.google.com www.gstatic.com"
         `,
       },
-    }
+    },
   ],
 }
