@@ -8,7 +8,7 @@ const Resume = (): JSX.Element => {
     <div id="cv" className="instaFade">
       <div className="mainDetails">
         <div id="headshot">
-          <StaticImage src="../../images/David-2019-05-18.jpg" alt="Image of David" />
+          <StaticImage src="../../assets/images/David-2019-05-18.jpg" alt="Image of David" />
         </div>
 
         <div id="name">

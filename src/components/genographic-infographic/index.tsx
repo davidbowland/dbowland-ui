@@ -27,7 +27,7 @@ const GenographicInfographic = ({ withCaption = true }: { withCaption?: boolean 
     <figure style={figureStyles}>
       <Link to={genographicPdf}>
         <StaticImage
-          src="../../images/genographic-infographic.png"
+          src='../../assets/images/genographic-infographic.png'
           alt="41% Eastern Europe; 22% Western and Central Europe; 20% Scandinavin; 14% Great Britain and Ireland; 2% Asia Minor; 1.1% Neanderthal"
         />
       </Link>
