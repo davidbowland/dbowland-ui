@@ -20,6 +20,7 @@ module.exports = {
     },
     'gatsby-plugin-sass',
     'gatsby-plugin-image',
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-mdx',
@@ -57,11 +58,10 @@ module.exports = {
           ErrorDocument 500 /500
         `,
         redirect: [
-          'RewriteRule ^github https://github.com/davidbowland [R=301,NC,L]',
-          'RewriteRule ^linked\\-?in https://www.linkedin.com/in/david-bowland-257980a1/ [R=301,NC,L]',
-          'RewriteRule ^seancarrollama https://drive.google.com/file/d/1g-VP1P0n2F3XlksaqS4O0CUe6lrL7neV/view?usp=sharing [R=301,NC,L]',
+          'RewriteRule ^github https://github.com/davidbowland [R=302,NC,L]',
+          'RewriteRule ^linked\\-?in https://www.linkedin.com/in/david-bowland-257980a1/ [R=302,NC,L]',
+          'RewriteRule ^seancarrollama https://drive.google.com/file/d/1g-VP1P0n2F3XlksaqS4O0CUe6lrL7neV/view?usp=sharing [R=302,NC,L]',
           'RewriteRule ^formsubmit /form-submit [R=301,NC,L]',
-          'RewriteRule ^form-submit /static/form-submit [P,NC]',
         ],
         custom: `
 # Don't allow cookies to be access by JavaScript or on insecure connections
@@ -75,6 +75,9 @@ Header set X-Frame-Options SAMEORIGIN
 
 # Prevent mime based attacks
 Header set X-Content-Security-Policy "allow 'self'; script-src www.google.com www.gstatic.com"
+
+# The directory index is index.html
+DirectoryIndex index.html
         `,
       },
     },

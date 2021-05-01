@@ -11,7 +11,7 @@ Gatsby implementation of dbowland.com.
 ## Commands
 
 1. `npm run start` - Start local development server
-1. `npm run lint` - Perform linting
+1. `npm run lint` - Perform linting (also done automatically before commit)
 1. `npm run test` - Run unit tests
 1. `npm run build` - Build site for production
 

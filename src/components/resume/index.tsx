@@ -1,223 +1,295 @@
-import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
 
+import {
+  ResumeAnchor,
+  ResumeBody,
+  ResumeContactDetails,
+  ResumeContactDetailsList,
+  ResumeContactDetailsListItem,
+  ResumeContainer,
+  ResumeDownloadHeader,
+  ResumeHeadshot,
+  ResumeImageStyles,
+  ResumeJobDescription,
+  ResumeJobDescriptionDetail,
+  ResumeKeySkills,
+  ResumeKeySkillsItem,
+  ResumeLink,
+  ResumeNameSection,
+  ResumeNameSectionName,
+  ResumeNameSectionTitle,
+  ResumePrimaryDetails,
+  ResumeSection,
+  ResumeSectionContent,
+  ResumeSectionContentTitle,
+  ResumeSectionTitle,
+  ResumeSectionTitleHeader,
+  ResultSubDetails,
+} from './elements'
+import { ClearFloat } from '@components/common/elements'
 import resumePdf from '@assets/pdf/david-bowland-resume.pdf'
+import { StaticImage } from 'gatsby-plugin-image'
 
 const Resume = (): JSX.Element => {
   return (
-    <div id="cv" className="instaFade">
-      <div className="mainDetails">
-        <div id="headshot">
-          <StaticImage src="../../assets/images/David-2019-05-18.jpg" alt="Image of David" />
-        </div>
+    <ResumeContainer>
+      <ResumePrimaryDetails>
+        <ResumeHeadshot>
+          <StaticImage
+            src="../../assets/images/David-2019-05-18.jpg"
+            alt="Picture of David Bowland"
+            style={ResumeImageStyles}
+          />
+        </ResumeHeadshot>
 
-        <div id="name">
-          <h1>David Bowland</h1>
-          <h2>Software Developer</h2>
-          <h4>
-            <a href={resumePdf}>Download Resume</a>
-          </h4>
-        </div>
+        <ResumeNameSection>
+          <ResumeNameSectionName>David Bowland</ResumeNameSectionName>
+          <ResumeNameSectionTitle>Software Developer</ResumeNameSectionTitle>
+          <ResumeDownloadHeader>
+            <ResumeLink to={resumePdf}>Download Resume</ResumeLink>
+          </ResumeDownloadHeader>
+        </ResumeNameSection>
 
-        <div id="contactDetails">
-          <ul>
-            <li>
-              e: <a href="mailto:david@dbowland.com">david@dbowland.com</a>
-            </li>
-            <li>
-              w: <a href="https://dbowland.com">dbowland.com</a>
-            </li>
-            <li>
-              m: <a href="tel:+14178940079">417.894.0079</a>
-            </li>
-          </ul>
-        </div>
-        <div className="clear"></div>
-      </div>
+        <ResumeContactDetails>
+          <ResumeContactDetailsList>
+            <ResumeContactDetailsListItem>
+              e: <ResumeAnchor href="mailto:david@dbowland.com">david@dbowland.com</ResumeAnchor>
+            </ResumeContactDetailsListItem>
+            <ResumeContactDetailsListItem>
+              w: <ResumeAnchor href="https://dbowland.com">dbowland.com</ResumeAnchor>
+            </ResumeContactDetailsListItem>
+            <ResumeContactDetailsListItem>
+              m: <ResumeAnchor href="tel:+14178940079">417.894.0079</ResumeAnchor>
+            </ResumeContactDetailsListItem>
+          </ResumeContactDetailsList>
+        </ResumeContactDetails>
+        <ClearFloat />
+      </ResumePrimaryDetails>
 
-      <div id="mainArea">
-        <section>
-          <div className="sectionTitle">
-            <h1>Personal Profile</h1>
-          </div>
+      <ResumeBody>
+        <ResumeSection>
+          <ResumeSectionTitle>
+            <ResumeSectionTitleHeader>Personal Profile</ResumeSectionTitleHeader>
+          </ResumeSectionTitle>
 
-          <div className="sectionContent">
+          <ResumeSectionContent>
             <article>
-              <ul className="jobDescript">
-                <li>Developer of robust solutions</li>
-                <li>Effective translator between geek and English</li>
-                <li>Connoisseur of groan-inducing dad jokes</li>
-              </ul>
-              <div className="clear"></div>
+              <ResumeJobDescription>
+                <ResumeJobDescriptionDetail>
+                  Developer of robust solutions
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Effective translator between geek and English
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Connoisseur of groan-inducing dad jokes
+                </ResumeJobDescriptionDetail>
+              </ResumeJobDescription>
+              <ClearFloat />
             </article>
-          </div>
-          <div className="clear"></div>
-        </section>
+          </ResumeSectionContent>
+          <ClearFloat />
+        </ResumeSection>
 
-        <section>
-          <div className="sectionTitle">
-            <h1>Experience</h1>
-          </div>
+        <ResumeSection>
+          <ResumeSectionTitle>
+            <ResumeSectionTitleHeader>Experience</ResumeSectionTitleHeader>
+          </ResumeSectionTitle>
 
-          <div className="sectionContent">
+          <ResumeSectionContent>
             <article>
-              <h2>
-                Software Developer at <a href="https://www.carfax.com/">Carfax</a>
-              </h2>
-              <p className="subDetails">March&nbsp;2020 - Present</p>
-              <ul className="jobDescript">
-                <li>Develop Spring Boot / Spring Batch apps in Groovy and Java 8</li>
-                <li>Develop Node.js apps, using React with webpack for frontend</li>
-                <li>Use Agile methodology with two-week sprints organized on Jira</li>
-                <li>
+              <ResumeSectionContentTitle>
+                Software Developer at{' '}
+                <ResumeAnchor href="https://www.carfax.com/" rel="noopener noreferrer">
+                  Carfax
+                </ResumeAnchor>
+              </ResumeSectionContentTitle>
+              <ResultSubDetails>March&nbsp;2020 - Present</ResultSubDetails>
+              <ResumeJobDescription>
+                <ResumeJobDescriptionDetail>
+                  Develop Spring Boot / Spring Batch apps in Groovy and Java 8
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Develop Node.js apps, using React with webpack for frontend
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Use Agile methodology with two-week sprints organized on Jira
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
                   Deploy apps using Jenkins, either Docker images to Kubernetes on AWS or RPMs to DC
                   3.0 on-premise
-                </li>
-                <li>Went from new hire to acting team leader in less than 10 months</li>
-              </ul>
-              <div className="clear"></div>
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Went from new hire to acting team leader in less than 10 months
+                </ResumeJobDescriptionDetail>
+              </ResumeJobDescription>
+              <ClearFloat />
             </article>
 
             <article>
-              <h2>
+              <ResumeSectionContentTitle>
                 Senior Programmer Analyst at{' '}
-                <a href="https://www.showmeboone.com/">Boone County Government</a>
-              </h2>
-              <p className="subDetails">November&nbsp;2014 - March&nbsp;2020</p>
-              <ul className="jobDescript">
-                <li>
+                <ResumeAnchor href="https://www.showmeboone.com/" rel="noopener noreferrer">
+                  Boone County Government
+                </ResumeAnchor>
+              </ResumeSectionContentTitle>
+              <ResultSubDetails>November&nbsp;2014 - March&nbsp;2020</ResultSubDetails>
+              <ResumeJobDescription>
+                <ResumeJobDescriptionDetail>
                   Developed full-stack web applications using CSS3, HTML5, and vanilla JavaScript
                   with ASP, ASP.NET, or Java backend
-                </li>
-                <li>Developed COBOL and IBM CL applications on IBM System i midrange</li>
-                <li>Acted as project manager for two major projects</li>
-                <li>Earned three performance-based increases outside annual review</li>
-              </ul>
-              <div className="clear"></div>
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Developed COBOL and IBM CL applications on IBM System i midrange
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Acted as project manager for two major projects
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Earned three performance-based increases outside annual review
+                </ResumeJobDescriptionDetail>
+              </ResumeJobDescription>
+              <ClearFloat />
             </article>
 
             <article>
-              <h2>
+              <ResumeSectionContentTitle>
                 ATM/Vault Coordinator at{' '}
-                <a href="https://www.callawaybank.com/">The Callaway Bank</a>
-              </h2>
-              <p className="subDetails">May&nbsp;2009 - October&nbsp;2014</p>
-              <ul className="jobDescript">
-                <li>Accepted new position after one year, then earned two promotions</li>
-              </ul>
-              <div className="clear"></div>
+                <ResumeAnchor href="https://www.callawaybank.com/" rel="noopener noreferrer">
+                  The Callaway Bank
+                </ResumeAnchor>
+              </ResumeSectionContentTitle>
+              <ResultSubDetails>May&nbsp;2009 - October&nbsp;2014</ResultSubDetails>
+              <ResumeJobDescription>
+                <ResumeJobDescriptionDetail>
+                  Accepted new position after one year, then earned two promotions
+                </ResumeJobDescriptionDetail>
+              </ResumeJobDescription>
+              <ClearFloat />
             </article>
-          </div>
-          <div className="clear"></div>
-        </section>
+          </ResumeSectionContent>
+          <ClearFloat />
+        </ResumeSection>
 
-        <section>
-          <div className="sectionTitle">
-            <h1>Skills</h1>
-          </div>
+        <ResumeSection>
+          <ResumeSectionTitle>
+            <ResumeSectionTitleHeader>Skills</ResumeSectionTitleHeader>
+          </ResumeSectionTitle>
 
-          <div className="sectionContent">
+          <ResumeSectionContent>
             <article>
-              <h2>Languages</h2>
-              <p className="subDetails">Proficient in</p>
-              <ul className="keySkills">
-                <li>Groovy</li>
-                <li>Java</li>
-                <li>JavaScript</li>
-                <li>Python</li>
-                <li>TypeScript</li>
-              </ul>
-              <p className="subDetails">Familiar with</p>
-              <ul className="keySkills">
-                <li>ASP/ASP.NET</li>
-                <li>C++</li>
-                <li>COBOL</li>
-                <li>PHP</li>
-                <li>Terraform</li>
-              </ul>
-              <div className="clear"></div>
-            </article>
-
-            <article>
-              <h2>SQL</h2>
-              <ul className="keySkills">
-                <li>DB2</li>
-                <li>Microsoft SQL Server (T/SQL)</li>
-                <li>MySQL</li>
-                <li>Oracle Database</li>
-                <li>PostgreSQL</li>
-              </ul>
-              <div className="clear"></div>
+              <ResumeSectionContentTitle>Languages</ResumeSectionContentTitle>
+              <ResultSubDetails>Proficient in</ResultSubDetails>
+              <ResumeKeySkills>
+                <ResumeKeySkillsItem>Groovy</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Java</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>JavaScript</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Python</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>TypeScript</ResumeKeySkillsItem>
+              </ResumeKeySkills>
+              <ResultSubDetails>Familiar with</ResultSubDetails>
+              <ResumeKeySkills>
+                <ResumeKeySkillsItem>ASP/ASP.NET</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>C++</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>COBOL</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>PHP</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Terraform</ResumeKeySkillsItem>
+              </ResumeKeySkills>
+              <ClearFloat />
             </article>
 
             <article>
-              <h2>NoSQL</h2>
-              <ul className="keySkills">
-                <li>DynamoDB</li>
-              </ul>
-              <div className="clear"></div>
+              <ResumeSectionContentTitle>SQL</ResumeSectionContentTitle>
+              <ResumeKeySkills>
+                <ResumeKeySkillsItem>DB2</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Microsoft SQL Server (T/SQL)</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>MySQL</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Oracle Database</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>PostgreSQL</ResumeKeySkillsItem>
+              </ResumeKeySkills>
+              <ClearFloat />
             </article>
 
             <article>
-              <h2>Technologies</h2>
-              <ul className="keySkills">
-                <li>Argo</li>
-                <li>Docker</li>
-                <li>Git</li>
-                <li>Kibana</li>
-                <li>Kubernetes</li>
-                <li>Jenkins</li>
-                <li>Jira</li>
-                <li>NewRelic</li>
-              </ul>
-              <div className="clear"></div>
+              <ResumeSectionContentTitle>NoSQL</ResumeSectionContentTitle>
+              <ResumeKeySkills>
+                <ResumeKeySkillsItem>DynamoDB</ResumeKeySkillsItem>
+              </ResumeKeySkills>
+              <ClearFloat />
             </article>
 
             <article>
-              <h2>AWS</h2>
-              <ul className="keySkills">
-                <li>CloudWatch</li>
-                <li>DynamoDB</li>
-                <li>Lambda</li>
-                <li>RDS</li>
-                <li>S3</li>
-                <li>Systems Manager</li>
-                <li>Secrets Manager</li>
-              </ul>
-              <div className="clear"></div>
+              <ResumeSectionContentTitle>Technologies</ResumeSectionContentTitle>
+              <ResumeKeySkills>
+                <ResumeKeySkillsItem>Argo</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Docker</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Git</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Kibana</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Kubernetes</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Jenkins</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Jira</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>NewRelic</ResumeKeySkillsItem>
+              </ResumeKeySkills>
+              <ClearFloat />
             </article>
-          </div>
-          <div className="clear"></div>
-        </section>
 
-        <section>
-          <div className="sectionTitle">
-            <h1>Education</h1>
-          </div>
-
-          <div className="sectionContent">
             <article>
-              <h2>Columbia College &mdash; Columbia,&nbsp;MO</h2>
-              <p className="subDetails">Bachelor of Science &mdash; GPA&nbsp;3.68</p>
-              <p className="subDetails">
+              <ResumeSectionContentTitle>AWS</ResumeSectionContentTitle>
+              <ResumeKeySkills>
+                <ResumeKeySkillsItem>CloudWatch</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>DynamoDB</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Lambda</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>RDS</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>S3</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Systems Manager</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Secrets Manager</ResumeKeySkillsItem>
+              </ResumeKeySkills>
+              <ClearFloat />
+            </article>
+          </ResumeSectionContent>
+          <ClearFloat />
+        </ResumeSection>
+
+        <ResumeSection>
+          <ResumeSectionTitle>
+            <ResumeSectionTitleHeader>Education</ResumeSectionTitleHeader>
+          </ResumeSectionTitle>
+
+          <ResumeSectionContent>
+            <article>
+              <ResumeSectionContentTitle>
+                <ResumeAnchor href="https://ccis.edu/" rel="noopener noreferrer">
+                  Columbia College &mdash; Columbia,&nbsp;MO
+                </ResumeAnchor>
+              </ResumeSectionContentTitle>
+              <ResultSubDetails>Bachelor of Science &mdash; GPA&nbsp;3.68</ResultSubDetails>
+              <ResultSubDetails>
                 Major:&nbsp;Computer Science &mdash; Minor:&nbsp;Business
-              </p>
-              <ul className="jobDescript">
-                <li>Graduated cum laude with a GPA of 3.68/4.0</li>
-                <li>Earned an A in all computer science classes</li>
-              </ul>
-              <div className="clear"></div>
+              </ResultSubDetails>
+              <ResumeJobDescription>
+                <ResumeJobDescriptionDetail>
+                  Graduated cum laude with a GPA of 3.68/4.0
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Earned an A in all computer science classes
+                </ResumeJobDescriptionDetail>
+              </ResumeJobDescription>
+              <ClearFloat />
             </article>
 
             <article>
-              <h2>David H. Hickman High School &mdash; Columbia,&nbsp;MO</h2>
-              <div className="clear"></div>
+              <ResumeSectionContentTitle>
+                <ResumeAnchor href="https://www.cpsk12.org/HHS" rel="noopener noreferrer">
+                  David H. Hickman High School &mdash; Columbia,&nbsp;MO
+                </ResumeAnchor>
+              </ResumeSectionContentTitle>
+              <ClearFloat />
             </article>
-          </div>
-          <div className="clear"></div>
-        </section>
-      </div>
-    </div>
+          </ResumeSectionContent>
+          <ClearFloat />
+        </ResumeSection>
+      </ResumeBody>
+    </ResumeContainer>
   )
 }
 

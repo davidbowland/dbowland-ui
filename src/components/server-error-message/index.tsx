@@ -1,39 +1,28 @@
-import React, { CSSProperties } from 'react'
+import React from 'react'
+import { Helmet } from 'react-helmet'
 import { Link } from 'gatsby'
+
+import { ErrorHeader, ErrorMain, ErrorContents } from './elements'
 
 export interface ServerErrorProps {
   children: React.ReactNode
   title: string
 }
 
-export const headingStyles: CSSProperties = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 420,
-}
-
-export const pageStyles: CSSProperties = {
-  color: '#232129',
-  padding: '96px',
-  fontFamily: 'Roboto, sans-serif, serif',
-}
-
-export const paragraphStyles: CSSProperties = {
-  marginBottom: 48,
-}
-
 const ServerErrorMessage = ({ children, title }: ServerErrorProps): JSX.Element => {
   return (
-    <main style={pageStyles}>
-      <title>{title} -- dbowland.com</title>
-      <h1 style={headingStyles}>{title}</h1>
-      <p style={paragraphStyles}>
+    <ErrorMain>
+      <Helmet>
+        <title>{title} -- dbowland.com</title>
+      </Helmet>
+      <ErrorHeader>{title}</ErrorHeader>
+      <ErrorContents>
         {children}
         <br />
         <br />
         <Link to="/">Go home</Link>.
-      </p>
-    </main>
+      </ErrorContents>
+    </ErrorMain>
   )
 }
 
