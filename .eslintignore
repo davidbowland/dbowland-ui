@@ -1,4 +1,5 @@
 .cache/
+deploy/
 node_modules/
 public/
 *.min.*
