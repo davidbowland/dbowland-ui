@@ -186,7 +186,7 @@ const deploy = async (sftp) => {
   if (existingVersions.length == 0) {
     console.log(`No existing versions found`)
   } else {
-    console.log(`Found existing versions: `, existingVersions)
+    console.log(`Found existing versions: `, Object.keys(existingVersions))
   }
   const previousVersion =
     existingVersions.length === 0
