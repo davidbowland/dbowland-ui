@@ -209,8 +209,11 @@ const deploy = async (sftp) => {
     console.log(`No old versions to remove`)
   } else {
     console.log('Removing old versions')
-    for (const path of existingVersions) {
-      await removeRemoteDirectory(sftp, `${BASE_HTML_DIR}/${path}`)
+    for (const path in existingVersions) {
+      // Remove all but most recent version
+      if (path !== previousVersion) {
+        await removeRemoteDirectory(sftp, `${BASE_HTML_DIR}/${path}`)
+      }
     }
     console.log(`Old versions successfully removed`)
   }
