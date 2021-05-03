@@ -11,8 +11,8 @@ const Joke = (): JSX.Element => {
   }
 
   const getRandomJoke = (): string => {
-    const index: number = Math.floor(Math.random() * jokeCount)
-    const selection: string = jokeList[index]
+    const index = Math.floor(Math.random() * jokeCount)
+    const selection = jokeList[index]
     jokeList[index] = jokeList[--jokeCount]
     jokeList[jokeCount] = selection
 
@@ -27,7 +27,7 @@ const Joke = (): JSX.Element => {
     setJoke(getRandomJoke())
   }
 
-  const [joke, setJoke] = useState(getRandomJoke())
+  const [joke, setJoke] = useState(window ? getRandomJoke() : '')
 
   return (
     <>
