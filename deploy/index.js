@@ -14,7 +14,8 @@ const SSH_CONFIG = {
 const VERSION_PREFIX = 'version'
 const BASE_HTML_DIR = 'public_html'
 const FILE_BATCH_SIZE = 15
-const TEMP_DIR = 'temp'
+const DEPLOY_DIR = 'deploy'
+const TEMP_DIR = `${DEPLOY_DIR}/temp`
 
 /* Deploy components */
 
@@ -22,7 +23,7 @@ const TEMP_DIR = 'temp'
 
 const getVersion = () => {
   const unixTimeString = new Date().getTime().toString()
-  return `${VERSION_PREFIX}-${Buffer.from(unixTimeString).toString('base64')}`
+  return `${VERSION_PREFIX}-${unixTimeString}`
 }
 
 // Query file list
@@ -43,10 +44,10 @@ const getExistingVersions = async (sftp) => {
   const versionList = directoryContents.reduce((acc, cur) => {
     const isDirectory = cur.longname.startsWith('d')
     if (isDirectory && cur.filename.startsWith(`${VERSION_PREFIX}-`)) {
-      acc.push(cur.filename)
+      acc[cur.filename] = cur
     }
     return acc
-  }, [])
+  }, {})
   return versionList
 }
 
@@ -165,10 +166,11 @@ const removeRemoteDirectory = async (sftp, path) => {
 
 // Set current version
 
-const setCurrentVersion = async (sftp, version) => {
+const setCurrentVersion = async (sftp, currentVersion, previousVersion) => {
   const htaccessFilePath = htaccess.generateRootHtaccessFile(
-    path.resolve(__dirname, TEMP_DIR),
-    version
+    TEMP_DIR,
+    currentVersion,
+    previousVersion
   )
   await uploadFile(sftp, htaccessFilePath, `${BASE_HTML_DIR}/.htaccess`)
 }
@@ -176,8 +178,8 @@ const setCurrentVersion = async (sftp, version) => {
 /* Deploy proper */
 
 const deploy = async (sftp) => {
-  const version = getVersion()
-  const targetFolderName = `${BASE_HTML_DIR}/${version}`
+  const currentVersion = getVersion()
+  const targetFolderName = `${BASE_HTML_DIR}/${currentVersion}`
   console.log(`Deploying local ${LOCAL_DIR}/ to remote ${targetFolderName}/`)
 
   const existingVersions = await getExistingVersions(sftp)
@@ -186,13 +188,22 @@ const deploy = async (sftp) => {
   } else {
     console.log(`Found existing versions: `, existingVersions)
   }
+  const previousVersion =
+    existingVersions.length === 0
+      ? undefined
+      : Object.keys(existingVersions).reduce((acc, cur) =>
+          existingVersions[cur].attrs.mtime > existingVersions[acc].attrs.mtime ? cur : acc
+        )
+  if (previousVersion !== undefined) {
+    console.log(`Found most recent previous version: ${previousVersion}`)
+  }
 
   console.log('Uploading files')
   await uploadDirectory(sftp, LOCAL_DIR, targetFolderName)
   console.log(`Directory ${LOCAL_DIR}/ successfully copied to ${targetFolderName}/`)
 
-  await setCurrentVersion(sftp, version)
-  console.log(`Set current version to ${version}`)
+  await setCurrentVersion(sftp, currentVersion, previousVersion)
+  console.log(`Set current version to ${currentVersion} and previous version to ${previousVersion}`)
 
   if (existingVersions.length == 0) {
     console.log(`No old versions to remove`)

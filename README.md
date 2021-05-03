@@ -37,16 +37,16 @@ npm run lint
 
 ## Deploying to Production
 
-To deploy to production, you must have `DBOWLAND_SSH_USER` and `DBOWLAND_SSH_PASS` environment variables defined. Execute the deploy with:
+To deploy to production, you must have `DBOWLAND_SSH_USER` and `DBOWLAND_SSH_PASS` environment variables defined. Specify the version part to change when deploying:
 
 ```bash
-npm run deploy
+npm run deploy --type=[major/minor/patch]
 ```
 
-Alternatively, build the project and manually copy the files from `public/` to production. Manually build the project with:
+The most common deploy should be:
 
 ```bash
-npm run build
+npm run deploy --type=minor
 ```
 
 This project uses [ssh2](https://www.npmjs.com/package/ssh2) and [sftp](https://github.com/mscdex/ssh2-streams/blob/master/SFTPStream.md#sftpstream-methods) to effect the deploy.

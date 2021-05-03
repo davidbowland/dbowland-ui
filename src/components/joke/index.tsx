@@ -27,7 +27,7 @@ const Joke = (): JSX.Element => {
     setJoke(getRandomJoke())
   }
 
-  const [joke, setJoke] = useState(window ? getRandomJoke() : '')
+  const [joke, setJoke] = useState(typeof window === 'undefined' ? '' : getRandomJoke())
 
   return (
     <>

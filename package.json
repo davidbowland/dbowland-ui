@@ -14,9 +14,11 @@
   "license": "ISC",
   "scripts": {
     "build": "gatsby build",
+    "build:master": "git checkout master && git pull --ff-only && npm run build",
     "clean": "gatsby clean",
-    "deploy": "npm run build && node deploy/index.js",
-    "lint": "prettier --write .",
+    "deploy": "npm version $npm_config_type -m \"$npm_config_type version %s\" && node deploy/index.js && git push --no-verify",
+    "lint": "prettier --write . && eslint --fix .",
+    "preversion": "npm run build:master",
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "test": "jest --colors --collectCoverage"
