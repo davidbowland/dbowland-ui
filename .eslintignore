@@ -2,5 +2,6 @@
 deploy/
 node_modules/
 public/
+static/
 *.min.*
 package-lock.json
