@@ -27,6 +27,12 @@ Manually run tests with:
 npm run test
 ```
 
+Snapshots can be updated with:
+
+```bash
+npm run test:update-snapshots
+```
+
 ## Prettier / Linter
 
 Both [prettier](https://prettier.io/) and [eslint](https://eslint.org/) are executed on commit. Manually prettify and lint code with:
