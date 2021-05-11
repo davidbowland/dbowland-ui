@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Genographic infographic component Ensure snapshot match 1`] = `
+<figure
+  class="sc-bdvvaa aTyKP"
+>
+  <a
+    href="test-file-stub"
+  >
+    <img
+      alt="41% Eastern Europe; 22% Western and Central Europe; 20% Scandinavin; 14% Great Britain and Ireland; 2% Asia Minor; 1.1% Neanderthal"
+      src="../../assets/images/genographic-infographic.png"
+    />
+  </a>
+  <figcaption
+    class="sc-gsDJrp eIPapg"
+  >
+    Click or tap on the image for the full 18-page PDF report.
+  </figcaption>
+</figure>
+`;

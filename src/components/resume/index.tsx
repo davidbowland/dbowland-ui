@@ -1,4 +1,5 @@
 import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
 
 import {
   ResumeAnchor,
@@ -28,7 +29,6 @@ import {
 } from './elements'
 import { ClearFloat } from '@components/common/elements'
 import resumePdf from '@assets/pdf/david-bowland-resume.pdf'
-import { StaticImage } from 'gatsby-plugin-image'
 
 const Resume = (): JSX.Element => {
   return (

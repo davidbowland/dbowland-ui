@@ -14,11 +14,11 @@
   "license": "ISC",
   "scripts": {
     "build": "gatsby build",
-    "build:master": "git checkout master && git pull --ff-only && npm run clean && npm run build",
+    "build:prod": "git checkout master && git pull --ff-only && npm run clean && npm run test && npm run build",
     "clean": "gatsby clean && rm -rf coverage deploy/temp && npm ci",
     "deploy": "npm version $npm_config_type -m \"$npm_config_type version %s\"",
     "lint": "prettier --write . && eslint --fix .",
-    "preversion": "npm run build:master",
+    "preversion": "npm run build:prod",
     "postversion": "node deploy/index.js && git push --no-verify",
     "start": "gatsby develop",
     "serve": "gatsby serve",
@@ -90,14 +90,5 @@
     "prettier": "2.2.1",
     "react-test-renderer": "^17.0.2",
     "ssh2": "^0.8.9"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 90,
-        "lines": 80
-      }
-    }
   }
 }

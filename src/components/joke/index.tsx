@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 
 import JokeData from '@assets/jokes.yaml'
 
-const Joke = (): JSX.Element => {
+export interface JokeProps {
+  initialize?: boolean
+}
+
+const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
   const jokeList: string[] = Array.from(JokeData.jokes)
   let jokeCount = jokeList.length
 
@@ -16,7 +20,7 @@ const Joke = (): JSX.Element => {
     jokeList[index] = jokeList[--jokeCount]
     jokeList[jokeCount] = selection
 
-    if (jokeCount === 0) {
+    if (jokeCount <= 0) {
       resetJokeList()
     }
 
@@ -27,7 +31,7 @@ const Joke = (): JSX.Element => {
     setJoke(getRandomJoke())
   }
 
-  const [joke, setJoke] = useState(typeof window === 'undefined' ? '' : getRandomJoke())
+  const [joke, setJoke] = useState(initialize ? getRandomJoke() : '')
 
   return (
     <>
