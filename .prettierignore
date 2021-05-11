@@ -1,4 +1,6 @@
+__snapshots__/
 .cache/
+coverage/
 node_modules/
 public/
 *.min.*

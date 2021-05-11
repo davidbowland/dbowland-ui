@@ -29,12 +29,13 @@ const getVersion = () => {
 // Query file list
 
 const getDirectoryContents = async (sftp, path) => {
-  return await new Promise((resolve, reject) => {
+  const directoryContents = await new Promise((resolve, reject) => {
     sftp.readdir(path, (err, fileList) => {
       if (err) reject(err)
       else resolve(fileList)
     })
   })
+  return directoryContents
 }
 
 // Query old folders
@@ -55,7 +56,7 @@ const getExistingVersions = async (sftp) => {
 
 const createDirectory = async (sftp, path) => {
   await new Promise((resolve, reject) => {
-    sftp.mkdir(path, 777, (err) => {
+    sftp.mkdir(path, 755, (err) => {
       if (err) reject(err)
       else resolve()
     })

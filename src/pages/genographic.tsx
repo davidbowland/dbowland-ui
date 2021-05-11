@@ -17,7 +17,7 @@ const Genographic = (): JSX.Element => {
         help drive research and to learn something about the immense journey that brought me here.
         Below are the results from my participation in that project. People who know me will not be
         surprised to learn that my ancestors were &quot;[h]unters of megafauna such as the woolly
-        mammoth.&quot; 😆
+        mammoth.&quot; &#x1F606;
       </p>
       <GenographicInfographic />
     </main>

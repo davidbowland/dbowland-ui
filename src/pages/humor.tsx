@@ -9,7 +9,7 @@ const Humor = (): JSX.Element => {
   return (
     <main>
       <title>Humor | dbowland.com</title>
-      <Joke />
+      <Joke initialize={typeof window !== 'undefined'} />
     </main>
   )
 }
