@@ -28,7 +28,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
     # The project is configured to build and deploy when the version is bumped
     - name: Deploy code by bumping version
-      run: npm version minor -m \"minor version %s\"
+      run: npm version minor
       env:
         NODE_ENV: ${{ secrets.NODE_ENV }}
         DBOWLAND_SSH_USER: ${{ secrets.DBOWLAND_SSH_USER }}
