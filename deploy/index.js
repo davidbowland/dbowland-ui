@@ -1,5 +1,4 @@
 import fs from 'fs'
-import path from 'path'
 import ssh2 from 'ssh2'
 
 import htaccess from './htaccess.js'

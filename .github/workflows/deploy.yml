@@ -1,0 +1,42 @@
+# Build latest code with Gatsby and deploy to dbowland.com
+name: Deploy dbowland.com
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout latest code
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+    # Install Node 16
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16.x
+    # Set up git commit author
+    - name: Set git name and email
+      run: |
+        git config --local user.email "dbowland1+bot@gmail.com"
+        git config --local user.name "github-actions[bot]"
+    # The project is configured to build and deploy when the version is bumped
+    - name: Deploy code by bumping version
+      run: npm version minor -m \"minor version %s\"
+      env:
+        NODE_ENV: ${{ secrets.NODE_ENV }}
+        DBOWLAND_SSH_USER: ${{ secrets.DBOWLAND_SSH_USER }}
+        DBOWLAND_SSH_PASS: ${{ secrets.DBOWLAND_SSH_PASS }}
+    # Push tag created by version bump
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
