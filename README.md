@@ -53,9 +53,15 @@ npm run lint
 
 This project automatically deploys to production when a merge to `master` is made via a pull request.
 
+## Deploy Script
+
+See `deploy` directory for the script that copies the local folder `public` to a remote version folder, then updates the `.htaccess` file to deploy the new version. Testing this script requires the `DBOWLAND_SSH_USER` and `DBOWLAND_SSH_PASS` environment variables.
+
 ## Workflow
 
 In order to execute or test the workflow locally, the `DBOWLAND_SSH_USER`, `DBOWLAND_SSH_PASS`, and `GITHUB_TOKEN` environment variables must be defined. Use the [GitHub token page](https://github.com/settings/tokens) to generate a new token, if necessary.
+
+This project uses [sftp](https://github.com/mscdex/ssh2-streams/blob/master/SFTPStream.md) to effect the deploy.
 
 ### Manually Deploying
 
@@ -71,8 +77,6 @@ The most common deploy should be:
 npm run deploy --type=minor
 ```
 
-This project uses [ssh2](https://www.npmjs.com/package/ssh2) and [sftp](https://github.com/mscdex/ssh2-streams/blob/master/SFTPStream.md#sftpstream-methods) to effect the deploy.
-
 ### Testing the Workflow
 
 Use [act](https://github.com/nektos/act) to test the GitHub workflow. Install it with:
@@ -81,7 +85,7 @@ Use [act](https://github.com/nektos/act) to test the GitHub workflow. Install it
 brew install act
 ```
 
-Specify the secrets to use when executing:
+When running locally, workflow needs some secret values specified. If the necessary environment variables are declared, the secrets can be specified with:
 
 ```bash
 npm run workflow
@@ -91,17 +95,23 @@ npm run workflow
 
 ### Additional Gastby Documentation
 
-- [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- [Documentation](https://www.gatsbyjs.com/docs/)
 
-- [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- [Tutorials](https://www.gatsbyjs.com/tutorial/)
 
-- [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- [Guides](https://www.gatsbyjs.com/tutorial/)
 
-- [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- [API Reference](https://www.gatsbyjs.com/docs/api-reference/)
 
-- [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- [Plugin Library](https://www.gatsbyjs.com/plugins)
 
-- [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/)
+
+### Additional Deploy Documentation
+
+- [SSH2 module](https://www.npmjs.com/package/ssh2)
+
+- [SFTP stream methods](https://github.com/mscdex/ssh2-streams/blob/master/SFTPStream.md#sftpstream-methods)
 
 ### Additional Workflow Documentation
 
