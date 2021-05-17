@@ -1,0 +1,30 @@
+# Run tests for dbowland.com code
+name: Run tests for dbowland.com
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout latest code
+    - uses: actions/checkout@v2
+    # Install Node 16
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16.x
+    # Set up git commit author
+    - name: Set git name and email
+      run: |
+        git config --local user.email "dbowland1+bot@gmail.com"
+        git config --local user.name "github-actions[bot]"
+    # Run tests
+    - name: Install packages and run tests
+      run: npm ci && npm run test src/
+      env:
+        NODE_ENV: test
+        DBOWLAND_SSH_USER: ${{ secrets.DBOWLAND_SSH_USER }}
+        DBOWLAND_SSH_PASS: ${{ secrets.DBOWLAND_SSH_PASS }}
