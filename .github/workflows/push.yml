@@ -28,8 +28,6 @@ jobs:
       run: npm ci && npm run test src/
       env:
         NODE_ENV: test
-        DBOWLAND_SSH_USER: ${{ secrets.DBOWLAND_SSH_USER }}
-        DBOWLAND_SSH_PASS: ${{ secrets.DBOWLAND_SSH_PASS }}
     # Deploy the project
     - name: Deploy code by bumping version
       run: |
