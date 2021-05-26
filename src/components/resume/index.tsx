@@ -100,11 +100,30 @@ const Resume = (): JSX.Element => {
             <article>
               <ResumeSectionContentTitle>
                 Software Developer at{' '}
+                <ResumeAnchor href="https://www.talentreef.com/" rel="noopener noreferrer">
+                  TalentReef
+                </ResumeAnchor>
+              </ResumeSectionContentTitle>
+              <ResultSubDetails>March&nbsp;2021 - Present</ResultSubDetails>
+              <ResumeJobDescription>
+                <ResumeJobDescriptionDetail>
+                  Assist in migrating existing projects to AWS
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Improve test coverage and automate testing in Node.js
+                </ResumeJobDescriptionDetail>
+              </ResumeJobDescription>
+              <ClearFloat />
+            </article>
+
+            <article>
+              <ResumeSectionContentTitle>
+                Software Developer at{' '}
                 <ResumeAnchor href="https://www.carfax.com/" rel="noopener noreferrer">
                   Carfax
                 </ResumeAnchor>
               </ResumeSectionContentTitle>
-              <ResultSubDetails>March&nbsp;2020 - Present</ResultSubDetails>
+              <ResultSubDetails>March&nbsp;2020 - March&nbsp;20201</ResultSubDetails>
               <ResumeJobDescription>
                 <ResumeJobDescriptionDetail>
                   Develop Spring Boot / Spring Batch apps in Groovy and Java 8
@@ -147,22 +166,6 @@ const Resume = (): JSX.Element => {
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
                   Earned three performance-based increases outside annual review
-                </ResumeJobDescriptionDetail>
-              </ResumeJobDescription>
-              <ClearFloat />
-            </article>
-
-            <article>
-              <ResumeSectionContentTitle>
-                ATM/Vault Coordinator at{' '}
-                <ResumeAnchor href="https://www.callawaybank.com/" rel="noopener noreferrer">
-                  The Callaway Bank
-                </ResumeAnchor>
-              </ResumeSectionContentTitle>
-              <ResultSubDetails>May&nbsp;2009 - October&nbsp;2014</ResultSubDetails>
-              <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>
-                  Accepted new position after one year, then earned two promotions
                 </ResumeJobDescriptionDetail>
               </ResumeJobDescription>
               <ClearFloat />
