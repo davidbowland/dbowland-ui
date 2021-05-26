@@ -99,7 +99,7 @@ const Resume = (): JSX.Element => {
           <ResumeSectionContent>
             <article>
               <ResumeSectionContentTitle>
-                Software Developer at{' '}
+                Senior Software Engineer at{' '}
                 <ResumeAnchor href="https://www.talentreef.com/" rel="noopener noreferrer">
                   TalentReef
                 </ResumeAnchor>
