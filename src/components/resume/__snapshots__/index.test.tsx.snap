@@ -149,6 +149,43 @@ exports[`Resume component Ensure snapshot match 1`] = `
              
             <a
               class="sc-bdvvaa laSxtD"
+              href="https://www.talentreef.com/"
+              rel="noopener noreferrer"
+            >
+              TalentReef
+            </a>
+          </h2>
+          <p
+            class="sc-ksdxAp sc-hGPAah fqcQtf ehSMtd"
+          >
+            March 2021 - Present
+          </p>
+          <ul
+            class="sc-furvIG eoNyxu"
+          >
+            <li
+              class="sc-pVTma kjyBGh"
+            >
+              Assist in migrating existing projects to AWS
+            </li>
+            <li
+              class="sc-pVTma kjyBGh"
+            >
+              Improve test coverage and automate testing in Node.js
+            </li>
+          </ul>
+          <div
+            class="sc-dlVyqM hcpVZI"
+          />
+        </article>
+        <article>
+          <h2
+            class="sc-bkkfTU hbUjbS"
+          >
+            Software Developer at
+             
+            <a
+              class="sc-bdvvaa laSxtD"
               href="https://www.carfax.com/"
               rel="noopener noreferrer"
             >
@@ -158,7 +195,7 @@ exports[`Resume component Ensure snapshot match 1`] = `
           <p
             class="sc-ksdxAp sc-hGPAah fqcQtf ehSMtd"
           >
-            March 2020 - Present
+            March 2020 - March 20201
           </p>
           <ul
             class="sc-furvIG eoNyxu"
@@ -234,38 +271,6 @@ exports[`Resume component Ensure snapshot match 1`] = `
               class="sc-pVTma kjyBGh"
             >
               Earned three performance-based increases outside annual review
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            ATM/Vault Coordinator at
-             
-            <a
-              class="sc-bdvvaa laSxtD"
-              href="https://www.callawaybank.com/"
-              rel="noopener noreferrer"
-            >
-              The Callaway Bank
-            </a>
-          </h2>
-          <p
-            class="sc-ksdxAp sc-hGPAah fqcQtf ehSMtd"
-          >
-            May 2009 - October 2014
-          </p>
-          <ul
-            class="sc-furvIG eoNyxu"
-          >
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Accepted new position after one year, then earned two promotions
             </li>
           </ul>
           <div

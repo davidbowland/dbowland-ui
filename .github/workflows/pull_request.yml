@@ -10,14 +10,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # Checkout latest code
-    - uses: actions/checkout@v2
-    # Install Node 16
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 16.x
-    # Run tests
-    - name: Install packages and run tests
-      run: npm ci && npm run test src/
-      env:
-        NODE_ENV: test
+      # Checkout latest code
+      - uses: actions/checkout@v2
+      # Install Node 16
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      # Run tests
+      - name: Install packages and run tests
+        run: npm ci && npm run test src/
+        env:
+          NODE_ENV: test
