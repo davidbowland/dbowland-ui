@@ -2,7 +2,7 @@
 
 exports[`Joke component Ensure button works to change joke displayed 1`] = `
 <h1>
-  =)
+  Ha!
 </h1>
 `;
 
@@ -10,6 +10,6 @@ exports[`Joke component Ensure node snapshot match 1`] = `<h1 />`;
 
 exports[`Joke component Ensure snapshot match 1`] = `
 <h1>
-  Ha!
+  Ha
 </h1>
 `;

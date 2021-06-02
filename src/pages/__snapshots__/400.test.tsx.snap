@@ -2,15 +2,15 @@
 
 exports[`400 error page Ensure snapshot match 1`] = `
 <main
-  class="sc-dkPtyc iwVFAu"
+  class="sc-dlnjwi gnIxof"
 >
   <h1
-    class="sc-gsDJrp gxPvwY"
+    class="sc-gtsrHT elXEts"
   >
     400: Bad Request
   </h1>
   <p
-    class="sc-bdvvaa zWSMl"
+    class="sc-bdnxRM fSObbe"
   >
     Your request was malformed or otherwise could not be understood by the server. Please modify your request before retrying.
     <br />

@@ -5,11 +5,11 @@ exports[`Humor page Ensure snapshot match 1`] = `
   <title>
     Humor | dbowland.com
   </title>
-  <h1>
-    Ha!
-  </h1>
-  <button>
-    Next joke
+  <h1 />
+  <button
+    disabled=""
+  >
+    Loading...
   </button>
 </main>
 `;

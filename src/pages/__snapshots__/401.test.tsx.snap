@@ -2,15 +2,15 @@
 
 exports[`401 error page Ensure snapshot match 1`] = `
 <main
-  class="sc-dkPtyc iwVFAu"
+  class="sc-dlnjwi gnIxof"
 >
   <h1
-    class="sc-gsDJrp gxPvwY"
+    class="sc-gtsrHT elXEts"
   >
     401: Authorization Required
   </h1>
   <p
-    class="sc-bdvvaa zWSMl"
+    class="sc-bdnxRM fSObbe"
   >
     You have requested a resource that requires authorization. Please authenticate yourself before retrying your request.
     <br />

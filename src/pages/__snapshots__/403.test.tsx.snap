@@ -2,15 +2,15 @@
 
 exports[`403 error page Ensure snapshot match 1`] = `
 <main
-  class="sc-dkPtyc iwVFAu"
+  class="sc-dlnjwi gnIxof"
 >
   <h1
-    class="sc-gsDJrp gxPvwY"
+    class="sc-gtsrHT elXEts"
   >
     403: Forbidden
   </h1>
   <p
-    class="sc-bdvvaa zWSMl"
+    class="sc-bdnxRM fSObbe"
   >
     You are not allowed to access the resource you requested. If you feel you have reached this page in error, please contact the webmaster.
     <br />

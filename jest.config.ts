@@ -98,7 +98,8 @@ export default {
     '^@images/(.*)$': '<rootDir>/src/images/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@scss/(.*)$': '<rootDir>/src/scss/$1',
-    '^@styles/(.*)$': '<rootDir>/src/styles/$1',
+    '^@services/(.*)$': '<rootDir>/src/services/$1',
+    '^@test/(.*)$': '<rootDir>/test/$1',
     '@fontsource/rokkitt': '<rootDir>/__mocks__/file-mock.js',
   },
 
@@ -147,7 +148,7 @@ export default {
   setupFiles: ['<rootDir>/jest.setup-test-env.js'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['./test/setup-server.ts'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,

@@ -1,42 +1,46 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import JokeData from '@assets/jokes.yaml'
+import JokeService, { JokeType } from '@services/jokes'
 
 export interface JokeProps {
   initialize?: boolean
 }
 
 const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
-  const jokeList: string[] = Array.from(JokeData.jokes)
-  let jokeCount = jokeList.length
+  const [joke, setJoke] = useState('')
+  const [jokeList, setJokeList] = useState([] as JokeType[])
+  const isLoading = jokeList.length == 0 || !joke
 
-  const resetJokeList = (): void => {
-    jokeCount = jokeList.length
+  const fetchJokeList = async (): Promise<void> => {
+    setJokeList(await JokeService.getRandomJokes())
   }
 
-  const getRandomJoke = (): string => {
-    const index = Math.floor(Math.random() * jokeCount)
-    const selection = jokeList[index]
-    jokeList[index] = jokeList[--jokeCount]
-    jokeList[jokeCount] = selection
+  const getRandomJokeText = (): string => {
+    const randomIndex = Math.floor(Math.random() * jokeList.length)
+    const selectedJoke = jokeList[randomIndex]
+    setJokeList(jokeList.filter((value) => value != selectedJoke))
 
-    if (jokeCount <= 0) {
-      resetJokeList()
+    return selectedJoke.joke
+  }
+
+  const nextJoke = async (): Promise<void> => {
+    setJoke(getRandomJokeText())
+  }
+
+  useEffect(() => {
+    if (jokeList.length == 0 && initialize) {
+      fetchJokeList()
+    } else if (!joke && jokeList.length > 0) {
+      nextJoke()
     }
-
-    return selection
-  }
-
-  const nextJoke = (): void => {
-    setJoke(getRandomJoke())
-  }
-
-  const [joke, setJoke] = useState(initialize ? getRandomJoke() : '')
+  }, [jokeList])
 
   return (
     <>
       <h1>{joke}</h1>
-      <button onClick={nextJoke}>Next joke</button>
+      <button onClick={nextJoke} disabled={isLoading}>
+        {isLoading ? 'Loading...' : 'Next joke'}
+      </button>
     </>
   )
 }

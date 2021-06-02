@@ -6,10 +6,6 @@ import Humor from './humor'
 
 jest.mock('@fontsource/rokkitt')
 
-jest.mock('@assets/jokes.yaml', () => ({
-  jokes: ['Ha!', '=)'],
-}))
-
 describe('Humor page', () => {
   beforeAll(() => {
     const mockMath = Object.create(global.Math)

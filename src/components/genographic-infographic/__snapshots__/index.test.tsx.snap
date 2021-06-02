@@ -2,7 +2,7 @@
 
 exports[`Genographic infographic component Ensure snapshot match 1`] = `
 <figure
-  class="sc-bdvvaa aTyKP"
+  class="sc-bdnxRM lpgUIQ"
 >
   <a
     href="test-file-stub"
@@ -13,7 +13,7 @@ exports[`Genographic infographic component Ensure snapshot match 1`] = `
     />
   </a>
   <figcaption
-    class="sc-gsDJrp eIPapg"
+    class="sc-gtsrHT bsjUbs"
   >
     Click or tap on the image for the full 18-page PDF report.
   </figcaption>
