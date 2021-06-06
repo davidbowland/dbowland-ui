@@ -1,42 +1,67 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import JokeData from '@assets/jokes.yaml'
+import JokeService, { JokeType } from '@services/jokes'
 
 export interface JokeProps {
   initialize?: boolean
 }
 
 const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
-  const jokeList: string[] = Array.from(JokeData.jokes)
-  let jokeCount = jokeList.length
+  const [joke, setJoke] = useState('')
+  const [jokeList, setJokeList] = useState([] as JokeType[])
+  const [isError, setIsError] = useState(false)
+  const isLoading = jokeList?.length == 0 || !joke
 
-  const resetJokeList = (): void => {
-    jokeCount = jokeList.length
-  }
-
-  const getRandomJoke = (): string => {
-    const index = Math.floor(Math.random() * jokeCount)
-    const selection = jokeList[index]
-    jokeList[index] = jokeList[--jokeCount]
-    jokeList[jokeCount] = selection
-
-    if (jokeCount <= 0) {
-      resetJokeList()
+  const fetchJokeList = async (): Promise<void> => {
+    try {
+      setIsError(false)
+      setJokeList(await JokeService.getRandomJokes())
+    } catch (error) {
+      setIsError(true)
+      console.error(error)
     }
-
-    return selection
   }
 
-  const nextJoke = (): void => {
-    setJoke(getRandomJoke())
+  const getRandomJokeText = (): string => {
+    const randomIndex = Math.floor(Math.random() * jokeList.length)
+    const selectedJoke = jokeList[randomIndex]
+    setJokeList((tempList) => tempList.filter((value) => value != selectedJoke))
+
+    return selectedJoke.joke
   }
 
-  const [joke, setJoke] = useState(initialize ? getRandomJoke() : '')
+  const nextJoke = async (): Promise<void> => {
+    if (jokeList?.length == 0) {
+      fetchJokeList()
+      setJoke('')
+    } else {
+      setJoke(getRandomJokeText())
+    }
+  }
+
+  const getButtonText = (): string => {
+    if (isError) {
+      return 'Error! Try again.'
+    } else if (isLoading) {
+      return 'Loading...'
+    }
+    return 'Next joke'
+  }
+
+  useEffect(() => {
+    if (jokeList?.length == 0 && (initialize || joke)) {
+      fetchJokeList()
+    } else if (!joke && jokeList?.length > 0) {
+      nextJoke()
+    }
+  }, [jokeList])
 
   return (
     <>
       <h1>{joke}</h1>
-      <button onClick={nextJoke}>Next joke</button>
+      <button onClick={nextJoke} disabled={isLoading && !isError}>
+        {getButtonText()}
+      </button>
     </>
   )
 }

@@ -3,15 +3,26 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 
 import Forbidden from './403'
+import ServerErrorMessage from '@components/server-error-message'
+
+jest.mock('@components/server-error-message', () => ({
+  __esModule: true,
+  default: jest.fn()
+}))
 
 describe('403 error page', () => {
-  test('Ensure snapshot match', () => {
-    const { container } = render(<Forbidden />)
-    expect(container.firstChild).toMatchSnapshot()
+  beforeEach(() => {
+    (ServerErrorMessage as jest.Mock).mockReturnValue(<></>)
   })
 
-  test('Ensure title is on the page', () => {
-    const { getByText } = render(<Forbidden />)
-    expect(getByText('403: Forbidden')).toBeInTheDocument()
+  afterEach(() => {
+    jest.resetAllMocks()
+  })
+
+  test('Rendering Forbidden renders ServerErrorMessage', () => {
+    const expectedTitle = '403: Forbidden'
+    render(<Forbidden />)
+    expect(ServerErrorMessage).toBeCalledWith(expect.objectContaining({ title: expectedTitle }), expect.anything())
+    expect(ServerErrorMessage).toBeCalledTimes(1)
   })
 })

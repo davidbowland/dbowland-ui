@@ -1,622 +1,624 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Resume component Ensure snapshot match 1`] = `
-<div
-  class="sc-jRQAMF bksrSu"
->
+<div>
   <div
-    class="sc-hBURRC dSJdFk"
+    class="sc-jSFjdj jLwqAM"
   >
     <div
-      class="sc-iCfLBT kTBSnQ"
-    />
-    <div
-      class="sc-crHlIS hqiMrb"
+      class="sc-hBMUJo furMN"
     >
-      <h1
-        class="sc-egiSv jirzft"
+      <div
+        class="sc-iCoGMd fKsFer"
+      />
+      <div
+        class="sc-crzoAE ypOre"
       >
-        David Bowland
-      </h1>
-      <h2
-        class="sc-bqiQRQ hIqZqZ"
-      >
-        Software Developer
-      </h2>
-      <h4
-        class="sc-gKckTs hJxLTB"
-      >
-        <a
-          class="sc-iqsfdx gluHfk"
-          href="test-file-stub"
+        <h1
+          class="sc-dIsUp iagKpK"
         >
-          Download Resume
-        </a>
-      </h4>
+          David Bowland
+        </h1>
+        <h2
+          class="sc-bqGGPW bmUXlr"
+        >
+          Software Developer
+        </h2>
+        <h4
+          class="sc-gKAaRy tirQr"
+        >
+          <a
+            class="sc-iqAclL fmSdzt"
+            href="test-file-stub"
+          >
+            Download Resume
+          </a>
+        </h4>
+      </div>
+      <div
+        class="sc-dlnjwi dgDwcj"
+      >
+        <ul
+          class="sc-hKFxyN hXErUM"
+        >
+          <li
+            class="sc-eCApnc eLctso"
+          >
+            e: 
+            <a
+              class="sc-bdnxRM kwVBIQ"
+              href="mailto:david@dbowland.com"
+            >
+              david@dbowland.com
+            </a>
+          </li>
+          <li
+            class="sc-eCApnc eLctso"
+          >
+            w: 
+            <a
+              class="sc-bdnxRM kwVBIQ"
+              href="https://dbowland.com"
+            >
+              dbowland.com
+            </a>
+          </li>
+          <li
+            class="sc-eCApnc eLctso"
+          >
+            m: 
+            <a
+              class="sc-bdnxRM kwVBIQ"
+              href="tel:+14178940079"
+            >
+              417.894.0079
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="sc-dlMDgC jiNouc"
+      />
     </div>
     <div
-      class="sc-dkPtyc eVMWlu"
+      class="sc-gtsrHT cmmSYJ"
     >
-      <ul
-        class="sc-hKwCoD dOCKAY"
+      <section
+        class="sc-fnVZcZ jbvnac"
       >
-        <li
-          class="sc-eCImvq cXkNZp"
+        <div
+          class="sc-iemWCZ kRzKvn"
         >
-          e: 
-          <a
-            class="sc-bdvvaa laSxtD"
-            href="mailto:david@dbowland.com"
+          <h1
+            class="sc-dIvrsQ fHCnXW"
           >
-            david@dbowland.com
-          </a>
-        </li>
-        <li
-          class="sc-eCImvq cXkNZp"
+            Personal Profile
+          </h1>
+        </div>
+        <div
+          class="sc-fFSPTT cazmuJ"
         >
-          w: 
-          <a
-            class="sc-bdvvaa laSxtD"
-            href="https://dbowland.com"
-          >
-            dbowland.com
-          </a>
-        </li>
-        <li
-          class="sc-eCImvq cXkNZp"
+          <article>
+            <ul
+              class="sc-fujyAs lgroYb"
+            >
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Developer of robust solutions
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Effective translator between geek and English
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Connoisseur of groan-inducing dad jokes
+              </li>
+            </ul>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+        </div>
+        <div
+          class="sc-dlMDgC jiNouc"
+        />
+      </section>
+      <section
+        class="sc-fnVZcZ jbvnac"
+      >
+        <div
+          class="sc-iemWCZ kRzKvn"
         >
-          m: 
-          <a
-            class="sc-bdvvaa laSxtD"
-            href="tel:+14178940079"
+          <h1
+            class="sc-dIvrsQ fHCnXW"
           >
-            417.894.0079
-          </a>
-        </li>
-      </ul>
+            Experience
+          </h1>
+        </div>
+        <div
+          class="sc-fFSPTT cazmuJ"
+        >
+          <article>
+            <h2
+              class="sc-bkbkJK MFdWM"
+            >
+              Senior Software Engineer at
+               
+              <a
+                class="sc-bdnxRM kwVBIQ"
+                href="https://www.talentreef.com/"
+                rel="noopener noreferrer"
+              >
+                TalentReef
+              </a>
+            </h2>
+            <p
+              class="sc-ksluID sc-hHEiqL gAVCtE bwKQMd"
+            >
+              March 2021 - Present
+            </p>
+            <ul
+              class="sc-fujyAs lgroYb"
+            >
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Assist in migrating existing projects to AWS
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Improve test coverage and automate testing in Node.js
+              </li>
+            </ul>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+          <article>
+            <h2
+              class="sc-bkbkJK MFdWM"
+            >
+              Software Developer at
+               
+              <a
+                class="sc-bdnxRM kwVBIQ"
+                href="https://www.carfax.com/"
+                rel="noopener noreferrer"
+              >
+                Carfax
+              </a>
+            </h2>
+            <p
+              class="sc-ksluID sc-hHEiqL gAVCtE bwKQMd"
+            >
+              March 2020 - March 20201
+            </p>
+            <ul
+              class="sc-fujyAs lgroYb"
+            >
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Develop Spring Boot / Spring Batch apps in Groovy and Java 8
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Develop Node.js apps, using React with webpack for frontend
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Use Agile methodology with two-week sprints organized on Jira
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Deploy apps using Jenkins, either Docker images to Kubernetes on AWS or RPMs to DC 3.0 on-premise
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Went from new hire to acting team leader in less than 10 months
+              </li>
+            </ul>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+          <article>
+            <h2
+              class="sc-bkbkJK MFdWM"
+            >
+              Senior Programmer Analyst at
+               
+              <a
+                class="sc-bdnxRM kwVBIQ"
+                href="https://www.showmeboone.com/"
+                rel="noopener noreferrer"
+              >
+                Boone County Government
+              </a>
+            </h2>
+            <p
+              class="sc-ksluID sc-hHEiqL gAVCtE bwKQMd"
+            >
+              November 2014 - March 2020
+            </p>
+            <ul
+              class="sc-fujyAs lgroYb"
+            >
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Developed full-stack web applications using CSS3, HTML5, and vanilla JavaScript with ASP, ASP.NET, or Java backend
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Developed COBOL and IBM CL applications on IBM System i midrange
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Acted as project manager for two major projects
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Earned three performance-based increases outside annual review
+              </li>
+            </ul>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+        </div>
+        <div
+          class="sc-dlMDgC jiNouc"
+        />
+      </section>
+      <section
+        class="sc-fnVZcZ jbvnac"
+      >
+        <div
+          class="sc-iemWCZ kRzKvn"
+        >
+          <h1
+            class="sc-dIvrsQ fHCnXW"
+          >
+            Skills
+          </h1>
+        </div>
+        <div
+          class="sc-fFSPTT cazmuJ"
+        >
+          <article>
+            <h2
+              class="sc-bkbkJK MFdWM"
+            >
+              Languages
+            </h2>
+            <p
+              class="sc-ksluID sc-hHEiqL gAVCtE bwKQMd"
+            >
+              Proficient in
+            </p>
+            <ul
+              class="sc-jrsJWt fLIvTG"
+            >
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Groovy
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Java
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                JavaScript
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Python
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                TypeScript
+              </li>
+            </ul>
+            <p
+              class="sc-ksluID sc-hHEiqL gAVCtE bwKQMd"
+            >
+              Familiar with
+            </p>
+            <ul
+              class="sc-jrsJWt fLIvTG"
+            >
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                ASP/ASP.NET
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                C++
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                COBOL
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                PHP
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Terraform
+              </li>
+            </ul>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+          <article>
+            <h2
+              class="sc-bkbkJK MFdWM"
+            >
+              SQL
+            </h2>
+            <ul
+              class="sc-jrsJWt fLIvTG"
+            >
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                DB2
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Microsoft SQL Server (T/SQL)
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                MySQL
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Oracle Database
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                PostgreSQL
+              </li>
+            </ul>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+          <article>
+            <h2
+              class="sc-bkbkJK MFdWM"
+            >
+              NoSQL
+            </h2>
+            <ul
+              class="sc-jrsJWt fLIvTG"
+            >
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                DynamoDB
+              </li>
+            </ul>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+          <article>
+            <h2
+              class="sc-bkbkJK MFdWM"
+            >
+              Technologies
+            </h2>
+            <ul
+              class="sc-jrsJWt fLIvTG"
+            >
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Argo
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Docker
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Git
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Kibana
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Kubernetes
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Jenkins
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Jira
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                NewRelic
+              </li>
+            </ul>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+          <article>
+            <h2
+              class="sc-bkbkJK MFdWM"
+            >
+              AWS
+            </h2>
+            <ul
+              class="sc-jrsJWt fLIvTG"
+            >
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                CloudWatch
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                DynamoDB
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Lambda
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                RDS
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                S3
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Systems Manager
+              </li>
+              <li
+                class="sc-kEqXSa iqTgBr"
+              >
+                Secrets Manager
+              </li>
+            </ul>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+        </div>
+        <div
+          class="sc-dlMDgC jiNouc"
+        />
+      </section>
+      <section
+        class="sc-fnVZcZ jbvnac"
+      >
+        <div
+          class="sc-iemWCZ kRzKvn"
+        >
+          <h1
+            class="sc-dIvrsQ fHCnXW"
+          >
+            Education
+          </h1>
+        </div>
+        <div
+          class="sc-fFSPTT cazmuJ"
+        >
+          <article>
+            <h2
+              class="sc-bkbkJK MFdWM"
+            >
+              <a
+                class="sc-bdnxRM kwVBIQ"
+                href="https://ccis.edu/"
+                rel="noopener noreferrer"
+              >
+                Columbia College — Columbia, MO
+              </a>
+            </h2>
+            <p
+              class="sc-ksluID sc-hHEiqL gAVCtE bwKQMd"
+            >
+              Bachelor of Science — GPA 3.68
+            </p>
+            <p
+              class="sc-ksluID sc-hHEiqL gAVCtE bwKQMd"
+            >
+              Major: Computer Science — Minor: Business
+            </p>
+            <ul
+              class="sc-fujyAs lgroYb"
+            >
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Graduated cum laude with a GPA of 3.68/4.0
+              </li>
+              <li
+                class="sc-pNWdM hkOrul"
+              >
+                Earned an A in all computer science classes
+              </li>
+            </ul>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+          <article>
+            <h2
+              class="sc-bkbkJK MFdWM"
+            >
+              <a
+                class="sc-bdnxRM kwVBIQ"
+                href="https://www.cpsk12.org/HHS"
+                rel="noopener noreferrer"
+              >
+                David H. Hickman High School — Columbia, MO
+              </a>
+            </h2>
+            <div
+              class="sc-dlMDgC jiNouc"
+            />
+          </article>
+        </div>
+        <div
+          class="sc-dlMDgC jiNouc"
+        />
+      </section>
     </div>
-    <div
-      class="sc-dlVyqM hcpVZI"
-    />
-  </div>
-  <div
-    class="sc-gsDJrp kzilrB"
-  >
-    <section
-      class="sc-fotPbf dRrLnW"
-    >
-      <div
-        class="sc-ieebsP cEhsLW"
-      >
-        <h1
-          class="sc-dJjZJu dRWBSC"
-        >
-          Personal Profile
-        </h1>
-      </div>
-      <div
-        class="sc-fFehDp learJF"
-      >
-        <article>
-          <ul
-            class="sc-furvIG eoNyxu"
-          >
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Developer of robust solutions
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Effective translator between geek and English
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Connoisseur of groan-inducing dad jokes
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-      </div>
-      <div
-        class="sc-dlVyqM hcpVZI"
-      />
-    </section>
-    <section
-      class="sc-fotPbf dRrLnW"
-    >
-      <div
-        class="sc-ieebsP cEhsLW"
-      >
-        <h1
-          class="sc-dJjZJu dRWBSC"
-        >
-          Experience
-        </h1>
-      </div>
-      <div
-        class="sc-fFehDp learJF"
-      >
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            Senior Software Engineer at
-             
-            <a
-              class="sc-bdvvaa laSxtD"
-              href="https://www.talentreef.com/"
-              rel="noopener noreferrer"
-            >
-              TalentReef
-            </a>
-          </h2>
-          <p
-            class="sc-ksdxAp sc-hGPAah fqcQtf ehSMtd"
-          >
-            March 2021 - Present
-          </p>
-          <ul
-            class="sc-furvIG eoNyxu"
-          >
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Assist in migrating existing projects to AWS
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Improve test coverage and automate testing in Node.js
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            Software Developer at
-             
-            <a
-              class="sc-bdvvaa laSxtD"
-              href="https://www.carfax.com/"
-              rel="noopener noreferrer"
-            >
-              Carfax
-            </a>
-          </h2>
-          <p
-            class="sc-ksdxAp sc-hGPAah fqcQtf ehSMtd"
-          >
-            March 2020 - March 20201
-          </p>
-          <ul
-            class="sc-furvIG eoNyxu"
-          >
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Develop Spring Boot / Spring Batch apps in Groovy and Java 8
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Develop Node.js apps, using React with webpack for frontend
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Use Agile methodology with two-week sprints organized on Jira
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Deploy apps using Jenkins, either Docker images to Kubernetes on AWS or RPMs to DC 3.0 on-premise
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Went from new hire to acting team leader in less than 10 months
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            Senior Programmer Analyst at
-             
-            <a
-              class="sc-bdvvaa laSxtD"
-              href="https://www.showmeboone.com/"
-              rel="noopener noreferrer"
-            >
-              Boone County Government
-            </a>
-          </h2>
-          <p
-            class="sc-ksdxAp sc-hGPAah fqcQtf ehSMtd"
-          >
-            November 2014 - March 2020
-          </p>
-          <ul
-            class="sc-furvIG eoNyxu"
-          >
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Developed full-stack web applications using CSS3, HTML5, and vanilla JavaScript with ASP, ASP.NET, or Java backend
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Developed COBOL and IBM CL applications on IBM System i midrange
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Acted as project manager for two major projects
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Earned three performance-based increases outside annual review
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-      </div>
-      <div
-        class="sc-dlVyqM hcpVZI"
-      />
-    </section>
-    <section
-      class="sc-fotPbf dRrLnW"
-    >
-      <div
-        class="sc-ieebsP cEhsLW"
-      >
-        <h1
-          class="sc-dJjZJu dRWBSC"
-        >
-          Skills
-        </h1>
-      </div>
-      <div
-        class="sc-fFehDp learJF"
-      >
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            Languages
-          </h2>
-          <p
-            class="sc-ksdxAp sc-hGPAah fqcQtf ehSMtd"
-          >
-            Proficient in
-          </p>
-          <ul
-            class="sc-jrQzUz McYBS"
-          >
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Groovy
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Java
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              JavaScript
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Python
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              TypeScript
-            </li>
-          </ul>
-          <p
-            class="sc-ksdxAp sc-hGPAah fqcQtf ehSMtd"
-          >
-            Familiar with
-          </p>
-          <ul
-            class="sc-jrQzUz McYBS"
-          >
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              ASP/ASP.NET
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              C++
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              COBOL
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              PHP
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Terraform
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            SQL
-          </h2>
-          <ul
-            class="sc-jrQzUz McYBS"
-          >
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              DB2
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Microsoft SQL Server (T/SQL)
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              MySQL
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Oracle Database
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              PostgreSQL
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            NoSQL
-          </h2>
-          <ul
-            class="sc-jrQzUz McYBS"
-          >
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              DynamoDB
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            Technologies
-          </h2>
-          <ul
-            class="sc-jrQzUz McYBS"
-          >
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Argo
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Docker
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Git
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Kibana
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Kubernetes
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Jenkins
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Jira
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              NewRelic
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            AWS
-          </h2>
-          <ul
-            class="sc-jrQzUz McYBS"
-          >
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              CloudWatch
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              DynamoDB
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Lambda
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              RDS
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              S3
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Systems Manager
-            </li>
-            <li
-              class="sc-kDThTU hmjNze"
-            >
-              Secrets Manager
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-      </div>
-      <div
-        class="sc-dlVyqM hcpVZI"
-      />
-    </section>
-    <section
-      class="sc-fotPbf dRrLnW"
-    >
-      <div
-        class="sc-ieebsP cEhsLW"
-      >
-        <h1
-          class="sc-dJjZJu dRWBSC"
-        >
-          Education
-        </h1>
-      </div>
-      <div
-        class="sc-fFehDp learJF"
-      >
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            <a
-              class="sc-bdvvaa laSxtD"
-              href="https://ccis.edu/"
-              rel="noopener noreferrer"
-            >
-              Columbia College — Columbia, MO
-            </a>
-          </h2>
-          <p
-            class="sc-ksdxAp sc-hGPAah fqcQtf ehSMtd"
-          >
-            Bachelor of Science — GPA 3.68
-          </p>
-          <p
-            class="sc-ksdxAp sc-hGPAah fqcQtf ehSMtd"
-          >
-            Major: Computer Science — Minor: Business
-          </p>
-          <ul
-            class="sc-furvIG eoNyxu"
-          >
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Graduated cum laude with a GPA of 3.68/4.0
-            </li>
-            <li
-              class="sc-pVTma kjyBGh"
-            >
-              Earned an A in all computer science classes
-            </li>
-          </ul>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-        <article>
-          <h2
-            class="sc-bkkfTU hbUjbS"
-          >
-            <a
-              class="sc-bdvvaa laSxtD"
-              href="https://www.cpsk12.org/HHS"
-              rel="noopener noreferrer"
-            >
-              David H. Hickman High School — Columbia, MO
-            </a>
-          </h2>
-          <div
-            class="sc-dlVyqM hcpVZI"
-          />
-        </article>
-      </div>
-      <div
-        class="sc-dlVyqM hcpVZI"
-      />
-    </section>
   </div>
 </div>
 `;

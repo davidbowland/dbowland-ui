@@ -3,15 +3,26 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 
 import NotFound from './404'
+import ServerErrorMessage from '@components/server-error-message'
+
+jest.mock('@components/server-error-message', () => ({
+  __esModule: true,
+  default: jest.fn()
+}))
 
 describe('404 error page', () => {
-  test('Ensure snapshot match', () => {
-    const { container } = render(<NotFound />)
-    expect(container.firstChild).toMatchSnapshot()
+  beforeEach(() => {
+    (ServerErrorMessage as jest.Mock).mockReturnValue(<></>)
   })
 
-  test('Ensure title is on the page', () => {
-    const { getByText } = render(<NotFound />)
-    expect(getByText('404: Not Found')).toBeInTheDocument()
+  afterEach(() => {
+    jest.resetAllMocks()
+  })
+
+  test('Rendering NotFound renders ServerErrorMessage', () => {
+    const expectedTitle = '404: Not Found'
+    render(<NotFound />)
+    expect(ServerErrorMessage).toBeCalledWith(expect.objectContaining({ title: expectedTitle }), expect.anything())
+    expect(ServerErrorMessage).toBeCalledTimes(1)
   })
 })

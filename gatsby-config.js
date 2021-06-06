@@ -10,10 +10,9 @@ module.exports = {
         alias: {
           '@assets': 'src/assets',
           '@components': 'src/components',
-          '@images': 'src/images',
           '@pages': 'src/pages',
-          '@scss': 'src/scss',
-          '@styles': 'src/styles',
+          '@services': 'src/services',
+          '@test': 'test',
         },
         extensions: ['js', 'jsx', 'ts', 'tsx'],
       },

@@ -3,15 +3,26 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 
 import InternalServerError from './500'
+import ServerErrorMessage from '@components/server-error-message'
+
+jest.mock('@components/server-error-message', () => ({
+  __esModule: true,
+  default: jest.fn()
+}))
 
 describe('500 error page', () => {
-  test('Ensure snapshot match', () => {
-    const { container } = render(<InternalServerError />)
-    expect(container.firstChild).toMatchSnapshot()
+  beforeEach(() => {
+    (ServerErrorMessage as jest.Mock).mockReturnValue(<></>)
   })
 
-  test('Ensure title is on the page', () => {
-    const { getByText } = render(<InternalServerError />)
-    expect(getByText('500: Internal Server Error')).toBeInTheDocument()
+  afterEach(() => {
+    jest.resetAllMocks()
+  })
+
+  test('Rendering InternalServerError renders ServerErrorMessage', () => {
+    const expectedTitle = '500: Internal Server Error'
+    render(<InternalServerError />)
+    expect(ServerErrorMessage).toBeCalledWith(expect.objectContaining({ title: expectedTitle }), expect.anything())
+    expect(ServerErrorMessage).toBeCalledTimes(1)
   })
 })
