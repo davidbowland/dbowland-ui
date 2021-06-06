@@ -3,18 +3,26 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 
 import Humor from './humor'
+import Joke from '@components/joke'
 
+jest.mock('@components/joke', () => ({
+  __esModule: true,
+  default: jest.fn()
+}))
 jest.mock('@fontsource/rokkitt')
 
 describe('Humor page', () => {
-  beforeAll(() => {
-    const mockMath = Object.create(global.Math)
-    mockMath.random = () => 0
-    global.Math = mockMath
+  beforeEach(() => {
+    (Joke as jest.Mock).mockReturnValue(<></>)
   })
 
-  test('Ensure snapshot match', () => {
-    const { container } = render(<Humor />)
-    expect(container.firstChild).toMatchSnapshot()
+  afterEach(() => {
+    jest.resetAllMocks()
+  })
+
+  test('Rendering Humor renders Joke', () => {
+    render(<Humor />)
+    expect(Joke).toHaveBeenCalledWith({ initialize: true }, expect.anything())
+    expect(Joke).toHaveBeenCalledTimes(1)
   })
 })

@@ -3,15 +3,26 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 
 import AuthorizationRequired from './401'
+import ServerErrorMessage from '@components/server-error-message'
+
+jest.mock('@components/server-error-message', () => ({
+  __esModule: true,
+  default: jest.fn()
+}))
 
 describe('401 error page', () => {
-  test('Ensure snapshot match', () => {
-    const { container } = render(<AuthorizationRequired />)
-    expect(container.firstChild).toMatchSnapshot()
+  beforeEach(() => {
+    (ServerErrorMessage as jest.Mock).mockReturnValue(<></>)
   })
 
-  test('Ensure title is on the page', () => {
-    const { getByText } = render(<AuthorizationRequired />)
-    expect(getByText('401: Authorization Required')).toBeInTheDocument()
+  afterEach(() => {
+    jest.resetAllMocks()
+  })
+
+  test('Rendering AuthorizationRequired renders ServerErrorMessage', () => {
+    const expectedTitle = '401: Authorization Required'
+    render(<AuthorizationRequired />)
+    expect(ServerErrorMessage).toBeCalledWith(expect.objectContaining({ title: expectedTitle }), expect.anything())
+    expect(ServerErrorMessage).toBeCalledTimes(1)
   })
 })

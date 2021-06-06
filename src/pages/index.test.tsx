@@ -3,12 +3,25 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 
 import HomePage from './index'
+import Resume from '@components/resume'
 
+jest.mock('@components/resume', () => ({
+  __esModule: true,
+  default: jest.fn()
+}))
 jest.mock('@fontsource/rokkitt')
 
 describe('Home page (index)', () => {
-  test('Ensure snapshot match', () => {
-    const { container } = render(<HomePage />)
-    expect(container.firstChild).toMatchSnapshot()
+  beforeEach(() => {
+    (Resume as jest.Mock).mockReturnValue(<></>)
+  })
+
+  afterEach(() => {
+    jest.resetAllMocks()
+  })
+
+  test('Rendering Index also renders Resume', () => {
+    render(<HomePage />)
+    expect(Resume).toBeCalledTimes(1)
   })
 })

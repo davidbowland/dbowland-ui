@@ -9,28 +9,49 @@ export interface JokeProps {
 const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
   const [joke, setJoke] = useState('')
   const [jokeList, setJokeList] = useState([] as JokeType[])
-  const isLoading = jokeList.length == 0 || !joke
+  const [isError, setIsError] = useState(false)
+  const isLoading = jokeList?.length == 0 || !joke
 
   const fetchJokeList = async (): Promise<void> => {
-    setJokeList(await JokeService.getRandomJokes())
+    try {
+      setIsError(false)
+      setJokeList(await JokeService.getRandomJokes())
+    } catch (error) {
+      setIsError(true)
+      console.error(error)
+    }
   }
 
   const getRandomJokeText = (): string => {
     const randomIndex = Math.floor(Math.random() * jokeList.length)
     const selectedJoke = jokeList[randomIndex]
-    setJokeList(jokeList.filter((value) => value != selectedJoke))
+    setJokeList((tempList) => tempList.filter((value) => value != selectedJoke))
 
     return selectedJoke.joke
   }
 
   const nextJoke = async (): Promise<void> => {
-    setJoke(getRandomJokeText())
+    if (jokeList?.length == 0) {
+      fetchJokeList()
+      setJoke('')
+    } else {
+      setJoke(getRandomJokeText())
+    }
+  }
+
+  const getButtonText = (): string => {
+    if (isError) {
+      return 'Error! Try again.'
+    } else if (isLoading) {
+      return 'Loading...'
+    }
+    return 'Next joke'
   }
 
   useEffect(() => {
-    if (jokeList.length == 0 && initialize) {
+    if (jokeList?.length == 0 && (initialize || joke)) {
       fetchJokeList()
-    } else if (!joke && jokeList.length > 0) {
+    } else if (!joke && jokeList?.length > 0) {
       nextJoke()
     }
   }, [jokeList])
@@ -38,8 +59,8 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
   return (
     <>
       <h1>{joke}</h1>
-      <button onClick={nextJoke} disabled={isLoading}>
-        {isLoading ? 'Loading...' : 'Next joke'}
+      <button onClick={nextJoke} disabled={isLoading && !isError}>
+        {getButtonText()}
       </button>
     </>
   )

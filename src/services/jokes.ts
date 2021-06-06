@@ -17,7 +17,7 @@ const jokeClient = axios.create({
   timeout: timeoutInSeconds * 1_000,
 })
 
-class JokeService {
+export class JokeService {
   static recentIndexes: string[] = []
 
   static async getRandomJokes(): Promise<JokeType[]> {

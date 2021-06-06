@@ -2,12 +2,14 @@ import JokeService from './jokes'
 
 import { rest, server } from '@test/setup-server'
 
+const baseUrl = process.env.JOKE_API_BASE_URL || 'http://localhost'
+
 describe('Joke service', () => {
   const randomJokeResult = { '3': { joke: 'Ha' }, '74': { joke: 'Ha!' } }
 
   beforeAll(() => {
     server.use(
-      rest.get('/v1/jokes/random', async (req, res, ctx) => {
+      rest.get(`${baseUrl}/v1/jokes/random`, async (req, res, ctx) => {
         return res(ctx.json(randomJokeResult))
       })
     )
