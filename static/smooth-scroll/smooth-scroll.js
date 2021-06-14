@@ -99,10 +99,7 @@ var smoothScroll = new (function () {
     // Center element on screen horizontally but not beyond body edge
     return {
       x: Math.min(
-        Math.max(
-          window.pageXOffset + position.left + position.width / 2 - window.innerWidth / 2,
-          0
-        ),
+        Math.max(window.pageXOffset + position.left + position.width / 2 - window.innerWidth / 2, 0),
         document.body.getBoundingClientRect().width
       ),
       y: window.pageYOffset + position.top - self.getHeaderHeightOverride(),
@@ -115,8 +112,7 @@ var smoothScroll = new (function () {
       countDifference = halfDuration - count,
       // Percentage of scroll on logarithmic scale (-100% to 100%)
       countPercentage =
-        (Math.max(Math.log(Math.abs(countDifference)), 0) / Math.log(halfDuration)) *
-        Math.sign(countDifference),
+        (Math.max(Math.log(Math.abs(countDifference)), 0) / Math.log(halfDuration)) * Math.sign(countDifference),
       countCurrent,
       halfX,
       halfY,
@@ -130,10 +126,7 @@ var smoothScroll = new (function () {
     }
     halfX = (end_x - start_x) / 2
     halfY = (end_y - start_y) / 2
-    window.scrollTo(
-      start_x + halfX - halfX * countPercentage,
-      start_y + halfY - halfY * countPercentage
-    )
+    window.scrollTo(start_x + halfX - halfX * countPercentage, start_y + halfY - halfY * countPercentage)
     countCurrent = count += currentOptions.step
     if (countCurrent > currentOptions.duration) {
       self.finish() // End after the duration has been hit
@@ -149,10 +142,9 @@ var smoothScroll = new (function () {
     if (identifier == '#') {
       identifier = ev.currentTarget.hash.slice(1)
     }
-    self.scrollToElement(
-      document.getElementById(identifier) || document.getElementsByName(identifier)[0],
-      { duration: ev.currentTarget.getAttribute('data-smooth-scroll-duration') }
-    )
+    self.scrollToElement(document.getElementById(identifier) || document.getElementsByName(identifier)[0], {
+      duration: ev.currentTarget.getAttribute('data-smooth-scroll-duration'),
+    })
     ev.preventDefault()
   }
 

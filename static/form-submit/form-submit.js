@@ -149,9 +149,7 @@ var formSubmit = new (function () {
 
   self.getErrorMessageElement = function (el) {
     var target = document.querySelector(
-        '[data-form-submit-error-for="' +
-          (el.getAttribute('data-form-submit-group') || el.id || el.name) +
-          '"]'
+        '[data-form-submit-error-for="' + (el.getAttribute('data-form-submit-group') || el.id || el.name) + '"]'
       ),
       radios,
       insertBeforeElement
@@ -159,10 +157,7 @@ var formSubmit = new (function () {
       // Create a span for this message
       target = document.createElement('span')
       target.className = 'form-submit-error'
-      target.setAttribute(
-        'data-form-submit-error-for',
-        el.getAttribute('data-form-submit-group') || el.id || el.name
-      )
+      target.setAttribute('data-form-submit-error-for', el.getAttribute('data-form-submit-group') || el.id || el.name)
       if ((el.type || '').toLowerCase() == 'radio') {
         radios = el.form.querySelectorAll('[name="' + el.name + '"]')
         insertBeforeElement = radios[radios.length - 1].nextElementSibling
@@ -228,9 +223,7 @@ var formSubmit = new (function () {
   }
 
   self.getCounterElement = function (el) {
-    var target = document.querySelector(
-      '[data-form-submit-counter-for="' + (el.id || el.name) + '"]'
-    )
+    var target = document.querySelector('[data-form-submit-counter-for="' + (el.id || el.name) + '"]')
     if (!target) {
       // Create a span for this message
       target = document.createElement('span')
@@ -264,9 +257,7 @@ var formSubmit = new (function () {
         return !value.search(/^\d+$/)
       }
       regexStr = format.replace(/0|9|.+?/g, function (item) {
-        return (
-          regexPhoneValues[item] || (generalSeparators ? '\\D*?' : item.replace(/(\W)/g, '\\$1'))
-        )
+        return regexPhoneValues[item] || (generalSeparators ? '\\D*?' : item.replace(/(\W)/g, '\\$1'))
       })
       return new RegExp('^' + regexStr + '$').test(value)
     }
@@ -420,10 +411,7 @@ var formSubmit = new (function () {
       return vself.formatDigits(value, format || '00000')
     }
     vself.formatZipPlus4 = function (value, format) {
-      return vself.formatDigits(
-        value,
-        format || (value.replace(/\D/g, '').length > 5 ? '00000-0000' : '00000')
-      )
+      return vself.formatDigits(value, format || (value.replace(/\D/g, '').length > 5 ? '00000-0000' : '00000'))
     }
     vself.formatZipFull = function (value, format) {
       return vself.formatDigits(value, format || '00000-0000')
@@ -453,19 +441,13 @@ var formSubmit = new (function () {
         }
       } else {
         // m/d/yy or yyyy
-        if (
-          (groups = value.match(
-            /^\D*(1[0-2]|0?[1-9])([\\/-]?)([12]\d|3[01]|0?[1-9])(\2)((?:19|20)?\d\d)\D*\b/
-          ))
-        ) {
+        if ((groups = value.match(/^\D*(1[0-2]|0?[1-9])([\\/-]?)([12]\d|3[01]|0?[1-9])(\2)((?:19|20)?\d\d)\D*\b/))) {
           replacements['m'] = groups[1]
           replacements['d'] = groups[3]
           replacements['yy'] = groups[5]
           // yyyy-m-d
         } else if (
-          (groups = value.match(
-            /^\D*((?:19|20)?\d\d)([\\/-]?)(1[0-2]|0?[1-9])(\2)([12]\d|3[01]|0?[1-9])\D*\b/
-          ))
+          (groups = value.match(/^\D*((?:19|20)?\d\d)([\\/-]?)(1[0-2]|0?[1-9])(\2)([12]\d|3[01]|0?[1-9])\D*\b/))
         ) {
           replacements['yy'] = groups[1]
           replacements['m'] = groups[3]
@@ -608,9 +590,7 @@ var formSubmit = new (function () {
         value = value.replace(/\D/g, '')
         // American Express, Diners Club, UATP, any valid cards under 15 digits
         if (
-          (['30', '34', '36', '37'].indexOf(value.slice(0, 2)) >= 0 ||
-            value[0] == '1' ||
-            vself.isCreditCard(value)) &&
+          (['30', '34', '36', '37'].indexOf(value.slice(0, 2)) >= 0 || value[0] == '1' || vself.isCreditCard(value)) &&
           value.length <= 15
         ) {
           format = '0000 000000 00000'
@@ -826,12 +806,8 @@ var formSubmit = new (function () {
               var msgEl
               // Return an error message only if no value is selected
               if (value === undefined) {
-                msgEl = el.form.querySelector(
-                  '[name="' + el.name + '"][data-form-submit-error-msg]'
-                )
-                return msgEl
-                  ? msgEl.getAttribute('data-form-submit-error-msg')
-                  : fallbackErrorMessage
+                msgEl = el.form.querySelector('[name="' + el.name + '"][data-form-submit-error-msg]')
+                return msgEl ? msgEl.getAttribute('data-form-submit-error-msg') : fallbackErrorMessage
               }
               return ''
             })
@@ -843,11 +819,7 @@ var formSubmit = new (function () {
             assisterValidateAndFormat(el, self.validation.isNumber, self.validation.formatNumber)
             break
           case 'currency':
-            assisterValidateAndFormat(
-              el,
-              self.validation.isCurrency,
-              self.validation.formatCurrency
-            )
+            assisterValidateAndFormat(el, self.validation.isCurrency, self.validation.formatCurrency)
             break
           case 'phone':
             assisterValidateAndFormat(el, self.validation.isPhone, self.validation.formatPhone)
@@ -856,11 +828,7 @@ var formSubmit = new (function () {
             assisterValidateAndFormat(el, self.validation.isZip, self.validation.formatZip)
             break
           case 'zip+4':
-            assisterValidateAndFormat(
-              el,
-              self.validation.isZipPlus4,
-              self.validation.formatZipPlus4
-            )
+            assisterValidateAndFormat(el, self.validation.isZipPlus4, self.validation.formatZipPlus4)
             break
           case 'zip-full':
             assisterValidateAndFormat(el, self.validation.isZipFull, self.validation.formatZipFull)
@@ -878,39 +846,22 @@ var formSubmit = new (function () {
             assisterValidateAndFormat(el, self.validation.isURLPath, self.validation.formatURLPath)
             break
           case 'hostname':
-            assisterValidateAndFormat(
-              el,
-              self.validation.isHostname,
-              self.validation.formatHostname
-            )
+            assisterValidateAndFormat(el, self.validation.isHostname, self.validation.formatHostname)
             break
           case 'domain':
             assisterValidateAndFormat(el, self.validation.isDomain, self.validation.formatDomain)
             break
           case 'ip-address':
-            assisterValidateAndFormat(
-              el,
-              self.validation.isIPAddress,
-              self.validation.formatIPAddress
-            )
+            assisterValidateAndFormat(el, self.validation.isIPAddress, self.validation.formatIPAddress)
             break
           case 'timestamp':
-            assisterValidateAndFormat(
-              el,
-              self.validation.isTimestamp,
-              self.validation.formatTimestamp
-            )
+            assisterValidateAndFormat(el, self.validation.isTimestamp, self.validation.formatTimestamp)
             break
           case 'date-mmddyyyy':
             assisterValidateAndFormat(el, self.validation.isDate, self.validation.formatDate)
             break
           case 'date-yyyymmdd':
-            assisterValidateAndFormat(
-              el,
-              self.validation.isDate,
-              self.validation.formatDate,
-              'yyyy-mm-dd'
-            )
+            assisterValidateAndFormat(el, self.validation.isDate, self.validation.formatDate, 'yyyy-mm-dd')
             break
           case 'time':
             assisterValidateAndFormat(el, self.validation.isTime, self.validation.formatTime)
@@ -919,18 +870,10 @@ var formSubmit = new (function () {
             assisterValidateAndFormat(el, self.validation.isSSN, self.validation.formatSSN)
             break
           case 'aba-routing':
-            assisterValidateAndFormat(
-              el,
-              self.validation.isABARouting,
-              self.validation.formatABARouting
-            )
+            assisterValidateAndFormat(el, self.validation.isABARouting, self.validation.formatABARouting)
             break
           case 'credit-card':
-            assisterValidateAndFormat(
-              el,
-              self.validation.isCreditCard,
-              self.validation.formatCreditCard
-            )
+            assisterValidateAndFormat(el, self.validation.isCreditCard, self.validation.formatCreditCard)
             break
           case 'cvv':
             assisterValidateAndFormat(el, self.validation.isCVV, self.validation.formatCVV)
@@ -938,9 +881,7 @@ var formSubmit = new (function () {
           case 'false': // The only way to positively indicate no validation
             break
           default:
-            console.log(
-              'data-form-submit-required invalid: ' + el.getAttribute('data-form-submit-required')
-            )
+            console.log('data-form-submit-required invalid: ' + el.getAttribute('data-form-submit-required'))
         }
       }
     }
@@ -1002,12 +943,7 @@ var formSubmit = new (function () {
             assisterOptionalFormat(el, self.validation.isDate, self.validation.formatDate)
             break
           case 'date-yyyymmdd':
-            assisterOptionalFormat(
-              el,
-              self.validation.isDate,
-              self.validation.formatDate,
-              'yyyy-mm-dd'
-            )
+            assisterOptionalFormat(el, self.validation.isDate, self.validation.formatDate, 'yyyy-mm-dd')
             break
           case 'time':
             assisterOptionalFormat(el, self.validation.isTime, self.validation.formatTime)
@@ -1016,18 +952,10 @@ var formSubmit = new (function () {
             assisterOptionalFormat(el, self.validation.isSSN, self.validation.formatSSN)
             break
           case 'aba-routing':
-            assisterOptionalFormat(
-              el,
-              self.validation.isABARouting,
-              self.validation.formatABARouting
-            )
+            assisterOptionalFormat(el, self.validation.isABARouting, self.validation.formatABARouting)
             break
           case 'credit-card':
-            assisterOptionalFormat(
-              el,
-              self.validation.isCreditCard,
-              self.validation.formatCreditCard
-            )
+            assisterOptionalFormat(el, self.validation.isCreditCard, self.validation.formatCreditCard)
             break
           case 'cvv':
             assisterOptionalFormat(el, self.validation.isCVV, self.validation.formatCVV)
@@ -1035,9 +963,7 @@ var formSubmit = new (function () {
           case 'false': // The only way to positively indicate no assistance
             break
           default:
-            console.log(
-              'data-form-submit-optional invalid: ' + el.getAttribute('data-form-submit-optional')
-            )
+            console.log('data-form-submit-optional invalid: ' + el.getAttribute('data-form-submit-optional'))
         }
       }
     }
@@ -1047,13 +973,9 @@ var formSubmit = new (function () {
       self.addValidation(el, function (value, el) {
         // Generate a RegExp object, ensuring it starts and ends with start- and end-matching characters
         try {
-          var regex = new RegExp(
-            '^' + el.getAttribute('data-form-submit-regex').match(/^\^*(.*?)\$*$/)[1] + '$'
-          )
+          var regex = new RegExp('^' + el.getAttribute('data-form-submit-regex').match(/^\^*(.*?)\$*$/)[1] + '$')
         } catch (e) {
-          console.log(
-            'data-form-submit-regex invalid: ' + el.getAttribute('data-form-submit-regex')
-          )
+          console.log('data-form-submit-regex invalid: ' + el.getAttribute('data-form-submit-regex'))
           throw e
         }
         return regex.test(value) ? '' : assisterGetErrorMessage(el)

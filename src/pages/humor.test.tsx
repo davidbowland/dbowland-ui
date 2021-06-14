@@ -7,13 +7,13 @@ import Joke from '@components/joke'
 
 jest.mock('@components/joke', () => ({
   __esModule: true,
-  default: jest.fn()
+  default: jest.fn(),
 }))
 jest.mock('@fontsource/rokkitt')
 
 describe('Humor page', () => {
   beforeEach(() => {
-    (Joke as jest.Mock).mockReturnValue(<></>)
+    ;(Joke as jest.Mock).mockReturnValue(<></>)
   })
 
   afterEach(() => {

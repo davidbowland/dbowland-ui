@@ -7,12 +7,12 @@ import ServerErrorMessage from '@components/server-error-message'
 
 jest.mock('@components/server-error-message', () => ({
   __esModule: true,
-  default: jest.fn()
+  default: jest.fn(),
 }))
 
 describe('403 error page', () => {
   beforeEach(() => {
-    (ServerErrorMessage as jest.Mock).mockReturnValue(<></>)
+    ;(ServerErrorMessage as jest.Mock).mockReturnValue(<></>)
   })
 
   afterEach(() => {

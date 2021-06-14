@@ -7,13 +7,13 @@ import GenographicInfographic from '@components/genographic-infographic'
 
 jest.mock('@components/genographic-infographic', () => ({
   __esModule: true,
-  default: jest.fn()
+  default: jest.fn(),
 }))
 jest.mock('@fontsource/rokkitt')
 
 describe('Genographic page', () => {
   beforeEach(() => {
-    (GenographicInfographic as jest.Mock).mockReturnValue(<></>)
+    ;(GenographicInfographic as jest.Mock).mockReturnValue(<></>)
   })
 
   afterEach(() => {

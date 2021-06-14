@@ -14,9 +14,7 @@ const GenographicInfographic = (): JSX.Element => {
           alt="41% Eastern Europe; 22% Western and Central Europe; 20% Scandinavin; 14% Great Britain and Ireland; 2% Asia Minor; 1.1% Neanderthal"
         />
       </Link>
-      <GenocraphicCaption>
-        Click or tap on the image for the full 18-page PDF report.
-      </GenocraphicCaption>
+      <GenocraphicCaption>Click or tap on the image for the full 18-page PDF report.</GenocraphicCaption>
     </GenographicFigure>
   )
 }
