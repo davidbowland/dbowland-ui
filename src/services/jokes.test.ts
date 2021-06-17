@@ -26,7 +26,7 @@ describe('Joke service', () => {
   })
 
   test('getRandomJokes returns results using recentIndexes', async () => {
-    JokeService.recentIndexes = ['32', '45', '79']
+    JokeService.recentIndexes = [32, 45, 79]
     const result = await JokeService.getRandomJokes()
 
     expect(JokeService.recentIndexes).toEqual(Object.keys(randomJokeResult))
