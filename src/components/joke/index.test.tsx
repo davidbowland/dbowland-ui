@@ -1,18 +1,38 @@
+import { Auth } from 'aws-amplify'
+import { AmplifySignIn, AmplifySignOut } from '@aws-amplify/ui-react'
 import React from 'react'
 import '@testing-library/jest-dom'
-import { act, screen, render } from '@testing-library/react'
+import { act, fireEvent, screen, render } from '@testing-library/react'
 
-import Joke from './index'
-import JokeService from '@services/jokes'
+import Joke, { AuthState } from './index'
+import JokeService, { JokeResponse } from '@services/jokes'
 
+jest.mock('aws-amplify', () => ({
+  __esModule: true,
+  default: {
+    configure: jest.fn()
+  },
+  Auth: {
+    currentAuthenticatedUser: jest.fn().mockRejectedValue(undefined)
+  }
+}))
+jest.mock('@aws-amplify/ui-react', () => ({
+  AmplifyAuthContainer: jest.fn().mockImplementation(({ children }: { children?: JSX.Element }) => children ?? null),
+  AmplifyAuthenticator: jest.fn().mockImplementation(({ children }: { children?: JSX.Element }) => children ?? null),
+  AmplifySignIn: jest.fn().mockImplementation(({ children }: { children?: JSX.Element }) => children ?? null),
+  AmplifySignOut: jest.fn().mockImplementation(({ children }: { children?: JSX.Element }) => children ?? null),
+}))
 jest.mock('@services/jokes')
+
+type AuthStateChangeHandler = (state: AuthState) => void
 
 describe('Joke component', () => {
   const joke1 = 'Ha'
   const joke2 = 'lol'
   const joke3 = '=)'
-  const jokeList = [{ joke: joke1 }, { joke: joke2 }, { joke: joke3 }]
-  const getRandomJokes = jest.fn()
+  const jokeResponse: JokeResponse = { 33: { joke: joke1 }, 42: { joke: joke2 }, 70: { joke: joke3 } }
+
+  const getRandomJokes = jest.fn().mockResolvedValue(jokeResponse)
 
   beforeAll(() => {
     const mockMath = Object.create(global.Math)
@@ -20,72 +40,165 @@ describe('Joke component', () => {
     global.Math = mockMath
 
     JokeService.getRandomJokes = getRandomJokes
+    ;(AmplifySignIn as unknown as jest.Mock).mockReturnValue(<button>Sign in</button>)
+    ;(AmplifySignOut as unknown as jest.Mock).mockReturnValue(<button>Sign out</button>)
   })
 
-  beforeEach(() => {
-    getRandomJokes.mockReturnValue(Promise.resolve(jokeList))
+  describe('Public functionality', () => {
+    beforeAll(() => {
+      ;(Auth.currentAuthenticatedUser as jest.Mock).mockRejectedValue(undefined)
+    })
+
+    test('Rendering Joke renders no joke by default, for static rendering', () => {
+      render(<Joke />)
+
+      expect(screen.getByText(/Loading.../i)).toBeDisabled()
+      expect(screen.getByRole('heading')).toHaveTextContent('')
+    })
+
+    test('Rendering Joke displays a joke', async () => {
+      render(<Joke initialize={true} />)
+
+      expect(await screen.findByText(/Next joke/i)).not.toBeDisabled()
+      expect(screen.getByText(joke1)).toBeInTheDocument()
+    })
+
+    test('Clicking the Next Joke button changes the joke displayed', async () => {
+      render(<Joke initialize={true} />)
+
+      const nextJokeButton: HTMLButtonElement = (await screen.findByText(/Next joke/i)) as HTMLButtonElement
+      expect(screen.queryAllByText(joke2).length).toBe(0)
+      act(() => nextJokeButton.click())
+
+      await screen.findByText(/Next joke/i)
+      expect(nextJokeButton).not.toBeDisabled()
+      expect(screen.getByText(joke2)).toBeInTheDocument()
+    })
+
+    test('Clicking the Next Joke button calls getRandomJokes when jokes run out', async () => {
+      getRandomJokes.mockResolvedValueOnce({ 33: { joke: joke1 } })
+      render(<Joke initialize={true} />)
+
+      const nextJokeButton: HTMLButtonElement = (await screen.findByText(/Next joke/i)) as HTMLButtonElement
+      act(() => nextJokeButton.click())
+
+      expect(nextJokeButton).not.toBeDisabled()
+      expect(getRandomJokes).toHaveBeenCalledTimes(2)
+    })
+
+    test('Ensure error on getRandomJokes reject', async () => {
+      getRandomJokes.mockRejectedValueOnce('fake error')
+      render(<Joke initialize={true} />)
+
+      const errorButton: HTMLButtonElement = (await screen.findByText(/Error! Try again./)) as HTMLButtonElement
+      expect(errorButton).not.toBeDisabled()
+      expect(getRandomJokes).toHaveBeenCalledTimes(1)
+    })
+
+    test('Clicking error button retries fetch', async () => {
+      getRandomJokes.mockRejectedValueOnce('another error')
+      render(<Joke initialize={true} />)
+
+      const errorButton: HTMLButtonElement = (await screen.findByText(/Error! Try again./i)) as HTMLButtonElement
+      act(() => errorButton.click())
+
+      expect(await screen.findByText(/Next joke/i)).not.toBeDisabled()
+      expect(screen.getByText(joke1)).toBeInTheDocument()
+      expect(getRandomJokes).toHaveBeenCalledTimes(2)
+    })
   })
 
-  afterEach(() => {
-    jest.resetAllMocks()
-  })
+  describe('Admin functionality', () => {
+    const adminJoke = 'rofl'
+    const postJoke = jest.fn()
+    const putJoke = jest.fn()
 
-  test('Rendering Joke renders no joke by default, for static rendering', () => {
-    render(<Joke />)
+    beforeAll(() => {
+      ;(Auth.currentAuthenticatedUser as jest.Mock).mockResolvedValue(undefined)
 
-    expect(screen.getByText(/Loading.../i)).toBeDisabled()
-    expect(screen.getByRole('heading')).toHaveTextContent('')
-  })
+      JokeService.postJoke = postJoke
+      JokeService.putJoke = putJoke
+    })
 
-  test('Rendering Joke displays a joke', async () => {
-    render(<Joke initialize={true} />)
+    test('Being logged in shows add joke feature', async () => {
+      render(<Joke initialize={true} />)
 
-    expect(await screen.findByText(/Next joke/i)).not.toBeDisabled()
-    expect(screen.getByText(joke1)).toBeInTheDocument()
-  })
+      expect(await screen.findByText(/Add joke/i, { selector: 'button' })).toBeInTheDocument()
+      const addTextInput: HTMLInputElement = (await screen.findByLabelText('Joke to add')) as HTMLInputElement
+      expect(addTextInput.value.length).toEqual(0)
+    })
 
-  test('Clicking the Next Joke button changes the joke displayed', async () => {
-    render(<Joke initialize={true} />)
+    test('Clicking "Edit joke" changes to the edit screen and populates input text', async () => {
+      render(<Joke initialize={true} />)
 
-    const nextJokeButton: HTMLButtonElement = (await screen.findByText(/Next joke/i)) as HTMLButtonElement
-    expect(screen.queryAllByText(joke2).length).toBe(0)
-    act(() => nextJokeButton.click())
+      const editLabel: HTMLLabelElement = (await screen.findByText(/Edit joke/i)) as HTMLLabelElement
+      act(() => editLabel.click())
 
-    await screen.findByText(/Next joke/i)
-    expect(nextJokeButton).not.toBeDisabled()
-    expect(screen.getByText(joke2)).toBeInTheDocument()
-  })
+      expect(await screen.findByText(/Update joke/i, { selector: 'button' })).toBeInTheDocument()
+      const updateTextInput: HTMLInputElement = (await screen.findByLabelText(/Joke text/i)) as HTMLInputElement
+      expect(updateTextInput.value.length).toBeGreaterThan(0)
+    })
 
-  test('Clicking the Next Joke button calls getRandomJokes when jokes run out', async () => {
-    getRandomJokes.mockReturnValueOnce(Promise.resolve([{ joke: joke1 }]))
-    render(<Joke initialize={true} />)
+    test('Clicking "Add joke" invokes the joke service', async () => {
+      render(<Joke initialize={true} />)
 
-    const nextJokeButton: HTMLButtonElement = (await screen.findByText(/Next joke/i)) as HTMLButtonElement
-    getRandomJokes.mockReturnValueOnce(Promise.resolve([{ joke: joke2 }, { joke: joke3 }]))
-    act(() => nextJokeButton.click())
+      const addTextInput: HTMLInputElement = (await screen.findByLabelText(/Joke to add/i)) as HTMLInputElement
+      fireEvent.change(addTextInput, { target: { value: adminJoke } })
+      const addJokeButton: HTMLButtonElement = (await screen.findByText(/Add joke/i, { selector: 'button' })) as HTMLButtonElement
+      act(() => {
+        addJokeButton.click()
+      })
 
-    expect(nextJokeButton).not.toBeDisabled()
-    expect(getRandomJokes).toHaveBeenCalledTimes(2)
-  })
+      expect(postJoke).toBeCalledWith(expect.objectContaining({ joke: adminJoke }))
+      expect(postJoke).toBeCalledTimes(1)
+    })
 
-  test('Ensure error on getRandomJokes reject', async () => {
-    getRandomJokes.mockReturnValueOnce(Promise.reject('fake error'))
-    render(<Joke initialize={true} />)
+    test('Editing the current joke and clicking the button invokes the joke service', async () => {
+      const expectedIndex = Object.keys(jokeResponse)[0]
+      render(<Joke initialize={true} />)
 
-    const errorButton: HTMLButtonElement = (await screen.findByText(/Error! Try again./)) as HTMLButtonElement
-    expect(errorButton).not.toBeDisabled()
-    expect(getRandomJokes).toHaveBeenCalledTimes(1)
-  })
+      const editLabel: HTMLLabelElement = (await screen.findByText(/Edit joke/i)) as HTMLLabelElement
+      act(() => editLabel.click())
 
-  test('Ensure error button retries', async () => {
-    getRandomJokes.mockReturnValueOnce(Promise.reject('another error'))
-    render(<Joke initialize={true} />)
+      const updateTextInput: HTMLInputElement = (await screen.findByLabelText(/Joke text/i)) as HTMLInputElement
+      expect(updateTextInput.value).not.toEqual(joke2)
+      fireEvent.change(updateTextInput, { target: { value: joke2 } })
+      const updateJokeButton: HTMLButtonElement = (await screen.findByText(/Update joke/i, { selector: 'button' })) as HTMLButtonElement
+      act(() => { updateJokeButton.click() })
 
-    const errorButton: HTMLButtonElement = (await screen.findByText(/Error! Try again./i)) as HTMLButtonElement
-    act(() => errorButton.click())
+      expect(putJoke).toBeCalledWith(expectedIndex, expect.objectContaining({ joke: joke2 }))
+      expect(putJoke).toBeCalledTimes(1)
+    })
 
-    expect(await screen.findByText(/Next joke/i)).not.toBeDisabled()
-    expect(screen.getByText(joke1)).toBeInTheDocument()
-    expect(getRandomJokes).toHaveBeenCalledTimes(2)
+    test('Sign out removes admin section and shows sign in', async () => {
+      const authStatePromise = new Promise((resolve) => (AmplifySignOut as unknown as jest.Mock).mockImplementationOnce(({handleAuthStateChange}) => {
+        resolve(handleAuthStateChange)
+        return <button>Sign out</button>
+      }))
+      render(<Joke initialize={true} />)
+      expect(await screen.findByText(/Sign out/i, { selector: 'button' })).toBeInTheDocument()
+
+      const handleAuthStateChange: AuthStateChangeHandler = await authStatePromise as any
+      act(() => { handleAuthStateChange(AuthState.SignedOut) })
+
+      expect(await screen.findByText(/Sign in/i, { selector: 'button' })).toBeInTheDocument()
+      expect(screen.queryByText(/Add joke/i, { selector: 'button' })).toBeNull()
+    })
+
+    test('Sign in adds admin section and shows sign in', async () => {
+      const authStatePromise = new Promise((resolve) => (AmplifySignIn as unknown as jest.Mock).mockImplementationOnce(({handleAuthStateChange}) => {
+        resolve(handleAuthStateChange)
+        return <button>Sign in</button>
+      }))
+      ;(Auth.currentAuthenticatedUser as jest.Mock).mockRejectedValueOnce(undefined)
+      render(<Joke initialize={true} />)
+      expect(await screen.findByText(/Sign in/i, { selector: 'button' })).toBeInTheDocument()
+
+      const handleAuthStateChange: AuthStateChangeHandler = await authStatePromise as any
+      act(() => { handleAuthStateChange(AuthState.SignedIn) })
+
+      expect(await screen.findByText(/Sign out/i, { selector: 'button' })).toBeInTheDocument()
+      expect(screen.getByText(/Add joke/i, { selector: 'button' })).toBeInTheDocument()
+    })
   })
 })

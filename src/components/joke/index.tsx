@@ -1,29 +1,8 @@
-import Amplify, { Auth } from 'aws-amplify'
+import { Auth } from 'aws-amplify'
 import { AmplifyAuthContainer, AmplifyAuthenticator, AmplifySignIn, AmplifySignOut } from '@aws-amplify/ui-react'
 import React, { useEffect, useState } from 'react'
 
 import JokeService, { JokeResponse, JokeType } from '@services/jokes'
-
-const appClientId = process.env.COGNITO_APP_CLIENT_ID
-const userPoolId = process.env.COGNITO_USER_POOL_ID
-const baseUrl = process.env.JOKE_API_BASE_URL
-
-Amplify.configure({
-  Auth: {
-    region: userPoolId.split('_')[0],
-    userPoolId,
-    userPoolWebClientId: appClientId,
-    mandatorySignIn: false,
-  },
-  API: {
-    endpoints: [
-      {
-        name: 'JokesAPIGateway',
-        endpoint: baseUrl,
-      },
-    ],
-  },
-})
 
 export interface JokeProps {
   initialize?: boolean
@@ -32,51 +11,6 @@ export interface JokeProps {
 export interface Client {
   endpoint: string
   fetchOptions: Record<string, unknown>
-}
-
-export interface Token {
-  getExpiration: () => number
-  getIssuedAt: () => number
-  getJwtToken: () => string
-}
-
-export interface User {
-  username: string
-  attributes: Record<string, unknown>
-  email: string
-  email_verified: boolean
-  sub: string
-  authenticationFlowType: string
-  client: Client
-  keyPrefix: string
-  pool: {
-    advancedSecurityDataCollectionFlag: boolean
-    client: Client
-    clientId: string
-    userPoolId: string
-  }
-  preferredMFA: string
-  signInUserSession: {
-    accessToken: {
-      jwtToken: string
-    }
-    clockDrift: number
-    idToken: {
-      jwtToken: string
-    }
-    refreshToken: {
-      token: string
-    }
-    calculateClockDrift: () => number
-    getAccessToken: () => Token
-    getClockDrift: () => number
-    getIdToken: () => Token
-    getRefreshToken: () => {
-      getToken: () => string
-    }
-    isValid: () => boolean
-  }
-  storage: { [key: string]: string }
 }
 
 export enum AdminView {
@@ -103,7 +37,6 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
   const [authState, setAuthState] = useState('' as AuthState)
   const [adminView, setAdminView] = useState(AdminView.ADD_JOKE)
   const [adminNotice, setAdminNotice] = useState('')
-  const [user, setUser] = useState<User>()
   const [addJokeText, setAddJokeText] = useState('')
 
   const fetchJokeList = async (): Promise<void> => {
@@ -119,37 +52,25 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
   const getRandomJoke = (): DisplayedJoke => {
     const randomIndex = jokeList[Math.floor(Math.random() * jokeList.length)]
     const selectedJoke = availableJokes[randomIndex]
-    delete availableJokes[randomIndex]
-    setAvailableJokes(availableJokes)
+    const { [randomIndex]: _, ...newAvailableJokes } = availableJokes
+    setAvailableJokes(newAvailableJokes)
 
     return { ...selectedJoke, index: randomIndex }
   }
 
   const nextJoke = async (): Promise<void> => {
-    if (jokeList.length == 0) {
-      fetchJokeList()
-      setJoke({} as DisplayedJoke)
-    } else {
-      setJoke(getRandomJoke())
-    }
+    // Setting the joke to empty forces fetchJokeList via useEffect
+    setJoke(jokeList.length === 0 ? {} as DisplayedJoke : getRandomJoke())
   }
 
   const addJoke = async(): Promise<void> => {
-    if (user) {
-      const statusText = await JokeService.postJoke({ joke: addJokeText }, user.signInUserSession.getAccessToken().getJwtToken())
-      setAdminNotice(statusText)
-    } else {
-      setAdminNotice('User not logged in')
-    }
+    const statusText = await JokeService.postJoke({ joke: addJokeText })
+    setAdminNotice(statusText)
   }
 
   const updateJoke = async(): Promise<void> => {
-    if (user) {
-      const statusText = await JokeService.putJoke(joke.index, { joke: joke.joke }, user.signInUserSession.getAccessToken().getJwtToken())
-      setAdminNotice(statusText)
-    } else {
-      setAdminNotice('User not logged in')
-    }
+    const statusText = await JokeService.putJoke(joke.index, { joke: joke.joke })
+    setAdminNotice(statusText)
   }
 
   const updateAdminView = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -175,16 +96,14 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
   }, [availableJokes, joke])
 
   useEffect(() => {
-    Auth.currentAuthenticatedUser().then((user: User) => {
+    Auth.currentAuthenticatedUser().then(() => {
       setAuthState(AuthState.SignedIn)
-      setUser(user)
-    })
+    }).catch(() => undefined)
   }, [])
 
-  const handleAuthStateChange = ((state: AuthState, data?: User): void => {
+  const handleAuthStateChange = ((state: AuthState): void => {
     if (state === AuthState.SignedIn || state === AuthState.SignedOut) {
       setAuthState(state)
-      setUser(data)
     }
   }) as any
 
@@ -213,11 +132,17 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
             </label>
           </div>
           {adminView == AdminView.ADD_JOKE ? <div>
-            <input type="text" onChange={(event: React.ChangeEvent<HTMLInputElement>) => setAddJokeText(event.target.value)} value={addJokeText} />
+            <label>
+              Joke to add
+              <input type="text" onChange={(event: React.ChangeEvent<HTMLInputElement>) => setAddJokeText(event.target.value)} name="add-joke-text" value={addJokeText} />
+            </label>
             <button onClick={addJoke}>Add joke</button>
           </div> : <div>
             <p>Joke #{joke.index}</p>
-            <input type="text" onChange={(event: React.ChangeEvent<HTMLInputElement>) => setJoke({ ...joke, joke: event.target.value })} value={joke.joke} />
+            <label>
+              Joke text
+              <input type="text" onChange={(event: React.ChangeEvent<HTMLInputElement>) => setJoke({ ...joke, joke: event.target.value })} name="update-joke-text" value={joke.joke} />
+            </label>
             <button onClick={updateJoke}>Update joke</button>
           </div>}
           <div>
