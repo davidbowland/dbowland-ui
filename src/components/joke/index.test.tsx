@@ -110,7 +110,7 @@ describe('Joke component', () => {
 
   describe('Admin functionality', () => {
     const adminJoke = 'rofl'
-    const postJoke = jest.fn()
+    const postJoke = jest.fn().mockResolvedValue({ id: '62' })
     const putJoke = jest.fn()
 
     beforeAll(() => {

@@ -38,6 +38,10 @@ export interface JokeResponse {
   [key: number]: JokeType
 }
 
+export interface PostResponse {
+  id: string
+}
+
 export class JokeService {
   static recentIndexes: number[] = []
 
@@ -46,8 +50,8 @@ export class JokeService {
     return response
   }
 
-  static async postJoke(joke: JokeType): Promise<string> {
-    const response: string = await API.post(apiName, '/v1/jokes', {
+  static async postJoke(joke: JokeType): Promise<PostResponse> {
+    const response: PostResponse = await API.post(apiName, '/v1/jokes', {
       body: joke
     })
     return response

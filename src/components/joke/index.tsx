@@ -64,13 +64,13 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
   }
 
   const addJoke = async(): Promise<void> => {
-    const statusText = await JokeService.postJoke({ joke: addJokeText })
-    setAdminNotice(statusText)
+    const response = await JokeService.postJoke({ joke: addJokeText })
+    setAdminNotice(`Created joke #${response.id}`)
   }
 
   const updateJoke = async(): Promise<void> => {
-    const statusText = await JokeService.putJoke(joke.index, { joke: joke.joke })
-    setAdminNotice(statusText)
+    await JokeService.putJoke(joke.index, { joke: joke.joke })
+    setAdminNotice('Joke successfully updated!')
   }
 
   const updateAdminView = (event: React.ChangeEvent<HTMLInputElement>) => {
