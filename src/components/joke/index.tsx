@@ -88,9 +88,9 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
   }
 
   useEffect(() => {
-    if (jokeList.length == 0 && (initialize || joke?.joke)) {
+    if (jokeList.length == 0 && (initialize || joke.joke)) {
       fetchJokeList()
-    } else if (!joke?.joke && jokeList.length > 0) {
+    } else if (!joke.joke && jokeList.length > 0) {
       nextJoke()
     }
   }, [availableJokes, joke])
