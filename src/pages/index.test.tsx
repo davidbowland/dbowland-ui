@@ -7,17 +7,13 @@ import Resume from '@components/resume'
 
 jest.mock('@components/resume', () => ({
   __esModule: true,
-  default: jest.fn()
+  default: jest.fn(),
 }))
 jest.mock('@fontsource/rokkitt')
 
 describe('Home page (index)', () => {
-  beforeEach(() => {
-    (Resume as jest.Mock).mockReturnValue(<></>)
-  })
-
-  afterEach(() => {
-    jest.resetAllMocks()
+  beforeAll(() => {
+    ;(Resume as jest.Mock).mockReturnValue(<></>)
   })
 
   test('Rendering Index also renders Resume', () => {

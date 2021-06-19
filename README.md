@@ -27,7 +27,7 @@ Then view the server at <http://localhost:3000/>
 
 ### Unit Tests
 
-Jest tests are run automatically on commit and push. If the test coverage threshold is not met, the push will fail. See package.json for coverage threshold.
+[Jest](https://jestjs.io/) tests are run automatically on commit and push. If the test coverage threshold is not met, the push will fail. See `jest.config.ts` for coverage threshold.
 
 Manually run tests with:
 
@@ -43,7 +43,7 @@ npm run test:update-snapshots
 
 ### Prettier / Linter
 
-Both [prettier](https://prettier.io/) and [eslint](https://eslint.org/) are executed on commit. Manually prettify and lint code with:
+Both [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/) are executed on commit. Manually prettify and lint code with:
 
 ```bash
 npm run lint

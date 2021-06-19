@@ -17,10 +17,6 @@ describe('Genographic infographic component', () => {
     })
   })
 
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   test('Rendering GenographicInfographic renders genographics-infographic.png with alt text', () => {
     render(<GenographicInfographic />)
 

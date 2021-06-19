@@ -148,9 +148,7 @@ const removeRemoteDirectory = async (sftp, path) => {
   // Remove files, in batches
   while (fileList.length > 0) {
     await Promise.all(
-      fileList
-        .splice(0, FILE_BATCH_SIZE)
-        .map((fileName) => removeRemoteFile(sftp, `${path}/${fileName}`))
+      fileList.splice(0, FILE_BATCH_SIZE).map((fileName) => removeRemoteFile(sftp, `${path}/${fileName}`))
     )
   }
 
@@ -167,11 +165,7 @@ const removeRemoteDirectory = async (sftp, path) => {
 // Set current version
 
 const setCurrentVersion = async (sftp, currentVersion, previousVersion) => {
-  const htaccessFilePath = htaccess.generateRootHtaccessFile(
-    TEMP_DIR,
-    currentVersion,
-    previousVersion
-  )
+  const htaccessFilePath = htaccess.generateRootHtaccessFile(TEMP_DIR, currentVersion, previousVersion)
   await uploadFile(sftp, htaccessFilePath, `${BASE_HTML_DIR}/.htaccess`)
 }
 

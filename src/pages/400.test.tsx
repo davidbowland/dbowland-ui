@@ -7,16 +7,12 @@ import ServerErrorMessage from '@components/server-error-message'
 
 jest.mock('@components/server-error-message', () => ({
   __esModule: true,
-  default: jest.fn()
+  default: jest.fn(),
 }))
 
 describe('400 error page', () => {
-  beforeEach(() => {
-    (ServerErrorMessage as jest.Mock).mockReturnValue(<></>)
-  })
-
-  afterEach(() => {
-    jest.resetAllMocks()
+  beforeAll(() => {
+    ;(ServerErrorMessage as jest.Mock).mockReturnValue(<></>)
   })
 
   test('Rendering BadRequest renders ServerErrorMessage', () => {

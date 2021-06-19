@@ -75,15 +75,9 @@ const Resume = (): JSX.Element => {
           <ResumeSectionContent>
             <article>
               <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>
-                  Developer of robust solutions
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Effective translator between geek and English
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Connoisseur of groan-inducing dad jokes
-                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>Developer of robust solutions</ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>Effective translator between geek and English</ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>Connoisseur of groan-inducing dad jokes</ResumeJobDescriptionDetail>
               </ResumeJobDescription>
               <ClearFloat />
             </article>
@@ -106,9 +100,7 @@ const Resume = (): JSX.Element => {
               </ResumeSectionContentTitle>
               <ResultSubDetails>March&nbsp;2021 - Present</ResultSubDetails>
               <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>
-                  Assist in migrating existing projects to AWS
-                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>Assist in migrating existing projects to AWS</ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
                   Improve test coverage and automate testing in Node.js
                 </ResumeJobDescriptionDetail>
@@ -135,8 +127,7 @@ const Resume = (): JSX.Element => {
                   Use Agile methodology with two-week sprints organized on Jira
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
-                  Deploy apps using Jenkins, either Docker images to Kubernetes on AWS or RPMs to DC
-                  3.0 on-premise
+                  Deploy apps using Jenkins, either Docker images to Kubernetes on AWS or RPMs to DC 3.0 on-premise
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
                   Went from new hire to acting team leader in less than 10 months
@@ -155,15 +146,13 @@ const Resume = (): JSX.Element => {
               <ResultSubDetails>November&nbsp;2014 - March&nbsp;2020</ResultSubDetails>
               <ResumeJobDescription>
                 <ResumeJobDescriptionDetail>
-                  Developed full-stack web applications using CSS3, HTML5, and vanilla JavaScript
-                  with ASP, ASP.NET, or Java backend
+                  Developed full-stack web applications using CSS3, HTML5, and vanilla JavaScript with ASP, ASP.NET, or
+                  Java backend
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
                   Developed COBOL and IBM CL applications on IBM System i midrange
                 </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Acted as project manager for two major projects
-                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>Acted as project manager for two major projects</ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
                   Earned three performance-based increases outside annual review
                 </ResumeJobDescriptionDetail>
@@ -266,16 +255,10 @@ const Resume = (): JSX.Element => {
                 </ResumeAnchor>
               </ResumeSectionContentTitle>
               <ResultSubDetails>Bachelor of Science &mdash; GPA&nbsp;3.68</ResultSubDetails>
-              <ResultSubDetails>
-                Major:&nbsp;Computer Science &mdash; Minor:&nbsp;Business
-              </ResultSubDetails>
+              <ResultSubDetails>Major:&nbsp;Computer Science &mdash; Minor:&nbsp;Business</ResultSubDetails>
               <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>
-                  Graduated cum laude with a GPA of 3.68/4.0
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Earned an A in all computer science classes
-                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>Graduated cum laude with a GPA of 3.68/4.0</ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>Earned an A in all computer science classes</ResumeJobDescriptionDetail>
               </ResumeJobDescription>
               <ClearFloat />
             </article>
