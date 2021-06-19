@@ -1,11 +1,18 @@
-import JokeService, { JokeResponse } from './jokes'
+import { Auth } from 'aws-amplify'
+import { CognitoUserSession } from 'amazon-cognito-identity-js'
 
+import JokeService, { JokeResponse } from './jokes'
 import { rest, server } from '@test/setup-server'
 
 const baseUrl = process.env.JOKE_API_BASE_URL || 'http://localhost'
 
 describe('Joke service', () => {
   const randomJokeResult: JokeResponse = { 3: { joke: 'rofl' }, 74: { joke: 'lol' } }
+
+  beforeAll(() => {
+    const userSession = { getIdToken: () => ({ getJwtToken: () => '' }) } as CognitoUserSession
+    jest.spyOn(Auth, 'currentSession').mockResolvedValue(userSession)
+  })
 
   describe('getJoke', () => {
     beforeAll(() => {
