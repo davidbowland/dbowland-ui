@@ -11,12 +11,8 @@ jest.mock('@components/server-error-message', () => ({
 }))
 
 describe('500 error page', () => {
-  beforeEach(() => {
+  beforeAll(() => {
     ;(ServerErrorMessage as jest.Mock).mockReturnValue(<></>)
-  })
-
-  afterEach(() => {
-    jest.resetAllMocks()
   })
 
   test('Rendering InternalServerError renders ServerErrorMessage', () => {

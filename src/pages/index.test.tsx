@@ -12,12 +12,8 @@ jest.mock('@components/resume', () => ({
 jest.mock('@fontsource/rokkitt')
 
 describe('Home page (index)', () => {
-  beforeEach(() => {
+  beforeAll(() => {
     ;(Resume as jest.Mock).mockReturnValue(<></>)
-  })
-
-  afterEach(() => {
-    jest.resetAllMocks()
   })
 
   test('Rendering Index also renders Resume', () => {

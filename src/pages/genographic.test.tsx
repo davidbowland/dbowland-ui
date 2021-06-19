@@ -12,12 +12,8 @@ jest.mock('@components/genographic-infographic', () => ({
 jest.mock('@fontsource/rokkitt')
 
 describe('Genographic page', () => {
-  beforeEach(() => {
+  beforeAll(() => {
     ;(GenographicInfographic as jest.Mock).mockReturnValue(<></>)
-  })
-
-  afterEach(() => {
-    jest.resetAllMocks()
   })
 
   test('Rendering Genographic renders GenographicInfographic', () => {

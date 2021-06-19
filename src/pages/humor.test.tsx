@@ -12,12 +12,8 @@ jest.mock('@components/joke', () => ({
 jest.mock('@fontsource/rokkitt')
 
 describe('Humor page', () => {
-  beforeEach(() => {
+  beforeAll(() => {
     ;(Joke as jest.Mock).mockReturnValue(<></>)
-  })
-
-  afterEach(() => {
-    jest.resetAllMocks()
   })
 
   test('Rendering Humor renders Joke', () => {
