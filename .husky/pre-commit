@@ -1,2 +1,4 @@
-# Prettify all files and lint JavaScript files
-npx lint-staged
+if [ "$NODE_ENV" != "production" ]; then
+  # Prettify all files and lint JavaScript files
+  npx lint-staged
+fi
