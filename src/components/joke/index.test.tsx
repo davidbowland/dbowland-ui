@@ -198,5 +198,19 @@ describe('Joke component', () => {
       expect(await screen.findByText(/Sign out/i, { selector: 'button' })).toBeInTheDocument()
       expect(screen.getByText(/Add joke/i, { selector: 'button' })).toBeInTheDocument()
     })
+
+    test("Unrecognized auth state changes don't change the auth state", async () => {
+      const authStatePromise = new Promise((resolve) => (AmplifySignOut as unknown as jest.Mock).mockImplementationOnce(({handleAuthStateChange}) => {
+        resolve(handleAuthStateChange)
+        return <button>Sign in</button>
+      }))
+      render(<Joke initialize={true} />)
+      expect(await screen.findByText(/Sign out/i, { selector: 'button' })).toBeInTheDocument()
+
+      const handleAuthStateChange: AuthStateChangeHandler = await authStatePromise as any
+      act(() => { handleAuthStateChange(undefined as unknown as AuthState) })
+
+      expect(screen.getByText(/Sign out/i, { selector: 'button' })).toBeInTheDocument()
+    })
   })
 })
