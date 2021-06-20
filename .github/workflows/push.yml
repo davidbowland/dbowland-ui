@@ -34,6 +34,7 @@ jobs:
           npm run build:prod
           npm version minor
           node deploy/index.js
+          rm -rf .husky
         env:
           NODE_ENV: production
           DBOWLAND_SSH_USER: ${{ secrets.DBOWLAND_SSH_USER }}
