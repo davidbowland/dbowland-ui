@@ -1,6 +1,4 @@
-if [ "$NODE_ENV" != "production" ]; then
-  # Double-check linting on all files
-  npx eslint --fix .
-  # Ensure tests pass and coverage is met before push
-  npx jest --colors
-fi
+# Double-check linting on all files
+npx eslint --fix .
+# Ensure tests pass and coverage is met before push
+npx jest --colors
