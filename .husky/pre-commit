@@ -1,0 +1,2 @@
+# Prettify all files and lint JavaScript files
+npx lint-staged

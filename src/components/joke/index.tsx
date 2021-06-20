@@ -15,12 +15,12 @@ export interface Client {
 
 export enum AdminView {
   ADD_JOKE = 'add',
-  EDIT_JOKE = 'edit'
+  EDIT_JOKE = 'edit',
 }
 
 export enum AuthState {
   SignedIn = 'signedin',
-  SignedOut = 'signedout'
+  SignedOut = 'signedout',
 }
 
 export interface DisplayedJoke extends JokeType {
@@ -31,7 +31,7 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
   const [joke, setJoke] = useState({} as DisplayedJoke)
   const [availableJokes, setAvailableJokes] = useState({} as JokeResponse)
   const [isError, setIsError] = useState(false)
-  const jokeList = Object.keys(availableJokes) as unknown as number[]
+  const jokeList = (Object.keys(availableJokes) as unknown) as number[]
   const isLoading = jokeList.length == 0 || !joke
 
   const [authState, setAuthState] = useState('' as AuthState)
@@ -60,15 +60,15 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
 
   const nextJoke = async (): Promise<void> => {
     // Setting the joke to empty forces fetchJokeList via useEffect
-    setJoke(jokeList.length === 0 ? {} as DisplayedJoke : getRandomJoke())
+    setJoke(jokeList.length === 0 ? ({} as DisplayedJoke) : getRandomJoke())
   }
 
-  const addJoke = async(): Promise<void> => {
+  const addJoke = async (): Promise<void> => {
     const response = await JokeService.postJoke({ joke: addJokeText })
     setAdminNotice(`Created joke #${response.id}`)
   }
 
-  const updateJoke = async(): Promise<void> => {
+  const updateJoke = async (): Promise<void> => {
     await JokeService.putJoke(joke.index, { joke: joke.joke })
     setAdminNotice('Joke successfully updated!')
   }
@@ -96,9 +96,11 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
   }, [availableJokes, joke])
 
   useEffect(() => {
-    Auth.currentAuthenticatedUser().then(() => {
-      setAuthState(AuthState.SignedIn)
-    }).catch(() => undefined)
+    Auth.currentAuthenticatedUser()
+      .then(() => {
+        setAuthState(AuthState.SignedIn)
+      })
+      .catch(() => undefined)
   }, [])
 
   const handleAuthStateChange = ((state: AuthState): void => {
@@ -123,28 +125,58 @@ const Joke = ({ initialize = false }: JokeProps): JSX.Element => {
         <div>
           <p>{adminNotice}</p>
           <div>
-            <label><input type="radio" onChange={updateAdminView} name="admin-view" value={AdminView.ADD_JOKE} checked={adminView == AdminView.ADD_JOKE} />
-              Add joke
-            </label><br />
             <label>
-              <input type="radio" onChange={updateAdminView} name="admin-view" value={AdminView.EDIT_JOKE} checked={adminView == AdminView.EDIT_JOKE} />
+              <input
+                type="radio"
+                onChange={updateAdminView}
+                name="admin-view"
+                value={AdminView.ADD_JOKE}
+                checked={adminView == AdminView.ADD_JOKE}
+              />
+              Add joke
+            </label>
+            <br />
+            <label>
+              <input
+                type="radio"
+                onChange={updateAdminView}
+                name="admin-view"
+                value={AdminView.EDIT_JOKE}
+                checked={adminView == AdminView.EDIT_JOKE}
+              />
               Edit joke
             </label>
           </div>
-          {adminView == AdminView.ADD_JOKE ? <div>
-            <label>
-              Joke to add
-              <input type="text" onChange={(event: React.ChangeEvent<HTMLInputElement>) => setAddJokeText(event.target.value)} name="add-joke-text" value={addJokeText} />
-            </label>
-            <button onClick={addJoke}>Add joke</button>
-          </div> : <div>
-            <p>Joke #{joke.index}</p>
-            <label>
-              Joke text
-              <input type="text" onChange={(event: React.ChangeEvent<HTMLInputElement>) => setJoke({ ...joke, joke: event.target.value })} name="update-joke-text" value={joke.joke} />
-            </label>
-            <button onClick={updateJoke}>Update joke</button>
-          </div>}
+          {adminView == AdminView.ADD_JOKE ? (
+            <div>
+              <label>
+                Joke to add
+                <input
+                  type="text"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => setAddJokeText(event.target.value)}
+                  name="add-joke-text"
+                  value={addJokeText}
+                />
+              </label>
+              <button onClick={addJoke}>Add joke</button>
+            </div>
+          ) : (
+            <div>
+              <p>Joke #{joke.index}</p>
+              <label>
+                Joke text
+                <input
+                  type="text"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    setJoke({ ...joke, joke: event.target.value })
+                  }
+                  name="update-joke-text"
+                  value={joke.joke}
+                />
+              </label>
+              <button onClick={updateJoke}>Update joke</button>
+            </div>
+          )}
           <div>
             <AmplifySignOut handleAuthStateChange={handleAuthStateChange} slot="sign-out" />
           </div>

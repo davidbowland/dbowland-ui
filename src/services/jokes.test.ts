@@ -27,10 +27,13 @@ describe('Joke service', () => {
       )
     })
 
-    test.each(Object.keys(randomJokeResult) as unknown as number[])('Expect results from client endpoint', async (expectedId: number) => {
-      const result = await JokeService.getJoke(expectedId)
-      expect(result).toEqual(randomJokeResult[expectedId])
-    })
+    test.each((Object.keys(randomJokeResult) as unknown) as number[])(
+      'Expect results from client endpoint',
+      async (expectedId: number) => {
+        const result = await JokeService.getJoke(expectedId)
+        expect(result).toEqual(randomJokeResult[expectedId])
+      }
+    )
   })
 
   describe('postJoke', () => {
@@ -64,7 +67,7 @@ describe('Joke service', () => {
 
   describe('putJoke', () => {
     const putEndpoint = jest.fn().mockReturnValue(200)
-    const index = Object.keys(randomJokeResult)[0] as unknown as number
+    const index = (Object.keys(randomJokeResult)[0] as unknown) as number
     const joke = Object.values(randomJokeResult)[0]
 
     beforeAll(() => {

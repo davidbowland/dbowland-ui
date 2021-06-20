@@ -10,11 +10,11 @@ import JokeService, { JokeResponse } from '@services/jokes'
 jest.mock('aws-amplify', () => ({
   __esModule: true,
   default: {
-    configure: jest.fn()
+    configure: jest.fn(),
   },
   Auth: {
-    currentAuthenticatedUser: jest.fn().mockRejectedValue(undefined)
-  }
+    currentAuthenticatedUser: jest.fn().mockRejectedValue(undefined),
+  },
 }))
 jest.mock('@aws-amplify/ui-react', () => ({
   AmplifyAuthContainer: jest.fn().mockImplementation(({ children }: { children?: JSX.Element }) => children ?? null),
@@ -40,8 +40,8 @@ describe('Joke component', () => {
     global.Math = mockMath
 
     JokeService.getRandomJokes = getRandomJokes
-    ;(AmplifySignIn as unknown as jest.Mock).mockReturnValue(<button>Sign in</button>)
-    ;(AmplifySignOut as unknown as jest.Mock).mockReturnValue(<button>Sign out</button>)
+    ;((AmplifySignIn as unknown) as jest.Mock).mockReturnValue(<button>Sign in</button>)
+    ;((AmplifySignOut as unknown) as jest.Mock).mockReturnValue(<button>Sign out</button>)
   })
 
   describe('Public functionality', () => {
@@ -143,10 +143,14 @@ describe('Joke component', () => {
       render(<Joke initialize={true} />)
 
       const addTextInput: HTMLInputElement = (await screen.findByLabelText(/Joke to add/i)) as HTMLInputElement
-      fireEvent.change(addTextInput, { target: { value: adminJoke } })
-      const addJokeButton: HTMLButtonElement = (await screen.findByText(/Add joke/i, { selector: 'button' })) as HTMLButtonElement
       act(() => {
-        addJokeButton.click()
+        fireEvent.change(addTextInput, { target: { value: adminJoke } })
+      })
+      const addJokeButton: HTMLButtonElement = (await screen.findByText(/Add joke/i, {
+        selector: 'button',
+      })) as HTMLButtonElement
+      await act(async () => {
+        await addJokeButton.click()
       })
 
       expect(postJoke).toBeCalledWith(expect.objectContaining({ joke: adminJoke }))
@@ -158,47 +162,81 @@ describe('Joke component', () => {
       render(<Joke initialize={true} />)
 
       const editLabel: HTMLLabelElement = (await screen.findByText(/Edit joke/i)) as HTMLLabelElement
-      act(() => editLabel.click())
+      await act(async () => {
+        await editLabel.click()
+      })
 
       const updateTextInput: HTMLInputElement = (await screen.findByLabelText(/Joke text/i)) as HTMLInputElement
       expect(updateTextInput.value).not.toEqual(joke2)
-      fireEvent.change(updateTextInput, { target: { value: joke2 } })
-      const updateJokeButton: HTMLButtonElement = (await screen.findByText(/Update joke/i, { selector: 'button' })) as HTMLButtonElement
-      act(() => { updateJokeButton.click() })
+      act(() => {
+        fireEvent.change(updateTextInput, { target: { value: joke2 } })
+      })
+      const updateJokeButton: HTMLButtonElement = (await screen.findByText(/Update joke/i, {
+        selector: 'button',
+      })) as HTMLButtonElement
+      await act(async () => {
+        await updateJokeButton.click()
+      })
 
       expect(putJoke).toBeCalledWith(expectedIndex, expect.objectContaining({ joke: joke2 }))
       expect(putJoke).toBeCalledTimes(1)
     })
 
     test('Sign out removes admin section and shows sign in', async () => {
-      const authStatePromise = new Promise((resolve) => (AmplifySignOut as unknown as jest.Mock).mockImplementationOnce(({handleAuthStateChange}) => {
-        resolve(handleAuthStateChange)
-        return <button>Sign out</button>
-      }))
+      const authStatePromise = new Promise((resolve) =>
+        ((AmplifySignOut as unknown) as jest.Mock).mockImplementationOnce(({ handleAuthStateChange }) => {
+          resolve(handleAuthStateChange)
+          return <button>Sign out</button>
+        })
+      )
       render(<Joke initialize={true} />)
       expect(await screen.findByText(/Sign out/i, { selector: 'button' })).toBeInTheDocument()
 
-      const handleAuthStateChange: AuthStateChangeHandler = await authStatePromise as any
-      act(() => { handleAuthStateChange(AuthState.SignedOut) })
+      const handleAuthStateChange: AuthStateChangeHandler = (await authStatePromise) as any
+      act(() => {
+        handleAuthStateChange(AuthState.SignedOut)
+      })
 
       expect(await screen.findByText(/Sign in/i, { selector: 'button' })).toBeInTheDocument()
       expect(screen.queryByText(/Add joke/i, { selector: 'button' })).toBeNull()
     })
 
     test('Sign in adds admin section and shows sign in', async () => {
-      const authStatePromise = new Promise((resolve) => (AmplifySignIn as unknown as jest.Mock).mockImplementationOnce(({handleAuthStateChange}) => {
-        resolve(handleAuthStateChange)
-        return <button>Sign in</button>
-      }))
+      const authStatePromise = new Promise((resolve) =>
+        ((AmplifySignIn as unknown) as jest.Mock).mockImplementationOnce(({ handleAuthStateChange }) => {
+          resolve(handleAuthStateChange)
+          return <button>Sign in</button>
+        })
+      )
       ;(Auth.currentAuthenticatedUser as jest.Mock).mockRejectedValueOnce(undefined)
       render(<Joke initialize={true} />)
       expect(await screen.findByText(/Sign in/i, { selector: 'button' })).toBeInTheDocument()
 
-      const handleAuthStateChange: AuthStateChangeHandler = await authStatePromise as any
-      act(() => { handleAuthStateChange(AuthState.SignedIn) })
+      const handleAuthStateChange: AuthStateChangeHandler = (await authStatePromise) as any
+      act(() => {
+        handleAuthStateChange(AuthState.SignedIn)
+      })
 
       expect(await screen.findByText(/Sign out/i, { selector: 'button' })).toBeInTheDocument()
       expect(screen.getByText(/Add joke/i, { selector: 'button' })).toBeInTheDocument()
+    })
+
+    test("Unrecognized auth state changes don't change the auth state", async () => {
+      const authStatePromise = new Promise((resolve) =>
+        ((AmplifySignOut as unknown) as jest.Mock).mockImplementationOnce(({ handleAuthStateChange }) => {
+          resolve(handleAuthStateChange)
+          return <button>Sign in</button>
+        })
+      )
+      render(<Joke initialize={true} />)
+      expect(await screen.findByText(/Sign out/i, { selector: 'button' })).toBeInTheDocument()
+
+      const handleAuthStateChange: AuthStateChangeHandler = (await authStatePromise) as any
+      act(() => {
+        handleAuthStateChange((undefined as unknown) as AuthState)
+      })
+
+      expect(screen.getByText(/Sign out/i, { selector: 'button' })).toBeInTheDocument()
     })
   })
 })

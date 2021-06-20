@@ -20,7 +20,9 @@ Amplify.configure({
       {
         name: apiName,
         endpoint: baseUrl,
-        custom_header: async () => ({ Authorization: `Bearer ${(await Auth.currentSession()).getIdToken().getJwtToken()}` })
+        custom_header: async () => ({
+          Authorization: `Bearer ${(await Auth.currentSession()).getIdToken().getJwtToken()}`,
+        }),
       },
       {
         name: apiNameUnauthenticated,
@@ -52,14 +54,14 @@ export class JokeService {
 
   static async postJoke(joke: JokeType): Promise<PostResponse> {
     const response: PostResponse = await API.post(apiName, '/v1/jokes', {
-      body: joke
+      body: joke,
     })
     return response
   }
 
   static async putJoke(index: number, joke: JokeType): Promise<string> {
     const response: string = await API.put(apiName, `/v1/jokes/${index}`, {
-      body: joke
+      body: joke,
     })
     return response
   }
@@ -71,11 +73,9 @@ export class JokeService {
         avoid: JokeService.recentIndexes.join(','),
       },
     })
-    JokeService.recentIndexes = Object.keys(response) as unknown as number[]
+    JokeService.recentIndexes = (Object.keys(response) as unknown) as number[]
     return response
   }
 }
 
 export default JokeService
-
-
