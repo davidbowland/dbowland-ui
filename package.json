@@ -14,7 +14,7 @@
     "clean": "gatsby clean && rm -rf coverage deploy/temp && npm ci",
     "deploy": "git checkout master && git pull --ff-only && npm run build:prod && npm version $npm_config_type -m \"$npm_config_type version %s\" && node deploy/index.js && git push --no-verify",
     "lint": "prettier --write . && eslint --fix .",
-    "prepare": "husky install",
+    "prepare": "if test \"$NODE_ENV\" != \"production\" ; then husky install ; fi",
     "start": "gatsby develop",
     "serve": "npm run build:prod && gatsby serve",
     "test": "jest --colors",
