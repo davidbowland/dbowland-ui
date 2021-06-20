@@ -143,11 +143,9 @@ describe('Joke component', () => {
       render(<Joke initialize={true} />)
 
       const addTextInput: HTMLInputElement = (await screen.findByLabelText(/Joke to add/i)) as HTMLInputElement
-      fireEvent.change(addTextInput, { target: { value: adminJoke } })
+      act(() => { fireEvent.change(addTextInput, { target: { value: adminJoke } }) })
       const addJokeButton: HTMLButtonElement = (await screen.findByText(/Add joke/i, { selector: 'button' })) as HTMLButtonElement
-      act(() => {
-        addJokeButton.click()
-      })
+      await act(async () => { await addJokeButton.click() })
 
       expect(postJoke).toBeCalledWith(expect.objectContaining({ joke: adminJoke }))
       expect(postJoke).toBeCalledTimes(1)
@@ -158,13 +156,13 @@ describe('Joke component', () => {
       render(<Joke initialize={true} />)
 
       const editLabel: HTMLLabelElement = (await screen.findByText(/Edit joke/i)) as HTMLLabelElement
-      act(() => editLabel.click())
+      await act(async () => { await editLabel.click() })
 
       const updateTextInput: HTMLInputElement = (await screen.findByLabelText(/Joke text/i)) as HTMLInputElement
       expect(updateTextInput.value).not.toEqual(joke2)
-      fireEvent.change(updateTextInput, { target: { value: joke2 } })
+      act(() => { fireEvent.change(updateTextInput, { target: { value: joke2 } }) })
       const updateJokeButton: HTMLButtonElement = (await screen.findByText(/Update joke/i, { selector: 'button' })) as HTMLButtonElement
-      act(() => { updateJokeButton.click() })
+      await act(async () => { await updateJokeButton.click() })
 
       expect(putJoke).toBeCalledWith(expectedIndex, expect.objectContaining({ joke: joke2 }))
       expect(putJoke).toBeCalledTimes(1)
