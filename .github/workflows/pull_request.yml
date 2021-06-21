@@ -1,4 +1,4 @@
-# Run tests for dbowland.com code
+# Run tests for dbowland.com Gatsby code
 name: Run tests for dbowland.com
 
 on:
@@ -7,16 +7,18 @@ on:
       - master
 
 jobs:
-  build:
+  run_tests:
+    name: Run tests on static site content
     runs-on: ubuntu-latest
     steps:
-      # Checkout latest code
-      - uses: actions/checkout@v2
-      # Install Node 16
-      - uses: actions/setup-node@v2
+      - name: Checkout latest code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install Node 16
+        uses: actions/setup-node@v2
         with:
           node-version: 16.x
-      # Run tests
       - name: Install packages and run tests
         run: npm ci && npm run test src/
         env:
