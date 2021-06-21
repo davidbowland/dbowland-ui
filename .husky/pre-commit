@@ -1,2 +1,2 @@
-s# Prettify all files and lint JavaScript files
+# Prettify all files and lint JavaScript files
 npx lint-staged
