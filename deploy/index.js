@@ -15,6 +15,7 @@ const BASE_HTML_DIR = 'public_html'
 const FILE_BATCH_SIZE = 15
 const DEPLOY_DIR = 'deploy'
 const TEMP_DIR = `${DEPLOY_DIR}/temp`
+const DEFAULT_RETRY_ATTEMPTS = 5
 
 /* Deploy components */
 
@@ -215,24 +216,50 @@ const deploy = async (sftp) => {
 
 /* SSH/SFTP connection */
 
-const sendSftpConnection = (callback) => {
+const sendSftpConnection = async (callback) => {
   const connection = new ssh2.Client()
-  connection
-    .on('ready', () => {
-      // console.debug(`Client successfully connected`)
-      connection.sftp(async (err, sftp) => {
-        try {
-          if (err) throw err
-          await callback(sftp)
-        } finally {
-          connection.end()
-          // console.debug('Client disconnected')
-        }
-      })
+  try {
+    const sftp = await new Promise((resolve, reject) => {
+      connection
+        .on('ready', () => {
+          // console.debug(`Client successfully connected`)
+          connection.sftp(async (err, sftp) => {
+            if (err) reject(err)
+            else resolve(sftp)
+          })
+        })
+        .connect(SSH_CONFIG)
     })
-    .connect(SSH_CONFIG)
+    await callback(sftp)
+  } finally {
+    connection.end()
+    // console.debug('Client disconnected')
+  }
+}
+
+/* Retry logic */
+
+const wait = (duration) => {
+  return new Promise((resolve) => setTimeout(resolve, duration * 1000))
+}
+
+const retryWithDelay = async (func, retryCount, delay = 1, currentTry = 1) => {
+  console.log(`Deploy attempt #${currentTry}\n`)
+  try {
+    await func()
+  } catch (error) {
+    console.log(`\nError on deploy attempt #${currentTry}: ${error}`)
+    if (currentTry < retryCount) {
+      console.log(`Pausing for ${delay}s before next attempt\n`)
+      await wait(delay)
+      retryWithDelay(func, retryCount, delay * 2, currentTry + 1)
+    } else {
+      console.log('Maximum retries reached, aborting deploy')
+      throw error
+    }
+  }
 }
 
 /* Effect deploy */
 
-sendSftpConnection(deploy)
+retryWithDelay(() => sendSftpConnection(deploy), process.argv[2] || DEFAULT_RETRY_ATTEMPTS)
