@@ -41,7 +41,7 @@ jobs:
           git config --local user.email "dbowland1+bot@gmail.com"
           git config --local user.name "github-actions[bot]"
       - name: Build Gatsby site
-        run: npm run build:prod
+        run: npm run build
         env:
           NODE_ENV: production
       - name: Bump the minor version
