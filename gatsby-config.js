@@ -11,7 +11,6 @@ module.exports = {
           '@assets': 'src/assets',
           '@components': 'src/components',
           '@pages': 'src/pages',
-          '@services': 'src/services',
           '@test': 'test',
         },
         extensions: ['js', 'jsx', 'ts', 'tsx'],
@@ -59,6 +58,7 @@ module.exports = {
           'RewriteRule ^github https://github.com/davidbowland [R=302,NC,L]',
           'RewriteRule ^linked\\-?in https://www.linkedin.com/in/david-bowland-257980a1/ [R=302,NC,L]',
           'RewriteRule ^seancarrollama https://drive.google.com/file/d/1g-VP1P0n2F3XlksaqS4O0CUe6lrL7neV/view?usp=sharing [R=302,NC,L]',
+          'RewriteRule ^humor(/.*)$ https://d8m2rj7f9egv3.cloudfront.net$1 [R=302,NC,L]',
           'RewriteRule ^formsubmit /form-submit [R=301,NC,L]',
         ],
         custom: `

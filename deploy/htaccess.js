@@ -38,17 +38,45 @@ export const getRootHtaccessContents = (currentVersion, previousVersion) => {
 
 </IfModule>
 
+<IfModule mod_deflate.c>
+
+  # Enable compression on the listed types
+  AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript application/json image/png image/jpg image/jpeg image/gif image/webp font/otf font/ttf font/woff2
+
+</IfModule>
+
+# Most files (HTTP, JSON, etc) don't cache
+Header set Cache-Control "no-cache, private"
+# CSS & JavaScript files cache for a year
+<FilesMatch "\.(css|js)$">
+  Header set Cache-Control "max-age=31536000, private"
+</FilesMatch>
+# Image files cache for a year
+<FilesMatch "\.(png|gif|jpg|webp)$">
+  Header set Cache-Control "max-age=31536000, private"
+</FilesMatch>
+# Font files cache for a year
+<FilesMatch "\.(otf|ttf|woff2)$">
+  Header set Cache-Control "max-age=31536000, private"
+</FilesMatch>
+
 # Disallow directory indexing
 Options -Indexes
 
 # Turn on IE8-IE9 XSS prevention tools
 Header set X-XSS-Protection "1; mode=block"
 
+# Don't allow cookies to be accessed by JavaScript or on insecure connections
+Header always edit Set-Cookie (.*) "$1; HTTPOnly; Secure"
+
 # Prevent the site from being loaded in an off-site frame
 Header set X-Frame-Options SAMEORIGIN
 
 # Prevent mime based attacks
 Header set X-Content-Type-Options "nosniff"
+
+# Set Content Security Policy
+Header set X-Content-Security-Policy "default-src 'self'"
 
 # Remove PHP Powered-By header
 Header unset X-Powered-By
