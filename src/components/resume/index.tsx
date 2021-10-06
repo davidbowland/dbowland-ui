@@ -115,7 +115,7 @@ const Resume = (): JSX.Element => {
                   Carfax
                 </ResumeAnchor>
               </ResumeSectionContentTitle>
-              <ResultSubDetails>March&nbsp;2020 - March&nbsp;20201</ResultSubDetails>
+              <ResultSubDetails>March&nbsp;2020 - March&nbsp;2021</ResultSubDetails>
               <ResumeJobDescription>
                 <ResumeJobDescriptionDetail>
                   Develop Spring Boot / Spring Batch apps in Groovy and Java 8
