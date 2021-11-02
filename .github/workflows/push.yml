@@ -46,7 +46,7 @@ jobs:
           NODE_ENV: production
       - name: Bump the minor version
         run: npm version minor
-      - name: Deploy the build site to dbowland.com
+      - name: Deploy the built site to dbowland.com
         run: node deploy/index.js
         env:
           DBOWLAND_SSH_USER: ${{ secrets.DBOWLAND_SSH_USER }}
