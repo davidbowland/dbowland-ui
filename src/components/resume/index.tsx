@@ -118,16 +118,16 @@ const Resume = (): JSX.Element => {
               <ResultSubDetails>March&nbsp;2020 - March&nbsp;2021</ResultSubDetails>
               <ResumeJobDescription>
                 <ResumeJobDescriptionDetail>
-                  Develop Spring Boot / Spring Batch apps in Groovy and Java 8
+                  Developed Spring Boot / Spring Batch apps in Groovy and Java 8
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
-                  Develop Node.js apps, using React with webpack for frontend
+                  Developed Node.js apps, using React with webpack for frontend
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
-                  Use Agile methodology with two-week sprints organized on Jira
+                  Used Agile methodology with two-week sprints organized on Jira
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
-                  Deploy apps using Jenkins, either Docker images to Kubernetes on AWS or RPMs to DC 3.0 on-premise
+                  Deployed apps using Jenkins, either Docker images to Kubernetes on AWS or RPMs to DC 3.0 on-premise
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
                   Went from new hire to acting team leader in less than 10 months
