@@ -49,7 +49,6 @@ module.exports = {
         host: 'dbowland.com', // if 'www' is set to 'false', be sure to also remove it here!
         ErrorDocument: `
           ErrorDocument 400 /400
-          ErrorDocument 401 /401
           ErrorDocument 403 /403
           ErrorDocument 404 /404
           ErrorDocument 500 /500
