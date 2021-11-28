@@ -1,5 +1,5 @@
-# Run tests for dbowland.com Gatsby code
-name: Run tests for dbowland.com
+# Run tests for Gatsby code
+name: Run tests for UI
 
 on:
   pull_request:

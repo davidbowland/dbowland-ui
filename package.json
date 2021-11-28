@@ -11,8 +11,8 @@
   "scripts": {
     "build": "npm run clean && gatsby build",
     "clean": "rm -rf coverage deploy/temp && npm ci && gatsby clean",
-    "deploy": "npm run build && node deploy/index.js",
-    "lint": "prettier --write . && eslint --fix .",
+    "deploy": "npm run build && ./scripts/deploy.sh",
+    "lint": "prettier --write . && eslint --fix . --resolve-plugins-relative-to .",
     "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky install ; fi",
     "start": "gatsby develop",
     "serve": "npm run build && gatsby serve",
@@ -23,7 +23,7 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "prettier --write --ignore-unknown",
-      "eslint --fix",
+      "eslint --fix --resolve-plugins-relative-to .",
       "jest --colors --findRelatedTests"
     ],
     "**/*": [
