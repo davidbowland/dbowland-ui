@@ -1,5 +1,5 @@
 {
-  "name": "dbowland-gatsby",
+  "name": "dbowland-ui",
   "version": "1.14.0",
   "private": true,
   "description": "dbowland.com gatsbyjs project",
@@ -88,10 +88,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidbowland/dbowland-gatsby.git"
+    "url": "git+https://github.com/davidbowland/dbowland-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/davidbowland/dbowland-gatsby/issues"
+    "url": "https://github.com/davidbowland/dbowland-ui/issues"
   },
-  "homepage": "https://github.com/davidbowland/dbowland-gatsby#readme"
+  "homepage": "https://github.com/davidbowland/dbowland-ui#readme"
 }
