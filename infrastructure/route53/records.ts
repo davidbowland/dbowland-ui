@@ -1,7 +1,7 @@
 import * as aws from '@pulumi/aws'
 
 import { cdn, redirectCdn } from '@cloudfront'
-import { hostedZoneId } from '@vars'
+import { zone } from './zones'
 
 // https://www.pulumi.com/registry/packages/aws/api-docs/route53/record/
 
@@ -15,7 +15,7 @@ export const bowlandLink = new aws.route53.Record('bowland-link', {
   ],
   name: 'bowland.link',
   type: 'A',
-  zoneId: hostedZoneId,
+  zoneId: zone.then((zone) => zone.zoneId),
 })
 
 export const wwwBowlandLink = new aws.route53.Record('www-bowland-link', {
@@ -28,5 +28,5 @@ export const wwwBowlandLink = new aws.route53.Record('www-bowland-link', {
   ],
   name: 'www.bowland.link',
   type: 'A',
-  zoneId: hostedZoneId,
+  zoneId: zone.then((zone) => zone.zoneId),
 })
