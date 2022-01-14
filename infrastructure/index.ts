@@ -6,6 +6,7 @@ import './config'
 // Import modules to create resources
 import '@cloudfront'
 import '@route53'
+import '@s3'
 
 // Output
 import { cdn } from '@cloudfront'
