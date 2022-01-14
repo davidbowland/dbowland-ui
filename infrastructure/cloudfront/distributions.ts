@@ -1,6 +1,6 @@
 import * as aws from '@pulumi/aws'
 
-import { acmCertificateArn, sourceS3Domain } from '@vars'
+import { acmCertificateArn, redirectStaticDomain, sourceS3Domain } from '@vars'
 
 // https://www.pulumi.com/docs/reference/pkg/aws/cloudfront/distribution/
 
@@ -43,6 +43,64 @@ export const cdn = new aws.cloudfront.Distribution('ui-cdn', {
       domainName: sourceS3Domain,
       originId: sourceS3Domain,
       originPath: '/dbowland-ui',
+    },
+  ],
+  priceClass: 'PriceClass_100',
+  restrictions: {
+    geoRestriction: {
+      locations: [],
+      restrictionType: 'none',
+    },
+  },
+  retainOnDelete: false,
+  viewerCertificate: {
+    acmCertificateArn,
+    cloudfrontDefaultCertificate: false,
+    iamCertificateId: '',
+    minimumProtocolVersion: 'TLSv1.2_2018',
+    sslSupportMethod: 'sni-only',
+  },
+  waitForDeployment: true,
+})
+
+export const redirectCdn = new aws.cloudfront.Distribution('redirect-cdn', {
+  aliases: ['www.bowland.link'],
+  defaultCacheBehavior: {
+    allowedMethods: ['GET', 'HEAD'],
+    cachePolicyId: '658327ea-f89d-4fab-a63d-7e88639e58f6', // Managed-CachingOptimized
+    cachedMethods: ['GET', 'HEAD'],
+    compress: true,
+    defaultTtl: 0,
+    fieldLevelEncryptionId: '',
+    functionAssociations: [],
+    lambdaFunctionAssociations: [],
+    maxTtl: 0,
+    minTtl: 0,
+    originRequestPolicyId: '',
+    realtimeLogConfigArn: '',
+    smoothStreaming: false,
+    targetOriginId: redirectStaticDomain,
+    trustedKeyGroups: [],
+    trustedSigners: [],
+    viewerProtocolPolicy: 'allow-all',
+  },
+  enabled: true,
+  httpVersion: 'http2',
+  isIpv6Enabled: true,
+  origins: [
+    {
+      connectionAttempts: 3,
+      connectionTimeout: 10,
+      customOriginConfig: {
+        httpPort: 80,
+        httpsPort: 443,
+        originKeepaliveTimeout: 5,
+        originProtocolPolicy: 'http-only',
+        originReadTimeout: 30,
+        originSslProtocols: ['TLSv1', 'TLSv1.1', 'TLSv1.2'],
+      },
+      domainName: redirectStaticDomain,
+      originId: redirectStaticDomain,
     },
   ],
   priceClass: 'PriceClass_100',
