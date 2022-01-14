@@ -18,6 +18,11 @@
     "quotes": ["error", "single", { "avoidEscape": true }],
     "semi": ["error", "never"]
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "globals": {
     "module": "readonly"
   }
