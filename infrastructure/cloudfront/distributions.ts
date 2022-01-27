@@ -1,13 +1,13 @@
 import * as aws from '@pulumi/aws'
 
-import { acmCertificateArn, redirectStaticDomain, sourceS3Domain } from '@vars'
+import { acmCertificateArn, domainName, redirectStaticDomain, sourceS3Domain } from '@vars'
 
 // https://www.pulumi.com/docs/reference/pkg/aws/cloudfront/distribution/
 
 const errorCodePages = [400, 403, 404, 500]
 
 export const cdn = new aws.cloudfront.Distribution('ui-cdn', {
-  aliases: ['bowland.link'],
+  aliases: [domainName],
   customErrorResponses: errorCodePages.map((errorCode) => ({
     errorCachingMinTtl: 10,
     errorCode,
@@ -64,7 +64,7 @@ export const cdn = new aws.cloudfront.Distribution('ui-cdn', {
 })
 
 export const redirectCdn = new aws.cloudfront.Distribution('redirect-cdn', {
-  aliases: ['www.bowland.link'],
+  aliases: [`www.${domainName}`],
   defaultCacheBehavior: {
     allowedMethods: ['GET', 'HEAD'],
     cachePolicyId: '658327ea-f89d-4fab-a63d-7e88639e58f6', // Managed-CachingOptimized

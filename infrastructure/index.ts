@@ -10,7 +10,7 @@ import '@s3'
 
 // Output
 import { cdn } from '@cloudfront'
-import { bowlandLink } from '@route53'
+import { dbowlandCom } from '@route53'
 
 export const cdnUrl = pulumi.interpolate`https://${cdn.domainName}`
-export const url = pulumi.interpolate`https://${bowlandLink.fqdn}`
+export const url = pulumi.interpolate`https://${dbowlandCom.fqdn}`
