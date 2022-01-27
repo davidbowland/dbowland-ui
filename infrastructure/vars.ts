@@ -6,11 +6,11 @@ export const createdFor = 'dbowland.com'
 
 /* CDN */
 
-export const acmCertificateArn = `arn:aws:acm:us-east-1:${awsAccountId}:certificate/6a48cba7-feb9-4de5-8cbf-d383140fcdef`
+export const acmCertificateArn = `arn:aws:acm:us-east-1:${awsAccountId}:certificate/adce1a21-90b4-4120-8548-111215e582f0`
 export const redirectStaticDomain = 'dbowland-ui-redirect.s3-website.us-east-2.amazonaws.com'
-export const redirectToDomain = 'bowland.link'
+export const redirectToDomain = 'dbowland.com'
 export const sourceS3Domain = 'dbowland-ui-source.s3.us-east-2.amazonaws.com'
 
 /* Route 53 */
 
-export const domainName = 'bowland.link'
+export const domainName = 'dbowland.com'

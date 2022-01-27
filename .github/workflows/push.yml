@@ -44,11 +44,6 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-      - name: Deploy the build site to dbowland.com via SSH
-        run: node deploy/index.js
-        env:
-          DBOWLAND_SSH_USER: ${{ secrets.DBOWLAND_SSH_USER }}
-          DBOWLAND_SSH_PASS: ${{ secrets.DBOWLAND_SSH_PASS }}
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
