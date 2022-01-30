@@ -8,11 +8,6 @@ describe('Resume component', () => {
   const emailAddress = 'david@dbowland.com'
   const pdfFilename = 'test-file-stub'
 
-  test('Ensure snapshot match', () => {
-    const { container } = render(<Resume />)
-    expect(container).toMatchSnapshot()
-  })
-
   test('Rendering Resume renders contact information', () => {
     render(<Resume />)
 

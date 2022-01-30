@@ -7,20 +7,10 @@ if [[ -z "$1" ]]; then
   $(./scripts/assumeDeveloperRole.sh)
 fi
 
-## Deploy project to GoDaddy via SSH
+# Deploy infrastructure
 
-node deploy/index.js
+aws cloudformation deploy --template-file template.yaml --stack-name dbowland-ui-test --parameter-overrides AccountId=$AWS_ACCOUNT_ID Environment=test
 
-### Copy project to S3
+# Copy project to S3
 
-./scripts/copyToS3.sh skipAssumeRole
-
-### Infrastructure
-
-cd infrastructure/
-
-# Ensure dependencies are installed
-NODE_ENV=production npm ci
-
-# Use pulumi to deploy project
-./scripts/deploy.sh
+./scripts/copyToS3.sh dbowland-ui-test
