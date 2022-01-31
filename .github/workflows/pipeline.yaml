@@ -10,7 +10,7 @@ env:
   TEMPLATE_NAME: template.yaml
   TESTING_S3_BUCKET: dbowland-ui-test
   TESTING_STACK_NAME: dbowland-ui-test
-  PROD_S3_BUCKET: dbowland-ui
+  PROD_S3_BUCKET: dbowland-ui-source
   PROD_STACK_NAME: dbowland-ui
 
 jobs:
@@ -27,6 +27,7 @@ jobs:
           node-version: 16.x
       - name: Install NPM 8
         run: npm install -g npm@8
+
       - name: Install and audit packages
         run: npm ci
         env:
@@ -42,19 +43,6 @@ jobs:
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v2
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-      - name: Deploy to AWS CloudFormation
-        uses: aws-actions/aws-cloudformation-github-deploy@v1
-        with:
-          name: ${{ env.TESTING_STACK_NAME }}
-          template: ${{ env.TEMPLATE_NAME }}
-          no-fail-on-empty-changeset: 1
-          parameter-overrides: 'AccountId=${{ secrets.AWS_ACCOUNT_ID }},Environment=test'
 
       - name: Install Node 16
         uses: actions/setup-node@v2
@@ -65,31 +53,34 @@ jobs:
       - name: Build Gatsby site
         run: npm run build
         env:
+          DEVELOPMENT: true
           NODE_ENV: production
-      - name: Copy static site to S3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy test infrastructure
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: ${{ env.TESTING_STACK_NAME }}
+          template: ${{ env.TEMPLATE_NAME }}
+          no-fail-on-empty-changeset: 1
+          parameter-overrides: 'AccountId=${{ secrets.AWS_ACCOUNT_ID }},Environment=test'
+      - name: Copy static site to test S3 bucket
         run: ./scripts/copyToS3.sh ${TESTING_S3_BUCKET}
 
   deploy-testing:
-    name: Deploy to test
+    name: Deploy to test environment
     if: github.ref == 'refs/heads/master'
     needs: [test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v2
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-      - name: Deploy to AWS CloudFormation
-        uses: aws-actions/aws-cloudformation-github-deploy@v1
-        with:
-          name: ${{ env.TESTING_STACK_NAME }}
-          template: ${{ env.TEMPLATE_NAME }}
-          no-fail-on-empty-changeset: 1
-          parameter-overrides: 'AccountId=${{ secrets.AWS_ACCOUNT_ID }},Environment=test'
 
       - name: Install Node 16
         uses: actions/setup-node@v2
@@ -100,11 +91,27 @@ jobs:
       - name: Build Gatsby site
         run: npm run build
         env:
+          DEVELOPMENT: true
           NODE_ENV: production
-      - name: Copy static site to S3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy test infrastructure
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: ${{ env.TESTING_STACK_NAME }}
+          template: ${{ env.TEMPLATE_NAME }}
+          no-fail-on-empty-changeset: 1
+          parameter-overrides: 'AccountId=${{ secrets.AWS_ACCOUNT_ID }},Environment=test'
+      - name: Copy static site to test S3 bucket
         run: ./scripts/copyToS3.sh ${{ env.TESTING_S3_BUCKET }}
 
-  deploy-prod:
+  deploy-production:
     name: Deploy to production
     if: github.ref == 'refs/heads/master'
     needs: [deploy-testing]
@@ -112,19 +119,6 @@ jobs:
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v2
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-      - name: Deploy to AWS CloudFormation
-        uses: aws-actions/aws-cloudformation-github-deploy@v1
-        with:
-          name: ${{ env.PROD_STACK_NAME }}
-          template: ${{ env.TEMPLATE_NAME }}
-          no-fail-on-empty-changeset: 1
-          parameter-overrides: 'AccountId=${{ secrets.AWS_ACCOUNT_ID }}'
 
       - name: Install Node 16
         uses: actions/setup-node@v2
@@ -136,12 +130,27 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-      - name: Copy static site to S3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy production infrastructure
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: ${{ env.PROD_STACK_NAME }}
+          template: ${{ env.TEMPLATE_NAME }}
+          no-fail-on-empty-changeset: 1
+          parameter-overrides: 'AccountId=${{ secrets.AWS_ACCOUNT_ID }}'
+      - name: Copy static site to production S3 bucket
         run: ./scripts/copyToS3.sh ${{ env.PROD_S3_BUCKET }}
 
   bump:
     name: Bump the version number and tag the commit
-    needs: deploy-prod
+    needs: [deploy-production]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
@@ -152,6 +161,7 @@ jobs:
           node-version: 16.x
       - name: Install NPM 8
         run: npm install -g npm@8
+
       - name: Set git name and email
         run: |
           git config --local user.email "dbowland1+bot@gmail.com"

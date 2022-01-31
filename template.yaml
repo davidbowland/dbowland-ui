@@ -17,7 +17,7 @@ Parameters:
 Mappings:
   EnvironmentMap:
     prod:
-      bucketName: dbowland-ui
+      bucketName: dbowland-ui-source
       certificate: adce1a21-90b4-4120-8548-111215e582f0
       domain: dbowland.com
       zoneId: Z072422417XWM8PIXXSFA
@@ -37,7 +37,7 @@ Resources:
           - Domain: !FindInMap [EnvironmentMap, !Ref Environment, domain]
 
   UiBucket:
-    Type: 'AWS::S3::Bucket'
+    Type: AWS::S3::Bucket
     Properties:
       AccessControl: PublicRead
       BucketEncryption:
@@ -47,7 +47,7 @@ Resources:
       BucketName: !FindInMap [EnvironmentMap, !Ref Environment, bucketName]
 
   UiBucketPolicy:
-    Type: 'AWS::S3::BucketPolicy'
+    Type: AWS::S3::BucketPolicy
     DependsOn: UiBucket
     Properties:
       Bucket: !Ref UiBucket
@@ -60,7 +60,7 @@ Resources:
               CanonicalUser: !GetAtt OriginAccessIdentity.S3CanonicalUserId
 
   UiCloudfrontDistribution:
-    Type: 'AWS::CloudFront::Distribution'
+    Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
         Aliases:
@@ -95,7 +95,7 @@ Resources:
           SslSupportMethod: 'sni-only'
 
   DomainDns:
-    Type: 'AWS::Route53::RecordSet'
+    Type: AWS::Route53::RecordSet
     DependsOn: UiCloudfrontDistribution
     Properties:
       AliasTarget:
@@ -107,7 +107,7 @@ Resources:
       Type: A
 
   RedirectBucket:
-    Type: 'AWS::S3::Bucket'
+    Type: AWS::S3::Bucket
     Properties:
       AccessControl: PublicRead
       BucketEncryption:
@@ -123,7 +123,7 @@ Resources:
           Protocol: https
 
   RedirectBucketPolicy:
-    Type: 'AWS::S3::BucketPolicy'
+    Type: AWS::S3::BucketPolicy
     DependsOn: RedirectBucket
     Properties:
       Bucket: !Ref RedirectBucket
@@ -136,7 +136,7 @@ Resources:
               CanonicalUser: !GetAtt OriginAccessIdentity.S3CanonicalUserId
 
   RedirectCloudfrontDistribution:
-    Type: 'AWS::CloudFront::Distribution'
+    Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
         Aliases:
@@ -180,7 +180,7 @@ Resources:
           SslSupportMethod: 'sni-only'
 
   RedirectDns:
-    Type: 'AWS::Route53::RecordSet'
+    Type: AWS::Route53::RecordSet
     DependsOn: RedirectCloudfrontDistribution
     Properties:
       AliasTarget:
