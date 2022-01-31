@@ -53,15 +53,9 @@ npm run lint
 
 This project automatically deploys to production when a merge to `master` is made via a pull request.
 
-## Deploy Script
-
-See `deploy` directory for the script that copies the local folder `public` to a remote version folder, then updates the `.htaccess` file to deploy the new version. Testing this script requires the `DBOWLAND_SSH_USER` and `DBOWLAND_SSH_PASS` environment variables.
-
 ## Workflow
 
-In order to execute or test the workflow locally, the `DBOWLAND_SSH_USER`, `DBOWLAND_SSH_PASS`, and `GITHUB_TOKEN` environment variables must be defined. Use the [GitHub token page](https://github.com/settings/tokens) to generate a new token, if necessary.
-
-This project uses [sftp](https://github.com/mscdex/ssh2-streams/blob/master/SFTPStream.md) to effect the deploy.
+In order to execute or test the workflow locally, the `GITHUB_TOKEN` environment variables must be defined. Use the [GitHub token page](https://github.com/settings/tokens) to generate a new token, if necessary.
 
 ### Manually Deploying
 
