@@ -57,19 +57,15 @@ This project automatically deploys to production when a merge to `master` is mad
 
 In order to execute or test the workflow locally, the `GITHUB_TOKEN` environment variables must be defined. Use the [GitHub token page](https://github.com/settings/tokens) to generate a new token, if necessary.
 
-### Manually Deploying
+### Deploy Script
 
-Code can be manually deployed to production using the deploy command and specifying the version part to change:
-
-```bash
-npm run deploy --type=[major/minor/patch]
-```
-
-The most common deploy should be:
+In extreme cases, the UI can be deployed with:
 
 ```bash
-npm run deploy --type=minor
+npm run deploy
 ```
+
+The `developer` role and [AWS SAM CLI](https://aws.amazon.com/serverless/sam/) are required to deploy this project.
 
 ### Testing the Workflow
 
@@ -116,3 +112,7 @@ npm run workflow
 - [actions/checkout](https://github.com/actions/checkout)
 
 - [ad-m/github-push-action](https://github.com/ad-m/github-push-action)
+
+### Deployment Documentation
+
+- [AWS SAM CLI](https://aws.amazon.com/serverless/sam/)
