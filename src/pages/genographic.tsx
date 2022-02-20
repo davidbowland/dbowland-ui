@@ -1,8 +1,8 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
+import '@config/amplify'
 import GenographicInfographic from '@components/genographic-infographic'
-
 import '@fontsource/rokkitt'
 import 'normalize.css'
 

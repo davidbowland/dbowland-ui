@@ -5,6 +5,7 @@ import { render } from '@testing-library/react'
 import SmoothScroll from './smooth-scroll'
 import SmoothScrollExample from '@components/smooth-scroll'
 
+jest.mock('@aws-amplify/analytics')
 jest.mock('@components/smooth-scroll', () => ({
   __esModule: true,
   default: jest.fn(),

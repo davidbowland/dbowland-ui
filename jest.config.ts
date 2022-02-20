@@ -95,6 +95,7 @@ export default {
       '<rootDir>/__mocks__/file-mock.js',
     '^@assets/(.*)$': '<rootDir>/src/assets/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
+    '^@config/(.*)$': '<rootDir>/src/config/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@test/(.*)$': '<rootDir>/test/$1',
     '@fontsource/rokkitt': '<rootDir>/__mocks__/file-mock.js',
