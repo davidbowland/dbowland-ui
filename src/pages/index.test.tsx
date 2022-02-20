@@ -5,6 +5,7 @@ import { render } from '@testing-library/react'
 import HomePage from './index'
 import Resume from '@components/resume'
 
+jest.mock('@aws-amplify/analytics')
 jest.mock('@components/resume', () => ({
   __esModule: true,
   default: jest.fn(),

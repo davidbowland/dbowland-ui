@@ -28,6 +28,8 @@ Mappings:
       zoneId: Z01312547RGU1BYKIJXY
 
 Resources:
+  # CDN
+
   OriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
@@ -35,6 +37,8 @@ Resources:
         Comment: !Sub
           - 'Access identity for ${Domain}'
           - Domain: !FindInMap [EnvironmentMap, !Ref Environment, domain]
+
+  # www
 
   UiBucket:
     Type: AWS::S3::Bucket
@@ -105,6 +109,8 @@ Resources:
       HostedZoneId: !FindInMap [EnvironmentMap, !Ref Environment, zoneId]
       Name: !FindInMap [EnvironmentMap, !Ref Environment, domain]
       Type: A
+
+  # Redirect
 
   RedirectBucket:
     Type: AWS::S3::Bucket

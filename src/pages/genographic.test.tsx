@@ -5,6 +5,7 @@ import { screen, render } from '@testing-library/react'
 import Genographic from './genographic'
 import GenographicInfographic from '@components/genographic-infographic'
 
+jest.mock('@aws-amplify/analytics')
 jest.mock('@components/genographic-infographic', () => ({
   __esModule: true,
   default: jest.fn(),

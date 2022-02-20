@@ -46,20 +46,43 @@ const Resume = (): JSX.Element => {
           <ResumeNameSectionName>David Bowland</ResumeNameSectionName>
           <ResumeNameSectionTitle>Software Developer</ResumeNameSectionTitle>
           <ResumeDownloadHeader>
-            <ResumeLink to={resumePdf}>Download Resume</ResumeLink>
+            <ResumeLink to={resumePdf} data-amplify-analytics-on="click" data-amplify-analytics-name="resume-click">
+              Download Resume
+            </ResumeLink>
           </ResumeDownloadHeader>
         </ResumeNameSection>
 
         <ResumeContactDetails>
           <ResumeContactDetailsList>
             <ResumeContactDetailsListItem>
-              e: <ResumeAnchor href="mailto:david@dbowland.com">david@dbowland.com</ResumeAnchor>
+              e:{' '}
+              <ResumeAnchor
+                href="mailto:david@dbowland.com"
+                data-amplify-analytics-on="click"
+                data-amplify-analytics-name="email-click"
+              >
+                david@dbowland.com
+              </ResumeAnchor>
             </ResumeContactDetailsListItem>
             <ResumeContactDetailsListItem>
-              w: <ResumeAnchor href="https://dbowland.com">dbowland.com</ResumeAnchor>
+              w:{' '}
+              <ResumeAnchor
+                href="https://dbowland.com"
+                data-amplify-analytics-on="click"
+                data-amplify-analytics-name="website-click"
+              >
+                dbowland.com
+              </ResumeAnchor>
             </ResumeContactDetailsListItem>
             <ResumeContactDetailsListItem>
-              m: <ResumeAnchor href="tel:+14178940079">417.894.0079</ResumeAnchor>
+              m:{' '}
+              <ResumeAnchor
+                href="tel:+14178940079"
+                data-amplify-analytics-on="click"
+                data-amplify-analytics-name="tel-click"
+              >
+                417.894.0079
+              </ResumeAnchor>
             </ResumeContactDetailsListItem>
           </ResumeContactDetailsList>
         </ResumeContactDetails>
