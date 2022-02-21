@@ -3,9 +3,6 @@ Description: >-
   Infrastructure for dbowland.com UI
 
 Parameters:
-  AccountId:
-    Type: String
-    Description: AWS account ID
   Environment:
     Type: String
     Default: prod
@@ -93,7 +90,7 @@ Resources:
         PriceClass: 'PriceClass_100'
         ViewerCertificate:
           AcmCertificateArn: !Sub
-            - 'arn:aws:acm:us-east-1:${AccountId}:certificate/${Certificate}'
+            - 'arn:aws:acm:us-east-1:${AWS::AccountId}:certificate/${Certificate}'
             - Certificate: !FindInMap [EnvironmentMap, !Ref Environment, certificate]
           MinimumProtocolVersion: 'TLSv1.2_2018'
           SslSupportMethod: 'sni-only'
@@ -180,7 +177,7 @@ Resources:
         PriceClass: 'PriceClass_100'
         ViewerCertificate:
           AcmCertificateArn: !Sub
-            - 'arn:aws:acm:us-east-1:${AccountId}:certificate/${Certificate}'
+            - 'arn:aws:acm:us-east-1:${AWS::AccountId}:certificate/${Certificate}'
             - Certificate: !FindInMap [EnvironmentMap, !Ref Environment, certificate]
           MinimumProtocolVersion: 'TLSv1.2_2018'
           SslSupportMethod: 'sni-only'

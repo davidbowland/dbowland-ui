@@ -12,7 +12,7 @@ fi
 sam deploy --stack-name dbowland-ui-test \
   --template-file template.yaml --region us-east-2 \
   --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset \
-  --parameter-overrides AccountId=$AWS_ACCOUNT_ID Environment=test
+  --parameter-overrides Environment=test
 
 # Copy project to S3
 
