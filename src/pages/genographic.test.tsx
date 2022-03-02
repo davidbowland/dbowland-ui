@@ -1,3 +1,4 @@
+import { mocked } from 'jest-mock'
 import React from 'react'
 import '@testing-library/jest-dom'
 import { screen, render } from '@testing-library/react'
@@ -6,20 +7,17 @@ import Genographic from './genographic'
 import GenographicInfographic from '@components/genographic-infographic'
 
 jest.mock('@aws-amplify/analytics')
-jest.mock('@components/genographic-infographic', () => ({
-  __esModule: true,
-  default: jest.fn(),
-}))
+jest.mock('@components/genographic-infographic')
 jest.mock('@fontsource/rokkitt')
 
 describe('Genographic page', () => {
   beforeAll(() => {
-    ;(GenographicInfographic as jest.Mock).mockReturnValue(<></>)
+    mocked(GenographicInfographic).mockReturnValue(<></>)
   })
 
   test('Rendering Genographic renders GenographicInfographic', () => {
     render(<Genographic />)
-    expect(GenographicInfographic).toHaveBeenCalledTimes(1)
+    expect(mocked(GenographicInfographic)).toHaveBeenCalledTimes(1)
   })
 
   test('Genographic includes text "National Geographic Genographic project"', () => {
