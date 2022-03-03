@@ -52,5 +52,4 @@ module.exports = {
       __key: 'pages',
     },
   ],
-  flags: { PRESERVE_WEBPACK_CACHE: true },
 }
