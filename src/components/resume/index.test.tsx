@@ -5,8 +5,17 @@ import { screen, render } from '@testing-library/react'
 import Resume from './index'
 
 describe('Resume component', () => {
+  const consoleWarn = console.warn
   const emailAddress = 'david@dbowland.com'
   const pdfFilename = 'test-file-stub'
+
+  beforeAll(() => {
+    console.warn = jest.fn()
+  })
+
+  afterAll(() => {
+    console.warn = consoleWarn
+  })
 
   test('Rendering Resume renders contact information', () => {
     render(<Resume />)
