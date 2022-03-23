@@ -98,7 +98,9 @@ const Resume = (): JSX.Element => {
           <ResumeSectionContent>
             <article>
               <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>Developer of robust solutions</ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Developer of robust solutions on scalable architecture
+                </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>Effective translator between geek and English</ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>Connoisseur of groan-inducing dad jokes</ResumeJobDescriptionDetail>
               </ResumeJobDescription>
@@ -121,11 +123,28 @@ const Resume = (): JSX.Element => {
                   TalentReef
                 </ResumeAnchor>
               </ResumeSectionContentTitle>
-              <ResultSubDetails>March&nbsp;2021 - Present</ResultSubDetails>
+              <ResultSubDetails>April&nbsp;2021 - Present</ResultSubDetails>
               <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>Assist in migrating existing projects to AWS</ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
-                  Improve test coverage and automate testing in Node.js
+                  Lead the highest performing feature team, a title earned six months after I took over a formerly
+                  production support team
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Plan architecture for new design, heavily leveraging Spring Boot in ECS, Node Lambdas, Postgres in
+                  RDS, and other AWS services
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Mentor developers in best practices and establish procedures to enforce those practices
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Mentor other leads in effective leadership and value delivery
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Assist with DevOps using CloudFormation, Terraform, and especially Shell scripting to automate
+                  repetitive tasks
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Use Agile methodology with two-week sprints organized on Jira
                 </ResumeJobDescriptionDetail>
               </ResumeJobDescription>
               <ClearFloat />
@@ -138,16 +157,13 @@ const Resume = (): JSX.Element => {
                   Carfax
                 </ResumeAnchor>
               </ResumeSectionContentTitle>
-              <ResultSubDetails>March&nbsp;2020 - March&nbsp;2021</ResultSubDetails>
+              <ResultSubDetails>March&nbsp;2020 - April&nbsp;2021</ResultSubDetails>
               <ResumeJobDescription>
                 <ResumeJobDescriptionDetail>
                   Developed Spring Boot / Spring Batch apps in Groovy and Java 8
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
                   Developed Node.js apps, using React with webpack for frontend
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Used Agile methodology with two-week sprints organized on Jira
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
                   Deployed apps using Jenkins, either Docker images to Kubernetes on AWS or RPMs to DC 3.0 on-premise
@@ -169,7 +185,7 @@ const Resume = (): JSX.Element => {
               <ResultSubDetails>November&nbsp;2014 - March&nbsp;2020</ResultSubDetails>
               <ResumeJobDescription>
                 <ResumeJobDescriptionDetail>
-                  Developed full-stack web applications using CSS3, HTML5, and vanilla JavaScript with ASP, ASP.NET, or
+                  Developed full-stack web applications using CSS, HTML, and vanilla JavaScript with ASP, ASP.NET, or
                   Java backend
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
@@ -196,11 +212,11 @@ const Resume = (): JSX.Element => {
               <ResumeSectionContentTitle>Languages</ResumeSectionContentTitle>
               <ResultSubDetails>Proficient in</ResultSubDetails>
               <ResumeKeySkills>
-                <ResumeKeySkillsItem>Groovy</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>TypeScript</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>Java</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Groovy</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>JavaScript</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>Python</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>TypeScript</ResumeKeySkillsItem>
               </ResumeKeySkills>
               <ResultSubDetails>Familiar with</ResultSubDetails>
               <ResumeKeySkills>
@@ -237,6 +253,7 @@ const Resume = (): JSX.Element => {
               <ResumeSectionContentTitle>Technologies</ResumeSectionContentTitle>
               <ResumeKeySkills>
                 <ResumeKeySkillsItem>Argo</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>CircleCI</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>Docker</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>Git</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>Kibana</ResumeKeySkillsItem>
@@ -244,6 +261,7 @@ const Resume = (): JSX.Element => {
                 <ResumeKeySkillsItem>Jenkins</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>Jira</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>NewRelic</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Splunk</ResumeKeySkillsItem>
               </ResumeKeySkills>
               <ClearFloat />
             </article>
@@ -251,12 +269,19 @@ const Resume = (): JSX.Element => {
             <article>
               <ResumeSectionContentTitle>AWS</ResumeSectionContentTitle>
               <ResumeKeySkills>
+                <ResumeKeySkillsItem>Athena</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>CloudFormation·</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>CloudWatch</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>DynamoDB</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>ECS</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>Lambda</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Pinpoint</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>QuickSight</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>RDS</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Route53</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>S3</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Systems Manager</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>SES</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>SNS</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>SQS</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>Secrets Manager</ResumeKeySkillsItem>
               </ResumeKeySkills>
               <ClearFloat />
