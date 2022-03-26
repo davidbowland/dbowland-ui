@@ -2,6 +2,7 @@ import React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 
 import {
+  ResultSubDetails,
   ResumeAnchor,
   ResumeBody,
   ResumeContactDetails,
@@ -25,7 +26,6 @@ import {
   ResumeSectionContentTitle,
   ResumeSectionTitle,
   ResumeSectionTitleHeader,
-  ResultSubDetails,
 } from './elements'
 import { ClearFloat } from '@components/common/elements'
 import resumePdf from '@assets/pdf/david-bowland-resume.pdf'
@@ -36,8 +36,8 @@ const Resume = (): JSX.Element => {
       <ResumePrimaryDetails>
         <ResumeHeadshot>
           <StaticImage
-            src="../../assets/images/David-2019-05-18.jpg"
             alt="Picture of David Bowland"
+            src="../../assets/images/David-2019-05-18.jpg"
             style={ResumeImageStyles}
           />
         </ResumeHeadshot>
@@ -46,7 +46,7 @@ const Resume = (): JSX.Element => {
           <ResumeNameSectionName>David Bowland</ResumeNameSectionName>
           <ResumeNameSectionTitle>Software Developer</ResumeNameSectionTitle>
           <ResumeDownloadHeader>
-            <ResumeLink to={resumePdf} data-amplify-analytics-on="click" data-amplify-analytics-name="resume-click">
+            <ResumeLink data-amplify-analytics-name="resume-click" data-amplify-analytics-on="click" to={resumePdf}>
               Download Resume
             </ResumeLink>
           </ResumeDownloadHeader>
@@ -57,9 +57,9 @@ const Resume = (): JSX.Element => {
             <ResumeContactDetailsListItem>
               e:{' '}
               <ResumeAnchor
-                href="mailto:david@dbowland.com"
-                data-amplify-analytics-on="click"
                 data-amplify-analytics-name="email-click"
+                data-amplify-analytics-on="click"
+                href="mailto:david@dbowland.com"
               >
                 david@dbowland.com
               </ResumeAnchor>
@@ -67,9 +67,9 @@ const Resume = (): JSX.Element => {
             <ResumeContactDetailsListItem>
               w:{' '}
               <ResumeAnchor
-                href="https://dbowland.com"
-                data-amplify-analytics-on="click"
                 data-amplify-analytics-name="website-click"
+                data-amplify-analytics-on="click"
+                href="https://dbowland.com"
               >
                 dbowland.com
               </ResumeAnchor>
@@ -77,9 +77,9 @@ const Resume = (): JSX.Element => {
             <ResumeContactDetailsListItem>
               m:{' '}
               <ResumeAnchor
-                href="tel:+14178940079"
-                data-amplify-analytics-on="click"
                 data-amplify-analytics-name="tel-click"
+                data-amplify-analytics-on="click"
+                href="tel:+14178940079"
               >
                 417.894.0079
               </ResumeAnchor>

@@ -10,13 +10,8 @@ if (process.env.DEVELOPMENT) {
 }
 
 module.exports = {
-  siteMetadata: {
-    title: 'David Bowland',
-    siteUrl: 'https://dbowland.com/',
-  },
   plugins: [
     {
-      resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
           '@assets': 'src/assets',
@@ -27,6 +22,7 @@ module.exports = {
         },
         extensions: ['js', 'jsx', 'ts', 'tsx'],
       },
+      resolve: 'gatsby-plugin-alias-imports',
     },
     'gatsby-plugin-sass',
     'gatsby-plugin-image',
@@ -36,20 +32,25 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-source-filesystem',
+      __key: 'images',
       options: {
         name: 'images',
         path: 'src/assets/images/',
       },
-      __key: 'images',
+      resolve: 'gatsby-source-filesystem',
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      __key: 'pages',
+
       options: {
         name: 'pages',
         path: 'src/pages/',
       },
-      __key: 'pages',
+      resolve: 'gatsby-source-filesystem',
     },
   ],
+  siteMetadata: {
+    siteUrl: 'https://dbowland.com/',
+    title: 'David Bowland',
+  },
 }

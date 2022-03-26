@@ -11,34 +11,34 @@ const FormSubmitExample = (): JSX.Element => {
           <div>
             Enter one to ten digits:
             <input
-              type="text"
-              name="digits"
-              maxLength={10}
-              data-form-submit-required="digits"
-              data-form-submit-error-msg="Please enter at least one digit"
               data-form-submit-count="true"
+              data-form-submit-error-msg="Please enter at least one digit"
+              data-form-submit-required="digits"
+              maxLength={10}
+              name="digits"
+              type="text"
             />
           </div>
           <div>
             Any number:
             <input
-              type="text"
-              name="number"
-              data-form-submit-required="number"
               data-form-submit-error-msg="Please enter a positive or negative number"
+              data-form-submit-required="number"
+              name="number"
+              type="text"
             />
           </div>
           <div>
             Currency:
             <input
-              type="text"
-              name="currency"
-              data-form-submit-required="currency"
               data-form-submit-error-msg="Please enter a currency amount"
+              data-form-submit-required="currency"
+              name="currency"
+              type="text"
             />
           </div>
           <button type="submit">Submit</button>
-          <input type="hidden" name="form-number" value="1" />
+          <input name="form-number" type="hidden" value="1" />
         </fieldset>
       </form>
       <form action="/form-submit/" method="POST">
@@ -47,24 +47,24 @@ const FormSubmitExample = (): JSX.Element => {
           <div>
             Phone number:
             <input
-              type="text"
-              name="phone"
-              data-form-submit-required="phone"
               data-form-submit-error-msg="Please enter a phone number"
+              data-form-submit-required="phone"
+              name="phone"
+              type="text"
             />
           </div>
           <div>
             City (requires any value):
             <input
-              type="text"
-              name="city"
-              data-form-submit-required="true"
               data-form-submit-error-msg="Please enter a your city"
+              data-form-submit-required="true"
+              name="city"
+              type="text"
             />
           </div>
           <div>
             State:
-            <select name="state" data-form-submit-required="true" data-form-submit-error-msg="Please select a state">
+            <select data-form-submit-error-msg="Please select a state" data-form-submit-required="true" name="state">
               <option value="">Select a state</option>
               <option value="1">Denial</option>
               <option value="A">Emergency</option>
@@ -74,42 +74,42 @@ const FormSubmitExample = (): JSX.Element => {
           <div>
             ZIP code:
             <input
-              type="text"
-              name="zip"
-              data-form-submit-required="zip"
-              data-form-submit-error-msg="Please enter a 5-digit ZIP code"
               data-form-submit-count="5"
+              data-form-submit-error-msg="Please enter a 5-digit ZIP code"
+              data-form-submit-required="zip"
+              name="zip"
+              type="text"
             />
           </div>
           <div>
             ZIP code with optional + 4:
             <input
-              type="text"
-              name="zip-plus-4"
-              data-form-submit-required="zip+4"
               data-form-submit-error-msg="Please enter a 5- or 9-digit ZIP code"
+              data-form-submit-required="zip+4"
+              name="zip-plus-4"
+              type="text"
             />
           </div>
           <div>
             ZIP code with + 4 required:
             <input
-              type="text"
-              name="zip-full"
-              data-form-submit-required="zip-full"
               data-form-submit-error-msg="Please enter a 9-digit ZIP code"
+              data-form-submit-required="zip-full"
+              name="zip-full"
+              type="text"
             />
           </div>
           <div>
             Email address:
             <input
-              type="text"
-              name="email"
-              data-form-submit-required="email"
               data-form-submit-error-msg="Please enter a valid email address"
+              data-form-submit-required="email"
+              name="email"
+              type="text"
             />
           </div>
           <button type="submit">Submit</button>
-          <input type="hidden" name="form-number" value="2" />
+          <input name="form-number" type="hidden" value="2" />
         </fieldset>
       </form>
       <form action="/form-submit/" method="POST">
@@ -118,41 +118,41 @@ const FormSubmitExample = (): JSX.Element => {
           <div>
             Timestamp:
             <input
-              type="text"
-              name="timestamp"
-              data-form-submit-required="timestamp"
               data-form-submit-error-msg="Please enter a timestamp in the format MM/DD/YYYY HH:MM:SS.MS"
+              data-form-submit-required="timestamp"
+              name="timestamp"
+              type="text"
             />
           </div>
           <div>
             Date:
             <input
-              type="text"
-              name="date-mmddyyyy"
-              data-form-submit-required="date-mmddyyyy"
               data-form-submit-error-msg="Please enter a date in the format MM/DD/YYYY"
+              data-form-submit-required="date-mmddyyyy"
+              name="date-mmddyyyy"
+              type="text"
             />
           </div>
           <div>
             Date:
             <input
-              type="text"
-              name="date-yyyymmdd"
-              data-form-submit-required="date-yyyymmdd"
               data-form-submit-error-msg="Please enter a date in the format YYYY-MM-DD"
+              data-form-submit-required="date-yyyymmdd"
+              name="date-yyyymmdd"
+              type="text"
             />
           </div>
           <div>
             Time:
             <input
-              type="text"
-              name="time"
-              data-form-submit-required="time"
               data-form-submit-error-msg="Please enter a time in the format HH:MM"
+              data-form-submit-required="time"
+              name="time"
+              type="text"
             />
           </div>
           <button type="submit">Submit</button>
-          <input type="hidden" name="form-number" value="3" />
+          <input name="form-number" type="hidden" value="3" />
         </fieldset>
       </form>
       <form action="/form-submit/" method="POST">
@@ -161,26 +161,26 @@ const FormSubmitExample = (): JSX.Element => {
           <div>
             Enter some text:
             <textarea
-              name="some_text"
-              data-form-submit-required="true"
-              data-form-submit-error-msg="Please enter some text"
               data-form-submit-count="250"
+              data-form-submit-error-msg="Please enter some text"
+              data-form-submit-required="true"
+              name="some_text"
             ></textarea>
           </div>
           <div>
             Enter more text (optional):
-            <textarea name="more_text" data-form-submit-count="350"></textarea>
+            <textarea data-form-submit-count="350" name="more_text"></textarea>
           </div>
           <div>
             Phone number:
             <textarea
-              name="phone_text"
-              data-form-submit-required="phone"
               data-form-submit-error-msg="Please enter a phone number"
+              data-form-submit-required="phone"
+              name="phone_text"
             ></textarea>
           </div>
           <button type="submit">Submit</button>
-          <input type="hidden" name="form-number" value="4" />
+          <input name="form-number" type="hidden" value="4" />
         </fieldset>
       </form>
       <form action="/form-submit/" method="POST">
@@ -190,52 +190,52 @@ const FormSubmitExample = (): JSX.Element => {
             Choose one:
             <br />
             <input
-              type="radio"
-              name="sondheim"
-              value="1"
-              data-form-submit-required="radio"
               data-form-submit-error-msg="Please choose a Stephen Sondheim musical"
+              data-form-submit-required="radio"
+              name="sondheim"
+              type="radio"
+              value="1"
             />{' '}
             West Side Story
             <br />
-            <input type="radio" name="sondheim" value="2" /> A Funny Thing Happened on the Way to the Forum
+            <input name="sondheim" type="radio" value="2" /> A Funny Thing Happened on the Way to the Forum
             <br />
-            <input type="radio" name="sondheim" value="3" /> Sweeney Todd
+            <input name="sondheim" type="radio" value="3" /> Sweeney Todd
             <br />
-            <input type="radio" name="sondheim" value="4" /> Assassins
+            <input name="sondheim" type="radio" value="4" /> Assassins
           </div>
           <div>
             Choose one:
             <br />
             <input
-              type="radio"
-              name="wavefunction"
-              value="everett"
-              data-form-submit-required="radio"
               data-form-submit-error-msg="Please choose a quantum mechanism interpretation"
+              data-form-submit-required="radio"
+              name="wavefunction"
+              type="radio"
+              value="everett"
             />{' '}
             Many-worlds interpretation
             <br />
-            <input type="radio" name="wavefunction" value="bohr" /> Copenhagen interpretation
+            <input name="wavefunction" type="radio" value="bohr" /> Copenhagen interpretation
             <br />
-            <input type="radio" name="wavefunction" value="bohm" /> Bohm&apos;s interpretation
+            <input name="wavefunction" type="radio" value="bohm" /> Bohm&apos;s interpretation
           </div>
           <div>
             Check this box to continue:
             <br />
             <input
-              type="checkbox"
-              name="very-agreeable"
-              id="very-agreeable"
-              value="Y"
-              data-form-submit-required="true"
               data-form-submit-error-msg="You must agree to continue"
+              data-form-submit-required="true"
+              id="very-agreeable"
+              name="very-agreeable"
+              type="checkbox"
+              value="Y"
             />
             <label htmlFor="very-agreeable">I&nbsp;agree</label>
             <div data-form-submit-error-for="very-agreeable"></div>
           </div>
           <button type="submit">Submit</button>
-          <input type="hidden" name="form-number" value="5" />
+          <input name="form-number" type="hidden" value="5" />
         </fieldset>
       </form>
       <form action="/form-submit/" method="POST">
@@ -244,59 +244,59 @@ const FormSubmitExample = (): JSX.Element => {
           <div>
             URL:
             <input
-              type="text"
-              name="url"
-              data-form-submit-required="url"
               data-form-submit-error-msg="Please enter a valid URL"
+              data-form-submit-required="url"
+              name="url"
+              type="text"
             />
           </div>
           <div>
             URL with http/https:
             <input
-              type="text"
-              name="url-http"
-              data-form-submit-required="url-http"
               data-form-submit-error-msg="Please enter a valid HTTP URL"
+              data-form-submit-required="url-http"
+              name="url-http"
+              type="text"
             />
           </div>
           <div>
             Path portion of URL (after first / after hostname):
             <input
-              type="text"
-              name="url-path"
-              data-form-submit-required="url-path"
               data-form-submit-error-msg="Please enter a URL path, the part of the URL after the hostname"
+              data-form-submit-required="url-path"
+              name="url-path"
+              type="text"
             />
           </div>
           <div>
             Hostname:
             <input
-              type="text"
-              name="hostname"
-              data-form-submit-required="hostname"
               data-form-submit-error-msg="Please enter a valid hostname, ex www.google.com"
+              data-form-submit-required="hostname"
+              name="hostname"
+              type="text"
             />
           </div>
           <div>
             Domain:
             <input
-              type="text"
-              name="domain"
-              data-form-submit-required="domain"
               data-form-submit-error-msg="Please enter a valid domain, ex google.com"
+              data-form-submit-required="domain"
+              name="domain"
+              type="text"
             />
           </div>
           <div>
             IP Address:
             <input
-              type="text"
-              name="ip-address"
-              data-form-submit-required="ip-address"
               data-form-submit-error-msg="Please enter a valid IP address, ex 192.168.3.14"
+              data-form-submit-required="ip-address"
+              name="ip-address"
+              type="text"
             />
           </div>
           <button type="submit">Submit</button>
-          <input type="hidden" name="form-number" value="6" />
+          <input name="form-number" type="hidden" value="6" />
         </fieldset>
       </form>
       <form action="/form-submit/" method="POST">
@@ -306,43 +306,43 @@ const FormSubmitExample = (): JSX.Element => {
           <div>
             Social security number:
             <input
-              type="text"
-              name="ssn"
-              data-form-submit-required="ssn"
               data-form-submit-error-msg="Please enter a valid SSN, ex. 123-45-6789"
+              data-form-submit-required="ssn"
+              name="ssn"
+              type="text"
             />
           </div>
           <div>
             ABA routing number (for ACH, found on bottom of checks):
             <input
-              type="text"
-              name="aba-routing"
-              data-form-submit-required="aba-routing"
-              data-form-submit-error-msg="Please enter a valid ABA routing number, ex. 011000015"
-              maxLength={9}
               data-form-submit-count="true"
+              data-form-submit-error-msg="Please enter a valid ABA routing number, ex. 011000015"
+              data-form-submit-required="aba-routing"
+              maxLength={9}
+              name="aba-routing"
+              type="text"
             />
           </div>
           <div>
             Credit card:
             <input
-              type="text"
-              name="credit-card"
-              data-form-submit-required="credit-card"
               data-form-submit-error-msg="Please enter a valid credit card number, ex. 4111 1111 1111 1111"
+              data-form-submit-required="credit-card"
+              name="credit-card"
+              type="text"
             />
           </div>
           <div>
             CVV (on back of credit card):
             <input
-              type="text"
-              name="cvv"
-              data-form-submit-required="cvv"
               data-form-submit-error-msg="Please enter a CVV number, ex. 123"
+              data-form-submit-required="cvv"
+              name="cvv"
+              type="text"
             />
           </div>
           <button type="submit">Submit</button>
-          <input type="hidden" name="form-number" value="7" />
+          <input name="form-number" type="hidden" value="7" />
         </fieldset>
       </form>
       <form action="/form-submit/" method="POST">
@@ -350,72 +350,72 @@ const FormSubmitExample = (): JSX.Element => {
           <legend>Form 8 - Fanciness</legend>
           <div>
             Enter a number less than 50:
-            <input type="text" name="lessthan50" id="lessthan50" />
+            <input id="lessthan50" name="lessthan50" type="text" />
           </div>
           <div>
             Double the above number:
-            <input type="text" name="doubled" id="doubled" />
+            <input id="doubled" name="doubled" type="text" />
           </div>
           <div>
             Enter a date in the format (D, M YYYY):
-            <input type="text" name="date-weird" id="date-weird" placeholder="d, m yyyy" />
+            <input id="date-weird" name="date-weird" placeholder="d, m yyyy" type="text" />
           </div>
           <div>
             Enter the same word twice:
-            <input type="text" name="regex" placeholder="pizza pizza" data-form-submit-regex="([a-zA-Z]+)\W*(\1)" />
+            <input data-form-submit-regex="([a-zA-Z]+)\W*(\1)" name="regex" placeholder="pizza pizza" type="text" />
           </div>
           <div>
             Enter two words so the top word comes first alphabetically:
-            <input type="text" name="alpha-left" id="alpha-left" data-form-submit-group="alpha-input" />
-            <input type="text" name="alpha-right" id="alpha-right" data-form-submit-group="alpha-input" />
+            <input data-form-submit-group="alpha-input" id="alpha-left" name="alpha-left" type="text" />
+            <input data-form-submit-group="alpha-input" id="alpha-right" name="alpha-right" type="text" />
             <div data-form-submit-error-for="alpha-input"></div>
           </div>
           <div>
             Check exactly three options:
             <input
-              type="checkbox"
-              name="checkbox-option-1"
-              id="checkbox-option-1"
               data-form-submit-group="checkbox-options"
+              id="checkbox-option-1"
+              name="checkbox-option-1"
+              type="checkbox"
               value="1"
             />
             <label htmlFor="checkbox-option-1">1</label>
             <input
-              type="checkbox"
-              name="checkbox-option-2"
-              id="checkbox-option-2"
               data-form-submit-group="checkbox-options"
+              id="checkbox-option-2"
+              name="checkbox-option-2"
+              type="checkbox"
               value="2"
             />
             <label htmlFor="checkbox-option-2">2</label>
             <input
-              type="checkbox"
-              name="checkbox-option-3"
-              id="checkbox-option-3"
               data-form-submit-group="checkbox-options"
+              id="checkbox-option-3"
+              name="checkbox-option-3"
+              type="checkbox"
               value="3"
             />
             <label htmlFor="checkbox-option-3">3</label>
             <input
-              type="checkbox"
-              name="checkbox-option-4"
-              id="checkbox-option-4"
               data-form-submit-group="checkbox-options"
+              id="checkbox-option-4"
+              name="checkbox-option-4"
+              type="checkbox"
               value="4"
             />
             <label htmlFor="checkbox-option-4">4</label>
             <input
-              type="checkbox"
-              name="checkbox-option-5"
-              id="checkbox-option-5"
               data-form-submit-group="checkbox-options"
+              id="checkbox-option-5"
+              name="checkbox-option-5"
+              type="checkbox"
               value="5"
             />
             <label htmlFor="checkbox-option-5">5</label>
             <div data-form-submit-error-for="checkbox-options"></div>
           </div>
           <button type="submit">Submit</button>
-          <input type="hidden" name="form-number" value="8" />
+          <input name="form-number" type="hidden" value="8" />
         </fieldset>
       </form>
       <script
@@ -489,180 +489,180 @@ formSubmit.addValidation(document.getElementById('lessthan50'), function(value, 
           <div>
             Enter one to ten digits:
             <input
-              type="text"
-              name="digits-optional"
-              maxLength={10}
-              data-form-submit-optional="digits"
               data-form-submit-count="true"
+              data-form-submit-optional="digits"
+              maxLength={10}
+              name="digits-optional"
+              type="text"
             />
           </div>
           <div>
             Any number:
-            <input type="text" name="number-optional" data-form-submit-optional="number" />
+            <input data-form-submit-optional="number" name="number-optional" type="text" />
           </div>
           <div>
             Currency:
-            <input type="text" name="currency-optional" data-form-submit-optional="currency" />
+            <input data-form-submit-optional="currency" name="currency-optional" type="text" />
           </div>
           <div>
             Phone number:
             <input
-              type="text"
-              name="phone-optional"
-              data-form-submit-optional="phone"
               data-form-submit-error-msg="Invalid phone number"
+              data-form-submit-optional="phone"
+              name="phone-optional"
+              type="text"
             />
           </div>
           <div>
             ZIP code:
             <input
-              type="text"
-              name="zip-optional"
-              data-form-submit-optional="zip"
-              data-form-submit-error-msg="Invalid ZIP code"
               data-form-submit-count="5"
+              data-form-submit-error-msg="Invalid ZIP code"
+              data-form-submit-optional="zip"
+              name="zip-optional"
+              type="text"
             />
           </div>
           <div>
             Email address:
             <input
-              type="text"
-              name="email-optional"
-              data-form-submit-optional="email"
               data-form-submit-error-msg="Invalid email address"
+              data-form-submit-optional="email"
+              name="email-optional"
+              type="text"
             />
           </div>
           <div>
             Timestamp:
             <input
-              type="text"
-              name="timestamp-optional"
-              data-form-submit-optional="timestamp"
               data-form-submit-error-msg="Invalid timestamp"
+              data-form-submit-optional="timestamp"
+              name="timestamp-optional"
+              type="text"
             />
           </div>
           <div>
             Date:
             <input
-              type="text"
-              name="date-mmddyyyy-optional"
-              data-form-submit-optional="date-mmddyyyy"
               data-form-submit-error-msg="Invalid date, use MM/DD/YYYY"
+              data-form-submit-optional="date-mmddyyyy"
+              name="date-mmddyyyy-optional"
+              type="text"
             />
           </div>
           <div>
             Date:
             <input
-              type="text"
-              name="date-yyyymmdd-optional"
-              data-form-submit-optional="date-yyyymmdd"
               data-form-submit-error-msg="Invalid date, use YYYY-MM-DD"
+              data-form-submit-optional="date-yyyymmdd"
+              name="date-yyyymmdd-optional"
+              type="text"
             />
           </div>
           <div>
             Time:
             <input
-              type="text"
-              name="time-optional"
-              data-form-submit-optional="time"
               data-form-submit-error-msg="Invalid time"
+              data-form-submit-optional="time"
+              name="time-optional"
+              type="text"
             />
           </div>
           <div>
             URL:
             <input
-              type="text"
-              name="url-optional"
-              data-form-submit-optional="url"
               data-form-submit-error-msg="Please enter a valid URL"
+              data-form-submit-optional="url"
+              name="url-optional"
+              type="text"
             />
           </div>
           <div>
             URL with http/https:
             <input
-              type="text"
-              name="url-http-optional"
-              data-form-submit-optional="url-http"
               data-form-submit-error-msg="Please enter a valid HTTP URL"
+              data-form-submit-optional="url-http"
+              name="url-http-optional"
+              type="text"
             />
           </div>
           <div>
             Path portion of URL (after first / after hostname):
             <input
-              type="text"
-              name="url-path-optional"
-              data-form-submit-optional="url-path"
               data-form-submit-error-msg="Please enter a URL path, the part of the URL after the hostname"
+              data-form-submit-optional="url-path"
+              name="url-path-optional"
+              type="text"
             />
           </div>
           <div>
             Hostname:
             <input
-              type="text"
-              name="hostname-optional"
-              data-form-submit-optional="hostname"
               data-form-submit-error-msg="Please enter a valid hostname, ex www.google.com"
+              data-form-submit-optional="hostname"
+              name="hostname-optional"
+              type="text"
             />
           </div>
           <div>
             Domain:
             <input
-              type="text"
-              name="domain-optional"
-              data-form-submit-optional="domain"
               data-form-submit-error-msg="Please enter a valid domain, ex google.com"
+              data-form-submit-optional="domain"
+              name="domain-optional"
+              type="text"
             />
           </div>
           <div>
             IP Address:
             <input
-              type="text"
-              name="ip-address-optional"
-              data-form-submit-optional="ip-address"
               data-form-submit-error-msg="Please enter a valid IP address, ex 192.168.3.14"
+              data-form-submit-optional="ip-address"
+              name="ip-address-optional"
+              type="text"
             />
           </div>
           <strong>Please only submit fictitious test data</strong>
           <div>
             Social security number:
             <input
-              type="text"
-              name="ssn-optional"
-              data-form-submit-optional="ssn"
               data-form-submit-error-msg="Please enter a valid SSN"
+              data-form-submit-optional="ssn"
+              name="ssn-optional"
+              type="text"
             />
           </div>
           <div>
             ABA routing number (for ACH, bottom of checks):
             <input
-              type="text"
-              name="aba-routing-optional"
-              data-form-submit-optional="aba-routing"
-              data-form-submit-error-msg="Please enter a valid ABA routing number, ex. 081501696"
-              maxLength={9}
               data-form-submit-count="true"
+              data-form-submit-error-msg="Please enter a valid ABA routing number, ex. 081501696"
+              data-form-submit-optional="aba-routing"
+              maxLength={9}
+              name="aba-routing-optional"
+              type="text"
             />
           </div>
           <div>
             Credit card:
             <input
-              type="text"
-              name="credit-card-optional"
-              data-form-submit-optional="credit-card"
               data-form-submit-error-msg="Please enter a valid credit card number, ex 4111 1111 1111 1111"
+              data-form-submit-optional="credit-card"
+              name="credit-card-optional"
+              type="text"
             />
           </div>
           <div>
             CVV (on back of credit card):
             <input
-              type="text"
-              name="cvv-optional"
-              data-form-submit-optional="cvv"
               data-form-submit-error-msg="Please enter a CVV number"
+              data-form-submit-optional="cvv"
+              name="cvv-optional"
+              type="text"
             />
           </div>
           <button type="submit">Submit</button>
-          <input type="hidden" name="form-number" value="9" />
+          <input name="form-number" type="hidden" value="9" />
         </fieldset>
       </form>
     </>

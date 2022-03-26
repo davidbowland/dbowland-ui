@@ -1,9 +1,10 @@
-import React from 'react'
 import { Helmet } from 'react-helmet'
+import React from 'react'
 
 import '@config/amplify'
-import Resume from '@components/resume'
 import { PrimaryMain } from '@components/common/elements'
+import Resume from '@components/resume'
+
 import '@fontsource/rokkitt'
 import 'normalize.css'
 

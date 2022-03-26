@@ -1,5 +1,5 @@
-import { Link } from 'gatsby'
 import styled, { CSSProperties } from 'styled-components'
+import { Link } from 'gatsby'
 
 export const ResumeAnchor = styled.a`
   color: #444;

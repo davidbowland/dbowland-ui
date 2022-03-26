@@ -1,7 +1,7 @@
-import { mocked } from 'jest-mock'
-import React from 'react'
 import '@testing-library/jest-dom'
-import { screen, render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import React from 'react'
+import { mocked } from 'jest-mock'
 
 import Genographic from './genographic'
 import GenographicInfographic from '@components/genographic-infographic'

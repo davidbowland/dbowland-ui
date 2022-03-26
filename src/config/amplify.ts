@@ -8,8 +8,8 @@ const identityPoolId = process.env.GATSBY_IDENTITY_POOL_ID
 Amplify.configure({
   Auth: {
     identityPoolId,
-    region: identityPoolId.split(':')[0],
     mandatorySignIn: false,
+    region: identityPoolId.split(':')[0],
   },
 })
 
@@ -20,8 +20,8 @@ const appId = process.env.GATSBY_PINPOINT_ID
 const analyticsConfig = {
   AWSPinpoint: {
     appId,
-    region: 'us-east-1',
     mandatorySignIn: false,
+    region: 'us-east-1',
   },
 }
 
