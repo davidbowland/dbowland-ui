@@ -46,6 +46,13 @@ Resources:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
       BucketName: !FindInMap [EnvironmentMap, !Ref Environment, bucketName]
+      Tags:
+        - Key: 'created-by'
+          Value: 'dbowland-ui'
+        - Key: 'created-for'
+          Value: 'dbowland'
+        - Key: 'environment'
+          Value: !Ref Environment
 
   UiBucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -107,6 +114,13 @@ Resources:
             - Certificate: !FindInMap [EnvironmentMap, !Ref Environment, certificate]
           MinimumProtocolVersion: 'TLSv1.2_2018'
           SslSupportMethod: 'sni-only'
+      Tags:
+        - Key: 'created-by'
+          Value: 'dbowland-ui'
+        - Key: 'created-for'
+          Value: 'dbowland'
+        - Key: 'environment'
+          Value: !Ref Environment
 
   DomainDns:
     Type: AWS::Route53::RecordSet
@@ -133,6 +147,13 @@ Resources:
       BucketName: !Sub
         - '${BucketName}-redirect'
         - BucketName: !FindInMap [EnvironmentMap, !Ref Environment, bucketName]
+      Tags:
+        - Key: 'created-by'
+          Value: 'dbowland-ui'
+        - Key: 'created-for'
+          Value: 'dbowland'
+        - Key: 'environment'
+          Value: !Ref Environment
       WebsiteConfiguration:
         RedirectAllRequestsTo:
           HostName: !FindInMap [EnvironmentMap, !Ref Environment, domain]
@@ -194,6 +215,13 @@ Resources:
             - Certificate: !FindInMap [EnvironmentMap, !Ref Environment, certificate]
           MinimumProtocolVersion: 'TLSv1.2_2018'
           SslSupportMethod: 'sni-only'
+      Tags:
+        - Key: 'created-by'
+          Value: 'dbowland-ui'
+        - Key: 'created-for'
+          Value: 'dbowland'
+        - Key: 'environment'
+          Value: !Ref Environment
 
   RedirectDns:
     Type: AWS::Route53::RecordSet
