@@ -10,11 +10,11 @@ import '@fontsource/fira-code'
 const FormSubmit = (): JSX.Element => {
   return (
     <Themed>
+      <Helmet>
+        <title>form-submit example page | github.com/davidbowland/form-submit</title>
+        <script defer src="/form-submit.js"></script>
+      </Helmet>
       <main style={{ fontFamily: 'Fira Code' }}>
-        <Helmet>
-          <title>form-submit example page | github.com/davidbowland/form-submit</title>
-          <script defer src="/form-submit.js"></script>
-        </Helmet>
         <FormSubmitExample />
       </main>
     </Themed>

@@ -5,6 +5,7 @@ import React from 'react'
 import '@config/amplify'
 import GenographicInfographic from '@components/genographic-infographic'
 import Themed from '@components/themed'
+import TitleBar from '@components/title-bar'
 
 const Genographic = (): JSX.Element => {
   return (
@@ -14,6 +15,9 @@ const Genographic = (): JSX.Element => {
       </Helmet>
       <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px', textAlign: 'center' }}>
         <main>
+          <nav>
+            <TitleBar />
+          </nav>
           <section>
             <GenographicInfographic />
           </section>

@@ -6,15 +6,18 @@ import { render } from '@testing-library/react'
 import NotFound from './404'
 import ServerErrorMessage from '@components/server-error-message'
 import Themed from '@components/themed'
+import TitleBar from '@components/title-bar'
 
 jest.mock('@aws-amplify/analytics')
 jest.mock('@components/server-error-message')
 jest.mock('@components/themed')
+jest.mock('@components/title-bar')
 
 describe('404 error page', () => {
   beforeAll(() => {
     mocked(ServerErrorMessage).mockReturnValue(<></>)
     mocked(Themed).mockImplementation(({ children }) => <>{children}</>)
+    mocked(TitleBar).mockReturnValue(<></>)
     Object.defineProperty(window, 'location', {
       configurable: true,
       value: { pathname: '' },
@@ -33,6 +36,11 @@ describe('404 error page', () => {
       expect.anything()
     )
     expect(mocked(ServerErrorMessage)).toHaveBeenCalledTimes(1)
+  })
+
+  test('expect rendering NotFound renders TitleBar', () => {
+    render(<NotFound />)
+    expect(mocked(TitleBar)).toHaveBeenCalledTimes(1)
   })
 
   test('expect no render when path begins /s/', () => {

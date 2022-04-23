@@ -8,7 +8,6 @@ import FormSubmitExample from '@components/form-submit'
 
 jest.mock('@aws-amplify/analytics')
 jest.mock('@components/form-submit')
-jest.mock('@fontsource/rokkitt')
 
 describe('form-submit example', () => {
   beforeAll(() => {
