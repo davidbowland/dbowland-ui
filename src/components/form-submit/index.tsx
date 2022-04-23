@@ -118,6 +118,7 @@ const FormSubmitExample = (): JSX.Element => {
           <div>
             Timestamp:
             <input
+              className="wide-input"
               data-form-submit-error-msg="Please enter a timestamp in the format MM/DD/YYYY HH:MM:SS.MS"
               data-form-submit-required="timestamp"
               name="timestamp"
@@ -244,6 +245,7 @@ const FormSubmitExample = (): JSX.Element => {
           <div>
             URL:
             <input
+              className="wide-input"
               data-form-submit-error-msg="Please enter a valid URL"
               data-form-submit-required="url"
               name="url"
@@ -253,6 +255,7 @@ const FormSubmitExample = (): JSX.Element => {
           <div>
             URL with http/https:
             <input
+              className="wide-input"
               data-form-submit-error-msg="Please enter a valid HTTP URL"
               data-form-submit-required="url-http"
               name="url-http"
@@ -535,6 +538,7 @@ formSubmit.addValidation(document.getElementById('lessthan50'), function(value, 
           <div>
             Timestamp:
             <input
+              className="wide-input"
               data-form-submit-error-msg="Invalid timestamp"
               data-form-submit-optional="timestamp"
               name="timestamp-optional"
@@ -571,6 +575,7 @@ formSubmit.addValidation(document.getElementById('lessthan50'), function(value, 
           <div>
             URL:
             <input
+              className="wide-input"
               data-form-submit-error-msg="Please enter a valid URL"
               data-form-submit-optional="url"
               name="url-optional"
@@ -580,6 +585,7 @@ formSubmit.addValidation(document.getElementById('lessthan50'), function(value, 
           <div>
             URL with http/https:
             <input
+              className="wide-input"
               data-form-submit-error-msg="Please enter a valid HTTP URL"
               data-form-submit-optional="url-http"
               name="url-http-optional"

@@ -1,21 +1,25 @@
 import { Helmet } from 'react-helmet'
+import Paper from '@mui/material/Paper'
 import React from 'react'
 
 import '@config/amplify'
-import { PrimaryMain } from '@components/common/elements'
 import Resume from '@components/resume'
-
-import '@fontsource/rokkitt'
-import 'normalize.css'
+import Themed from '@components/themed'
 
 const HomePage = (): JSX.Element => {
   return (
-    <PrimaryMain>
+    <Themed>
       <Helmet>
         <title>David Bowland | Software Developer</title>
       </Helmet>
-      <Resume />
-    </PrimaryMain>
+      <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px' }}>
+        <main>
+          <section>
+            <Resume />
+          </section>
+        </main>
+      </Paper>
+    </Themed>
   )
 }
 
