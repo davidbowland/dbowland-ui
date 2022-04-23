@@ -17,6 +17,11 @@ describe('Genographic infographic component', () => {
     })
   })
 
+  test('Genographic includes text "National Geographic Genographic project"', () => {
+    render(<GenographicInfographic />)
+    expect(screen.queryByText(/National Geographic Genographic project/i)).toBeInTheDocument()
+  })
+
   test('Rendering GenographicInfographic renders genographics-infographic.png with alt text', () => {
     render(<GenographicInfographic />)
 

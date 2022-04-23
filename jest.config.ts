@@ -97,7 +97,7 @@ export default {
     '^@config/(.*)$': '<rootDir>/src/config/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@test/(.*)$': '<rootDir>/test/$1',
-    '@fontsource/rokkitt': '<rootDir>/__mocks__/file-mock.js',
+    '@fontsource/(.*)$': '<rootDir>/__mocks__/file-mock.js',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

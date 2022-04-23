@@ -2,7 +2,6 @@ import styled, { CSSProperties } from 'styled-components'
 import { Link } from 'gatsby'
 
 export const ResumeAnchor = styled.a`
-  color: #444;
   transition: all 0.2s ease-in;
 
   &:hover {
@@ -21,7 +20,7 @@ export const ResumeBody = styled.div`
 export const ResumeContactDetails = styled.div`
   float: right;
 
-  @media all and (max-width: 601px) {
+  @media all and (max-width: 701px) {
     float: none;
     text-align: center;
     width: 100%;
@@ -36,14 +35,10 @@ export const ResumeContactDetailsList = styled.ul`
 `
 
 export const ResumeContactDetailsListItem = styled.li`
-  color: #444;
   margin-bottom: 6px;
 `
 
 export const ResumeContainer = styled.div`
-  color: #222;
-  background: #f3f3f3;
-  font-family: 'Lato', helvetica, arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   margin: 0 auto;
@@ -81,7 +76,7 @@ export const ResumeHeadshot = styled.div`
 
 // See bug: https://github.com/gatsbyjs/gatsby/issues/30880
 export const ResumeImageStyles: CSSProperties = {
-  borderRadius: '50px',
+  borderRadius: '25px',
   height: 'auto',
   width: '100%',
 }
@@ -97,7 +92,6 @@ export const ResumeJobDescriptionDetail = styled.li`
 
 export const ResumeKeySkills = styled.ul`
   column-count: 3;
-  color: #444;
   font-size: 1em;
   list-style-type: none;
   margin: 0 0 20px 0;
@@ -117,7 +111,6 @@ export const ResumeKeySkillsItem = styled.li`
 `
 
 export const ResumeLink = styled(Link)`
-  color: #444;
   transition: all 0.2s ease-in;
 
   &:hover {
@@ -128,7 +121,7 @@ export const ResumeLink = styled(Link)`
 export const ResumeNameSection = styled.div`
   float: left;
 
-  @media all and (max-width: 601px) {
+  @media all and (max-width: 701px) {
     float: none;
     text-align: center;
     width: 100%;
@@ -136,7 +129,6 @@ export const ResumeNameSection = styled.div`
 `
 
 export const ResumeNameSectionName = styled.h1`
-  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
   font-size: 2.5em;
   font-weight: 700;
   margin: 0 0 -6px 0;
@@ -148,20 +140,17 @@ export const ResumeNameSectionName = styled.h1`
 `
 
 export const ResumeNameSectionTitle = styled.h2`
-  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
   font-size: 2em;
   margin: 0 0 0 2px;
 `
 
 export const ResumeParagraph = styled.p`
-  color: #444;
   font-size: 1em;
   line-height: 1.4em;
   margin-bottom: 10px;
 `
 
 export const ResumePrimaryDetails = styled.div`
-  background: #ededed;
   border-bottom: 2px solid #cf8a05;
   padding: 25px 35px;
 
@@ -191,7 +180,7 @@ export const ResumeSectionContent = styled.div`
   float: right;
   width: 72.5%;
 
-  @media all and (max-width: 601px) {
+  @media all and (max-width: 801px) {
     float: none;
     width: 100%;
   }
@@ -202,7 +191,6 @@ export const ResumeSectionContent = styled.div`
 `
 
 export const ResumeSectionContentTitle = styled.h2`
-  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
   font-size: 1.5em;
   margin: 0 0 4px 0;
 `
@@ -211,7 +199,7 @@ export const ResumeSectionTitle = styled.div`
   float: left;
   width: 25%;
 
-  @media all and (max-width: 601px) {
+  @media all and (max-width: 801px) {
     float: none;
     font-size: 1.25em;
     margin-left: -2px;
@@ -221,10 +209,9 @@ export const ResumeSectionTitle = styled.div`
 
 export const ResumeSectionTitleHeader = styled.h1`
   color: #cf8a05;
-  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
   font-size: 1.5em;
   font-style: italic;
-  margin: 0;
+  margin: 0 0.5em;
 `
 
 export const ResultSubDetails = styled(ResumeParagraph)`

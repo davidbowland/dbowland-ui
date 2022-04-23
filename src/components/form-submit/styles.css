@@ -1,3 +1,7 @@
+body,
+input {
+  font-family: 'Fira Code';
+}
 form ~ form {
   margin-top: 1.5em;
 }
@@ -17,8 +21,8 @@ textarea {
   display: block;
 }
 [data-form-submit-error-for] {
-  color: #c00;
+  color: #f80;
 }
-[name='timestamp'] {
+.wide-input {
   width: 20em;
 }
