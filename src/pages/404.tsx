@@ -4,6 +4,7 @@ import React from 'react'
 import '@config/amplify'
 import ServerErrorMessage from '@components/server-error-message'
 import Themed from '@components/themed'
+import TitleBar from '@components/title-bar'
 
 const NotFound = (): JSX.Element => {
   const display404 = typeof window !== 'undefined' && window.location.pathname.match(/^\/s\/[^/]+$/) === null
@@ -11,12 +12,13 @@ const NotFound = (): JSX.Element => {
     <Themed>
       <Paper elevation={3} sx={{ margin: '1em auto', maxWidth: '900px' }}>
         {display404 && (
-          <div className="main-content">
+          <>
+            <TitleBar />
             <ServerErrorMessage title="404: Not Found">
               The resource you requested is unavailable. If you feel you have reached this page in error, please contact
               the webmaster.
             </ServerErrorMessage>
-          </div>
+          </>
         )}
       </Paper>
     </Themed>

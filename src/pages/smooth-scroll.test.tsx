@@ -8,7 +8,6 @@ import SmoothScrollExample from '@components/smooth-scroll'
 
 jest.mock('@aws-amplify/analytics')
 jest.mock('@components/smooth-scroll')
-jest.mock('@fontsource/rokkitt')
 
 describe('smooth-scroll example', () => {
   beforeAll(() => {

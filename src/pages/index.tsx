@@ -5,6 +5,7 @@ import React from 'react'
 import '@config/amplify'
 import Resume from '@components/resume'
 import Themed from '@components/themed'
+import TitleBar from '@components/title-bar'
 
 const HomePage = (): JSX.Element => {
   return (
@@ -14,6 +15,9 @@ const HomePage = (): JSX.Element => {
       </Helmet>
       <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px' }}>
         <main>
+          <nav>
+            <TitleBar />
+          </nav>
           <section>
             <Resume />
           </section>
