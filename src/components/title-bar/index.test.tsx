@@ -19,6 +19,10 @@ describe('Title bar component', () => {
       await act(async () => {
         menuButton.click()
       })
+      const resumeButton = (await screen.queryAllByText(/resume/i)[1]) as HTMLButtonElement
+      await act(async () => {
+        resumeButton.click()
+      })
 
       expect(screen.queryAllByText(/GitHub/i)[1]).toBeVisible()
       expect(screen.queryAllByText(/LinkedIn/i)[1]).toBeVisible()
