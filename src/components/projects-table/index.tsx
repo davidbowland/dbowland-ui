@@ -98,6 +98,7 @@ const ProjectsTable = (): JSX.Element => {
             </Link>{' '}
             can be applied.
           </Typography>
+          <Typography variant="h5">Lessons:</Typography>
           <Typography>
             It was very enjoyable learning Pulumi and more about the concept of infrastructure as code. CloudFormation,
             likewise, is decently easy to use while accomplishing most of what I need. I&apos;m thankful these projects
@@ -127,6 +128,7 @@ const ProjectsTable = (): JSX.Element => {
             email it received. Therefore, I had to recreate that functionality before I could migrate providers. As a
             handy side effect, having an endpoint that allows me to send emails could be useful for future projects.
           </Typography>
+          <Typography variant="h5">Technologies:</Typography>
           <Typography>
             For this project, I elected to use <Link to="https://aws.amazon.com/ses/">AWS SES</Link> to send and receive
             emails, since that&apos;s the AWS solution. I decided on{' '}
@@ -135,6 +137,7 @@ const ProjectsTable = (): JSX.Element => {
             life. Lambdas are perfect for this project since they work so well with elastic demand and processing speed
             isn&apos;t very relevant.
           </Typography>
+          <Typography variant="h5">Lessons:</Typography>
           <Typography>
             Perhaps the most useful thing I learned in this project was how to register and manage a website with{' '}
             <Link to="https://aws.amazon.com/route53/">AWS Route53</Link>. In addition to using Route 53 to set up MX
@@ -188,6 +191,7 @@ const ProjectsTable = (): JSX.Element => {
             fastest at compiling or the most popular option, it is highly specialized for creating fast static sites and
             I had a positive experience with it on a past project.
           </Typography>
+          <Typography variant="h5">Technologies:</Typography>
           <Typography>
             All UI projects leverage the material UI library <Link to="https://mui.com/">MUI</Link> and use either{' '}
             <Link to="https://emotion.sh/docs/styled">Emotion</Link> or{' '}
@@ -195,6 +199,7 @@ const ProjectsTable = (): JSX.Element => {
             accessibility in addition to providing a familiar experience. Icons from the MUI library are used in all UI
             projects, as well.
           </Typography>
+          <Typography variant="h5">Lessons:</Typography>
           <Typography>
             I learned to use stencils writing this project and designed the loading button I would later use in other
             projects. I also spent a lot of time thinking about how to uniformly pass both data and associated ID
@@ -242,6 +247,7 @@ const ProjectsTable = (): JSX.Element => {
             <Link to="https://aws.amazon.com/cognito/">AWS Cognito</Link> user pool. I use that to validate phone
             numbers so I can be comfortable allowing those users to send text messages through the website.
           </Typography>
+          <Typography variant="h5">Lessons:</Typography>
           <Typography>
             I enjoyed learning about routing in Gatsby, which works similar to other static site generators. It was also
             fun to set up Cognito to allow users to sign up with their phone number and allow users to send text
@@ -282,6 +288,7 @@ const ProjectsTable = (): JSX.Element => {
             this one, including technology such as lambda back-ends, React front-ends, SMS messaging, Cognito
             authentication, and more.
           </Typography>
+          <Typography variant="h5">Lessons:</Typography>
           <Typography>
             This project was great because I hadn&apos;t worked with{' '}
             <Link to="https://cloud.google.com/">Google Cloud Platform</Link>, let alone{' '}
@@ -330,6 +337,7 @@ const ProjectsTable = (): JSX.Element => {
             <Link to="https://aws.amazon.com/cloudwatch/">AWS CloudWatch</Link> and alerts me via SMS when an error
             occurs.
           </Typography>
+          <Typography variant="h5">Lessons:</Typography>
           <Typography>
             Creating these repositories taught me about using{' '}
             <Link to="https://aws.amazon.com/pinpoint/">AWS Pinpoint</Link>, both for analytics and for sending SMS
