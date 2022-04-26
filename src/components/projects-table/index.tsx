@@ -29,8 +29,18 @@ const ProjectsTable = (): JSX.Element => {
       <Box ref={contentsRef} sx={{ display: { sm: 'flex', xs: 'block' } }}>
         <ProjectHeader variant="h4">Contents</ProjectHeader>
         <ProjectDetails padding={2} spacing={2}>
+          <Typography variant="h5">Introduction:</Typography>
+          <Typography>
+            My professional life intersects with some cool technologies such as{' '}
+            <Link to="https://reactjs.org/">React</Link>,{' '}
+            <Link to="https://spring.io/projects/spring-boot">Spring Boot</Link>, and a panoply of AWS services, but I
+            wanted to expand my horizons by completing a few side projects. The following side projects required setting
+            up my own AWS and GCP accounts, registering a couple of domains, and even creating an Alexa skill! I&apos;m
+            pleased to report I was able to use them to generate some innovative ideas in professional contexts, as
+            well.
+          </Typography>
           <Box>
-            <Typography variant="h5">Projects:</Typography>
+            <Typography variant="h5">Personal Projects:</Typography>
             <List>
               <ListItem disablePadding>
                 <ListItemButton onClick={() => rootRef.current && rootRef.current.scrollIntoView()}>
@@ -175,8 +185,8 @@ const ProjectsTable = (): JSX.Element => {
           <Typography>
             This project was my first to utilize a UI. I made a number of key decisions, including choosing{' '}
             <Link to="https://www.gatsbyjs.com/">Gatsby</Link> as my static site generator. While it isn&apos;t the
-            fastest or most popular option, it is highly specialized for creating fast static sites and I had a positive
-            experience with it on a past project.
+            fastest at compiling or the most popular option, it is highly specialized for creating fast static sites and
+            I had a positive experience with it on a past project.
           </Typography>
           <Typography>
             All UI projects leverage the material UI library <Link to="https://mui.com/">MUI</Link> and use either{' '}
@@ -188,7 +198,8 @@ const ProjectsTable = (): JSX.Element => {
           <Typography>
             I learned to use stencils writing this project and designed the loading button I would later use in other
             projects. I also spent a lot of time thinking about how to uniformly pass both data and associated ID
-            information when requesting a set of records, something I think this project does notably well.
+            information when requesting a set of records, something I think this project does notably well. Plus, I got
+            to build my first Alexa skill!
           </Typography>
           <Box>
             <Typography variant="h5">Source:</Typography>
@@ -201,6 +212,11 @@ const ProjectsTable = (): JSX.Element => {
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/jokes-infrastructure">
                   <ListItemText primary="jokes-infrastructure (CloudFormation)" />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton component="a" href="https://github.com/davidbowland/jokes-skill">
+                  <ListItemText primary="jokes-skill (AWS ASK SDK/NodeJS)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
