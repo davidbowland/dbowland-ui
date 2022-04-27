@@ -150,12 +150,12 @@ const ProjectsTable = (): JSX.Element => {
             <List>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/emails-account-api">
-                  <ListItemText primary="emails-accounts-api (AWS SAM/NodeJS)" />
+                  <ListItemText primary="emails-accounts-api (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/emails-inbound-service">
-                  <ListItemText primary="emails-inbound-service (AWS SAM/NodeJS)" />
+                  <ListItemText primary="emails-inbound-service (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
@@ -165,12 +165,12 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/emails-queue-api">
-                  <ListItemText primary="emails-queue-api (AWS SAM/NodeJS)" />
+                  <ListItemText primary="emails-queue-api (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/emails-queue-service">
-                  <ListItemText primary="emails-queue-service (AWS SAM/NodeJS)" />
+                  <ListItemText primary="emails-queue-service (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
             </List>
@@ -211,7 +211,7 @@ const ProjectsTable = (): JSX.Element => {
             <List>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/jokes-api">
-                  <ListItemText primary="jokes-api (AWS SAM/NodeJS)" />
+                  <ListItemText primary="jokes-api (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
@@ -258,7 +258,7 @@ const ProjectsTable = (): JSX.Element => {
             <List>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/links-api">
-                  <ListItemText primary="links-api (AWS SAM/NodeJS)" />
+                  <ListItemText primary="links-api (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
@@ -306,12 +306,12 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/choosee-maps-api">
-                  <ListItemText primary="choosee-maps-api (AWS SAM/NodeJS)" />
+                  <ListItemText primary="choosee-maps-api (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/choosee-session-api">
-                  <ListItemText primary="choosee-session-api (AWS SAM/NodeJS)" />
+                  <ListItemText primary="choosee-session-api (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
@@ -362,22 +362,22 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/log-subscriber">
-                  <ListItemText primary="log-subscriber (AWS SAM/NodeJS)" />
+                  <ListItemText primary="log-subscriber (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/scheduler-service">
-                  <ListItemText primary="scheduler-service (AWS SAM/NodeJS)" />
+                  <ListItemText primary="scheduler-service (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/sms-queue-api">
-                  <ListItemText primary="sms-queue-api (AWS SAM/NodeJS)" />
+                  <ListItemText primary="sms-queue-api (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/sms-queue-service">
-                  <ListItemText primary="sms-queue-service (AWS SAM/NodeJS)" />
+                  <ListItemText primary="sms-queue-service (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
             </List>
