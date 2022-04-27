@@ -233,7 +233,7 @@ const Resume = (): JSX.Element => {
               <ResumeSectionContentTitle>SQL</ResumeSectionContentTitle>
               <ResumeKeySkills>
                 <ResumeKeySkillsItem>DB2</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Microsoft SQL Server (T/SQL)</ResumeKeySkillsItem>
+                <ResumeKeySkillsItem>Microsoft SQL Server</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>MySQL</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>Oracle Database</ResumeKeySkillsItem>
                 <ResumeKeySkillsItem>PostgreSQL</ResumeKeySkillsItem>
