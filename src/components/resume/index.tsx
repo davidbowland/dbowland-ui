@@ -37,7 +37,7 @@ const Resume = (): JSX.Element => {
         <ResumeHeadshot>
           <StaticImage
             alt="Picture of David Bowland"
-            src="../../assets/images/David-2019-05-18.jpg"
+            src="../../assets/images/David-2022-05-16.jpg"
             style={ResumeImageStyles}
           />
         </ResumeHeadshot>
