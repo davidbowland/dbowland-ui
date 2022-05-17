@@ -10,15 +10,14 @@
   "license": "ISC",
   "scripts": {
     "build": "npm run clean && gatsby build",
-    "clean": "rm -rf coverage deploy/temp && npm ci && gatsby clean",
+    "clean": "rm -rf .cache coverage public && npm ci && gatsby clean",
     "deploy": "npm run build && ./scripts/deploy.sh",
     "lint": "prettier --write . && eslint --fix . --resolve-plugins-relative-to .",
     "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky install ; fi",
     "start": "gatsby develop",
     "serve": "npm run build && gatsby serve",
     "test": "jest --colors",
-    "test:update-snapshots": "jest --colors -u",
-    "workflow": "act -s DBOWLAND_SSH_USER -s DBOWLAND_SSH_PASS -s GITHUB_TOKEN"
+    "test:update-snapshots": "jest --colors -u"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
