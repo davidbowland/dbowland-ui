@@ -67,7 +67,7 @@ export const ResumeDownloadHeader = styled.h4`
 export const ResumeHeadshot = styled.div`
   float: left;
   margin-right: 30px;
-  width: 17.5%;
+  width: 15%;
 
   @media all and (max-width: 800px) {
     display: none;
