@@ -16,7 +16,7 @@ const SmoothScrollExample = (): JSX.Element => {
             Down 2
           </a>
         </ExampleCell>
-        <ExampleCell id="cell2" shaded>
+        <ExampleCell data-shaded id="cell2">
           2<br />
           <a data-smooth-scroll-duration="3000" data-smooth-scroll-to="#" href="#cell5">
             Down 1, 3 sec
@@ -38,7 +38,7 @@ const SmoothScrollExample = (): JSX.Element => {
         </ExampleCell>
       </ExampleRow>
       <ExampleRow>
-        <ExampleCell id="cell4" shaded>
+        <ExampleCell data-shaded id="cell4">
           4<br />
           <a data-smooth-scroll-duration="3000" href="#cell6">
             Right 2, 3 sec
@@ -54,7 +54,7 @@ const SmoothScrollExample = (): JSX.Element => {
           <br />
           <a href="#cell9">Right 1, Down 1</a>
         </ExampleCell>
-        <ExampleCell id="cell6" shaded>
+        <ExampleCell data-shaded id="cell6">
           6<br />
           <a data-smooth-scroll-duration="3000" href="#cell3">
             Up 1, 3 sec
@@ -72,7 +72,7 @@ const SmoothScrollExample = (): JSX.Element => {
           <br />
           <button data-smooth-scroll-to="cell9">Right 2</button>
         </ExampleCell>
-        <ExampleCell id="cell8" shaded>
+        <ExampleCell data-shaded id="cell8">
           8<br />
           <button data-smooth-scroll-duration="5000" data-smooth-scroll-to="cell2">
             Up 2, 5 sec

@@ -13,7 +13,7 @@ describe('Genographic infographic component', () => {
 
   beforeAll(() => {
     jest.spyOn(gatsyPluginImage, 'StaticImage').mockImplementation((props) => {
-      return <img {...props} />
+      return <img src={props.src} />
     })
   })
 
