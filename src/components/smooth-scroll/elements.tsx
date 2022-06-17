@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const ExampleCell = styled.div`
   display: table-cell;
-  background-color: ${(props: any) => (props.shaded ? '#d3d3d3' : '#fff')};
+  background-color: ${(props: any) => (props['data-shaded'] ? '#d3d3d3' : '#fff')};
   padding-top: 2.5em;
   text-align: center;
 `
