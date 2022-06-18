@@ -4,26 +4,23 @@ import React from 'react'
 
 import '@config/amplify'
 import ProjectsTable from '@components/projects-table'
-import Themed from '@components/themed'
 import TitleBar from '@components/title-bar'
 
 const Projects = (): JSX.Element => {
   return (
-    <Themed>
+    <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px', textAlign: 'center' }}>
       <Helmet>
         <title>Projects | dbowland.com </title>
       </Helmet>
-      <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px', textAlign: 'center' }}>
-        <main>
-          <nav>
-            <TitleBar />
-          </nav>
-          <section>
-            <ProjectsTable />
-          </section>
-        </main>
-      </Paper>
-    </Themed>
+      <main>
+        <nav>
+          <TitleBar />
+        </nav>
+        <section>
+          <ProjectsTable />
+        </section>
+      </main>
+    </Paper>
   )
 }
 

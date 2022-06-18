@@ -4,26 +4,23 @@ import React from 'react'
 
 import '@config/amplify'
 import Resume from '@components/resume'
-import Themed from '@components/themed'
 import TitleBar from '@components/title-bar'
 
 const HomePage = (): JSX.Element => {
   return (
-    <Themed>
+    <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px' }}>
       <Helmet>
         <title>David Bowland | Software Developer</title>
       </Helmet>
-      <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px' }}>
-        <main>
-          <nav>
-            <TitleBar />
-          </nav>
-          <section>
-            <Resume />
-          </section>
-        </main>
-      </Paper>
-    </Themed>
+      <main>
+        <nav>
+          <TitleBar />
+        </nav>
+        <section>
+          <Resume />
+        </section>
+      </main>
+    </Paper>
   )
 }
 
