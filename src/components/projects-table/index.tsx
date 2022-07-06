@@ -204,7 +204,8 @@ const ProjectsTable = (): JSX.Element => {
             I learned to use stencils writing this project and designed the loading button I would later use in other
             projects. I also spent a lot of time thinking about how to uniformly pass both data and associated ID
             information when requesting a set of records, something I think this project does notably well. Plus, I got
-            to build my first Alexa skill!
+            to build my first Alexa skill and use <Link to="https://aws.amazon.com/polly/">AWS Polly</Link> for
+            text-to-speech!
           </Typography>
           <Box>
             <Typography variant="h5">Source:</Typography>
