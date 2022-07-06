@@ -20,7 +20,7 @@ export const ResumeBody = styled.div`
 export const ResumeContactDetails = styled.div`
   float: right;
 
-  @media all and (max-width: 701px) {
+  @media all and (max-width: 850px) {
     float: none;
     text-align: center;
     width: 100%;
@@ -65,12 +65,14 @@ export const ResumeDownloadHeader = styled.h4`
 `
 
 export const ResumeHeadshot = styled.div`
-  float: left;
-  margin-right: 30px;
-  width: 15%;
+  margin: 1.5em auto;
+  max-width: 200px;
+  width: 45%;
 
-  @media all and (max-width: 800px) {
-    display: none;
+  @media all and (min-width: 850px) {
+    float: left;
+    margin-right: 30px;
+    width: 15%;
   }
 `
 
@@ -121,7 +123,7 @@ export const ResumeLink = styled(Link)`
 export const ResumeNameSection = styled.div`
   float: left;
 
-  @media all and (max-width: 701px) {
+  @media all and (max-width: 850px) {
     float: none;
     text-align: center;
     width: 100%;
