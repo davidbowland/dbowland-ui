@@ -1,6 +1,6 @@
+import styled, { CSSProperties } from 'styled-components'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { styled } from '@mui/material/styles'
 
 export const ProjectDetails = styled(Stack)`
   flex-grow: 2;
@@ -14,3 +14,9 @@ export const ProjectHeader = styled(Typography)`
   flex-shrink: 0;
   margin: 0.5em;
 `
+
+// See bug: https://github.com/gatsbyjs/gatsby/issues/30880
+export const ProjectImageStyles: CSSProperties = {
+  margin: '1em 2em',
+  maxHeight: '300px',
+}

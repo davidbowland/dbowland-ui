@@ -9,9 +9,10 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
+import { StaticImage } from 'gatsby-plugin-image'
 import Typography from '@mui/material/Typography'
 
-import { ProjectDetails, ProjectHeader } from './elements'
+import { ProjectDetails, ProjectHeader, ProjectImageStyles } from './elements'
 
 const ProjectsTable = (): JSX.Element => {
   const chooseeRef = useRef<HTMLDivElement>(null)
@@ -145,6 +146,13 @@ const ProjectsTable = (): JSX.Element => {
             hold emails while they wait to be sent by a lambda. With this project complete, I was able to eventually
             migrate my GoDaddy domain, meaning I now have both a production and a test domain.
           </Typography>
+          <Typography variant="h5">Diagram:</Typography>
+          <StaticImage
+            alt="Diagram of emails project"
+            imgStyle={{ objectFit: 'contain' }}
+            src="../../assets/images/emails-diagram.png"
+            style={ProjectImageStyles}
+          />
           <Box>
             <Typography variant="h5">Source:</Typography>
             <List>
@@ -207,6 +215,13 @@ const ProjectsTable = (): JSX.Element => {
             to build my first Alexa skill and use <Link to="https://aws.amazon.com/polly/">AWS Polly</Link> for
             text-to-speech!
           </Typography>
+          <Typography variant="h5">Diagram:</Typography>
+          <StaticImage
+            alt="Diagram of jokes project"
+            imgStyle={{ objectFit: 'contain' }}
+            src="../../assets/images/jokes-diagram.png"
+            style={ProjectImageStyles}
+          />
           <Box>
             <Typography variant="h5">Source:</Typography>
             <List>
@@ -254,6 +269,13 @@ const ProjectsTable = (): JSX.Element => {
             fun to set up Cognito to allow users to sign up with their phone number and allow users to send text
             messages for the first time in my projects.
           </Typography>
+          <Typography variant="h5">Diagram:</Typography>
+          <StaticImage
+            alt="Diagram of links project"
+            imgStyle={{ objectFit: 'contain' }}
+            src="../../assets/images/links-diagram.png"
+            style={ProjectImageStyles}
+          />
           <Box>
             <Typography variant="h5">Source:</Typography>
             <List>
@@ -297,6 +319,13 @@ const ProjectsTable = (): JSX.Element => {
             past, so I got to set up an account and learn how to interact with that service. On the AWS side, this
             project allowed me to iterate on concepts learned in previous projects.
           </Typography>
+          <Typography variant="h5">Diagram:</Typography>
+          <StaticImage
+            alt="Diagram of choosee project"
+            imgStyle={{ objectFit: 'contain' }}
+            src="../../assets/images/choosee-diagram.png"
+            style={ProjectImageStyles}
+          />
           <Box>
             <Typography variant="h5">Source:</Typography>
             <List>
