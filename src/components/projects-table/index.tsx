@@ -50,27 +50,27 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton onClick={() => emailsRef.current && emailsRef.current.scrollIntoView()}>
-                  <ListItemText primary="Email Forwarding - Lambdas, SES, SQS" />
+                  <ListItemText primary="Email Forwarding - DynamoDB, Lambda, SES, SQS" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton onClick={() => jokesRef.current && jokesRef.current.scrollIntoView()}>
-                  <ListItemText primary="Jokes - Lambda, React" />
+                  <ListItemText primary="Jokes - DynamoDB, Lambda, Polly, React" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton onClick={() => linksRef.current && linksRef.current.scrollIntoView()}>
-                  <ListItemText primary="Link Shortener - Lambda, React" />
+                  <ListItemText primary="Link Shortener - DynamoDB, Lambda, React" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton onClick={() => chooseeRef.current && chooseeRef.current.scrollIntoView()}>
-                  <ListItemText primary="Choosee - Lambdas, React, SQS" />
+                  <ListItemText primary="Choosee - DynamoDB, Lambda, React" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton onClick={() => otherRef.current && otherRef.current.scrollIntoView()}>
-                  <ListItemText primary="Other - Lambdas, React" />
+                  <ListItemText primary="Other - Lambda, React, SQS" />
                 </ListItemButton>
               </ListItem>
             </List>

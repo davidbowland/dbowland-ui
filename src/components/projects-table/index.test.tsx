@@ -15,11 +15,11 @@ describe('ProjectsTable component', () => {
 
   test.each([
     /Root - Infrastructure/i,
-    /Email Forwarding - Lambdas, SES, SQS/i,
-    /Jokes - Lambda, React/i,
-    /Link Shortener - Lambda, React/i,
-    /Choosee - Lambdas, React, SQS/i,
-    /Other - Lambdas, React/i,
+    /Email Forwarding - DynamoDB, Lambda, SES, SQS/i,
+    /Jokes - DynamoDB, Lambda, Polly, React/i,
+    /Link Shortener - DynamoDB, Lambda, React/i,
+    /Choosee - DynamoDB, Lambda, React/i,
+    /Other - Lambda, React, SQS/i,
   ])('expect clicking %s option scrolls view', async (text) => {
     render(<ProjectsTable />)
 
