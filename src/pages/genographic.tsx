@@ -8,7 +8,7 @@ import TitleBar from '@components/title-bar'
 
 const Genographic = (): JSX.Element => {
   return (
-    <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px', textAlign: 'center' }}>
+    <Paper elevation={3}>
       <Helmet>
         <title>Genographic Information | dbowland.com </title>
       </Helmet>
@@ -16,7 +16,7 @@ const Genographic = (): JSX.Element => {
         <nav>
           <TitleBar />
         </nav>
-        <section>
+        <section style={{ margin: 'auto', maxWidth: '900px', textAlign: 'center' }}>
           <GenographicInfographic />
         </section>
       </main>

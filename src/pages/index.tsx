@@ -8,7 +8,7 @@ import TitleBar from '@components/title-bar'
 
 const HomePage = (): JSX.Element => {
   return (
-    <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px' }}>
+    <Paper elevation={1}>
       <Helmet>
         <title>David Bowland | Software Developer</title>
       </Helmet>
@@ -17,7 +17,9 @@ const HomePage = (): JSX.Element => {
           <TitleBar />
         </nav>
         <section>
-          <Resume />
+          <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px' }}>
+            <Resume />
+          </Paper>
         </section>
       </main>
     </Paper>

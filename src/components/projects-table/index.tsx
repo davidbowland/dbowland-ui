@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import Fab from '@mui/material/Fab'
+import Grid from '@mui/material/Grid'
 import KeyboardDoubleArrowUpRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowUpRounded'
 import { Link } from 'gatsby'
 import List from '@mui/material/List'
@@ -12,7 +13,22 @@ import Stack from '@mui/material/Stack'
 import { StaticImage } from 'gatsby-plugin-image'
 import Typography from '@mui/material/Typography'
 
-import { ProjectDetails, ProjectHeader, ProjectImageStyles } from './elements'
+import { ProjectImageStyles } from './elements'
+
+const Project = ({ children, title }: { children: JSX.Element | JSX.Element[]; title: string }): JSX.Element => (
+  <>
+    <Grid item sm={3} sx={{ textAlign: { sm: 'left', xs: 'center' } }} xs={12}>
+      <Typography sx={{ color: '#cf8a05', paddingTop: { sm: '1em', xs: 0 } }} variant="h4">
+        {title}
+      </Typography>
+    </Grid>
+    <Grid item sm={9} xs={12}>
+      <Stack padding={2} spacing={2}>
+        {children}
+      </Stack>
+    </Grid>
+  </>
+)
 
 const ProjectsTable = (): JSX.Element => {
   const chooseeRef = useRef<HTMLDivElement>(null)
@@ -27,9 +43,8 @@ const ProjectsTable = (): JSX.Element => {
 
   return (
     <Stack margin="auto" padding={4} spacing={2}>
-      <Box ref={contentsRef} sx={{ display: { sm: 'flex', xs: 'block' } }}>
-        <ProjectHeader variant="h4">Contents</ProjectHeader>
-        <ProjectDetails padding={2} spacing={2}>
+      <Grid container ref={contentsRef}>
+        <Project title="Contents">
           <Typography variant="h5">Introduction:</Typography>
           <Typography>
             My professional life intersects with some cool technologies such as{' '}
@@ -75,12 +90,11 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
             </List>
           </Box>
-        </ProjectDetails>
-      </Box>
+        </Project>
+      </Grid>
       <Divider />
-      <Box ref={rootRef} sx={{ display: { sm: 'flex', xs: 'block' } }}>
-        <ProjectHeader variant="h4">Root</ProjectHeader>
-        <ProjectDetails padding={2} spacing={2}>
+      <Grid container ref={rootRef}>
+        <Project title="Root">
           <Typography variant="h5">Objectives:</Typography>
           <Typography>
             This project was created to set up my AWS environment. Originally, I used{' '}
@@ -115,12 +129,11 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
             </List>
           </Box>
-        </ProjectDetails>
-      </Box>
+        </Project>
+      </Grid>
       <Divider />
-      <Box ref={emailsRef} sx={{ display: { sm: 'flex', xs: 'block' } }}>
-        <ProjectHeader variant="h4">Email Forwarding</ProjectHeader>
-        <ProjectDetails padding={2} spacing={2}>
+      <Grid container ref={emailsRef}>
+        <Project title="Email Forwarding">
           <Typography variant="h5">Objectives:</Typography>
           <Typography>
             I was using <Link to="https://www.godaddy.com/">GoDaddy</Link> as a host, but it is expensive for my needs
@@ -183,12 +196,11 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
             </List>
           </Box>
-        </ProjectDetails>
-      </Box>
+        </Project>
+      </Grid>
       <Divider />
-      <Box ref={jokesRef} sx={{ display: { sm: 'flex', xs: 'block' } }}>
-        <ProjectHeader variant="h4">Jokes</ProjectHeader>
-        <ProjectDetails padding={2} spacing={2}>
+      <Grid container ref={jokesRef}>
+        <Project title="Jokes">
           <Typography variant="h5">
             URL: <Link to={`https://jokes.${hostname}`}>{`https://jokes.${hostname}`}</Link>
           </Typography>
@@ -247,12 +259,11 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
             </List>
           </Box>
-        </ProjectDetails>
-      </Box>
+        </Project>
+      </Grid>
       <Divider />
-      <Box ref={linksRef} sx={{ display: { sm: 'flex', xs: 'block' } }}>
-        <ProjectHeader variant="h4">Link Shortener</ProjectHeader>
-        <ProjectDetails padding={2} spacing={2}>
+      <Grid container ref={linksRef}>
+        <Project title="Link Shortener">
           <Typography variant="h5">
             URL: <Link to={`https://links.${hostname}`}>{`https://links.${hostname}`}</Link>
           </Typography>
@@ -296,12 +307,11 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
             </List>
           </Box>
-        </ProjectDetails>
-      </Box>
+        </Project>
+      </Grid>
       <Divider />
-      <Box ref={chooseeRef} sx={{ display: { sm: 'flex', xs: 'block' } }}>
-        <ProjectHeader variant="h4">Choosee</ProjectHeader>
-        <ProjectDetails padding={2} spacing={2}>
+      <Grid container ref={chooseeRef}>
+        <Project title="Choosee">
           <Typography variant="h5">
             URL: <Link to={`https://choosee.${hostname}`}>{`https://choosee.${hostname}`}</Link>
           </Typography>
@@ -351,12 +361,11 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
             </List>
           </Box>
-        </ProjectDetails>
-      </Box>
+        </Project>
+      </Grid>
       <Divider />
-      <Box ref={otherRef} sx={{ display: { sm: 'flex', xs: 'block' } }}>
-        <ProjectHeader variant="h4">Other</ProjectHeader>
-        <ProjectDetails padding={2} spacing={2}>
+      <Grid container ref={otherRef}>
+        <Project title="Other">
           <Typography variant="h5">
             URL: <Link to={`https://${hostname}`}>{`https://${hostname}`}</Link>
           </Typography>
@@ -412,8 +421,8 @@ const ProjectsTable = (): JSX.Element => {
               </ListItem>
             </List>
           </Box>
-        </ProjectDetails>
-      </Box>
+        </Project>
+      </Grid>
       <Fab
         aria-label="Scroll to top"
         color="primary"

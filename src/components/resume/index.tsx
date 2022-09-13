@@ -1,48 +1,64 @@
+import Divider from '@mui/material/Divider'
+import Grid from '@mui/material/Grid'
 import React from 'react'
+import Stack from '@mui/material/Stack'
 import { StaticImage } from 'gatsby-plugin-image'
 
 import {
   ResultSubDetails,
   ResumeAnchor,
-  ResumeBody,
-  ResumeContactDetails,
   ResumeContactDetailsList,
   ResumeContactDetailsListItem,
   ResumeContainer,
   ResumeDownloadHeader,
-  ResumeHeadshot,
   ResumeImageStyles,
   ResumeJobDescription,
   ResumeJobDescriptionDetail,
-  ResumeKeySkills,
-  ResumeKeySkillsItem,
   ResumeLink,
-  ResumeNameSection,
   ResumeNameSectionName,
   ResumeNameSectionTitle,
-  ResumePrimaryDetails,
-  ResumeSection,
-  ResumeSectionContent,
   ResumeSectionContentTitle,
-  ResumeSectionTitle,
   ResumeSectionTitleHeader,
 } from './elements'
-import { ClearFloat } from '@components/common/elements'
 import resumePdf from '@assets/pdf/david-bowland-resume.pdf'
 
+const ResumeSection = ({ children, title }: { children: JSX.Element | JSX.Element[]; title: string }): JSX.Element => (
+  <>
+    <Grid container sx={{ p: '0.5em 0' }}>
+      <Grid item sm={3} sx={{ p: '0.5em' }} xs={12}>
+        <ResumeSectionTitleHeader>{title}</ResumeSectionTitleHeader>
+      </Grid>
+
+      <Grid item sm={9} sx={{ p: '1em' }} xs={12}>
+        {children}
+      </Grid>
+    </Grid>
+  </>
+)
+
 const Resume = (): JSX.Element => {
+  const renderSkillsGrid = (...args: string[]): JSX.Element => (
+    <Grid container spacing={1}>
+      {args.map((value, index) => (
+        <Grid item key={index} md={4} sm={6} xs={12}>
+          {value}
+        </Grid>
+      ))}
+    </Grid>
+  )
+
   return (
     <ResumeContainer>
-      <ResumePrimaryDetails>
-        <ResumeHeadshot>
+      <Grid container sx={{ borderBottom: '2px solid #cf8a05' }}>
+        <Grid item sm={2} sx={{ margin: '1.5em auto', p: '0.5em', textAlign: 'center' }} xs={12}>
           <StaticImage
             alt="Picture of David Bowland"
             src="../../assets/images/David-2022-05-16.jpg"
             style={ResumeImageStyles}
           />
-        </ResumeHeadshot>
+        </Grid>
 
-        <ResumeNameSection>
+        <Grid item md={7} sm={6} sx={{ p: '0.5em', textAlign: { sm: 'left', xs: 'center' } }} xs={12}>
           <ResumeNameSectionName>David Bowland</ResumeNameSectionName>
           <ResumeNameSectionTitle>Software Developer</ResumeNameSectionTitle>
           <ResumeDownloadHeader>
@@ -50,9 +66,9 @@ const Resume = (): JSX.Element => {
               Download Resume
             </ResumeLink>
           </ResumeDownloadHeader>
-        </ResumeNameSection>
+        </Grid>
 
-        <ResumeContactDetails>
+        <Grid item md={3} sm={4} sx={{ p: '0.5em', textAlign: { sm: 'left', xs: 'center' } }} xs={12}>
           <ResumeContactDetailsList>
             <ResumeContactDetailsListItem>
               e:{' '}
@@ -85,38 +101,24 @@ const Resume = (): JSX.Element => {
               </ResumeAnchor>
             </ResumeContactDetailsListItem>
           </ResumeContactDetailsList>
-        </ResumeContactDetails>
-        <ClearFloat />
-      </ResumePrimaryDetails>
+        </Grid>
+      </Grid>
 
-      <ResumeBody>
-        <ResumeSection>
-          <ResumeSectionTitle>
-            <ResumeSectionTitleHeader>Personal Profile</ResumeSectionTitleHeader>
-          </ResumeSectionTitle>
-
-          <ResumeSectionContent>
-            <article>
-              <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>
-                  Developer of robust solutions on scalable architecture
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>Effective translator between geek and English</ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>Connoisseur of groan-inducing dad jokes</ResumeJobDescriptionDetail>
-              </ResumeJobDescription>
-              <ClearFloat />
-            </article>
-          </ResumeSectionContent>
-          <ClearFloat />
+      <Stack spacing={1}>
+        <ResumeSection title="Personal Profile">
+          <ResumeJobDescription>
+            <ResumeJobDescriptionDetail>
+              Developer of robust solutions on scalable architecture
+            </ResumeJobDescriptionDetail>
+            <ResumeJobDescriptionDetail>Effective translator between geek and English</ResumeJobDescriptionDetail>
+            <ResumeJobDescriptionDetail>Connoisseur of groan-inducing dad jokes</ResumeJobDescriptionDetail>
+          </ResumeJobDescription>
         </ResumeSection>
+        <Divider />
 
-        <ResumeSection>
-          <ResumeSectionTitle>
-            <ResumeSectionTitleHeader>Experience</ResumeSectionTitleHeader>
-          </ResumeSectionTitle>
-
-          <ResumeSectionContent>
-            <article>
+        <ResumeSection title="Experience">
+          <Stack spacing={2}>
+            <div>
               <ResumeSectionContentTitle>
                 Technical Lead at{' '}
                 <ResumeAnchor href="https://www.talentreef.com/" rel="noopener noreferrer">
@@ -147,10 +149,9 @@ const Resume = (): JSX.Element => {
                   Use Agile methodology with two-week sprints organized on Jira
                 </ResumeJobDescriptionDetail>
               </ResumeJobDescription>
-              <ClearFloat />
-            </article>
+            </div>
 
-            <article>
+            <div>
               <ResumeSectionContentTitle>
                 Software Developer at{' '}
                 <ResumeAnchor href="https://www.carfax.com/" rel="noopener noreferrer">
@@ -172,10 +173,9 @@ const Resume = (): JSX.Element => {
                   Went from new hire to acting team leader in less than 10 months
                 </ResumeJobDescriptionDetail>
               </ResumeJobDescription>
-              <ClearFloat />
-            </article>
+            </div>
 
-            <article>
+            <div>
               <ResumeSectionContentTitle>
                 Senior Programmer Analyst at{' '}
                 <ResumeAnchor href="https://www.showmeboone.com/" rel="noopener noreferrer">
@@ -196,107 +196,72 @@ const Resume = (): JSX.Element => {
                   Earned three performance-based increases outside annual review
                 </ResumeJobDescriptionDetail>
               </ResumeJobDescription>
-              <ClearFloat />
-            </article>
-          </ResumeSectionContent>
-          <ClearFloat />
+            </div>
+          </Stack>
         </ResumeSection>
+        <Divider />
 
-        <ResumeSection>
-          <ResumeSectionTitle>
-            <ResumeSectionTitleHeader>Skills</ResumeSectionTitleHeader>
-          </ResumeSectionTitle>
-
-          <ResumeSectionContent>
-            <article>
+        <ResumeSection title="Skills">
+          <Stack spacing={2}>
+            <div>
               <ResumeSectionContentTitle>Languages</ResumeSectionContentTitle>
               <ResultSubDetails>Proficient in</ResultSubDetails>
-              <ResumeKeySkills>
-                <ResumeKeySkillsItem>TypeScript</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Java</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Groovy</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>JavaScript</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Python</ResumeKeySkillsItem>
-              </ResumeKeySkills>
+              {renderSkillsGrid('TypeScript', 'Java', 'Groovy', 'JavaScript', 'Python')}
               <ResultSubDetails>Familiar with</ResultSubDetails>
-              <ResumeKeySkills>
-                <ResumeKeySkillsItem>ASP/ASP.NET</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>C++</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>COBOL</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>PHP</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Terraform</ResumeKeySkillsItem>
-              </ResumeKeySkills>
-              <ClearFloat />
-            </article>
+              {renderSkillsGrid('Terraform', 'ASP/ASP.NET', 'C++', 'COBOL', 'PHP')}
+            </div>
 
-            <article>
+            <div>
               <ResumeSectionContentTitle>SQL</ResumeSectionContentTitle>
-              <ResumeKeySkills>
-                <ResumeKeySkillsItem>DB2</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Microsoft SQL Server</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>MySQL</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Oracle Database</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>PostgreSQL</ResumeKeySkillsItem>
-              </ResumeKeySkills>
-              <ClearFloat />
-            </article>
+              {renderSkillsGrid('PostgreSQL', 'Microsoft SQL Server', 'DB2', 'MySQL', 'Oracle Database')}
+            </div>
 
-            <article>
+            <div>
               <ResumeSectionContentTitle>NoSQL</ResumeSectionContentTitle>
-              <ResumeKeySkills>
-                <ResumeKeySkillsItem>DynamoDB</ResumeKeySkillsItem>
-              </ResumeKeySkills>
-              <ClearFloat />
-            </article>
+              {renderSkillsGrid('DynamoDB')}
+            </div>
 
-            <article>
+            <div>
               <ResumeSectionContentTitle>Technologies</ResumeSectionContentTitle>
-              <ResumeKeySkills>
-                <ResumeKeySkillsItem>Argo</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>CircleCI</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Docker</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Git</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Kibana</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Kubernetes</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Jenkins</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Jira</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>NewRelic</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Splunk</ResumeKeySkillsItem>
-              </ResumeKeySkills>
-              <ClearFloat />
-            </article>
+              {renderSkillsGrid(
+                'Argo',
+                'CircleCI',
+                'Docker',
+                'Git',
+                'Kibana',
+                'Kubernetes',
+                'Jenkins',
+                'Jira',
+                'NewRelic',
+                'Splunk'
+              )}
+            </div>
 
-            <article>
+            <div>
               <ResumeSectionContentTitle>AWS</ResumeSectionContentTitle>
-              <ResumeKeySkills>
-                <ResumeKeySkillsItem>Athena</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>CloudFormation·</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>CloudWatch</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>ECS</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Lambda</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Pinpoint</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>QuickSight</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>RDS</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Route53</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>S3</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>SES</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>SNS</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>SQS</ResumeKeySkillsItem>
-                <ResumeKeySkillsItem>Secrets Manager</ResumeKeySkillsItem>
-              </ResumeKeySkills>
-              <ClearFloat />
-            </article>
-          </ResumeSectionContent>
-          <ClearFloat />
+              {renderSkillsGrid(
+                'Athena',
+                'CloudFormation',
+                'CloudWatch',
+                'ECS',
+                'Lambda',
+                'Pinpoint',
+                'QuickSight',
+                'RDS',
+                'S3',
+                'SES',
+                'SNS',
+                'SQS',
+                'Secrets Manager'
+              )}
+            </div>
+          </Stack>
         </ResumeSection>
+        <Divider />
 
-        <ResumeSection>
-          <ResumeSectionTitle>
-            <ResumeSectionTitleHeader>Education</ResumeSectionTitleHeader>
-          </ResumeSectionTitle>
-
-          <ResumeSectionContent>
-            <article>
+        <ResumeSection title="Education">
+          <Stack spacing={2}>
+            <div>
               <ResumeSectionContentTitle>
                 <ResumeAnchor href="https://ccis.edu/" rel="noopener noreferrer">
                   Columbia College &mdash; Columbia,&nbsp;MO
@@ -308,21 +273,18 @@ const Resume = (): JSX.Element => {
                 <ResumeJobDescriptionDetail>Graduated cum laude with a GPA of 3.68/4.0</ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>Earned an A in all computer science classes</ResumeJobDescriptionDetail>
               </ResumeJobDescription>
-              <ClearFloat />
-            </article>
+            </div>
 
-            <article>
+            <div>
               <ResumeSectionContentTitle>
                 <ResumeAnchor href="https://www.cpsk12.org/HHS" rel="noopener noreferrer">
                   David H. Hickman High School &mdash; Columbia,&nbsp;MO
                 </ResumeAnchor>
               </ResumeSectionContentTitle>
-              <ClearFloat />
-            </article>
-          </ResumeSectionContent>
-          <ClearFloat />
+            </div>
+          </Stack>
         </ResumeSection>
-      </ResumeBody>
+      </Stack>
     </ResumeContainer>
   )
 }
