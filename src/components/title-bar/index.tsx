@@ -16,6 +16,7 @@ import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip'
 import SwipeableDrawer from '@mui/material/SwipeableDrawer'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
@@ -98,6 +99,12 @@ const TitleBar = (): JSX.Element => {
                 </List>
                 <Divider />
                 <List>
+                  <ListItem button component="a" href="/privacy-policy">
+                    <ListItemIcon>
+                      <PrivacyTipIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Privacy policy" />
+                  </ListItem>
                   <ListItem button>
                     <ListItemIcon>
                       <CloseRoundedIcon />

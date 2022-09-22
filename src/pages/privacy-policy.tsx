@@ -3,15 +3,14 @@ import Paper from '@mui/material/Paper'
 import React from 'react'
 
 import '@config/amplify'
-import PrivacyLink from '@components/privacy-link'
-import Resume from '@components/resume'
+import PrivacyPolicy from '@components/privacy-policy'
 import TitleBar from '@components/title-bar'
 
-const HomePage = (): JSX.Element => {
+const PrivacyPage = (): JSX.Element => {
   return (
     <Paper elevation={1}>
       <Helmet>
-        <title>David Bowland | Software Developer</title>
+        <title>Privacy Policy -- dbowland.com</title>
       </Helmet>
       <main>
         <nav>
@@ -19,8 +18,7 @@ const HomePage = (): JSX.Element => {
         </nav>
         <section>
           <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px' }}>
-            <Resume />
-            <PrivacyLink />
+            <PrivacyPolicy />
           </Paper>
         </section>
       </main>
@@ -28,4 +26,4 @@ const HomePage = (): JSX.Element => {
   )
 }
 
-export default HomePage
+export default PrivacyPage

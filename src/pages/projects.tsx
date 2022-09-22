@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper'
 import React from 'react'
 
 import '@config/amplify'
+import PrivacyLink from '@components/privacy-link'
 import ProjectsTable from '@components/projects-table'
 import TitleBar from '@components/title-bar'
 
@@ -18,6 +19,7 @@ const Projects = (): JSX.Element => {
         </nav>
         <section style={{ margin: 'auto', maxWidth: '900px' }}>
           <ProjectsTable />
+          <PrivacyLink />
         </section>
       </main>
     </Paper>
