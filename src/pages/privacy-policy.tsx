@@ -8,7 +8,7 @@ import TitleBar from '@components/title-bar'
 
 const PrivacyPage = (): JSX.Element => {
   return (
-    <Paper elevation={1}>
+    <>
       <Helmet>
         <title>Privacy Policy -- dbowland.com</title>
       </Helmet>
@@ -22,7 +22,7 @@ const PrivacyPage = (): JSX.Element => {
           </Paper>
         </section>
       </main>
-    </Paper>
+    </>
   )
 }
 

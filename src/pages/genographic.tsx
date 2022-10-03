@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet'
-import Paper from '@mui/material/Paper'
 import React from 'react'
 
 import '@config/amplify'
@@ -9,7 +8,7 @@ import TitleBar from '@components/title-bar'
 
 const Genographic = (): JSX.Element => {
   return (
-    <Paper elevation={3}>
+    <>
       <Helmet>
         <title>Genographic Information | dbowland.com </title>
       </Helmet>
@@ -22,7 +21,7 @@ const Genographic = (): JSX.Element => {
           <PrivacyLink />
         </section>
       </main>
-    </Paper>
+    </>
   )
 }
 

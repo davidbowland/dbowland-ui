@@ -9,7 +9,7 @@ import TitleBar from '@components/title-bar'
 
 const HomePage = (): JSX.Element => {
   return (
-    <Paper elevation={1}>
+    <>
       <Helmet>
         <title>David Bowland | Software Developer</title>
       </Helmet>
@@ -24,7 +24,7 @@ const HomePage = (): JSX.Element => {
           </Paper>
         </section>
       </main>
-    </Paper>
+    </>
   )
 }
 
