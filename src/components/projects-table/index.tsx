@@ -33,6 +33,7 @@ const Project = ({ children, title }: { children: JSX.Element | JSX.Element[]; t
 const ProjectsTable = (): JSX.Element => {
   const chooseeRef = useRef<HTMLDivElement>(null)
   const contentsRef = useRef<HTMLDivElement>(null)
+  const dbdBuildMakerRef = useRef<HTMLDivElement>(null)
   const emailsRef = useRef<HTMLDivElement>(null)
   const jokesRef = useRef<HTMLDivElement>(null)
   const linksRef = useRef<HTMLDivElement>(null)
@@ -81,6 +82,11 @@ const ProjectsTable = (): JSX.Element => {
               <ListItem disablePadding>
                 <ListItemButton onClick={() => chooseeRef.current && chooseeRef.current.scrollIntoView()}>
                   <ListItemText primary="Choosee - DynamoDB, Lambda, React" />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton onClick={() => dbdBuildMakerRef.current && dbdBuildMakerRef.current.scrollIntoView()}>
+                  <ListItemText primary="DBD Build Maker - DynamoDB, Lambda, React" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
@@ -357,6 +363,55 @@ const ProjectsTable = (): JSX.Element => {
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/choosee-ui">
                   <ListItemText primary="choosee-ui (React/TypeScript)" />
+                </ListItemButton>
+              </ListItem>
+            </List>
+          </Box>
+        </Project>
+      </Grid>
+      <Divider />
+      <Grid container ref={dbdBuildMakerRef}>
+        <Project title="DBD Build Maker">
+          <Typography variant="h5">
+            URL: <Link to={`https://dbd.${hostname}`}>{`https://dbd.${hostname}`}</Link>
+          </Typography>
+          <Typography variant="h5">Objectives:</Typography>
+          <Typography>
+            I began this project wanting to offload authentication to a third-party. I started by selecting{' '}
+            <Link to="https://twitch.tv">Twitch</Link> as a company with the required API and ended up building a quite
+            full-featured website. The integration not only allows me to verify authentication but also to authorize
+            users based on the access information returned by{' '}
+            <Link to="https://dev.twitch.tv/docs/api/">Twitch APIs</Link>.
+          </Typography>
+          <Typography variant="h5">Lessons:</Typography>
+          <Typography>
+            Building third-party authentication into this app was an enjoyable experience. This project further honed my
+            front-end skills by giving me extensive exposure to the dialog, grid, and x-data-grid components of{' '}
+            <Link to="https://mui.com/">MUI</Link>.
+          </Typography>
+          <Typography variant="h5">Diagram:</Typography>
+          <StaticImage
+            alt="Diagram of dbd-build-maker project"
+            imgStyle={{ objectFit: 'contain' }}
+            src="../../assets/images/dbd-build-maker-diagram.png"
+            style={ProjectImageStyles}
+          />
+          <Box>
+            <Typography variant="h5">Source:</Typography>
+            <List>
+              <ListItem disablePadding>
+                <ListItemButton component="a" href="https://github.com/davidbowland/dbd-build-maker-api">
+                  <ListItemText primary="dbd-build-maker-api (AWS SAM/TypeScript)" />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton component="a" href="https://github.com/davidbowland/dbd-build-maker-infrastructure">
+                  <ListItemText primary="dbd-build-maker-infrastructure (CloudFormation)" />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton component="a" href="https://github.com/davidbowland/dbd-build-maker-ui">
+                  <ListItemText primary="dbd-build-maker-ui (React/TypeScript)" />
                 </ListItemButton>
               </ListItem>
             </List>
