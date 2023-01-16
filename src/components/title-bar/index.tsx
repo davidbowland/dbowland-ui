@@ -12,7 +12,7 @@ import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import { Link } from 'gatsby'
 import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
@@ -91,26 +91,26 @@ const TitleBar = (): JSX.Element => {
               <Box onClick={handleCloseNavMenu} role="presentation" sx={{ width: 250 }}>
                 <List>
                   {Object.entries(navigation).map(([page, details]: [string, NavigationDetails]) => (
-                    <ListItem button component="a" href={details.url} key={page}>
+                    <ListItemButton component="a" href={details.url} key={page}>
                       <ListItemIcon>{details.icon}</ListItemIcon>
                       <ListItemText primary={page} />
-                    </ListItem>
+                    </ListItemButton>
                   ))}
                 </List>
                 <Divider />
                 <List>
-                  <ListItem button component="a" href="/privacy-policy">
+                  <ListItemButton component="a" href="/privacy-policy">
                     <ListItemIcon>
                       <PrivacyTipIcon />
                     </ListItemIcon>
                     <ListItemText primary="Privacy policy" />
-                  </ListItem>
-                  <ListItem button>
+                  </ListItemButton>
+                  <ListItemButton>
                     <ListItemIcon>
                       <CloseRoundedIcon />
                     </ListItemIcon>
                     <ListItemText primary="Close" />
-                  </ListItem>
+                  </ListItemButton>
                 </List>
               </Box>
             </SwipeableDrawer>

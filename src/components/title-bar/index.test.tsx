@@ -41,10 +41,10 @@ describe('Title bar component', () => {
     test('expect rendering TitleBar contains menu items', () => {
       render(<TitleBar />)
 
-      expect(screen.queryByText(/GitHub/i)).toBeVisible()
-      expect(screen.queryByText(/LinkedIn/i)).toBeVisible()
-      expect(screen.queryByText(/Projects/i)).toBeVisible()
-      expect(screen.queryByText(/Resume/i)).toBeVisible()
+      expect(screen.queryAllByText(/GitHub/i)[0]).toBeVisible()
+      expect(screen.queryAllByText(/LinkedIn/i)[0]).toBeVisible()
+      expect(screen.queryAllByText(/Projects/i)[0]).toBeVisible()
+      expect(screen.queryAllByText(/Resume/i)[0]).toBeVisible()
     })
   })
 })

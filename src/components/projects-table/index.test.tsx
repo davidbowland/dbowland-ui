@@ -18,6 +18,7 @@ describe('ProjectsTable component', () => {
     /Email Forwarding - DynamoDB, Lambda, SES, SQS/i,
     /Jokes - DynamoDB, Lambda, Polly, React/i,
     /Link Shortener - DynamoDB, Lambda, React/i,
+    /DBD Build Maker - DynamoDB, Lambda, React/i,
     /Choosee - DynamoDB, Lambda, React/i,
     /Other - Lambda, React, SQS/i,
   ])('expect clicking %s option scrolls view', async (text) => {
