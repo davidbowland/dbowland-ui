@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import React from 'react'
 import gatsyPluginImage from 'gatsby-plugin-image'
+import React from 'react'
 
 import GenographicInfographic from './index'
 
