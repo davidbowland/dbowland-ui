@@ -28,16 +28,6 @@
     "typecheck": "tsc --noEmit",
     "update": "ncu -u --doctor && npm audit fix --audit-level=none && npm run test && npm dedupe"
   },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "prettier --write --ignore-unknown",
-      "eslint --fix --resolve-plugins-relative-to .",
-      "jest --colors --findRelatedTests --coverageThreshold '{}' --passWithNoTests"
-    ],
-    "**/*": [
-      "prettier --write --ignore-unknown"
-    ]
-  },
   "dependencies": {
     "@aws-amplify/ui-react": "^4.4.1",
     "@emotion/react": "^11.10.6",
@@ -94,5 +84,15 @@
     "prettier": "^2.8.7",
     "react-test-renderer": "^18.2.0",
     "ts-jest": "^29.0.5"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write --ignore-unknown",
+      "eslint --fix --resolve-plugins-relative-to .",
+      "jest --colors --findRelatedTests --coverageThreshold '{}' --passWithNoTests"
+    ],
+    "**/*": [
+      "prettier --write --ignore-unknown"
+    ]
   }
 }
