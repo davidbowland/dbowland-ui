@@ -53,7 +53,7 @@ const Resume = (): JSX.Element => {
         <Grid item sm={2} sx={{ margin: '1.5em auto', p: '0.5em', textAlign: 'center' }} xs={12}>
           <StaticImage
             alt="Picture of David Bowland"
-            src="../../assets/images/David-2022-05-16.jpg"
+            src="../../assets/images/David-2023-05-10.jpg"
             style={ResumeImageStyles}
           />
         </Grid>
