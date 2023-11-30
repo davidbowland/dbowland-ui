@@ -26,7 +26,7 @@
     "serve": "npm run build && gatsby serve",
     "test": "jest --colors",
     "typecheck": "tsc --noEmit",
-    "update": "ncu -u --doctor && npm audit fix --audit-level=none && npm run test && npm dedupe"
+    "update": "ncu --doctor --target minor --upgrade && npm audit fix --audit-level=none && npm run test && npm dedupe"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^4.6.4",
