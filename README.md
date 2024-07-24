@@ -6,8 +6,8 @@ Gatsby implementation of dbowland.com.
 
 ### Prerequisites
 
-1. [Node 16](https://nodejs.org/en/)
-1. [NPM 7+](https://www.npmjs.com/)
+1. [Node](https://nodejs.org/en/)
+1. [NPM](https://www.npmjs.com/)
 
 ### Local Development
 
