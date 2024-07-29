@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { act, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
 
 import ProjectsTable from './index'
@@ -25,9 +25,7 @@ describe('ProjectsTable component', () => {
     render(<ProjectsTable />)
 
     const scroller = (await screen.findByText(text)) as HTMLDivElement
-    await act(async () => {
-      scroller.click()
-    })
+    fireEvent.click(scroller)
 
     expect(window.HTMLElement.prototype.scrollIntoView).toHaveBeenCalled()
   })
@@ -36,9 +34,7 @@ describe('ProjectsTable component', () => {
     render(<ProjectsTable />)
 
     const scroller = (await screen.findByLabelText(/Scroll to top/i)) as HTMLDivElement
-    await act(async () => {
-      scroller.click()
-    })
+    fireEvent.click(scroller)
 
     expect(window.HTMLElement.prototype.scrollIntoView).toHaveBeenCalled()
   })

@@ -19,11 +19,11 @@ describe('Privacy page', () => {
 
   test('Rendering PrivacyPage also renders PrivacyPolicy', () => {
     render(<PrivacyPage />)
-    expect(mocked(PrivacyPolicy)).toBeCalledTimes(1)
+    expect(mocked(PrivacyPolicy)).toHaveBeenCalledTimes(1)
   })
 
   test('Rendering PrivacyPage also renders TitleBar', () => {
     render(<PrivacyPage />)
-    expect(mocked(TitleBar)).toBeCalledTimes(1)
+    expect(mocked(TitleBar)).toHaveBeenCalledTimes(1)
   })
 })

@@ -16,6 +16,6 @@ describe('form-submit example', () => {
 
   test('expect FormSubmit renders FormSubmitExample', () => {
     render(<FormSubmit />)
-    expect(mocked(FormSubmitExample)).toBeCalledTimes(1)
+    expect(mocked(FormSubmitExample)).toHaveBeenCalledTimes(1)
   })
 })

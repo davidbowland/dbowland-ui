@@ -16,6 +16,6 @@ describe('smooth-scroll example', () => {
 
   test('expect SmoothScroll renders SmoothScrollExample', () => {
     render(<SmoothScroll />)
-    expect(mocked(SmoothScrollExample)).toBeCalledTimes(1)
+    expect(mocked(SmoothScrollExample)).toHaveBeenCalledTimes(1)
   })
 })

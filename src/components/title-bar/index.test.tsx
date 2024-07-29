@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { act, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
 
 import TitleBar from './index'
@@ -16,13 +16,9 @@ describe('Title bar component', () => {
       render(<TitleBar />)
 
       const menuButton = (await screen.findByLabelText(/menu/i, { selector: 'button' })) as HTMLButtonElement
-      await act(async () => {
-        menuButton.click()
-      })
+      fireEvent.click(menuButton)
       const resumeButton = (await screen.queryAllByText(/resume/i)[1]) as HTMLButtonElement
-      await act(async () => {
-        resumeButton.click()
-      })
+      fireEvent.click(resumeButton)
 
       expect(screen.queryAllByText(/GitHub/i)[1]).toBeVisible()
       expect(screen.queryAllByText(/LinkedIn/i)[1]).toBeVisible()

@@ -22,16 +22,16 @@ describe('Home page (index)', () => {
 
   test('Rendering Index also renders Resume', () => {
     render(<HomePage />)
-    expect(mocked(Resume)).toBeCalledTimes(1)
+    expect(mocked(Resume)).toHaveBeenCalledTimes(1)
   })
 
   test('Rendering Index also renders PrivacyLink', () => {
     render(<HomePage />)
-    expect(mocked(PrivacyLink)).toBeCalledTimes(1)
+    expect(mocked(PrivacyLink)).toHaveBeenCalledTimes(1)
   })
 
   test('Rendering Index also renders TitleBar', () => {
     render(<HomePage />)
-    expect(mocked(TitleBar)).toBeCalledTimes(1)
+    expect(mocked(TitleBar)).toHaveBeenCalledTimes(1)
   })
 })
