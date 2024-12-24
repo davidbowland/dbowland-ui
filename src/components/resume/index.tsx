@@ -120,33 +120,59 @@ const Resume = (): JSX.Element => {
           <Stack spacing={2}>
             <div>
               <ResumeSectionContentTitle>
+                Lead Engineer at{' '}
+                <ResumeAnchor href="https://www.productplan.com/" rel="noopener noreferrer">
+                  ProductPlan
+                </ResumeAnchor>
+              </ResumeSectionContentTitle>
+              <ResultSubDetails>July&nbsp;2024 - Present</ResultSubDetails>
+              <ResumeJobDescription>
+                <ResumeJobDescriptionDetail>
+                  Brought in by ownership to evaluate and enhance the company&apos;s development practices
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Work on a monorepo consisting Ruby on Rails and React, automatically deployed daily
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Lead a team of five, consisting of both feature development and platform work
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>Assist in mentoring junior developers</ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>
+                  Use Agile methodology with hints of Shape Up methodology in two-week sprints organized on Shortcut
+                </ResumeJobDescriptionDetail>
+                <ResumeJobDescriptionDetail>Manage four direct reports</ResumeJobDescriptionDetail>
+              </ResumeJobDescription>
+            </div>
+
+            <div>
+              <ResumeSectionContentTitle>
                 Technical Lead at{' '}
                 <ResumeAnchor href="https://www.talentreef.com/" rel="noopener noreferrer">
                   TalentReef
                 </ResumeAnchor>
               </ResumeSectionContentTitle>
-              <ResultSubDetails>April&nbsp;2021 - Present</ResultSubDetails>
+              <ResultSubDetails>April&nbsp;2021 - July&nbsp;2024</ResultSubDetails>
               <ResumeJobDescription>
                 <ResumeJobDescriptionDetail>
-                  Lead the highest performing feature team, a title earned six months after I took over a formerly
+                  Led the highest performing feature team, a title earned six months after I took over a formerly
                   production support team
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
-                  Plan architecture for new design, heavily leveraging Spring Boot in ECS, Node Lambdas, Postgres in
+                  Planned architecture for new design, heavily leveraging Spring Boot in ECS, Node Lambdas, Postgres in
                   RDS, and other AWS services
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
-                  Mentor developers in best practices and establish procedures to enforce those practices
+                  Mentored developers in best practices and established procedures to enforce those practices
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
-                  Mentor other leads in effective leadership and value delivery
+                  Mentored other leads in effective leadership and value delivery
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
-                  Assist with DevOps using CloudFormation, Terraform, and especially Shell scripting to automate
+                  Assisted with DevOps using CloudFormation, Terraform, and especially Shell scripting to automate
                   repetitive tasks
                 </ResumeJobDescriptionDetail>
                 <ResumeJobDescriptionDetail>
-                  Use Agile methodology with two-week sprints organized on Jira
+                  Used Agile methodology with two-week sprints organized on Jira
                 </ResumeJobDescriptionDetail>
               </ResumeJobDescription>
             </div>
@@ -208,7 +234,7 @@ const Resume = (): JSX.Element => {
               <ResultSubDetails>Proficient in</ResultSubDetails>
               {renderSkillsGrid('TypeScript', 'Java', 'Groovy', 'JavaScript', 'Python')}
               <ResultSubDetails>Familiar with</ResultSubDetails>
-              {renderSkillsGrid('Terraform', 'ASP/ASP.NET', 'C++', 'COBOL', 'PHP')}
+              {renderSkillsGrid('Terraform', 'Ruby', 'ASP/ASP.NET', 'C++', 'PHP', 'COBOL')}
             </div>
 
             <div>
