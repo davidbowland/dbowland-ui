@@ -17,7 +17,6 @@ describe('ProjectsTable component', () => {
     /Root - Infrastructure/i,
     /Email Forwarding - DynamoDB, Lambda, SES, SQS/i,
     /Jokes - DynamoDB, Lambda, Polly, React/i,
-    /Link Shortener - DynamoDB, Lambda, React/i,
     /DBD Build Maker - DynamoDB, Lambda, React/i,
     /Choosee - DynamoDB, Lambda, React/i,
     /Other - Lambda, React, SQS/i,

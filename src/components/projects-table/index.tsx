@@ -36,7 +36,6 @@ const ProjectsTable = (): JSX.Element => {
   const dbdBuildMakerRef = useRef<HTMLDivElement>(null)
   const emailsRef = useRef<HTMLDivElement>(null)
   const jokesRef = useRef<HTMLDivElement>(null)
-  const linksRef = useRef<HTMLDivElement>(null)
   const otherRef = useRef<HTMLDivElement>(null)
   const rootRef = useRef<HTMLDivElement>(null)
 
@@ -72,11 +71,6 @@ const ProjectsTable = (): JSX.Element => {
               <ListItem disablePadding>
                 <ListItemButton onClick={() => jokesRef.current && jokesRef.current.scrollIntoView()}>
                   <ListItemText primary="Jokes - DynamoDB, Lambda, Polly, React" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton onClick={() => linksRef.current && linksRef.current.scrollIntoView()}>
-                  <ListItemText primary="Link Shortener - DynamoDB, Lambda, React" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
@@ -261,54 +255,6 @@ const ProjectsTable = (): JSX.Element => {
               <ListItem disablePadding>
                 <ListItemButton component="a" href="https://github.com/davidbowland/jokes-ui">
                   <ListItemText primary="jokes-ui (React/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Box>
-        </Project>
-      </Grid>
-      <Divider />
-      <Grid container ref={linksRef}>
-        <Project title="Link Shortener">
-          <Typography variant="h5">
-            URL: <Link to={`https://links.${hostname}`}>{`https://links.${hostname}`}</Link>
-          </Typography>
-          <Typography variant="h5">Objectives:</Typography>
-          <Typography>
-            I wanted to start a project to teach myself Gatsby routing, and a link shortener seemed a perfect
-            opportunity. This was also my first project where I allowed users to sign up for a{' '}
-            <Link to="https://aws.amazon.com/cognito/">AWS Cognito</Link> user pool. I use that to validate phone
-            numbers so I can be comfortable allowing those users to send text messages through the website.
-          </Typography>
-          <Typography variant="h5">Lessons:</Typography>
-          <Typography>
-            I enjoyed learning about routing in Gatsby, which works similar to other static site generators. It was also
-            fun to set up Cognito to allow users to sign up with their phone number and allow users to send text
-            messages for the first time in my projects.
-          </Typography>
-          <Typography variant="h5">Diagram:</Typography>
-          <StaticImage
-            alt="Diagram of links project"
-            imgStyle={{ objectFit: 'contain' }}
-            src="../../assets/images/links-diagram.png"
-            style={ProjectImageStyles}
-          />
-          <Box>
-            <Typography variant="h5">Source:</Typography>
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/links-api">
-                  <ListItemText primary="links-api (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/links-infrastructure">
-                  <ListItemText primary="links-infrastructure (CloudFormation)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/links-ui">
-                  <ListItemText primary="links-ui (React/TypeScript)" />
                 </ListItemButton>
               </ListItem>
             </List>
