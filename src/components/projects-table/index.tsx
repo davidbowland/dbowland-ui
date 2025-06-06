@@ -74,13 +74,13 @@ const ProjectsTable = (): JSX.Element => {
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
-                <ListItemButton onClick={() => chooseeRef.current && chooseeRef.current.scrollIntoView()}>
-                  <ListItemText primary="Choosee - DynamoDB, Lambda, React" />
+                <ListItemButton onClick={() => dbdBuildMakerRef.current && dbdBuildMakerRef.current.scrollIntoView()}>
+                  <ListItemText primary="DBD Build Maker - DynamoDB, Lambda, React" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
-                <ListItemButton onClick={() => dbdBuildMakerRef.current && dbdBuildMakerRef.current.scrollIntoView()}>
-                  <ListItemText primary="DBD Build Maker - DynamoDB, Lambda, React" />
+                <ListItemButton onClick={() => chooseeRef.current && chooseeRef.current.scrollIntoView()}>
+                  <ListItemText primary="Choosee - DynamoDB, Lambda, React" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
