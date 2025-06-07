@@ -1,10 +1,9 @@
-import { Helmet } from 'react-helmet'
+import SmoothScrollExample from '@components/smooth-scroll'
+import '@fontsource/fira-code'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 import '@config/amplify'
-import SmoothScrollExample from '@components/smooth-scroll'
-
-import '@fontsource/fira-code'
 
 const SmoothScroll = (): JSX.Element => {
   return (

@@ -1,5 +1,5 @@
-import { Amplify, Auth } from 'aws-amplify'
 import { Analytics } from '@aws-amplify/analytics'
+import { Amplify, Auth } from 'aws-amplify'
 
 const identityPoolId = process.env.GATSBY_IDENTITY_POOL_ID
 

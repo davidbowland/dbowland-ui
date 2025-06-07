@@ -1,11 +1,11 @@
-import '@testing-library/jest-dom'
-import { mocked } from 'jest-mock'
-import React from 'react'
-import { render } from '@testing-library/react'
-
-import PrivacyPage from './privacy-policy'
 import PrivacyPolicy from '@components/privacy-policy'
 import TitleBar from '@components/title-bar'
+import '@testing-library/jest-dom'
+import { render } from '@testing-library/react'
+import { mocked } from 'jest-mock'
+import React from 'react'
+
+import PrivacyPage from './privacy-policy'
 
 jest.mock('@aws-amplify/analytics')
 jest.mock('@components/privacy-policy')

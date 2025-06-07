@@ -1,8 +1,9 @@
+import { StaticImage } from 'gatsby-plugin-image'
+import React from 'react'
+
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
-import React from 'react'
 import Stack from '@mui/material/Stack'
-import { StaticImage } from 'gatsby-plugin-image'
 
 import {
   ResultSubDetails,
@@ -259,7 +260,7 @@ const Resume = (): JSX.Element => {
                 'Jenkins',
                 'Jira',
                 'NewRelic',
-                'Splunk'
+                'Splunk',
               )}
             </div>
 
@@ -278,7 +279,7 @@ const Resume = (): JSX.Element => {
                 'SES',
                 'SNS',
                 'SQS',
-                'Secrets Manager'
+                'Secrets Manager',
               )}
             </div>
           </Stack>

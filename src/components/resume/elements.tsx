@@ -1,5 +1,5 @@
-import styled, { CSSProperties } from 'styled-components'
 import { Link } from 'gatsby'
+import styled, { CSSProperties } from 'styled-components'
 
 export const ResumeAnchor = styled.a`
   transition: all 0.2s ease-in;

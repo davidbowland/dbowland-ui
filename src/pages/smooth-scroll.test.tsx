@@ -1,10 +1,10 @@
+import SmoothScrollExample from '@components/smooth-scroll'
 import '@testing-library/jest-dom'
+import { render } from '@testing-library/react'
 import { mocked } from 'jest-mock'
 import React from 'react'
-import { render } from '@testing-library/react'
 
 import SmoothScroll from './smooth-scroll'
-import SmoothScrollExample from '@components/smooth-scroll'
 
 jest.mock('@aws-amplify/analytics')
 jest.mock('@components/smooth-scroll')

@@ -1,7 +1,8 @@
 import { Link } from 'gatsby'
-import React from 'react'
-import Stack from '@mui/material/Stack'
 import { StaticImage } from 'gatsby-plugin-image'
+import React from 'react'
+
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import genographicPdf from '@assets/pdf/genographic-results.pdf'

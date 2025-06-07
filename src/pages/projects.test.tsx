@@ -1,12 +1,12 @@
-import '@testing-library/jest-dom'
-import { mocked } from 'jest-mock'
-import React from 'react'
-import { render } from '@testing-library/react'
-
 import PrivacyLink from '@components/privacy-link'
-import Projects from './projects'
 import ProjectsTable from '@components/projects-table'
 import TitleBar from '@components/title-bar'
+import '@testing-library/jest-dom'
+import { render } from '@testing-library/react'
+import { mocked } from 'jest-mock'
+import React from 'react'
+
+import Projects from './projects'
 
 jest.mock('@aws-amplify/analytics')
 jest.mock('@components/privacy-link')

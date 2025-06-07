@@ -1,10 +1,9 @@
-import { Helmet } from 'react-helmet'
+import FormSubmitExample from '@components/form-submit'
+import '@fontsource/fira-code'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 import '@config/amplify'
-import FormSubmitExample from '@components/form-submit'
-
-import '@fontsource/fira-code'
 
 const FormSubmit = (): JSX.Element => {
   return (

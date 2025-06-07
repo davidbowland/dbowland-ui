@@ -100,7 +100,7 @@ var smoothScroll = new (function () {
     return {
       x: Math.min(
         Math.max(window.pageXOffset + position.left + position.width / 2 - window.innerWidth / 2, 0),
-        document.body.getBoundingClientRect().width
+        document.body.getBoundingClientRect().width,
       ),
       y: window.pageYOffset + position.top - self.getHeaderHeightOverride(),
     }

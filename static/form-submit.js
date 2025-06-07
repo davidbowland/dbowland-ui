@@ -149,7 +149,7 @@ var formSubmit = new (function () {
 
   self.getErrorMessageElement = function (el) {
     var target = document.querySelector(
-        '[data-form-submit-error-for="' + (el.getAttribute('data-form-submit-group') || el.id || el.name) + '"]'
+        '[data-form-submit-error-for="' + (el.getAttribute('data-form-submit-group') || el.id || el.name) + '"]',
       ),
       radios,
       insertBeforeElement
@@ -304,14 +304,14 @@ var formSubmit = new (function () {
       hash: (#([-\/\?!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?
         */
       return !value.search(
-        /^[a-z][a-z\d\+\.-]*:\/\/(([-\w\.~!$&'\(\)\*\+,;=:]|%[\da-f]{2})+@)?(((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d|([a-z\d]([a-z\d-]{0,61}[a-z\d])?\.)+[a-z]+)(:(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]\d{4}|[1-9]\d{0,3}|\d))?(\/(([-!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})+\/)*([-!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?(\?([-\/\?!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?(#([-\/\?!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?$/i
+        /^[a-z][a-z\d\+\.-]*:\/\/(([-\w\.~!$&'\(\)\*\+,;=:]|%[\da-f]{2})+@)?(((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d|([a-z\d]([a-z\d-]{0,61}[a-z\d])?\.)+[a-z]+)(:(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]\d{4}|[1-9]\d{0,3}|\d))?(\/(([-!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})+\/)*([-!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?(\?([-\/\?!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?(#([-\/\?!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?$/i,
       )
     }
     vself.isURLHTTP = function (value) {
       return (
         vself.isURL(value) &&
         !value.search(
-          /^https?:\/\/((((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d))|([a-z\d]([a-z\d-]{0,61}[a-z\d])?\.)+[a-z]+)(:(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]\d{4}|[1-9]\d{0,3}|\d))?(\/|$)/i
+          /^https?:\/\/((((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d))|([a-z\d]([a-z\d-]{0,61}[a-z\d])?\.)+[a-z]+)(:(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]\d{4}|[1-9]\d{0,3}|\d))?(\/|$)/i,
         )
       )
     }
@@ -320,7 +320,7 @@ var formSubmit = new (function () {
       return (
         value[0] != '/' &&
         !value.search(
-          /^([-\/!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})+(\?([-\/\?!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?(#([-\/\?!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?$/i
+          /^([-\/!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})+(\?([-\/\?!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?(#([-\/\?!$&'\(\)\*\+,;=\.\w~]|%[\da-f]{2})*)?$/i,
         )
       )
     }
@@ -397,7 +397,7 @@ var formSubmit = new (function () {
           value.replace(/\D/g, function (match) {
             // Allow the first period, all other non-digits are replaced
             return match == '.' && ++pcount == 1 ? '.' : ''
-          })
+          }),
       )
     }
     vself.formatCurrency = function (value) {
@@ -459,7 +459,7 @@ var formSubmit = new (function () {
           (groups = value
             .slice(groups[0].length)
             .match(
-              /\b\D*(1\d|2[0-3]|0?\d)[\.:]?((?:0|[1-5])?\d)(?:[\.:]?((?:0|[1-5])?\d)(?:[\.:]?(\d{1,6})\d*)?)?\D*\b/
+              /\b\D*(1\d|2[0-3]|0?\d)[\.:]?((?:0|[1-5])?\d)(?:[\.:]?((?:0|[1-5])?\d)(?:[\.:]?(\d{1,6})\d*)?)?\D*\b/,
             ))
         ) {
           replacements['H'] = groups[1]
@@ -469,7 +469,7 @@ var formSubmit = new (function () {
           // h24:m:s.ms (date intact)
         } else if (
           (groups = value.match(
-            /\b\D*(1\d|2[0-3]|0?\d)[\.:]?((?:0|[1-5])?\d)(?:[\.:]?((?:0|[1-5])?\d)(?:[\.:]?(\d{1,6})\d*)?)?\D*\b/
+            /\b\D*(1\d|2[0-3]|0?\d)[\.:]?((?:0|[1-5])?\d)(?:[\.:]?((?:0|[1-5])?\d)(?:[\.:]?(\d{1,6})\d*)?)?\D*\b/,
           ))
         ) {
           replacements['H'] = groups[1]
@@ -552,7 +552,7 @@ var formSubmit = new (function () {
         /^(?!https?:\/\/|$)(((https?)|[a-z][a-z0-9]*)(:\/{0,2}|:?\/{1,2}))?/i,
         function (m, p1, p2, protocol) {
           return (protocol || 'http') + '://'
-        }
+        },
       )
     }
     vself.formatURLPath = function (value) {
@@ -575,7 +575,7 @@ var formSubmit = new (function () {
         .replace(/[^\d\.]/g, '')
         .replace(/(^|\.)0+(?=\d)/g, '.')
         .match(
-          /^[\D]*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)[\D]*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)?[\D]*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)?[\D]*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)?[\D]*$/
+          /^[\D]*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)[\D]*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)?[\D]*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)?[\D]*(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)?[\D]*$/,
         )
       return (groups || []).slice(1).join('.')
     }
@@ -633,7 +633,7 @@ var formSubmit = new (function () {
             return generalSeparators ? '\\D?' : item.replace(/(\W)/g, '\\$1')
           }) +
           regexEnd +
-          '\\D*$'
+          '\\D*$',
       )
     }
   })()

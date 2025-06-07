@@ -1,12 +1,13 @@
+import { theme } from '@test/__mocks__'
 import '@testing-library/jest-dom'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { render, screen } from '@testing-library/react'
-import CssBaseline from '@mui/material/CssBaseline'
 import { mocked } from 'jest-mock'
 import React from 'react'
+
+import CssBaseline from '@mui/material/CssBaseline'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
-import { theme } from '@test/__mocks__'
 import Themed from './index'
 
 jest.mock('@aws-amplify/analytics')
