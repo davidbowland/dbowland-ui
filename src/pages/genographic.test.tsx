@@ -20,12 +20,12 @@ describe('Genographic page', () => {
     mocked(TitleBar).mockReturnValue(<></>)
   })
 
-  test('Rendering Genographic renders GenographicInfographic', () => {
+  it('should render GenographicInfographic', () => {
     render(<Genographic />)
     expect(mocked(GenographicInfographic)).toHaveBeenCalledTimes(1)
   })
 
-  test('Rendering Genographic renders TitleBar', () => {
+  it('should render TitleBar', () => {
     render(<Genographic />)
     expect(mocked(TitleBar)).toHaveBeenCalledTimes(1)
   })

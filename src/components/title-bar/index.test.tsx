@@ -1,24 +1,30 @@
 import '@testing-library/jest-dom'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import React from 'react'
 
 import TitleBar from './index'
 
 describe('Title bar component', () => {
   describe('mobile', () => {
-    test('expect rendering TitleBar has title in output', () => {
+    it('should render title in output', () => {
       render(<TitleBar />)
 
       expect(screen.queryAllByText('dbowland.com').length).toEqual(2)
     })
 
-    test('expect clicking menu displays menu items', async () => {
+    it('should display menu items when clicking menu', async () => {
+      const user = userEvent.setup()
       render(<TitleBar />)
 
       const menuButton = (await screen.findByLabelText(/menu/i, { selector: 'button' })) as HTMLButtonElement
-      fireEvent.click(menuButton)
+      await act(async () => {
+        await user.click(menuButton)
+      })
       const resumeButton = (await screen.queryAllByText(/resume/i)[1]) as HTMLButtonElement
-      fireEvent.click(resumeButton)
+      await act(async () => {
+        await user.click(resumeButton)
+      })
 
       expect(screen.queryAllByText(/GitHub/i)[1]).toBeVisible()
       expect(screen.queryAllByText(/LinkedIn/i)[1]).toBeVisible()
@@ -28,13 +34,13 @@ describe('Title bar component', () => {
   })
 
   describe('desktop', () => {
-    test('expect rendering TitleBar has title in output', () => {
+    it('should render title in output', () => {
       render(<TitleBar />)
 
       expect(screen.queryAllByText('dbowland.com').length).toEqual(2)
     })
 
-    test('expect rendering TitleBar contains menu items', () => {
+    it('should contain menu items', () => {
       render(<TitleBar />)
 
       expect(screen.queryAllByText(/GitHub/i)[0]).toBeVisible()

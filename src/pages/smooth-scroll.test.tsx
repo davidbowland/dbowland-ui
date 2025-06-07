@@ -14,7 +14,7 @@ describe('smooth-scroll example', () => {
     mocked(SmoothScrollExample).mockReturnValue(<></>)
   })
 
-  test('expect SmoothScroll renders SmoothScrollExample', () => {
+  it('should render SmoothScrollExample', () => {
     render(<SmoothScroll />)
     expect(mocked(SmoothScrollExample)).toHaveBeenCalledTimes(1)
   })

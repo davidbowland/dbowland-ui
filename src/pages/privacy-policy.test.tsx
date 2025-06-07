@@ -17,12 +17,12 @@ describe('Privacy page', () => {
     mocked(TitleBar).mockReturnValue(<></>)
   })
 
-  test('Rendering PrivacyPage also renders PrivacyPolicy', () => {
+  it('should render PrivacyPolicy', () => {
     render(<PrivacyPage />)
     expect(mocked(PrivacyPolicy)).toHaveBeenCalledTimes(1)
   })
 
-  test('Rendering PrivacyPage also renders TitleBar', () => {
+  it('should render TitleBar', () => {
     render(<PrivacyPage />)
     expect(mocked(TitleBar)).toHaveBeenCalledTimes(1)
   })

@@ -20,17 +20,17 @@ describe('Home page (index)', () => {
     mocked(TitleBar).mockReturnValue(<></>)
   })
 
-  test('Rendering Index also renders Resume', () => {
+  it('should render Resume', () => {
     render(<HomePage />)
     expect(mocked(Resume)).toHaveBeenCalledTimes(1)
   })
 
-  test('Rendering Index also renders PrivacyLink', () => {
+  it('should render PrivacyLink', () => {
     render(<HomePage />)
     expect(mocked(PrivacyLink)).toHaveBeenCalledTimes(1)
   })
 
-  test('Rendering Index also renders TitleBar', () => {
+  it('should render TitleBar', () => {
     render(<HomePage />)
     expect(mocked(TitleBar)).toHaveBeenCalledTimes(1)
   })

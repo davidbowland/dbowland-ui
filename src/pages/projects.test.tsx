@@ -20,12 +20,12 @@ describe('Projects page', () => {
     mocked(TitleBar).mockReturnValue(<></>)
   })
 
-  test('Rendering Projects renders ProjectsTable', () => {
+  it('should render ProjectsTable', () => {
     render(<Projects />)
     expect(mocked(ProjectsTable)).toHaveBeenCalledTimes(1)
   })
 
-  test('Rendering Projects renders TitleBar', () => {
+  it('should render TitleBar', () => {
     render(<Projects />)
     expect(mocked(TitleBar)).toHaveBeenCalledTimes(1)
   })

@@ -5,7 +5,7 @@ import React from 'react'
 import FormSubmitExample from './index'
 
 describe('form-submit example component', () => {
-  test('expect FormSubmitExample to render nine forms', () => {
+  it('should render nine forms', () => {
     render(<FormSubmitExample />)
 
     expect(screen.getByText(/Form 1 - Numbers/i)).toBeInTheDocument()

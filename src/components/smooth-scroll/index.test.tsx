@@ -5,7 +5,7 @@ import React from 'react'
 import SmoothScrollExample from './index'
 
 describe('smooth-scroll example component', () => {
-  test('expect SmoothScrollExample to render nine cells', () => {
+  it('should render nine cells', () => {
     render(<SmoothScrollExample />)
 
     expect(screen.getAllByText(/1/i)[0]).toBeInTheDocument()
@@ -19,7 +19,7 @@ describe('smooth-scroll example component', () => {
     expect(screen.getAllByText(/9/i)[0]).toBeInTheDocument()
   })
 
-  test('Rendering SmoothScrollExample to have scroll links', () => {
+  it('should have scroll links', () => {
     render(<SmoothScrollExample />)
 
     const anchors = screen.getAllByRole('link') as HTMLAnchorElement[]

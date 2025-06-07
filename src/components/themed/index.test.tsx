@@ -27,19 +27,19 @@ describe('Themed component', () => {
     mocked(useMediaQuery).mockReturnValue(false)
   })
 
-  test('expect rendering Themed has children in output', async () => {
+  it('should render children in output', async () => {
     render(<Themed>{children}</Themed>)
 
     expect(await screen.findByText('fnord')).toBeInTheDocument()
   })
 
-  test('expect rendering Themed renders CssBaseline', async () => {
+  it('should render CssBaseline', async () => {
     render(<Themed>{children}</Themed>)
 
     expect(mocked(CssBaseline)).toHaveBeenCalledTimes(1)
   })
 
-  test('expect rendering Themed uses light theme when reqeusted', () => {
+  it('should use light theme when requested', () => {
     render(<Themed>{children}</Themed>)
 
     expect(mocked(createTheme)).toHaveBeenCalledWith({
@@ -54,7 +54,7 @@ describe('Themed component', () => {
     expect(mocked(ThemeProvider)).toHaveBeenCalledWith(expect.objectContaining({ theme }), {})
   })
 
-  test('expect rendering Themed uses dark theme when reqeusted', () => {
+  it('should use dark theme when requested', () => {
     mocked(useMediaQuery).mockReturnValueOnce(true)
     render(<Themed>{children}</Themed>)
 

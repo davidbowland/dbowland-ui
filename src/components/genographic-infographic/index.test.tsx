@@ -17,12 +17,12 @@ describe('Genographic infographic component', () => {
     })
   })
 
-  test('Genographic includes text "National Geographic Genographic project"', () => {
+  it('should include text "National Geographic Genographic project"', () => {
     render(<GenographicInfographic />)
     expect(screen.queryByText(/National Geographic Genographic project/i)).toBeInTheDocument()
   })
 
-  test('Rendering GenographicInfographic renders genographics-infographic.png with alt text', () => {
+  it('should render genographics-infographic.png with alt text', () => {
     render(<GenographicInfographic />)
 
     const img = screen.getByRole('img') as HTMLImageElement
@@ -30,7 +30,7 @@ describe('Genographic infographic component', () => {
     expect(img.alt).toBeDefined()
   })
 
-  test('Rendering GenographicInfographic contains link to PDF results', () => {
+  it('should contain link to PDF results', () => {
     render(<GenographicInfographic />)
 
     const anchors = screen.getAllByRole('link') as HTMLAnchorElement[]

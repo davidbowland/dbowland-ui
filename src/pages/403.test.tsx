@@ -14,7 +14,7 @@ describe('403 error page', () => {
     mocked(ServerErrorMessage).mockReturnValue(<></>)
   })
 
-  test('expect rendering Forbidden renders ServerErrorMessage', () => {
+  it('should render ServerErrorMessage', () => {
     const expectedTitle = '403: Forbidden'
     render(<Forbidden />)
     expect(mocked(ServerErrorMessage)).toHaveBeenCalledWith(

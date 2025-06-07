@@ -17,7 +17,7 @@ describe('Resume component', () => {
     console.warn = consoleWarn
   })
 
-  test('Rendering Resume renders contact information', () => {
+  it('should render contact information', () => {
     render(<Resume />)
 
     expect(screen.getByText(/David Bowland/i)).toBeInTheDocument()
@@ -25,7 +25,7 @@ describe('Resume component', () => {
     expect(screen.getByText(emailAddress)).toBeInTheDocument()
   })
 
-  test('Rendering Resume has links to email and PDF', () => {
+  it('should have links to email and PDF', () => {
     render(<Resume />)
 
     const anchors = screen.getAllByRole('link') as HTMLAnchorElement[]
