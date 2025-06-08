@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import FormSubmit from './form-submit'
+import FormSubmit, { Head } from './form-submit'
 
 jest.mock('@aws-amplify/analytics')
 jest.mock('@components/form-submit')
@@ -16,5 +16,10 @@ describe('form-submit example', () => {
   it('should render FormSubmitExample', () => {
     render(<FormSubmit />)
     expect(FormSubmitExample).toHaveBeenCalledTimes(1)
+  })
+
+  it('renders Head', () => {
+    render(<Head />)
+    expect(document.title).toEqual('form-submit example page | github.com/davidbowland/form-submit')
   })
 })

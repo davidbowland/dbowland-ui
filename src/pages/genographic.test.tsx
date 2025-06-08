@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Genographic from './genographic'
+import Genographic, { Head } from './genographic'
 
 jest.mock('@aws-amplify/analytics')
 jest.mock('@components/genographic-infographic')
@@ -27,5 +27,10 @@ describe('Genographic page', () => {
   it('should render TitleBar', () => {
     render(<Genographic />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
+  })
+
+  it('renders Head', () => {
+    render(<Head />)
+    expect(document.title).toEqual('Genographic Information | dbowland.com')
   })
 })

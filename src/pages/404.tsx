@@ -10,4 +10,6 @@ const NotFound = (): JSX.Element => {
   )
 }
 
+export const Head = () => <title>404: Not Found -- dbowland.com</title>
+
 export default NotFound

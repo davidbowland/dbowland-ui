@@ -10,4 +10,6 @@ const InternalServerError = (): JSX.Element => {
   )
 }
 
+export const Head = () => <title>500: Internal Server Error -- dbowland.com</title>
+
 export default InternalServerError

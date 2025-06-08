@@ -10,4 +10,6 @@ const Forbidden = (): JSX.Element => {
   )
 }
 
+export const Head = () => <title>403: Forbidden -- dbowland.com</title>
+
 export default Forbidden

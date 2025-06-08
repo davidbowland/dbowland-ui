@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import HomePage from './index'
+import HomePage, { Head } from './index'
 
 jest.mock('@aws-amplify/analytics')
 jest.mock('@components/privacy-link')
@@ -32,5 +32,10 @@ describe('Home page (index)', () => {
   it('should render TitleBar', () => {
     render(<HomePage />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
+  })
+
+  it('renders Head', () => {
+    render(<Head />)
+    expect(document.title).toEqual('David Bowland | Software Developer')
   })
 })
