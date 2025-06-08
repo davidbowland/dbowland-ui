@@ -1,7 +1,6 @@
 import { theme } from '@test/__mocks__'
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import { mocked } from 'jest-mock'
 import React from 'react'
 
 import CssBaseline from '@mui/material/CssBaseline'
@@ -22,10 +21,10 @@ describe('Themed component', () => {
   const children = <>fnord</>
 
   beforeAll(() => {
-    mocked(CssBaseline).mockReturnValue(<></>)
-    mocked(ThemeProvider).mockImplementation(({ children }) => <>{children}</>)
-    mocked(createTheme).mockReturnValue(theme)
-    mocked(useMediaQuery).mockReturnValue(false)
+    jest.mocked(CssBaseline).mockReturnValue(<></>)
+    jest.mocked(ThemeProvider).mockImplementation(({ children }) => <>{children}</>)
+    jest.mocked(createTheme).mockReturnValue(theme)
+    jest.mocked(useMediaQuery).mockReturnValue(false)
   })
 
   it('should render children in output', async () => {
@@ -37,13 +36,13 @@ describe('Themed component', () => {
   it('should render CssBaseline', async () => {
     render(<Themed>{children}</Themed>)
 
-    expect(mocked(CssBaseline)).toHaveBeenCalledTimes(1)
+    expect(CssBaseline).toHaveBeenCalledTimes(1)
   })
 
   it('should use light theme when requested', () => {
     render(<Themed>{children}</Themed>)
 
-    expect(mocked(createTheme)).toHaveBeenCalledWith({
+    expect(createTheme).toHaveBeenCalledWith({
       palette: {
         background: {
           default: '#ededed',
@@ -52,14 +51,14 @@ describe('Themed component', () => {
         mode: 'light',
       },
     })
-    expect(mocked(ThemeProvider)).toHaveBeenCalledWith(expect.objectContaining({ theme }), {})
+    expect(ThemeProvider).toHaveBeenCalledWith(expect.objectContaining({ theme }), {})
   })
 
   it('should use dark theme when requested', () => {
-    mocked(useMediaQuery).mockReturnValueOnce(true)
+    jest.mocked(useMediaQuery).mockReturnValueOnce(true)
     render(<Themed>{children}</Themed>)
 
-    expect(mocked(createTheme)).toHaveBeenCalledWith({
+    expect(createTheme).toHaveBeenCalledWith({
       palette: {
         background: {
           default: '#121212',
@@ -68,6 +67,6 @@ describe('Themed component', () => {
         mode: 'dark',
       },
     })
-    expect(mocked(ThemeProvider)).toHaveBeenCalledWith(expect.objectContaining({ theme }), {})
+    expect(ThemeProvider).toHaveBeenCalledWith(expect.objectContaining({ theme }), {})
   })
 })

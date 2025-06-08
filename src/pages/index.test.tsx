@@ -3,7 +3,6 @@ import Resume from '@components/resume'
 import TitleBar from '@components/title-bar'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import { mocked } from 'jest-mock'
 import React from 'react'
 
 import HomePage from './index'
@@ -15,23 +14,23 @@ jest.mock('@components/title-bar')
 
 describe('Home page (index)', () => {
   beforeAll(() => {
-    mocked(PrivacyLink).mockReturnValue(<></>)
-    mocked(Resume).mockReturnValue(<></>)
-    mocked(TitleBar).mockReturnValue(<></>)
+    jest.mocked(PrivacyLink).mockReturnValue(<></>)
+    jest.mocked(Resume).mockReturnValue(<></>)
+    jest.mocked(TitleBar).mockReturnValue(<></>)
   })
 
   it('should render Resume', () => {
     render(<HomePage />)
-    expect(mocked(Resume)).toHaveBeenCalledTimes(1)
+    expect(Resume).toHaveBeenCalledTimes(1)
   })
 
   it('should render PrivacyLink', () => {
     render(<HomePage />)
-    expect(mocked(PrivacyLink)).toHaveBeenCalledTimes(1)
+    expect(PrivacyLink).toHaveBeenCalledTimes(1)
   })
 
   it('should render TitleBar', () => {
     render(<HomePage />)
-    expect(mocked(TitleBar)).toHaveBeenCalledTimes(1)
+    expect(TitleBar).toHaveBeenCalledTimes(1)
   })
 })

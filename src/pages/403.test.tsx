@@ -1,7 +1,6 @@
 import ServerErrorMessage from '@components/server-error-message'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import { mocked } from 'jest-mock'
 import React from 'react'
 
 import Forbidden from './403'
@@ -11,16 +10,16 @@ jest.mock('@components/server-error-message')
 
 describe('403 error page', () => {
   beforeAll(() => {
-    mocked(ServerErrorMessage).mockReturnValue(<></>)
+    jest.mocked(ServerErrorMessage).mockReturnValue(<></>)
   })
 
   it('should render ServerErrorMessage', () => {
     const expectedTitle = '403: Forbidden'
     render(<Forbidden />)
-    expect(mocked(ServerErrorMessage)).toHaveBeenCalledWith(
+    expect(ServerErrorMessage).toHaveBeenCalledWith(
       expect.objectContaining({ title: expectedTitle }),
       expect.anything(),
     )
-    expect(mocked(ServerErrorMessage)).toHaveBeenCalledTimes(1)
+    expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
 })
