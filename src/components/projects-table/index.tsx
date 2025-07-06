@@ -298,13 +298,8 @@ const ProjectsTable = (): JSX.Element => {
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/choosee-maps-api">
-                  <ListItemText primary="choosee-maps-api (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/choosee-session-api">
-                  <ListItemText primary="choosee-session-api (AWS SAM/TypeScript)" />
+                <ListItemButton component="a" href="https://github.com/davidbowland/choosee-api">
+                  <ListItemText primary="choosee-api (AWS SAM/TypeScript)" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
