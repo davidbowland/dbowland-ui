@@ -18,7 +18,6 @@ describe('ProjectsTable component', () => {
     /Root - Infrastructure/i,
     /Email Forwarding - DynamoDB, Lambda, SES, SQS/i,
     /Jokes - DynamoDB, Lambda, Polly, React/i,
-    /DBD Build Maker - DynamoDB, Lambda, React/i,
     /Choosee - DynamoDB, Lambda, React/i,
     /Other - Lambda, React, SQS/i,
   ])('should scroll view when clicking %s option', async (text) => {
