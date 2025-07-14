@@ -1,4 +1,3 @@
-import { Analytics } from '@aws-amplify/analytics'
 import { Amplify, Auth } from 'aws-amplify'
 
 const identityPoolId = process.env.GATSBY_IDENTITY_POOL_ID
@@ -8,7 +7,7 @@ const identityPoolId = process.env.GATSBY_IDENTITY_POOL_ID
 Amplify.configure({
   API: {
     endpoints: [
-      // Without this endpoint, spefically with custom header, analytics mysterously stop working
+      // Without this endpoint, specifically with custom header, analytics mysteriously stop working
       {
         custom_header: async () => ({
           Authorization: `Bearer ${(await Auth.currentSession()).getIdToken().getJwtToken()}`,
@@ -24,33 +23,3 @@ Amplify.configure({
     region: identityPoolId.split(':')[0],
   },
 })
-
-// Analytics
-
-const appId = process.env.GATSBY_PINPOINT_ID
-
-const analyticsConfig = {
-  AWSPinpoint: {
-    appId,
-    region: 'us-east-1',
-  },
-}
-
-Analytics.configure(analyticsConfig)
-
-Analytics.autoTrack('session', {
-  // REQUIRED, turn on/off the auto tracking
-  enable: true,
-})
-
-Analytics.autoTrack('pageView', {
-  // REQUIRED, turn on/off the auto tracking
-  enable: true,
-})
-
-Analytics.autoTrack('event', {
-  // REQUIRED, turn on/off the auto tracking
-  enable: true,
-})
-
-Auth.configure(analyticsConfig)

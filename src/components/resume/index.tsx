@@ -272,7 +272,6 @@ const Resume = (): JSX.Element => {
                 'CloudWatch',
                 'ECS',
                 'Lambda',
-                'Pinpoint',
                 'QuickSight',
                 'RDS',
                 'S3',

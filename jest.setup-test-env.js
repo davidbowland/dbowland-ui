@@ -7,4 +7,3 @@ global.___loader = {
 process.env.COGNITO_APP_CLIENT_ID = 'somereallylongvalue1111'
 process.env.COGNITO_USER_POOL_ID = 'us-east_clientId'
 process.env.GATSBY_IDENTITY_POOL_ID = 'us-east-2:9ijbvfrfertghjijh'
-process.env.GATSBY_PINPOINT_ID = 'mnbvcdertyuikmnb'
