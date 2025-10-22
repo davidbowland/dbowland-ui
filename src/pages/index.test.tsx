@@ -7,7 +7,6 @@ import React from 'react'
 
 import HomePage, { Head } from './index'
 
-jest.mock('@aws-amplify/analytics')
 jest.mock('@components/privacy-link')
 jest.mock('@components/resume')
 jest.mock('@components/title-bar')

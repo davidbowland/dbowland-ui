@@ -6,7 +6,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 import '@assets/css/index.css'
-import '@config/amplify'
 
 export interface ThemedProps {
   children: JSX.Element | JSX.Element[]

@@ -6,7 +6,6 @@ import React from 'react'
 
 import PrivacyPage, { Head } from './privacy-policy'
 
-jest.mock('@aws-amplify/analytics')
 jest.mock('@components/privacy-policy')
 jest.mock('@components/title-bar')
 

@@ -63,43 +63,20 @@ const Resume = (): JSX.Element => {
           <ResumeNameSectionName>David Bowland</ResumeNameSectionName>
           <ResumeNameSectionTitle>Software Developer</ResumeNameSectionTitle>
           <ResumeDownloadHeader>
-            <ResumeLink data-amplify-analytics-name="resume-click" data-amplify-analytics-on="click" to={resumePdf}>
-              Download Resume
-            </ResumeLink>
+            <ResumeLink to={resumePdf}>Download Resume</ResumeLink>
           </ResumeDownloadHeader>
         </Grid>
 
         <Grid item md={3} sm={4} sx={{ p: '0.5em', textAlign: { sm: 'left', xs: 'center' } }} xs={12}>
           <ResumeContactDetailsList>
             <ResumeContactDetailsListItem>
-              e:{' '}
-              <ResumeAnchor
-                data-amplify-analytics-name="email-click"
-                data-amplify-analytics-on="click"
-                href="mailto:david@dbowland.com"
-              >
-                david@dbowland.com
-              </ResumeAnchor>
+              e: <ResumeAnchor href="mailto:david@dbowland.com">david@dbowland.com</ResumeAnchor>
             </ResumeContactDetailsListItem>
             <ResumeContactDetailsListItem>
-              w:{' '}
-              <ResumeAnchor
-                data-amplify-analytics-name="website-click"
-                data-amplify-analytics-on="click"
-                href="https://dbowland.com"
-              >
-                dbowland.com
-              </ResumeAnchor>
+              w: <ResumeAnchor href="https://dbowland.com">dbowland.com</ResumeAnchor>
             </ResumeContactDetailsListItem>
             <ResumeContactDetailsListItem>
-              m:{' '}
-              <ResumeAnchor
-                data-amplify-analytics-name="tel-click"
-                data-amplify-analytics-on="click"
-                href="tel:+14178940079"
-              >
-                417.894.0079
-              </ResumeAnchor>
+              m: <ResumeAnchor href="tel:+14178940079">417.894.0079</ResumeAnchor>
             </ResumeContactDetailsListItem>
           </ResumeContactDetailsList>
         </Grid>

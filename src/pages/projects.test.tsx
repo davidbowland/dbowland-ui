@@ -7,7 +7,6 @@ import React from 'react'
 
 import Projects, { Head } from './projects'
 
-jest.mock('@aws-amplify/analytics')
 jest.mock('@components/privacy-link')
 jest.mock('@components/projects-table')
 jest.mock('@components/title-bar')

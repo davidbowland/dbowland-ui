@@ -5,7 +5,6 @@ import React from 'react'
 
 import FormSubmit, { Head } from './form-submit'
 
-jest.mock('@aws-amplify/analytics')
 jest.mock('@components/form-submit')
 
 describe('form-submit example', () => {

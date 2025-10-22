@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react'
 
-import '@config/amplify'
-
 export const DriveFileRedirect = 'drive-file' as const
-
 export type RedirectType = typeof DriveFileRedirect
 
 export interface RedirectProps {

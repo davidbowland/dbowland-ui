@@ -7,7 +7,6 @@ import React from 'react'
 
 import Genographic, { Head } from './genographic'
 
-jest.mock('@aws-amplify/analytics')
 jest.mock('@components/genographic-infographic')
 jest.mock('@components/privacy-link')
 jest.mock('@components/title-bar')

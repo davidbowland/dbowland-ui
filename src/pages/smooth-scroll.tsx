@@ -2,8 +2,6 @@ import SmoothScrollExample from '@components/smooth-scroll'
 import '@fontsource/fira-code'
 import React from 'react'
 
-import '@config/amplify'
-
 const SmoothScroll = (): JSX.Element => {
   return (
     <main>

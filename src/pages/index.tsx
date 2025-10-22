@@ -5,8 +5,6 @@ import React from 'react'
 
 import Paper from '@mui/material/Paper'
 
-import '@config/amplify'
-
 const HomePage = (): JSX.Element => {
   return (
     <>

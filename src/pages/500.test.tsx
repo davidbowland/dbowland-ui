@@ -5,7 +5,6 @@ import React from 'react'
 
 import InternalServerError, { Head } from './500'
 
-jest.mock('@aws-amplify/analytics')
 jest.mock('@components/server-error-message')
 
 describe('500 error page', () => {

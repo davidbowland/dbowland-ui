@@ -4,8 +4,6 @@ import React from 'react'
 
 import Redirect, { DriveFileRedirect, RedirectHead } from './index'
 
-jest.mock('@aws-amplify/analytics')
-
 describe('Redirect component', () => {
   const mockLocationReplace = jest.fn()
   const testId = '1PMbL4GwiNlkN-aqjuun3ytOMTelFL-3w'

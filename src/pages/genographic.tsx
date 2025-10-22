@@ -3,8 +3,6 @@ import PrivacyLink from '@components/privacy-link'
 import TitleBar from '@components/title-bar'
 import React from 'react'
 
-import '@config/amplify'
-
 const Genographic = (): JSX.Element => {
   return (
     <>

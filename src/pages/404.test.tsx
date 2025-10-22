@@ -5,7 +5,6 @@ import React from 'react'
 
 import NotFound, { Head } from './404'
 
-jest.mock('@aws-amplify/analytics')
 jest.mock('@components/server-error-message')
 
 describe('404 error page', () => {

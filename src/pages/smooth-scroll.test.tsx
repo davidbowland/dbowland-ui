@@ -5,7 +5,6 @@ import React from 'react'
 
 import SmoothScroll, { Head } from './smooth-scroll'
 
-jest.mock('@aws-amplify/analytics')
 jest.mock('@components/smooth-scroll')
 
 describe('smooth-scroll example', () => {

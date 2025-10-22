@@ -4,8 +4,6 @@ import React from 'react'
 
 import Proposal, { Head } from './proposal'
 
-jest.mock('@aws-amplify/analytics')
-
 describe('proposal redirect', () => {
   const mockLocationReplace = jest.fn()
 
