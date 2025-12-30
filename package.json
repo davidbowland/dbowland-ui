@@ -32,7 +32,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@fontsource/fira-code": "^5.2.7",
-    "@fontsource/roboto": "^5.2.8",
+    "@fontsource/roboto": "^5.2.9",
     "@mdx-js/mdx": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@mui/icons-material": "^5.18.0",
@@ -67,7 +67,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/jest": "^29.5.14",
-    "@types/node": "^20.19.25",
+    "@types/node": "^20.19.27",
     "@types/react": "^18.3.27",
     "@types/react-dom": "^18.3.7",
     "@types/react-helmet": "^6.1.11",
@@ -82,9 +82,9 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^13.3.0",
-    "prettier": "^3.6.2",
+    "prettier": "^3.7.4",
     "react-test-renderer": "^18.3.1",
-    "ts-jest": "^29.4.5"
+    "ts-jest": "^29.4.6"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
