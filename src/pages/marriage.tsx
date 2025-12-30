@@ -19,6 +19,6 @@ const MarriagePage = (): JSX.Element => {
   )
 }
 
-export const Head = () => <title>Marriage | David & Tandi Bowland</title>
+export const Head = () => <title>Marriage Statistics | David & Tandi Bowland</title>
 
 export default MarriagePage

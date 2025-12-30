@@ -32,6 +32,6 @@ describe('Marriage page', () => {
 
   it('renders Head', () => {
     render(<Head />)
-    expect(document.title).toEqual('Marriage | David & Tandi Bowland')
+    expect(document.title).toEqual('Marriage Statistics | David & Tandi Bowland')
   })
 })
