@@ -89,12 +89,11 @@ describe('MarriageStats component', () => {
   })
 
   it('should calculate days using UTC to avoid DST issues', () => {
-    const dstDate = new Date('2025-11-03T12:00:00-05:00') // Day after DST ends in 2025
+    const dstDate = new Date('2025-11-03T12:00:00-05:00')
     jest.setSystemTime(dstDate)
 
     render(<MarriageStats />)
 
-    // Should show correct day count despite DST transition
     expect(screen.getByText('Days Married')).toBeInTheDocument()
     const daysElement = screen.getByText('Days Married').previousElementSibling
     expect(daysElement).toHaveTextContent('44')
@@ -103,17 +102,38 @@ describe('MarriageStats component', () => {
   })
 
   it('should calculate years correctly without month adjustment', () => {
-    const beforeAnniversary = new Date('2026-09-19T12:00:00-05:00') // Day before 1 year
+    const beforeAnniversary = new Date('2026-09-19T12:00:00-05:00')
     jest.setSystemTime(beforeAnniversary)
 
     render(<MarriageStats />)
     expect(screen.queryByText('Years of Bliss')).not.toBeInTheDocument()
 
-    const onAnniversary = new Date('2026-09-20T12:00:00-05:00') // Exactly 1 year
+    const onAnniversary = new Date('2026-09-20T12:00:00-05:00')
     jest.setSystemTime(onAnniversary)
 
     render(<MarriageStats />)
     expect(screen.getByText('Years of Bliss')).toBeInTheDocument()
+
+    jest.setSystemTime(mockDate)
+  })
+
+  it('should handle milestone calculations for all time types', () => {
+    render(<MarriageStats />)
+
+    // Verify that milestones are processed for different types
+    expect(screen.getByText('Milestones')).toBeInTheDocument()
+    expect(screen.getByText(/🌙 1 Month/)).toBeInTheDocument()
+    expect(screen.getByText(/🌱 3 Months/)).toBeInTheDocument()
+  })
+
+  it('should display singular "day" when remaining is 1', () => {
+    const oneDayBeforeOneMonth = new Date('2025-10-19T17:00:00-05:00')
+    jest.setSystemTime(oneDayBeforeOneMonth)
+
+    render(<MarriageStats />)
+
+    expect(screen.getByText('Next Milestone')).toBeInTheDocument()
+    expect(screen.getByText('1 day to go!')).toBeInTheDocument()
 
     jest.setSystemTime(mockDate)
   })
