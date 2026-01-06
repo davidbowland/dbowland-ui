@@ -12,14 +12,9 @@ describe('404 error page', () => {
     jest.mocked(ServerErrorMessage).mockReturnValue(<></>)
   })
 
-  it('should render ServerErrorMessage', () => {
-    const expectedTitle = '404: Not Found'
+  it('should render empty component when window exists (client-side)', () => {
     render(<NotFound />)
-    expect(ServerErrorMessage).toHaveBeenCalledWith(
-      expect.objectContaining({ title: expectedTitle }),
-      expect.anything(),
-    )
-    expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
+    expect(ServerErrorMessage).not.toHaveBeenCalled()
   })
 
   it('renders Head', () => {
