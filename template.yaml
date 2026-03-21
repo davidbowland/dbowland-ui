@@ -142,7 +142,7 @@ Resources:
           AcmCertificateArn: !Sub
             - 'arn:aws:acm:us-east-1:${AWS::AccountId}:certificate/${Certificate}'
             - Certificate: !FindInMap [EnvironmentMap, !Ref Environment, certificate]
-          MinimumProtocolVersion: 'TLSv1.2_2018'
+          MinimumProtocolVersion: 'TLSv1.2_2021'
           SslSupportMethod: 'sni-only'
       Tags:
         - Key: 'created-by'
@@ -233,8 +233,6 @@ Resources:
               OriginProtocolPolicy: 'http-only'
               OriginReadTimeout: 30
               OriginSSLProtocols:
-                - 'TLSv1'
-                - 'TLSv1.1'
                 - 'TLSv1.2'
             DomainName: !Sub '${RedirectBucket}.s3-website.us-east-2.amazonaws.com'
             Id: S3RedirectOrigin
@@ -243,7 +241,7 @@ Resources:
           AcmCertificateArn: !Sub
             - 'arn:aws:acm:us-east-1:${AWS::AccountId}:certificate/${Certificate}'
             - Certificate: !FindInMap [EnvironmentMap, !Ref Environment, certificate]
-          MinimumProtocolVersion: 'TLSv1.2_2018'
+          MinimumProtocolVersion: 'TLSv1.2_2021'
           SslSupportMethod: 'sni-only'
       Tags:
         - Key: 'created-by'
