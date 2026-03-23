@@ -153,7 +153,9 @@ import Head from 'next/head'
 <Head><title>David Bowland | Software Developer</title></Head>
 ```
 
-Two pages (`smooth-scroll.tsx`, `form-submit.tsx`) have fragment `Head` exports with both a `<title>` and a `<script>` tag:
+Four pages have fragment `Head` exports with multiple children and need explicit treatment:
+
+`smooth-scroll.tsx` and `form-submit.tsx` contain a `<title>` and a `<script>` tag:
 
 ```tsx
 // Before (Gatsby)
@@ -173,37 +175,52 @@ import Head from 'next/head'
 </Head>
 ```
 
+`proposal.tsx` and `wedding.tsx` contain a `<title>` and a `<RedirectHead>` component:
+
+```tsx
+// Before (Gatsby)
+export const Head = () => (
+  <>
+    <title>Redirecting...</title>
+    <RedirectHead id={VIDEO_ID} type={DriveFileRedirect} />
+  </>
+)
+
+// After (Next.js)
+import Head from 'next/head'
+// Inside JSX:
+<Head>
+  <title>Redirecting...</title>
+  <RedirectHead id={VIDEO_ID} type={DriveFileRedirect} />
+</Head>
+```
+
 **2. Remove `react-helmet` imports** if present (not widely used in this codebase).
 
 The `RedirectHead` component renders a `<meta>` refresh tag — it continues to work the same way, placed inside `<Head>` on pages that use it.
 
-### Components — three need changes
+### Components — gatsby Link imports (7 files)
 
-**`TitleBar`** (`src/components/title-bar/index.tsx`):
-
-- `import { Link } from 'gatsby'` → `import Link from 'next/link'`
-- `<Link to="/">` → `<Link href="/">`
-- Move inline `style` to a wrapping `<span>` or `<a>` (Next.js `<Link>` renders an `<a>` directly in v13+)
-
-**`resume/elements.tsx`** (`src/components/resume/elements.tsx`):
+Every component that imports `{ Link } from 'gatsby'` needs the same two changes:
 
 - `import { Link } from 'gatsby'` → `import Link from 'next/link'`
-- `ResumeLink = styled(Link)` stays the same — styled-components wraps the Next.js Link
+- Every `<Link to="...">` → `<Link href="...">`
 
-In `resume/index.tsx`, the `ResumeLink` usage changes `to` → `href`:
+Affected files:
 
-```tsx
-// Before
-<ResumeLink to={resumePdf}>Download Resume</ResumeLink>
+- `src/components/title-bar/index.tsx` — move inline `style` prop to a wrapping `<span>` (Next.js `<Link>` renders an `<a>` directly in v13+)
+- `src/components/resume/elements.tsx` — `ResumeLink = styled(Link)` stays as-is; the `to` → `href` rename happens at the usage site in `resume/index.tsx`: `<ResumeLink to={resumePdf}>` → `<ResumeLink href={resumePdf}>`
+- `src/components/privacy-policy/index.tsx` — three usages
+- `src/components/projects-table/index.tsx` — many usages
+- `src/components/privacy-link/index.tsx` — one usage
+- `src/components/server-error-message/index.tsx` — one usage
+- `src/components/genographic-infographic/index.tsx` — one usage (also wraps a `StaticImage`, see below)
 
-// After
-<ResumeLink href={resumePdf}>Download Resume</ResumeLink>
-```
+### Components — StaticImage → next/image (3 files)
 
-**`Resume`** (`src/components/resume/index.tsx`):
+All `StaticImage` usages replace with `Image` from `next-export-optimize-images/image`. The `src` changes from a relative string to an imported asset. The `imgStyle` prop (Gatsby-specific, targets the inner `<img>`) becomes `style` merged with the outer `style` on the `<Image>` component.
 
-- `StaticImage` from `gatsby-plugin-image` → `Image` from `next-export-optimize-images/image`
-- `src` changes from a relative string to an imported asset
+**`src/components/resume/index.tsx`:**
 
 ```tsx
 // Before
@@ -216,11 +233,41 @@ import headshot from '@assets/images/David-2023-05-10.jpg'
 <Image alt="Picture of David Bowland" src={headshot} style={ResumeImageStyles} />
 ```
 
-**`Themed`** (`src/components/themed/index.tsx`):
+**`src/components/projects-table/index.tsx`** (3 instances — emails, jokes, choosee diagrams):
+
+```tsx
+// Before
+import { StaticImage } from 'gatsby-plugin-image'
+<StaticImage alt="Diagram of emails project" imgStyle={{ objectFit: 'contain' }} src="../../assets/images/emails-diagram.png" style={ProjectImageStyles} />
+
+// After
+import Image from 'next-export-optimize-images/image'
+import emailsDiagram from '@assets/images/emails-diagram.png'
+<Image alt="Diagram of emails project" src={emailsDiagram} style={{ ...ProjectImageStyles, objectFit: 'contain' }} />
+```
+
+Same pattern for `jokes-diagram.png` and `choosee-diagram.png`.
+
+**`src/components/genographic-infographic/index.tsx`** (1 instance, wrapped in a `<Link>`):
+
+```tsx
+// Before
+import { StaticImage } from 'gatsby-plugin-image'
+<Link to={genographicPdf}>
+  <StaticImage alt="..." src="../../assets/images/genographic-infographic.png" />
+</Link>
+
+// After
+import Image from 'next-export-optimize-images/image'
+import genographicInfographic from '@assets/images/genographic-infographic.png'
+<Link href={genographicPdf}>
+  <Image alt="..." src={genographicInfographic} />
+</Link>
+```
+
+### `Themed` (`src/components/themed/index.tsx`)
 
 Remove `@fontsource/roboto` and `@assets/css/index.css` imports (moved to `_app.tsx`). Component logic is otherwise unchanged.
-
-All other components need no changes.
 
 ## Section 4: Testing
 
