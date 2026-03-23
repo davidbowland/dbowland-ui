@@ -65,7 +65,7 @@ Path aliases are configured in `tsconfig.json` `paths` — Next.js resolves them
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@config/*": ["./src/config/*"],
-      "@pages/*": ["./src/pages/$1"],
+      "@pages/*": ["src/pages/*"],
       "@test/*": ["./test/*"]
     }
   }
@@ -80,7 +80,7 @@ module.exports = {
 }
 ```
 
-Sitemap generation runs as a `postbuild` script after `next build`.
+Sitemap generation runs via a `postbuild` npm lifecycle script, which npm executes automatically after `next build` completes.
 
 ### Files deleted
 
@@ -141,10 +141,10 @@ export default function Document() {
 
 **1. `Head` export → `next/head`**
 
-All pages use Gatsby's `Head` export pattern. Replace with `<Head>` from `next/head` inside the component:
+All pages use Gatsby's `Head` export pattern. Replace with `<Head>` from `next/head` inside the component. The Gatsby `Head` export is removed and its contents move inside the component JSX:
 
 ```tsx
-// Before (Gatsby)
+// Before (Gatsby) — simple title
 export const Head = () => <title>David Bowland | Software Developer</title>
 
 // After (Next.js)
@@ -153,17 +153,52 @@ import Head from 'next/head'
 <Head><title>David Bowland | Software Developer</title></Head>
 ```
 
+Two pages (`smooth-scroll.tsx`, `form-submit.tsx`) have fragment `Head` exports with both a `<title>` and a `<script>` tag:
+
+```tsx
+// Before (Gatsby)
+export const Head = () => (
+  <>
+    <title>smooth-scroll example page | github.com/davidbowland/smooth-scroll</title>
+    <script defer src="/smooth-scroll.js"></script>
+  </>
+)
+
+// After (Next.js) — fragment replaced with <Head>, multiple children supported natively
+import Head from 'next/head'
+// Inside JSX:
+<Head>
+  <title>smooth-scroll example page | github.com/davidbowland/smooth-scroll</title>
+  <script defer src="/smooth-scroll.js"></script>
+</Head>
+```
+
 **2. Remove `react-helmet` imports** if present (not widely used in this codebase).
 
 The `RedirectHead` component renders a `<meta>` refresh tag — it continues to work the same way, placed inside `<Head>` on pages that use it.
 
-### Components — two need changes
+### Components — three need changes
 
 **`TitleBar`** (`src/components/title-bar/index.tsx`):
 
 - `import { Link } from 'gatsby'` → `import Link from 'next/link'`
 - `<Link to="/">` → `<Link href="/">`
 - Move inline `style` to a wrapping `<span>` or `<a>` (Next.js `<Link>` renders an `<a>` directly in v13+)
+
+**`resume/elements.tsx`** (`src/components/resume/elements.tsx`):
+
+- `import { Link } from 'gatsby'` → `import Link from 'next/link'`
+- `ResumeLink = styled(Link)` stays the same — styled-components wraps the Next.js Link
+
+In `resume/index.tsx`, the `ResumeLink` usage changes `to` → `href`:
+
+```tsx
+// Before
+<ResumeLink to={resumePdf}>Download Resume</ResumeLink>
+
+// After
+<ResumeLink href={resumePdf}>Download Resume</ResumeLink>
+```
 
 **`Resume`** (`src/components/resume/index.tsx`):
 
@@ -254,6 +289,8 @@ export default createJestConfig(config)
 | `graphql`                                              | Gatsby data layer removed                 |
 | `babel-preset-gatsby`                                  | Replaced by `next/jest`                   |
 | `babel-plugin-styled-components`                       | Replaced by SWC compiler                  |
+| `babel-jest`, `@babel/preset-typescript`               | Replaced by `next/jest` SWC transform     |
+| `ts-jest`                                              | Unused in current config; remove          |
 | `crypto-browserify`, `stream-browserify`               | Verify necessity; remove if not needed    |
 
 ### Add
@@ -271,7 +308,8 @@ export default createJestConfig(config)
 
 ```json
 {
-  "build": "next build && next-sitemap",
+  "build": "next build",
+  "postbuild": "next-sitemap",
   "clean": "rm -rf .next coverage out && npm ci",
   "start": "next dev",
   "serve": "next build && npx serve out",
