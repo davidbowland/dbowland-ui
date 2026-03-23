@@ -123,7 +123,7 @@ export default function Document() {
 
 ## Section 3: Pages and components
 
-### Pages — two changes per page (all 11 pages)
+### Pages — two changes per page (all 13 pages)
 
 This applies to every page: `index.tsx`, `projects.tsx`, `marriage.tsx`, `genographic.tsx`, `privacy-policy.tsx`, `smooth-scroll.tsx`, `form-submit.tsx`, `proposal.tsx`, `wedding.tsx`, `404.tsx`, `400.tsx`, `403.tsx`, `500.tsx`.
 
@@ -199,7 +199,7 @@ Affected files:
 - `src/components/title-bar/index.tsx` — the `style` prop on `<Link>` is valid in Next.js v13+ (renders directly to `<a>`); no wrapping needed
 - `src/components/resume/elements.tsx` — `ResumeLink = styled(Link)` stays as-is; the `to` → `href` rename happens at the usage site in `resume/index.tsx`: `<ResumeLink to={resumePdf}>` → `<ResumeLink href={resumePdf}>`
 - `src/components/privacy-policy/index.tsx` — three usages
-- `src/components/projects-table/index.tsx` — many usages
+- `src/components/projects-table/index.tsx` — ~20 usages, the majority linking to external `https://` URLs in body text (Next.js `<Link href="https://...">` supports external URLs fine)
 - `src/components/privacy-link/index.tsx` — one usage
 - `src/components/server-error-message/index.tsx` — one usage
 - `src/components/genographic-infographic/index.tsx` — one usage (also wraps a `StaticImage`, see below)
@@ -320,20 +320,21 @@ export default createJestConfig(config)
 
 ### Remove
 
-| Package                                                | Reason                                    |
-| ------------------------------------------------------ | ----------------------------------------- |
-| `gatsby` + all `gatsby-plugin-*`                       | Replaced by Next.js                       |
-| `gatsby-plugin-alias-imports`                          | Replaced by native `tsconfig.json` paths  |
-| `gatsby-plugin-mdx`                                    | No MDX files in project                   |
-| `gatsby-transformer-sharp`, `gatsby-source-filesystem` | Replaced by `next-export-optimize-images` |
-| `@mdx-js/mdx`, `@mdx-js/react`                         | No MDX files in project                   |
-| `react-helmet`, `@types/react-helmet`                  | Replaced by `next/head`                   |
-| `graphql`                                              | Gatsby data layer removed                 |
-| `babel-preset-gatsby`                                  | Replaced by `next/jest`                   |
-| `babel-plugin-styled-components`                       | Replaced by SWC compiler                  |
-| `babel-jest`, `@babel/preset-typescript`               | Replaced by `next/jest` SWC transform     |
-| `ts-jest`                                              | Unused in current config; remove          |
-| `crypto-browserify`, `stream-browserify`               | Verify necessity; remove if not needed    |
+| Package                                                | Reason                                        |
+| ------------------------------------------------------ | --------------------------------------------- |
+| `gatsby` + all `gatsby-plugin-*`                       | Replaced by Next.js                           |
+| `gatsby-plugin-alias-imports`                          | Replaced by native `tsconfig.json` paths      |
+| `gatsby-plugin-mdx`                                    | No MDX files in project                       |
+| `gatsby-transformer-sharp`, `gatsby-source-filesystem` | Replaced by `next-export-optimize-images`     |
+| `@mdx-js/mdx`, `@mdx-js/react`                         | No MDX files in project                       |
+| `react-helmet`, `@types/react-helmet`                  | Replaced by `next/head`                       |
+| `graphql`                                              | Gatsby data layer removed                     |
+| `babel-preset-gatsby`                                  | Replaced by `next/jest`                       |
+| `babel-plugin-styled-components`                       | Replaced by SWC compiler                      |
+| `babel-jest`, `@babel/preset-typescript`               | Replaced by `next/jest` SWC transform         |
+| `ts-jest`                                              | Unused in current config; remove              |
+| `ts-node`                                              | Gatsby-era dependency; unused after migration |
+| `crypto-browserify`, `stream-browserify`               | Verify necessity; remove if not needed        |
 
 ### Add
 
