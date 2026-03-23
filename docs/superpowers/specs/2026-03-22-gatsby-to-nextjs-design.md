@@ -56,21 +56,7 @@ module.exports = withExportImages({
 })
 ```
 
-Path aliases are configured in `tsconfig.json` `paths` — Next.js resolves them natively:
-
-```json
-{
-  "compilerOptions": {
-    "paths": {
-      "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@config/*": ["./src/config/*"],
-      "@pages/*": ["src/pages/*"],
-      "@test/*": ["./test/*"]
-    }
-  }
-}
-```
+Path aliases: `tsconfig.json` already has the correct `paths` entries — Next.js resolves them natively with no changes needed. The existing Gatsby alias plugin is removed and replaced by what's already in `tsconfig.json`.
 
 ### `next-sitemap.config.js` (replaces `gatsby-plugin-sitemap`)
 
@@ -137,7 +123,9 @@ export default function Document() {
 
 ## Section 3: Pages and components
 
-### Pages — two changes per page
+### Pages — two changes per page (all 11 pages)
+
+This applies to every page: `index.tsx`, `projects.tsx`, `marriage.tsx`, `genographic.tsx`, `privacy-policy.tsx`, `smooth-scroll.tsx`, `form-submit.tsx`, `proposal.tsx`, `wedding.tsx`, `404.tsx`, `400.tsx`, `403.tsx`, `500.tsx`.
 
 **1. `Head` export → `next/head`**
 
@@ -208,7 +196,7 @@ Every component that imports `{ Link } from 'gatsby'` needs the same two changes
 
 Affected files:
 
-- `src/components/title-bar/index.tsx` — move inline `style` prop to a wrapping `<span>` (Next.js `<Link>` renders an `<a>` directly in v13+)
+- `src/components/title-bar/index.tsx` — the `style` prop on `<Link>` is valid in Next.js v13+ (renders directly to `<a>`); no wrapping needed
 - `src/components/resume/elements.tsx` — `ResumeLink = styled(Link)` stays as-is; the `to` → `href` rename happens at the usage site in `resume/index.tsx`: `<ResumeLink to={resumePdf}>` → `<ResumeLink href={resumePdf}>`
 - `src/components/privacy-policy/index.tsx` — three usages
 - `src/components/projects-table/index.tsx` — many usages
@@ -269,6 +257,10 @@ import genographicInfographic from '@assets/images/genographic-infographic.png'
 
 Remove `@fontsource/roboto` and `@assets/css/index.css` imports (moved to `_app.tsx`). Component logic is otherwise unchanged.
 
+### Font imports in `smooth-scroll.tsx` and `form-submit.tsx`
+
+Both pages contain `import '@fontsource/fira-code'`. This import stays in place — Next.js allows CSS imports from `node_modules` anywhere in the application, so page-level font imports are valid.
+
 ## Section 4: Testing
 
 ### `jest.config.ts`
@@ -277,8 +269,8 @@ Replace the Gatsby-specific transform setup with `next/jest`:
 
 ```ts
 import type { Config } from 'jest'
+import nextJest from 'next/jest'
 
-const nextJest = require('next/jest')
 const createJestConfig = nextJest({ dir: './' })
 
 const config: Config = {
@@ -291,6 +283,7 @@ const config: Config = {
     global: { branches: 90, functions: 90, lines: 80 },
   },
   moduleNameMapper: {
+    '.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
     '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|pdf|yaml)$':
       '<rootDir>/__mocks__/file-mock.js',
     '^@assets/(.*)$': '<rootDir>/src/assets/$1',
@@ -321,7 +314,7 @@ export default createJestConfig(config)
 - `jest.setup-test-env.js`
 - `test/__mocks__.ts`
 - `__mocks__/file-mock.js`
-- `identity-obj-proxy` for CSS (handled automatically by `next/jest`)
+- `identity-obj-proxy` for CSS (kept explicitly — `next/jest` only auto-mocks CSS modules, not plain `.css` imports)
 
 ## Section 5: Dependencies
 
@@ -330,6 +323,8 @@ export default createJestConfig(config)
 | Package                                                | Reason                                    |
 | ------------------------------------------------------ | ----------------------------------------- |
 | `gatsby` + all `gatsby-plugin-*`                       | Replaced by Next.js                       |
+| `gatsby-plugin-alias-imports`                          | Replaced by native `tsconfig.json` paths  |
+| `gatsby-plugin-mdx`                                    | No MDX files in project                   |
 | `gatsby-transformer-sharp`, `gatsby-source-filesystem` | Replaced by `next-export-optimize-images` |
 | `@mdx-js/mdx`, `@mdx-js/react`                         | No MDX files in project                   |
 | `react-helmet`, `@types/react-helmet`                  | Replaced by `next/head`                   |
@@ -352,6 +347,8 @@ export default createJestConfig(config)
 ## Section 6: Scripts and pipeline
 
 ### `package.json` scripts
+
+The current `build` script runs `npm run clean` (which reinstalls all packages) before every build. This is intentionally decoupled in the new scripts — `next build` supports incremental builds and does not require a clean slate. Run `npm run clean` manually when a full reset is needed.
 
 ```json
 {
