@@ -1,4 +1,4 @@
-import { Link } from 'gatsby'
+import Link from 'next/link'
 import styled, { CSSProperties } from 'styled-components'
 
 export const ResumeAnchor = styled.a`

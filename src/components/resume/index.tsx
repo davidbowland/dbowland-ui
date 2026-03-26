@@ -1,4 +1,4 @@
-import { StaticImage } from 'gatsby-plugin-image'
+import Image from 'next-export-optimize-images/image'
 import React from 'react'
 
 import Divider from '@mui/material/Divider'
@@ -21,6 +21,7 @@ import {
   ResumeSectionContentTitle,
   ResumeSectionTitleHeader,
 } from './elements'
+import headshot from '@assets/images/David-2023-05-10.jpg'
 import resumePdf from '@assets/pdf/david-bowland-resume.pdf'
 
 const ResumeSection = ({ children, title }: { children: JSX.Element | JSX.Element[]; title: string }): JSX.Element => (
@@ -52,18 +53,14 @@ const Resume = (): JSX.Element => {
     <ResumeContainer>
       <Grid container sx={{ borderBottom: '2px solid #cf8a05' }}>
         <Grid item sm={2} sx={{ margin: '1.5em auto', p: '0.5em', textAlign: 'center' }} xs={12}>
-          <StaticImage
-            alt="Picture of David Bowland"
-            src="../../assets/images/David-2023-05-10.jpg"
-            style={ResumeImageStyles}
-          />
+          <Image alt="Picture of David Bowland" src={headshot} style={ResumeImageStyles} />
         </Grid>
 
         <Grid item md={7} sm={6} sx={{ p: '0.5em', textAlign: { sm: 'left', xs: 'center' } }} xs={12}>
           <ResumeNameSectionName>David Bowland</ResumeNameSectionName>
           <ResumeNameSectionTitle>Software Developer</ResumeNameSectionTitle>
           <ResumeDownloadHeader>
-            <ResumeLink to={resumePdf}>Download Resume</ResumeLink>
+            <ResumeLink href={resumePdf}>Download Resume</ResumeLink>
           </ResumeDownloadHeader>
         </Grid>
 
