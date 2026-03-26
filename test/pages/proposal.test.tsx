@@ -1,8 +1,7 @@
+import Proposal from '@pages/proposal'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
-
-import Proposal from '../proposal'
 
 describe('proposal redirect', () => {
   const mockLocationReplace = jest.fn()

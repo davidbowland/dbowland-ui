@@ -1,35 +1,34 @@
+import GenographicInfographic from '@components/genographic-infographic'
 import PrivacyLink from '@components/privacy-link'
-import ProjectsTable from '@components/projects-table'
 import TitleBar from '@components/title-bar'
+import Genographic from '@pages/genographic'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Projects from '../projects'
-
+jest.mock('@components/genographic-infographic')
 jest.mock('@components/privacy-link')
-jest.mock('@components/projects-table')
 jest.mock('@components/title-bar')
 
-describe('Projects page', () => {
+describe('Genographic page', () => {
   beforeAll(() => {
+    jest.mocked(GenographicInfographic).mockReturnValue(<></>)
     jest.mocked(PrivacyLink).mockReturnValue(<></>)
-    jest.mocked(ProjectsTable).mockReturnValue(<></>)
     jest.mocked(TitleBar).mockReturnValue(<></>)
   })
 
-  it('should render ProjectsTable', () => {
-    render(<Projects />)
-    expect(ProjectsTable).toHaveBeenCalledTimes(1)
+  it('should render GenographicInfographic', () => {
+    render(<Genographic />)
+    expect(GenographicInfographic).toHaveBeenCalledTimes(1)
   })
 
   it('should render TitleBar', () => {
-    render(<Projects />)
+    render(<Genographic />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
   })
 
   it('renders with correct title', () => {
-    render(<Projects />)
-    expect(document.title).toEqual('Projects | dbowland.com')
+    render(<Genographic />)
+    expect(document.title).toEqual('Genographic Information | dbowland.com')
   })
 })

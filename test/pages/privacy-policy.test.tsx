@@ -1,10 +1,9 @@
 import PrivacyPolicy from '@components/privacy-policy'
 import TitleBar from '@components/title-bar'
+import PrivacyPage from '@pages/privacy-policy'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
-
-import PrivacyPage from '../privacy-policy'
 
 jest.mock('@components/privacy-policy')
 jest.mock('@components/title-bar')

@@ -8,6 +8,7 @@ const FormSubmit = (): JSX.Element => {
     <>
       <Head>
         <title>form-submit example page | github.com/davidbowland/form-submit</title>
+        <link href="/form-submit-styles.css" rel="stylesheet" />
         <script defer src="/form-submit.js"></script>
       </Head>
       <main style={{ fontFamily: 'Fira Code' }}>

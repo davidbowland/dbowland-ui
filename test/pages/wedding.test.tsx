@@ -1,8 +1,7 @@
+import Wedding from '@pages/wedding'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
-
-import Wedding from '../wedding'
 
 describe('wedding redirect', () => {
   const mockLocationReplace = jest.fn()

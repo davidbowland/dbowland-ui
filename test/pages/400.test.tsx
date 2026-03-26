@@ -1,20 +1,19 @@
 import ServerErrorMessage from '@components/server-error-message'
+import BadRequest from '@pages/400'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import NotFound from '../404'
-
 jest.mock('@components/server-error-message')
 
-describe('404 error page', () => {
+describe('400 error page', () => {
   beforeAll(() => {
     jest.mocked(ServerErrorMessage).mockReturnValue(<></>)
   })
 
   it('should render ServerErrorMessage', () => {
-    const expectedTitle = '404: Not Found'
-    render(<NotFound />)
+    const expectedTitle = '400: Bad Request'
+    render(<BadRequest />)
     expect(ServerErrorMessage).toHaveBeenCalledWith(
       expect.objectContaining({ title: expectedTitle }),
       expect.anything(),
@@ -23,7 +22,7 @@ describe('404 error page', () => {
   })
 
   it('renders with correct title', () => {
-    render(<NotFound />)
-    expect(document.title).toEqual('404: Not Found -- dbowland.com')
+    render(<BadRequest />)
+    expect(document.title).toEqual('400: Bad Request -- dbowland.com')
   })
 })

@@ -1,20 +1,19 @@
 import ServerErrorMessage from '@components/server-error-message'
+import Forbidden from '@pages/403'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import InternalServerError from '../500'
-
 jest.mock('@components/server-error-message')
 
-describe('500 error page', () => {
+describe('403 error page', () => {
   beforeAll(() => {
     jest.mocked(ServerErrorMessage).mockReturnValue(<></>)
   })
 
   it('should render ServerErrorMessage', () => {
-    const expectedTitle = '500: Internal Server Error'
-    render(<InternalServerError />)
+    const expectedTitle = '403: Forbidden'
+    render(<Forbidden />)
     expect(ServerErrorMessage).toHaveBeenCalledWith(
       expect.objectContaining({ title: expectedTitle }),
       expect.anything(),
@@ -23,7 +22,7 @@ describe('500 error page', () => {
   })
 
   it('renders with correct title', () => {
-    render(<InternalServerError />)
-    expect(document.title).toEqual('500: Internal Server Error -- dbowland.com')
+    render(<Forbidden />)
+    expect(document.title).toEqual('403: Forbidden -- dbowland.com')
   })
 })

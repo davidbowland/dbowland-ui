@@ -1,40 +1,34 @@
 import PrivacyLink from '@components/privacy-link'
-import Resume from '@components/resume'
+import ProjectsTable from '@components/projects-table'
 import TitleBar from '@components/title-bar'
+import Projects from '@pages/projects'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import HomePage from '../index'
-
 jest.mock('@components/privacy-link')
-jest.mock('@components/resume')
+jest.mock('@components/projects-table')
 jest.mock('@components/title-bar')
 
-describe('Home page (index)', () => {
+describe('Projects page', () => {
   beforeAll(() => {
     jest.mocked(PrivacyLink).mockReturnValue(<></>)
-    jest.mocked(Resume).mockReturnValue(<></>)
+    jest.mocked(ProjectsTable).mockReturnValue(<></>)
     jest.mocked(TitleBar).mockReturnValue(<></>)
   })
 
-  it('should render Resume', () => {
-    render(<HomePage />)
-    expect(Resume).toHaveBeenCalledTimes(1)
-  })
-
-  it('should render PrivacyLink', () => {
-    render(<HomePage />)
-    expect(PrivacyLink).toHaveBeenCalledTimes(1)
+  it('should render ProjectsTable', () => {
+    render(<Projects />)
+    expect(ProjectsTable).toHaveBeenCalledTimes(1)
   })
 
   it('should render TitleBar', () => {
-    render(<HomePage />)
+    render(<Projects />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
   })
 
   it('renders with correct title', () => {
-    render(<HomePage />)
-    expect(document.title).toEqual('David Bowland | Software Developer')
+    render(<Projects />)
+    expect(document.title).toEqual('Projects | dbowland.com')
   })
 })

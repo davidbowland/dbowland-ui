@@ -1,20 +1,19 @@
 import ServerErrorMessage from '@components/server-error-message'
+import NotFound from '@pages/404'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Forbidden from '../403'
-
 jest.mock('@components/server-error-message')
 
-describe('403 error page', () => {
+describe('404 error page', () => {
   beforeAll(() => {
     jest.mocked(ServerErrorMessage).mockReturnValue(<></>)
   })
 
   it('should render ServerErrorMessage', () => {
-    const expectedTitle = '403: Forbidden'
-    render(<Forbidden />)
+    const expectedTitle = '404: Not Found'
+    render(<NotFound />)
     expect(ServerErrorMessage).toHaveBeenCalledWith(
       expect.objectContaining({ title: expectedTitle }),
       expect.anything(),
@@ -23,7 +22,7 @@ describe('403 error page', () => {
   })
 
   it('renders with correct title', () => {
-    render(<Forbidden />)
-    expect(document.title).toEqual('403: Forbidden -- dbowland.com')
+    render(<NotFound />)
+    expect(document.title).toEqual('404: Not Found -- dbowland.com')
   })
 })
