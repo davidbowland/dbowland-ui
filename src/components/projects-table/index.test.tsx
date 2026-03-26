@@ -5,6 +5,11 @@ import React from 'react'
 
 import ProjectsTable from './index'
 
+jest.mock('next-export-optimize-images/image', () => ({
+  __esModule: true,
+  default: (props: { src: string; alt: string; style?: React.CSSProperties }) => <img {...props} />,
+}))
+
 describe('ProjectsTable component', () => {
   beforeAll(() => {
     window.HTMLElement.prototype.scrollIntoView = jest.fn()
