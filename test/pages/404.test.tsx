@@ -1,9 +1,8 @@
 import ServerErrorMessage from '@components/server-error-message'
+import NotFound from '@pages/404'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
-
-import NotFound, { Head } from './404'
 
 jest.mock('@components/server-error-message')
 
@@ -22,8 +21,8 @@ describe('404 error page', () => {
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
 
-  it('renders Head', () => {
-    render(<Head />)
+  it('renders with correct title', () => {
+    render(<NotFound />)
     expect(document.title).toEqual('404: Not Found -- dbowland.com')
   })
 })

@@ -1,6 +1,7 @@
 import PrivacyLink from '@components/privacy-link'
 import ProjectsTable from '@components/projects-table'
 import TitleBar from '@components/title-bar'
+import Head from 'next/head'
 import React from 'react'
 
 import Paper from '@mui/material/Paper'
@@ -8,6 +9,9 @@ import Paper from '@mui/material/Paper'
 const Projects = (): JSX.Element => {
   return (
     <>
+      <Head>
+        <title>Projects | dbowland.com</title>
+      </Head>
       <main>
         <nav>
           <TitleBar />
@@ -22,7 +26,5 @@ const Projects = (): JSX.Element => {
     </>
   )
 }
-
-export const Head = () => <title>Projects | dbowland.com</title>
 
 export default Projects

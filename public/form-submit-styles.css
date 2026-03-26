@@ -1,0 +1,28 @@
+body,
+input {
+  font-family: 'Fira Code';
+}
+form ~ form {
+  margin-top: 1.5em;
+}
+fieldset > div {
+  padding: 0.3em;
+}
+input[type='text'],
+textarea {
+  display: block;
+}
+[data-form-submit-error-for],
+[data-form-submit-counter-for] {
+  padding: 0.2em;
+  font-weight: bold;
+  font-size: small;
+  font-size: 90%;
+  display: block;
+}
+[data-form-submit-error-for] {
+  color: #f80;
+}
+.wide-input {
+  width: 20em;
+}

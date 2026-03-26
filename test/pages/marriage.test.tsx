@@ -1,10 +1,9 @@
 import MarriageStats from '@components/marriage-stats'
 import PrivacyLink from '@components/privacy-link'
+import MarriagePage from '@pages/marriage'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
-
-import MarriagePage, { Head } from './marriage'
 
 jest.mock('@components/marriage-stats')
 jest.mock('@components/privacy-link')
@@ -30,8 +29,8 @@ describe('Marriage page', () => {
     expect(container.querySelector('nav')).toBeNull()
   })
 
-  it('renders Head', () => {
-    render(<Head />)
+  it('renders with correct title', () => {
+    render(<MarriagePage />)
     expect(document.title).toEqual('Marriage Statistics | David & Tandi Bowland')
   })
 })

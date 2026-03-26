@@ -2,10 +2,10 @@
 node_modules/
 dist/
 coverage/
-public/
 
-# Gatsby
-.cache/
+# Next.js
+out/
+.next/
 
 # Compiled Java class files
 *.class

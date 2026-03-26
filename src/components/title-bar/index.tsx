@@ -1,4 +1,4 @@
-import { Link } from 'gatsby'
+import Link from 'next/link'
 import React, { useState } from 'react'
 
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded'
@@ -64,7 +64,7 @@ const TitleBar = (): JSX.Element => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography component="div" noWrap sx={{ display: { sm: 'flex', xs: 'none' }, mr: 2 }} variant="h6">
-            <Link style={{ color: '#fff', textDecoration: 'none' }} to="/">
+            <Link href="/" style={{ color: '#fff', textDecoration: 'none' }}>
               dbowland.com
             </Link>
           </Typography>
@@ -117,7 +117,7 @@ const TitleBar = (): JSX.Element => {
             </SwipeableDrawer>
           </Box>
           <Typography component="div" noWrap sx={{ display: { sm: 'none', xs: 'flex' }, flexGrow: 1 }} variant="h6">
-            <Link style={{ color: '#fff', textDecoration: 'none' }} to="/">
+            <Link href="/" style={{ color: '#fff', textDecoration: 'none' }}>
               dbowland.com
             </Link>
           </Typography>
