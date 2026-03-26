@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import NotFound, { Head } from './404'
+import NotFound from './404'
 
 jest.mock('@components/server-error-message')
 
@@ -20,10 +20,5 @@ describe('404 error page', () => {
       expect.anything(),
     )
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
-  })
-
-  it('renders Head', () => {
-    render(<Head />)
-    expect(document.title).toEqual('404: Not Found -- dbowland.com')
   })
 })

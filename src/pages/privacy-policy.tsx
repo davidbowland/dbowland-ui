@@ -1,5 +1,6 @@
 import PrivacyPolicy from '@components/privacy-policy'
 import TitleBar from '@components/title-bar'
+import Head from 'next/head'
 import React from 'react'
 
 import Paper from '@mui/material/Paper'
@@ -7,6 +8,9 @@ import Paper from '@mui/material/Paper'
 const PrivacyPage = (): JSX.Element => {
   return (
     <>
+      <Head>
+        <title>Privacy Policy -- dbowland.com</title>
+      </Head>
       <main>
         <nav>
           <TitleBar />
@@ -20,7 +24,5 @@ const PrivacyPage = (): JSX.Element => {
     </>
   )
 }
-
-export const Head = () => <title>Privacy Policy -- dbowland.com</title>
 
 export default PrivacyPage

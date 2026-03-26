@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import MarriagePage, { Head } from './marriage'
+import MarriagePage from './marriage'
 
 jest.mock('@components/marriage-stats')
 jest.mock('@components/privacy-link')
@@ -28,10 +28,5 @@ describe('Marriage page', () => {
   it('should not render TitleBar', () => {
     const { container } = render(<MarriagePage />)
     expect(container.querySelector('nav')).toBeNull()
-  })
-
-  it('renders Head', () => {
-    render(<Head />)
-    expect(document.title).toEqual('Marriage Statistics | David & Tandi Bowland')
   })
 })

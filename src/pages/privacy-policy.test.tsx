@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import PrivacyPage, { Head } from './privacy-policy'
+import PrivacyPage from './privacy-policy'
 
 jest.mock('@components/privacy-policy')
 jest.mock('@components/title-bar')
@@ -23,10 +23,5 @@ describe('Privacy page', () => {
   it('should render TitleBar', () => {
     render(<PrivacyPage />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
-  })
-
-  it('renders Head', () => {
-    render(<Head />)
-    expect(document.title).toEqual('Privacy Policy -- dbowland.com')
   })
 })

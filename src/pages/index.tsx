@@ -1,6 +1,7 @@
 import PrivacyLink from '@components/privacy-link'
 import Resume from '@components/resume'
 import TitleBar from '@components/title-bar'
+import Head from 'next/head'
 import React from 'react'
 
 import Paper from '@mui/material/Paper'
@@ -8,6 +9,9 @@ import Paper from '@mui/material/Paper'
 const HomePage = (): JSX.Element => {
   return (
     <>
+      <Head>
+        <title>David Bowland | Software Developer</title>
+      </Head>
       <main>
         <nav>
           <TitleBar />
@@ -22,7 +26,5 @@ const HomePage = (): JSX.Element => {
     </>
   )
 }
-
-export const Head = () => <title>David Bowland | Software Developer</title>
 
 export default HomePage

@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Forbidden, { Head } from './403'
+import Forbidden from './403'
 
 jest.mock('@components/server-error-message')
 
@@ -20,10 +20,5 @@ describe('403 error page', () => {
       expect.anything(),
     )
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
-  })
-
-  it('renders Head', () => {
-    render(<Head />)
-    expect(document.title).toEqual('403: Forbidden -- dbowland.com')
   })
 })

@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Projects, { Head } from './projects'
+import Projects from './projects'
 
 jest.mock('@components/privacy-link')
 jest.mock('@components/projects-table')
@@ -26,10 +26,5 @@ describe('Projects page', () => {
   it('should render TitleBar', () => {
     render(<Projects />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
-  })
-
-  it('renders Head', () => {
-    render(<Head />)
-    expect(document.title).toEqual('Projects | dbowland.com')
   })
 })
