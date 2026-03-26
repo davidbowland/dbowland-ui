@@ -6,7 +6,8 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import genographicInfographic from '@assets/images/genographic-infographic.png'
-import genographicPdf from '@assets/pdf/genographic-results.pdf'
+
+const genographicPdf = '/assets/pdf/genographic-results.pdf'
 
 const GenographicInfographic = (): JSX.Element => {
   return (

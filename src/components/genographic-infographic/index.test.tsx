@@ -10,7 +10,7 @@ jest.mock('next-export-optimize-images/image', () => ({
 }))
 
 describe('Genographic infographic component', () => {
-  const pdfFilename = 'test-file-stub'
+  const pdfFilename = 'genographic-results.pdf'
 
   it('should include text "National Geographic Genographic project"', () => {
     render(<GenographicInfographic />)

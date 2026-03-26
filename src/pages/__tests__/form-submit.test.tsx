@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import FormSubmit from './form-submit'
+import FormSubmit from '../form-submit'
 
 jest.mock('@components/form-submit')
 

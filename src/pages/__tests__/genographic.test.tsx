@@ -1,40 +1,35 @@
+import GenographicInfographic from '@components/genographic-infographic'
 import PrivacyLink from '@components/privacy-link'
-import Resume from '@components/resume'
 import TitleBar from '@components/title-bar'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import HomePage from './index'
+import Genographic from '../genographic'
 
+jest.mock('@components/genographic-infographic')
 jest.mock('@components/privacy-link')
-jest.mock('@components/resume')
 jest.mock('@components/title-bar')
 
-describe('Home page (index)', () => {
+describe('Genographic page', () => {
   beforeAll(() => {
+    jest.mocked(GenographicInfographic).mockReturnValue(<></>)
     jest.mocked(PrivacyLink).mockReturnValue(<></>)
-    jest.mocked(Resume).mockReturnValue(<></>)
     jest.mocked(TitleBar).mockReturnValue(<></>)
   })
 
-  it('should render Resume', () => {
-    render(<HomePage />)
-    expect(Resume).toHaveBeenCalledTimes(1)
-  })
-
-  it('should render PrivacyLink', () => {
-    render(<HomePage />)
-    expect(PrivacyLink).toHaveBeenCalledTimes(1)
+  it('should render GenographicInfographic', () => {
+    render(<Genographic />)
+    expect(GenographicInfographic).toHaveBeenCalledTimes(1)
   })
 
   it('should render TitleBar', () => {
-    render(<HomePage />)
+    render(<Genographic />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
   })
 
   it('renders with correct title', () => {
-    render(<HomePage />)
-    expect(document.title).toEqual('David Bowland | Software Developer')
+    render(<Genographic />)
+    expect(document.title).toEqual('Genographic Information | dbowland.com')
   })
 })

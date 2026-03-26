@@ -3,18 +3,18 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import BadRequest from './400'
+import Forbidden from '../403'
 
 jest.mock('@components/server-error-message')
 
-describe('400 error page', () => {
+describe('403 error page', () => {
   beforeAll(() => {
     jest.mocked(ServerErrorMessage).mockReturnValue(<></>)
   })
 
   it('should render ServerErrorMessage', () => {
-    const expectedTitle = '400: Bad Request'
-    render(<BadRequest />)
+    const expectedTitle = '403: Forbidden'
+    render(<Forbidden />)
     expect(ServerErrorMessage).toHaveBeenCalledWith(
       expect.objectContaining({ title: expectedTitle }),
       expect.anything(),
@@ -23,7 +23,7 @@ describe('400 error page', () => {
   })
 
   it('renders with correct title', () => {
-    render(<BadRequest />)
-    expect(document.title).toEqual('400: Bad Request -- dbowland.com')
+    render(<Forbidden />)
+    expect(document.title).toEqual('403: Forbidden -- dbowland.com')
   })
 })

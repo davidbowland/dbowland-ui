@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Projects from './projects'
+import Projects from '../projects'
 
 jest.mock('@components/privacy-link')
 jest.mock('@components/projects-table')

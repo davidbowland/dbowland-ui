@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import SmoothScroll from './smooth-scroll'
+import SmoothScroll from '../smooth-scroll'
 
 jest.mock('@components/smooth-scroll')
 

@@ -22,7 +22,8 @@ import {
   ResumeSectionTitleHeader,
 } from './elements'
 import headshot from '@assets/images/David-2023-05-10.jpg'
-import resumePdf from '@assets/pdf/david-bowland-resume.pdf'
+
+const resumePdf = '/assets/pdf/david-bowland-resume.pdf'
 
 const ResumeSection = ({ children, title }: { children: JSX.Element | JSX.Element[]; title: string }): JSX.Element => (
   <>
