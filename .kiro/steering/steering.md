@@ -2,11 +2,11 @@
 
 ## Description
 
-This is David Bowland's personal website (dbowland.com), built as a static Gatsby site. It showcases his professional resume and personal projects.
+This is David Bowland's personal website (dbowland.com), built as a static Next.js site. It showcases his professional resume and personal projects.
 
 ## Technology Stack
 
-- **Gatsby** - Static site generator and React framework
+- **Next.js** - Static site generator and React framework (Pages Router, `output: 'export'`)
 - **React** - UI library with functional components
 - **Material-UI (@mui/material)** - Primary component library
 - **Styled Components** - CSS-in-JS styling

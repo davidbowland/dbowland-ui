@@ -45,7 +45,6 @@ export const ResumeDownloadHeader = styled.h4`
   }
 `
 
-// See bug: https://github.com/gatsbyjs/gatsby/issues/30880
 export const ResumeImageStyles: CSSProperties = {
   borderRadius: '25px',
   height: 'auto',

@@ -204,9 +204,8 @@ const ProjectsTable = (): JSX.Element => {
           <Typography variant="h5">Objectives:</Typography>
           <Typography>
             This project was my first to utilize a UI. I made a number of key decisions, including choosing{' '}
-            <Link href="https://www.gatsbyjs.com/">Gatsby</Link> as my static site generator. While it isn&apos;t the
-            fastest at compiling or the most popular option, it is highly specialized for creating fast static sites and
-            I had a positive experience with it on a past project.
+            <Link href="https://nextjs.org/">Next.js</Link> as my static site generator. It has excellent support for
+            static export, a large ecosystem, and I have had a positive experience with it on past projects.
           </Typography>
           <Typography variant="h5">Technologies:</Typography>
           <Typography>
