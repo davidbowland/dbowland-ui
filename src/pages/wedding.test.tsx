@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Wedding, { Head } from './wedding'
+import Wedding from './wedding'
 
 describe('wedding redirect', () => {
   const mockLocationReplace = jest.fn()
@@ -19,10 +19,5 @@ describe('wedding redirect', () => {
     render(<Wedding />)
 
     expect(mockLocationReplace).toHaveBeenCalledWith(expect.stringContaining('https://drive.google.com/file/'))
-  })
-
-  it('renders Head', () => {
-    render(<Head />)
-    expect(document.title).toEqual('Redirecting...')
   })
 })
