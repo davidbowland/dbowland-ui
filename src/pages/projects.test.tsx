@@ -27,4 +27,9 @@ describe('Projects page', () => {
     render(<Projects />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
   })
+
+  it('renders with correct title', () => {
+    render(<Projects />)
+    expect(document.title).toEqual('Projects | dbowland.com')
+  })
 })

@@ -21,4 +21,9 @@ describe('500 error page', () => {
     )
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
+
+  it('renders with correct title', () => {
+    render(<InternalServerError />)
+    expect(document.title).toEqual('500: Internal Server Error -- dbowland.com')
+  })
 })

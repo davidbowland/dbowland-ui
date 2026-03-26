@@ -21,4 +21,9 @@ describe('403 error page', () => {
     )
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
+
+  it('renders with correct title', () => {
+    render(<Forbidden />)
+    expect(document.title).toEqual('403: Forbidden -- dbowland.com')
+  })
 })

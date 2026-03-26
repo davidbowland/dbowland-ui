@@ -29,4 +29,9 @@ describe('Marriage page', () => {
     const { container } = render(<MarriagePage />)
     expect(container.querySelector('nav')).toBeNull()
   })
+
+  it('renders with correct title', () => {
+    render(<MarriagePage />)
+    expect(document.title).toEqual('Marriage Statistics | David & Tandi Bowland')
+  })
 })

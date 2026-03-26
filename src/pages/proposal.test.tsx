@@ -20,4 +20,9 @@ describe('proposal redirect', () => {
 
     expect(mockLocationReplace).toHaveBeenCalledWith(expect.stringContaining('https://drive.google.com/file/'))
   })
+
+  it('renders with correct title', () => {
+    render(<Proposal />)
+    expect(document.title).toEqual('Redirecting...')
+  })
 })

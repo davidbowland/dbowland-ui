@@ -16,4 +16,9 @@ describe('form-submit example', () => {
     render(<FormSubmit />)
     expect(FormSubmitExample).toHaveBeenCalledTimes(1)
   })
+
+  it('renders with correct title', () => {
+    render(<FormSubmit />)
+    expect(document.title).toEqual('form-submit example page | github.com/davidbowland/form-submit')
+  })
 })

@@ -21,4 +21,9 @@ describe('404 error page', () => {
     )
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
+
+  it('renders with correct title', () => {
+    render(<NotFound />)
+    expect(document.title).toEqual('404: Not Found -- dbowland.com')
+  })
 })

@@ -27,4 +27,9 @@ describe('Genographic page', () => {
     render(<Genographic />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
   })
+
+  it('renders with correct title', () => {
+    render(<Genographic />)
+    expect(document.title).toEqual('Genographic Information | dbowland.com')
+  })
 })

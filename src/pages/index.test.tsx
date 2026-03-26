@@ -32,4 +32,9 @@ describe('Home page (index)', () => {
     render(<HomePage />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
   })
+
+  it('renders with correct title', () => {
+    render(<HomePage />)
+    expect(document.title).toEqual('David Bowland | Software Developer')
+  })
 })

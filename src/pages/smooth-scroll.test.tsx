@@ -16,4 +16,9 @@ describe('smooth-scroll example', () => {
     render(<SmoothScroll />)
     expect(SmoothScrollExample).toHaveBeenCalledTimes(1)
   })
+
+  it('renders with correct title', () => {
+    render(<SmoothScroll />)
+    expect(document.title).toEqual('smooth-scroll example page | github.com/davidbowland/smooth-scroll')
+  })
 })

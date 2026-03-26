@@ -20,4 +20,9 @@ describe('wedding redirect', () => {
 
     expect(mockLocationReplace).toHaveBeenCalledWith(expect.stringContaining('https://drive.google.com/file/'))
   })
+
+  it('renders with correct title', () => {
+    render(<Wedding />)
+    expect(document.title).toEqual('Redirecting...')
+  })
 })

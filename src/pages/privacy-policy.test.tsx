@@ -24,4 +24,9 @@ describe('Privacy page', () => {
     render(<PrivacyPage />)
     expect(TitleBar).toHaveBeenCalledTimes(1)
   })
+
+  it('renders with correct title', () => {
+    render(<PrivacyPage />)
+    expect(document.title).toEqual('Privacy Policy -- dbowland.com')
+  })
 })

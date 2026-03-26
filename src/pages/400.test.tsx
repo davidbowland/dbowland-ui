@@ -21,4 +21,9 @@ describe('400 error page', () => {
     )
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
+
+  it('renders with correct title', () => {
+    render(<BadRequest />)
+    expect(document.title).toEqual('400: Bad Request -- dbowland.com')
+  })
 })
