@@ -1,6 +1,6 @@
 import Image from 'next-export-optimize-images/image'
 import Link from 'next/link'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import KeyboardDoubleArrowUpRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowUpRounded'
 import Box from '@mui/material/Box'
@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
-import { ProjectImageStyles } from './elements'
+import { ProjectImageBoxStyles, ProjectImageStyles } from './elements'
 import chooseeDiagram from '@assets/images/choosee-diagram.png'
 import emailsDiagram from '@assets/images/emails-diagram.png'
 import jokesDiagram from '@assets/images/jokes-diagram.png'
@@ -42,7 +42,12 @@ const ProjectsTable = (): JSX.Element => {
   const otherRef = useRef<HTMLDivElement>(null)
   const rootRef = useRef<HTMLDivElement>(null)
 
-  const hostname = (typeof window !== 'undefined' && window.location.hostname) || 'dbowland.com'
+  const [hostname, setHostname] = useState('dbowland.com')
+
+  // Update hostname on client to avoid SSR/hydration mismatch
+  useEffect(() => {
+    setHostname(window.location.hostname)
+  }, [])
 
   return (
     <Stack margin="auto" padding={4} spacing={2}>
@@ -158,11 +163,9 @@ const ProjectsTable = (): JSX.Element => {
             migrate my GoDaddy domain, meaning I now have both a production and a test domain.
           </Typography>
           <Typography variant="h5">Diagram:</Typography>
-          <Image
-            alt="Diagram of emails project"
-            src={emailsDiagram}
-            style={{ ...ProjectImageStyles, objectFit: 'contain' }}
-          />
+          <Box style={ProjectImageBoxStyles}>
+            <Image alt="Diagram of emails project" src={emailsDiagram} style={ProjectImageStyles} />
+          </Box>
           <Box>
             <Typography variant="h5">Source:</Typography>
             <List>
@@ -224,11 +227,9 @@ const ProjectsTable = (): JSX.Element => {
             text-to-speech!
           </Typography>
           <Typography variant="h5">Diagram:</Typography>
-          <Image
-            alt="Diagram of jokes project"
-            src={jokesDiagram}
-            style={{ ...ProjectImageStyles, objectFit: 'contain' }}
-          />
+          <Box style={ProjectImageBoxStyles}>
+            <Image alt="Diagram of jokes project" src={jokesDiagram} style={ProjectImageStyles} />
+          </Box>
           <Box>
             <Typography variant="h5">Source:</Typography>
             <List>
@@ -277,11 +278,9 @@ const ProjectsTable = (): JSX.Element => {
             project allowed me to iterate on concepts learned in previous projects.
           </Typography>
           <Typography variant="h5">Diagram:</Typography>
-          <Image
-            alt="Diagram of choosee project"
-            src={chooseeDiagram}
-            style={{ ...ProjectImageStyles, objectFit: 'contain' }}
-          />
+          <Box style={ProjectImageBoxStyles}>
+            <Image alt="Diagram of choosee project" src={chooseeDiagram} style={ProjectImageStyles} />
+          </Box>
           <Box>
             <Typography variant="h5">Source:</Typography>
             <List>
