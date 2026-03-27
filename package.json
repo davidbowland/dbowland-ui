@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/davidbowland/dbowland-ui#readme",
   "scripts": {
-    "build": "next build",
+    "build": "npm run clean && next build",
     "postbuild": "next-sitemap",
-    "clean": "rm -rf .next coverage out && npm ci",
+    "clean": "rm -rf .next coverage out && npm ci --legacy-peer-deps",
     "start": "next dev",
     "serve": "next build && npx serve out",
     "test": "jest --colors",
