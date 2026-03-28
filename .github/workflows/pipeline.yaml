@@ -55,11 +55,10 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24.x
-      - name: Build Gatsby site
+      - name: Build Next.js site
         run: npm run build
         env:
           DEVELOPMENT: true
-          NODE_ENV: production
 
       - name: Install AWS SAM
         uses: aws-actions/setup-sam@v2
@@ -104,11 +103,10 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24.x
-      - name: Build Gatsby site
+      - name: Build Next.js site
         run: npm run build
         env:
           DEVELOPMENT: true
-          NODE_ENV: production
 
       - name: Install AWS SAM
         uses: aws-actions/setup-sam@v2
@@ -153,10 +151,8 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24.x
-      - name: Build Gatsby site
+      - name: Build Next.js site
         run: npm run build
-        env:
-          NODE_ENV: production
 
       - name: Install AWS SAM
         uses: aws-actions/setup-sam@v2

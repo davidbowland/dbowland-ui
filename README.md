@@ -1,6 +1,6 @@
-# dbowland-gatsby
+# dbowland-ui
 
-Gatsby implementation of dbowland.com.
+Next.js implementation of dbowland.com.
 
 ## Static Site
 
@@ -11,7 +11,7 @@ Gatsby implementation of dbowland.com.
 
 ### Local Development
 
-The Gatsby development server automatically rerenders in the browser when the source code changes. Start the local development server with:
+The Next.js development server automatically rerenders in the browser when the source code changes. Start the local development server with:
 
 ```bash
 npm run start
@@ -77,19 +77,15 @@ npm run workflow
 
 ## Additional Documentation
 
-### Additional Gatsby Documentation
+### Additional Next.js Documentation
 
-- [Documentation](https://www.gatsbyjs.com/docs/)
+- [Documentation](https://nextjs.org/docs)
 
-- [Tutorials](https://www.gatsbyjs.com/tutorial/)
+- [Pages Router](https://nextjs.org/docs/pages)
 
-- [Guides](https://www.gatsbyjs.com/guides/)
+- [Static Export](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports)
 
-- [API Reference](https://www.gatsbyjs.com/docs/api-reference/)
-
-- [Plugin Library](https://www.gatsbyjs.com/plugins)
-
-- [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/)
+- [API Reference](https://nextjs.org/docs/pages/api-reference)
 
 ### Additional Deploy Documentation
 

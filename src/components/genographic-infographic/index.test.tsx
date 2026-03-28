@@ -1,21 +1,16 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import gatsyPluginImage from 'gatsby-plugin-image'
 import React from 'react'
 
 import GenographicInfographic from './index'
 
-jest.mock('gatsby-plugin-image')
+jest.mock('next-export-optimize-images/image', () => ({
+  __esModule: true,
+  default: (props: any) => <img {...props} />,
+}))
 
 describe('Genographic infographic component', () => {
-  const imageFilename = 'genographic-infographic.png'
-  const pdfFilename = 'test-file-stub'
-
-  beforeAll(() => {
-    jest.spyOn(gatsyPluginImage, 'StaticImage').mockImplementation((props) => {
-      return <img src={props.src} />
-    })
-  })
+  const pdfFilename = 'genographic-results.pdf'
 
   it('should include text "National Geographic Genographic project"', () => {
     render(<GenographicInfographic />)
@@ -26,8 +21,9 @@ describe('Genographic infographic component', () => {
     render(<GenographicInfographic />)
 
     const img = screen.getByRole('img') as HTMLImageElement
-    expect(img.src).toContain(imageFilename)
-    expect(img.alt).toBeDefined()
+    expect(img.alt).toBe(
+      '41% Eastern Europe; 22% Western and Central Europe; 20% Scandinavin; 14% Great Britain and Ireland; 2% Asia Minor; 1.1% Neanderthal',
+    )
   })
 
   it('should contain link to PDF results', () => {

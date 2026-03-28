@@ -1,11 +1,10 @@
 import GenographicInfographic from '@components/genographic-infographic'
 import PrivacyLink from '@components/privacy-link'
 import TitleBar from '@components/title-bar'
+import Genographic from '@pages/genographic'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
-
-import Genographic, { Head } from './genographic'
 
 jest.mock('@components/genographic-infographic')
 jest.mock('@components/privacy-link')
@@ -28,8 +27,8 @@ describe('Genographic page', () => {
     expect(TitleBar).toHaveBeenCalledTimes(1)
   })
 
-  it('renders Head', () => {
-    render(<Head />)
+  it('renders with correct title', () => {
+    render(<Genographic />)
     expect(document.title).toEqual('Genographic Information | dbowland.com')
   })
 })

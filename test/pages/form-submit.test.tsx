@@ -1,9 +1,8 @@
 import FormSubmitExample from '@components/form-submit'
+import FormSubmit from '@pages/form-submit'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
-
-import FormSubmit, { Head } from './form-submit'
 
 jest.mock('@components/form-submit')
 
@@ -17,8 +16,8 @@ describe('form-submit example', () => {
     expect(FormSubmitExample).toHaveBeenCalledTimes(1)
   })
 
-  it('renders Head', () => {
-    render(<Head />)
+  it('renders with correct title', () => {
+    render(<FormSubmit />)
     expect(document.title).toEqual('form-submit example page | github.com/davidbowland/form-submit')
   })
 })

@@ -1,6 +1,6 @@
-import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
-import React, { useRef } from 'react'
+import Image from 'next-export-optimize-images/image'
+import Link from 'next/link'
+import React, { useEffect, useRef, useState } from 'react'
 
 import KeyboardDoubleArrowUpRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowUpRounded'
 import Box from '@mui/material/Box'
@@ -14,7 +14,9 @@ import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
-import { ProjectImageStyles } from './elements'
+import chooseeDiagram from '@assets/images/choosee-diagram.png'
+import emailsDiagram from '@assets/images/emails-diagram.png'
+import jokesDiagram from '@assets/images/jokes-diagram.png'
 
 const Project = ({ children, title }: { children: JSX.Element | JSX.Element[]; title: string }): JSX.Element => (
   <>
@@ -39,7 +41,12 @@ const ProjectsTable = (): JSX.Element => {
   const otherRef = useRef<HTMLDivElement>(null)
   const rootRef = useRef<HTMLDivElement>(null)
 
-  const hostname = (typeof window !== 'undefined' && window.location.hostname) || 'dbowland.com'
+  const [hostname, setHostname] = useState('dbowland.com')
+
+  // Update hostname on client to avoid SSR/hydration mismatch
+  useEffect(() => {
+    setHostname(window.location.hostname)
+  }, [])
 
   return (
     <Stack margin="auto" padding={4} spacing={2}>
@@ -48,8 +55,8 @@ const ProjectsTable = (): JSX.Element => {
           <Typography variant="h5">Introduction:</Typography>
           <Typography>
             My professional life intersects with some cool technologies such as{' '}
-            <Link to="https://reactjs.org/">React</Link>,{' '}
-            <Link to="https://spring.io/projects/spring-boot">Spring Boot</Link>, and a panoply of AWS services, but I
+            <Link href="https://reactjs.org/">React</Link>,{' '}
+            <Link href="https://spring.io/projects/spring-boot">Spring Boot</Link>, and a panoply of AWS services, but I
             wanted to expand my horizons by completing a few side projects. The following side projects required setting
             up my own AWS and GCP accounts, registering a couple of domains, and even creating an Alexa skill! I&apos;m
             pleased to report I was able to use them to generate some innovative ideas in professional contexts, as
@@ -93,17 +100,17 @@ const ProjectsTable = (): JSX.Element => {
           <Typography variant="h5">Objectives:</Typography>
           <Typography>
             This project was created to set up my AWS environment. Originally, I used{' '}
-            <Link to="https://www.pulumi.com/">Pulumi</Link> to manage my infrastructure as code. It is a terrific
+            <Link href="https://www.pulumi.com/">Pulumi</Link> to manage my infrastructure as code. It is a terrific
             product, but when I started using{' '}
-            <Link to="https://aws.amazon.com/serverless/sam/">AWS Serverless Application Model (SAM)</Link>, I became
-            familiar with <Link to="https://aws.amazon.com/cloudformation/">AWS CloudFormation</Link>. After some
+            <Link href="https://aws.amazon.com/serverless/sam/">AWS Serverless Application Model (SAM)</Link>, I became
+            familiar with <Link href="https://aws.amazon.com/cloudformation/">AWS CloudFormation</Link>. After some
             thought, I made the decision that it would be easier for all infrastructure to use the same technology, so I
             converted this project to CloudFormation.
           </Typography>
           <Typography>
             Users including my own user are managed by this project. It also contains an infrastructure user for every
             project, including itself, so that credentials are not shared and{' '}
-            <Link to="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">
+            <Link href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">
               permission boundaries
             </Link>{' '}
             can be applied.
@@ -131,7 +138,7 @@ const ProjectsTable = (): JSX.Element => {
         <Project title="Email Forwarding">
           <Typography variant="h5">Objectives:</Typography>
           <Typography>
-            I was using <Link to="https://www.godaddy.com/">GoDaddy</Link> as a host, but it is expensive for my needs
+            I was using <Link href="https://www.godaddy.com/">GoDaddy</Link> as a host, but it is expensive for my needs
             and I wanted a project to test my AWS skills. Unfortunately, one thing stopping me from switching was an
             email alias I set up for my parents on my GoDaddy site. That alias automatically forwarded both of them any
             email it received. Therefore, I had to recreate that functionality before I could migrate providers. As a
@@ -139,9 +146,9 @@ const ProjectsTable = (): JSX.Element => {
           </Typography>
           <Typography variant="h5">Technologies:</Typography>
           <Typography>
-            For this project, I elected to use <Link to="https://aws.amazon.com/ses/">AWS SES</Link> to send and receive
-            emails, since that&apos;s the AWS solution. I decided on{' '}
-            <Link to="https://aws.amazon.com/serverless/sam/">AWS Serverless Application Model (SAM)</Link> to create
+            For this project, I elected to use <Link href="https://aws.amazon.com/ses/">AWS SES</Link> to send and
+            receive emails, since that&apos;s the AWS solution. I decided on{' '}
+            <Link href="https://aws.amazon.com/serverless/sam/">AWS Serverless Application Model (SAM)</Link> to create
             NodeJS lambdas to power the project, a practice that worked so well I was able to bring into my professional
             life. Lambdas are perfect for this project since they work so well with elastic demand and processing speed
             isn&apos;t very relevant.
@@ -149,18 +156,19 @@ const ProjectsTable = (): JSX.Element => {
           <Typography variant="h5">Lessons:</Typography>
           <Typography>
             Perhaps the most useful thing I learned in this project was how to register and manage a website with{' '}
-            <Link to="https://aws.amazon.com/route53/">AWS Route53</Link>. In addition to using Route 53 to set up MX
-            DNS records for email traffic, I created an <Link to="https://aws.amazon.com/sqs/">AWS SQS</Link> queue to
+            <Link href="https://aws.amazon.com/route53/">AWS Route53</Link>. In addition to using Route 53 to set up MX
+            DNS records for email traffic, I created an <Link href="https://aws.amazon.com/sqs/">AWS SQS</Link> queue to
             hold emails while they wait to be sent by a lambda. With this project complete, I was able to eventually
             migrate my GoDaddy domain, meaning I now have both a production and a test domain.
           </Typography>
           <Typography variant="h5">Diagram:</Typography>
-          <StaticImage
-            alt="Diagram of emails project"
-            imgStyle={{ objectFit: 'contain' }}
-            src="../../assets/images/emails-diagram.png"
-            style={ProjectImageStyles}
-          />
+          <Box style={{ margin: '1em 2em' }}>
+            <Image
+              alt="Diagram of emails project"
+              src={emailsDiagram}
+              style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
+            />
+          </Box>
           <Box>
             <Typography variant="h5">Source:</Typography>
             <List>
@@ -197,20 +205,19 @@ const ProjectsTable = (): JSX.Element => {
       <Grid container ref={jokesRef}>
         <Project title="Jokes">
           <Typography variant="h5">
-            URL: <Link to={`https://jokes.${hostname}`}>{`https://jokes.${hostname}`}</Link>
+            URL: <Link href={`https://jokes.${hostname}`}>{`https://jokes.${hostname}`}</Link>
           </Typography>
           <Typography variant="h5">Objectives:</Typography>
           <Typography>
             This project was my first to utilize a UI. I made a number of key decisions, including choosing{' '}
-            <Link to="https://www.gatsbyjs.com/">Gatsby</Link> as my static site generator. While it isn&apos;t the
-            fastest at compiling or the most popular option, it is highly specialized for creating fast static sites and
-            I had a positive experience with it on a past project.
+            <Link href="https://nextjs.org/">Next.js</Link> as my static site generator. It has excellent support for
+            static export, a large ecosystem, and I have had a positive experience with it on past projects.
           </Typography>
           <Typography variant="h5">Technologies:</Typography>
           <Typography>
-            All UI projects leverage the material UI library <Link to="https://mui.com/">MUI</Link> and use either{' '}
-            <Link to="https://emotion.sh/docs/styled">Emotion</Link> or{' '}
-            <Link to="https://styled-components.com/">styled-components</Link>. Using a library helps drive
+            All UI projects leverage the material UI library <Link href="https://mui.com/">MUI</Link> and use either{' '}
+            <Link href="https://emotion.sh/docs/styled">Emotion</Link> or{' '}
+            <Link href="https://styled-components.com/">styled-components</Link>. Using a library helps drive
             accessibility in addition to providing a familiar experience. Icons from the MUI library are used in all UI
             projects, as well.
           </Typography>
@@ -219,16 +226,17 @@ const ProjectsTable = (): JSX.Element => {
             I learned to use stencils writing this project and designed the loading button I would later use in other
             projects. I also spent a lot of time thinking about how to uniformly pass both data and associated ID
             information when requesting a set of records, something I think this project does notably well. Plus, I got
-            to build my first Alexa skill and use <Link to="https://aws.amazon.com/polly/">AWS Polly</Link> for
+            to build my first Alexa skill and use <Link href="https://aws.amazon.com/polly/">AWS Polly</Link> for
             text-to-speech!
           </Typography>
           <Typography variant="h5">Diagram:</Typography>
-          <StaticImage
-            alt="Diagram of jokes project"
-            imgStyle={{ objectFit: 'contain' }}
-            src="../../assets/images/jokes-diagram.png"
-            style={ProjectImageStyles}
-          />
+          <Box style={{ margin: '1em 2em' }}>
+            <Image
+              alt="Diagram of jokes project"
+              src={jokesDiagram}
+              style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
+            />
+          </Box>
           <Box>
             <Typography variant="h5">Source:</Typography>
             <List>
@@ -260,7 +268,7 @@ const ProjectsTable = (): JSX.Element => {
       <Grid container ref={chooseeRef}>
         <Project title="Choosee">
           <Typography variant="h5">
-            URL: <Link to={`https://choosee.${hostname}`}>{`https://choosee.${hostname}`}</Link>
+            URL: <Link href={`https://choosee.${hostname}`}>{`https://choosee.${hostname}`}</Link>
           </Typography>
           <Typography variant="h5">Objectives:</Typography>
           <Typography>
@@ -271,18 +279,19 @@ const ProjectsTable = (): JSX.Element => {
           <Typography variant="h5">Lessons:</Typography>
           <Typography>
             This project was great because I hadn&apos;t worked with{' '}
-            <Link to="https://cloud.google.com/">Google Cloud Platform</Link>, let alone{' '}
-            <Link to="https://developers.google.com/maps/documentation/places/web-service">Places API</Link>, in the
+            <Link href="https://cloud.google.com/">Google Cloud Platform</Link>, let alone{' '}
+            <Link href="https://developers.google.com/maps/documentation/places/web-service">Places API</Link>, in the
             past, so I got to set up an account and learn how to interact with that service. On the AWS side, this
             project allowed me to iterate on concepts learned in previous projects.
           </Typography>
           <Typography variant="h5">Diagram:</Typography>
-          <StaticImage
-            alt="Diagram of choosee project"
-            imgStyle={{ objectFit: 'contain' }}
-            src="../../assets/images/choosee-diagram.png"
-            style={ProjectImageStyles}
-          />
+          <Box style={{ margin: '1em 2em' }}>
+            <Image
+              alt="Diagram of choosee project"
+              src={chooseeDiagram}
+              style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
+            />
+          </Box>
           <Box>
             <Typography variant="h5">Source:</Typography>
             <List>
@@ -309,21 +318,21 @@ const ProjectsTable = (): JSX.Element => {
       <Grid container ref={otherRef}>
         <Project title="Other">
           <Typography variant="h5">
-            URL: <Link to={`https://${hostname}`}>{`https://${hostname}`}</Link>
+            URL: <Link href={`https://${hostname}`}>{`https://${hostname}`}</Link>
           </Typography>
           <Typography variant="h5">Objectives:</Typography>
           <Typography>
             This project includes this website and a few miscellaneous repositories including those that send SMS
             messages and a log subscriber, which watches for errors in{' '}
-            <Link to="https://aws.amazon.com/cloudwatch/">AWS CloudWatch</Link> and alerts me via SMS when an error
+            <Link href="https://aws.amazon.com/cloudwatch/">AWS CloudWatch</Link> and alerts me via SMS when an error
             occurs.
           </Typography>
           <Typography variant="h5">Lessons:</Typography>
           <Typography>
             Creating these repositories taught me about using{' '}
-            <Link to="https://aws.amazon.com/pinpoint/">AWS Pinpoint</Link>, both for analytics and for sending SMS
+            <Link href="https://aws.amazon.com/pinpoint/">AWS Pinpoint</Link>, both for analytics and for sending SMS
             messages. Further, it made me become more familiar with log{' '}
-            <Link to="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html">
+            <Link href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html">
               subscription filters
             </Link>{' '}
             and other mechanisms for monitoring for errors.

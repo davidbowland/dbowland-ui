@@ -7,7 +7,7 @@ import Resume from './index'
 describe('Resume component', () => {
   const consoleWarn = console.warn
   const emailAddress = 'david@dbowland.com'
-  const pdfFilename = 'test-file-stub'
+  const pdfFilename = 'david-bowland-resume.pdf'
 
   beforeAll(() => {
     console.warn = jest.fn()

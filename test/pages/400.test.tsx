@@ -1,20 +1,19 @@
 import ServerErrorMessage from '@components/server-error-message'
+import BadRequest from '@pages/400'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import InternalServerError, { Head } from './500'
-
 jest.mock('@components/server-error-message')
 
-describe('500 error page', () => {
+describe('400 error page', () => {
   beforeAll(() => {
     jest.mocked(ServerErrorMessage).mockReturnValue(<></>)
   })
 
   it('should render ServerErrorMessage', () => {
-    const expectedTitle = '500: Internal Server Error'
-    render(<InternalServerError />)
+    const expectedTitle = '400: Bad Request'
+    render(<BadRequest />)
     expect(ServerErrorMessage).toHaveBeenCalledWith(
       expect.objectContaining({ title: expectedTitle }),
       expect.anything(),
@@ -22,8 +21,8 @@ describe('500 error page', () => {
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
 
-  it('renders Head', () => {
-    render(<Head />)
-    expect(document.title).toEqual('500: Internal Server Error -- dbowland.com')
+  it('renders with correct title', () => {
+    render(<BadRequest />)
+    expect(document.title).toEqual('400: Bad Request -- dbowland.com')
   })
 })

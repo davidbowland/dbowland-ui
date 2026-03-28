@@ -1,5 +1,5 @@
 import PrivacyLink from '@components/privacy-link'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 import React from 'react'
 
 import Grid from '@mui/material/Grid'
@@ -22,7 +22,7 @@ const ServerErrorMessage = ({ children, title }: ServerErrorProps): JSX.Element 
             {children}
           </Grid>
           <Grid item xs>
-            <Link to="/">Go home</Link>
+            <Link href="/">Go home</Link>
             <PrivacyLink />
           </Grid>
         </Grid>

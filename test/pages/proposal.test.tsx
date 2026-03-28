@@ -1,10 +1,9 @@
+import Proposal from '@pages/proposal'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Wedding, { Head } from './wedding'
-
-describe('wedding redirect', () => {
+describe('proposal redirect', () => {
   const mockLocationReplace = jest.fn()
 
   beforeAll(() => {
@@ -16,13 +15,13 @@ describe('wedding redirect', () => {
   })
 
   it('should render SmoothScrollExample', () => {
-    render(<Wedding />)
+    render(<Proposal />)
 
     expect(mockLocationReplace).toHaveBeenCalledWith(expect.stringContaining('https://drive.google.com/file/'))
   })
 
-  it('renders Head', () => {
-    render(<Head />)
+  it('renders with correct title', () => {
+    render(<Proposal />)
     expect(document.title).toEqual('Redirecting...')
   })
 })

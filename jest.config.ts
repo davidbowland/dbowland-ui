@@ -2,8 +2,12 @@
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/en/configuration.html
  */
+import type { Config } from 'jest'
+import nextJest from 'next/jest'
 
-export default {
+const createJestConfig = nextJest({ dir: './' })
+
+const config: Config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -11,7 +15,7 @@ export default {
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/private/var/folders/78/kfx60z75547dfdb37q49vl340000gn/T/jest_dx",
+  // cacheDirectory: "/tmp/jest_dx",
 
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
@@ -26,18 +30,13 @@ export default {
   coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: ['.*\\.d\\.ts', 'config/*', 'types.ts'],
+  coveragePathIgnorePatterns: ['.*\\.d\\.ts', 'config/*', '_app.tsx', '_document.tsx', 'types.ts'],
 
   // Indicates which provider should be used to instrument code for coverage
   // coverageProvider: "babel",
 
   // A list of reporter names that Jest uses when writing coverage reports
-  // coverageReporters: [
-  //   "json",
-  //   "text",
-  //   "lcov",
-  //   "clover"
-  // ],
+  // coverageReporters: ["json", "text", "lcov", "clover"],
 
   // An object that configures minimum threshold enforcement for coverage results
   coverageThreshold: {
@@ -64,31 +63,19 @@ export default {
   // globalTeardown: undefined,
 
   // A set of global variables that need to be available in all test environments
-  globals: {
-    __PATH_PREFIX__: '',
-  },
+  // globals: {},
 
-  // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
+  // The maximum amount of workers used to run your tests
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  // moduleDirectories: [
-  //   "node_modules"
-  // ],
+  // moduleDirectories: ["node_modules"],
 
   // An array of file extensions your modules use
-  // moduleFileExtensions: [
-  //   "js",
-  //   "json",
-  //   "jsx",
-  //   "ts",
-  //   "tsx",
-  //   "node"
-  // ],
+  // moduleFileExtensions: ["js", "json", "jsx", "ts", "tsx", "node"],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^gatsby-page-utils/(.*)$': 'gatsby-page-utils/$1', // Workaround for https://github.com/facebook/jest/issues/9771
     '.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
     '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|pdf|yaml)$':
       '<rootDir>/__mocks__/file-mock.js',
@@ -134,9 +121,7 @@ export default {
   // rootDir: undefined,
 
   // A list of paths to directories that Jest should use to search for files in
-  // roots: [
-  //   "<rootDir>"
-  // ],
+  // roots: ["<rootDir>"],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
@@ -145,9 +130,9 @@ export default {
   setupFiles: ['<rootDir>/jest.setup-test-env.js'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: ['./test/setup-server.ts'],
+  // setupFilesAfterFramework: [],
 
-  // The number of seconds after which a test is considered as slow and reported as such in the results.
+  // The number of seconds after which a test is considered as slow and reported as such in the results
   // slowTestThreshold: 5,
 
   // A list of paths to snapshot serializer modules Jest should use for snapshot testing
@@ -163,13 +148,10 @@ export default {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  // testMatch: [
-  //   "**/__tests__/**/*.[jt]s?(x)",
-  //   "**/?(*.)+(spec|test).[tj]s?(x)"
-  // ],
+  // testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ['node_modules', '\\.cache', '<rootDir>.*/public'],
+  testPathIgnorePatterns: ['node_modules', '\\.cache', '<rootDir>.*/out'],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
@@ -178,22 +160,13 @@ export default {
   // testResultsProcessor: undefined,
 
   // This option allows use of a custom test runner
-  // testRunner: "jasmine2",
-
-  // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
-  // testURL: 'http://localhost',
-
-  // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
-  // timers: "real",
+  // testRunner: "jest-runner",
 
   // A map from regular expressions to paths to transformers
-  transform: {
-    '^.+\\.jsx?$': '<rootDir>/jest.preprocess.js',
-    '^.+\\.tsx?$': '<rootDir>/jest.preprocess.js',
-  },
+  // transform: handled by next/jest's createJestConfig
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: ['node_modules/(?!(gatsby.*|.*uuid.*)/)'],
+  // transformIgnorePatterns: handled by next/jest's createJestConfig
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
@@ -207,3 +180,5 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
 }
+
+export default createJestConfig(config)
