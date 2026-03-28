@@ -14,7 +14,6 @@ import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
-import { ProjectImageBoxStyles, ProjectImageStyles } from './elements'
 import chooseeDiagram from '@assets/images/choosee-diagram.png'
 import emailsDiagram from '@assets/images/emails-diagram.png'
 import jokesDiagram from '@assets/images/jokes-diagram.png'
@@ -163,8 +162,12 @@ const ProjectsTable = (): JSX.Element => {
             migrate my GoDaddy domain, meaning I now have both a production and a test domain.
           </Typography>
           <Typography variant="h5">Diagram:</Typography>
-          <Box style={ProjectImageBoxStyles}>
-            <Image alt="Diagram of emails project" src={emailsDiagram} style={ProjectImageStyles} />
+          <Box style={{ margin: '1em 2em' }}>
+            <Image
+              alt="Diagram of emails project"
+              src={emailsDiagram}
+              style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
+            />
           </Box>
           <Box>
             <Typography variant="h5">Source:</Typography>
@@ -227,8 +230,12 @@ const ProjectsTable = (): JSX.Element => {
             text-to-speech!
           </Typography>
           <Typography variant="h5">Diagram:</Typography>
-          <Box style={ProjectImageBoxStyles}>
-            <Image alt="Diagram of jokes project" src={jokesDiagram} style={ProjectImageStyles} />
+          <Box style={{ margin: '1em 2em' }}>
+            <Image
+              alt="Diagram of jokes project"
+              src={jokesDiagram}
+              style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
+            />
           </Box>
           <Box>
             <Typography variant="h5">Source:</Typography>
@@ -278,8 +285,12 @@ const ProjectsTable = (): JSX.Element => {
             project allowed me to iterate on concepts learned in previous projects.
           </Typography>
           <Typography variant="h5">Diagram:</Typography>
-          <Box style={ProjectImageBoxStyles}>
-            <Image alt="Diagram of choosee project" src={chooseeDiagram} style={ProjectImageStyles} />
+          <Box style={{ margin: '1em 2em' }}>
+            <Image
+              alt="Diagram of choosee project"
+              src={chooseeDiagram}
+              style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
+            />
           </Box>
           <Box>
             <Typography variant="h5">Source:</Typography>

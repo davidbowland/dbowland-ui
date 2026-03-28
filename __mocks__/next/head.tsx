@@ -6,16 +6,13 @@ type HeadProps = {
 
 const Head = ({ children }: HeadProps): JSX.Element => {
   React.useEffect(() => {
-    // Process title tags
     const titleElements = Array.from(document.head.querySelectorAll('title[data-nextjs]'))
     const newTitles = React.Children.toArray(children).filter(
       (child): child is React.ReactElement => React.isValidElement(child) && child.type === 'title',
     )
 
-    // Remove old titles
     titleElements.forEach((el) => el.remove())
 
-    // Add new titles and set document.title
     newTitles.forEach((titleElement) => {
       const titleText = titleElement.props.children
       if (titleText) {
@@ -27,7 +24,6 @@ const Head = ({ children }: HeadProps): JSX.Element => {
       }
     })
 
-    // Also set meta tags, links, etc.
     const otherElements = React.Children.toArray(children).filter(
       (child): child is React.ReactElement =>
         React.isValidElement(child) && ['meta', 'link', 'style', 'script', 'noscript'].includes(String(child.type)),
