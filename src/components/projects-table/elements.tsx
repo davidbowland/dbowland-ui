@@ -49,3 +49,71 @@ export const ProjectSourceLink = ({
     {children}
   </Link>
 )
+
+export const ProjectsLayout = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
+  <div {...props} className={`flex flex-col gap-4 py-2 ${className ?? ''}`}>
+    {children}
+  </div>
+)
+
+export const ProjectDescription = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>): React.JSX.Element => (
+  <p {...props} className={`text-sm leading-relaxed ${className ?? ''}`}>
+    {children}
+  </p>
+)
+
+export const ProjectUrl = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>): React.JSX.Element => (
+  <p {...props} className={`text-sm ${className ?? ''}`}>
+    {children}
+  </p>
+)
+
+export const ProjectNavList = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLUListElement>): React.JSX.Element => (
+  <ul {...props} className={`list-none p-0 m-0 flex flex-col ${className ?? ''}`}>
+    {children}
+  </ul>
+)
+
+export const ProjectSourceList = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLUListElement>): React.JSX.Element => (
+  <ul {...props} className={`list-none p-0 m-0 ${className ?? ''}`}>
+    {children}
+  </ul>
+)
+
+export const ScrollToTopButton = ({
+  onPress,
+  children,
+}: {
+  onPress: () => void
+  children: React.ReactNode
+}): React.JSX.Element => (
+  <Button
+    aria-label="Scroll to top"
+    className="fixed bottom-4 right-4 rounded-full"
+    isIconOnly
+    onPress={onPress}
+    variant="primary"
+  >
+    {children}
+  </Button>
+)

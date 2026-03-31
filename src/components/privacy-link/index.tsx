@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 
+import { PrivacyLinkWrapper } from './elements'
+
 const PrivacyLink = (): React.JSX.Element => {
   return (
-    <div className="p-2 text-center text-xs">
+    <PrivacyLinkWrapper>
       <Link href="/privacy-policy">Privacy policy</Link>
-    </div>
+    </PrivacyLinkWrapper>
   )
 }
 

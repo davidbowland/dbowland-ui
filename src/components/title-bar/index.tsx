@@ -2,6 +2,25 @@ import { Contact, Construction, FileText, GitMerge, Menu, ShieldCheck, X } from 
 import Link from 'next/link'
 import React, { useState } from 'react'
 
+import {
+  BrandLink,
+  DesktopBrand,
+  DesktopBrandLink,
+  DesktopNav,
+  DesktopNavLink,
+  HamburgerButton,
+  MobileHeader,
+  MobileMenuBackdrop,
+  MobileMenuBrand,
+  MobileMenuButton,
+  MobileMenuDivider,
+  MobileMenuHeader,
+  MobileMenuLink,
+  MobileMenuList,
+  MobileMenuOverlay,
+  MobileMenuPanel,
+  NavBar,
+} from './elements'
 import { gitHubUrl, linkedInUrl } from '@config/urls'
 
 interface NavigationDetails {
@@ -20,85 +39,66 @@ const TitleBar = (): JSX.Element => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="bg-slate-900 text-white px-6 py-3 flex items-center justify-between border-b border-[#cf8a05]/25">
+    <NavBar>
       {/* Mobile: hamburger */}
-      <div className="sm:hidden flex items-center gap-2">
-        <button
-          aria-label="amenu"
-          className="p-2 rounded hover:bg-slate-800 transition-colors"
-          onClick={() => setIsMenuOpen(true)}
-        >
+      <MobileHeader>
+        <HamburgerButton aria-label="amenu" onClick={() => setIsMenuOpen(true)}>
           <Menu />
-        </button>
-        <Link className="font-semibold tracking-wide text-[#cf8a05]" href="/">
-          dbowland.com
+        </HamburgerButton>
+        <Link href="/" legacyBehavior>
+          <BrandLink href="/">dbowland.com</BrandLink>
         </Link>
-      </div>
+      </MobileHeader>
 
       {/* Desktop: brand */}
-      <div className="hidden sm:flex">
-        <Link className="font-semibold tracking-wide text-[#cf8a05] hover:text-[#e0a020] transition-colors" href="/">
-          dbowland.com
+      <DesktopBrand>
+        <Link href="/" legacyBehavior>
+          <DesktopBrandLink href="/">dbowland.com</DesktopBrandLink>
         </Link>
-      </div>
+      </DesktopBrand>
 
       {/* Desktop: nav items */}
-      <div className="hidden sm:flex gap-1">
+      <DesktopNav>
         {Object.entries(navigation).map(([page, details]) => (
-          <a
-            className="py-1.5 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded transition-colors"
-            href={details.url}
-            key={page}
-          >
+          <DesktopNavLink href={details.url} key={page}>
             {page}
-          </a>
+          </DesktopNavLink>
         ))}
-      </div>
+      </DesktopNav>
 
       {/* Mobile: slide-out menu (always in DOM, shown/hidden via class) */}
-      <div className={`sm:hidden fixed inset-0 z-50 ${isMenuOpen ? '' : 'hidden'}`}>
-        <div className="absolute inset-0 bg-black/60" onClick={() => setIsMenuOpen(false)} />
-        <div className="absolute left-0 top-0 h-full w-64 bg-slate-900 shadow-xl border-r border-[#cf8a05]/20">
-          <div className="px-5 py-4 border-b border-[#cf8a05]/20">
-            <span className="font-semibold tracking-wide text-[#cf8a05]">dbowland.com</span>
-          </div>
-          <ul className="flex flex-col gap-1 mt-2 p-2">
+      <MobileMenuOverlay isOpen={isMenuOpen}>
+        <MobileMenuBackdrop onClick={() => setIsMenuOpen(false)} />
+        <MobileMenuPanel>
+          <MobileMenuHeader>
+            <MobileMenuBrand>dbowland.com</MobileMenuBrand>
+          </MobileMenuHeader>
+          <MobileMenuList>
             {Object.entries(navigation).map(([page, details]: [string, NavigationDetails]) => (
               <li key={page}>
-                <a
-                  className="flex items-center gap-3 py-2 px-4 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition-colors"
-                  href={details.url}
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <MobileMenuLink href={details.url} onClick={() => setIsMenuOpen(false)}>
                   {details.icon}
                   {page}
-                </a>
+                </MobileMenuLink>
               </li>
             ))}
-            <hr className="my-2 border-slate-700" />
+            <MobileMenuDivider />
             <li>
-              <a
-                className="flex items-center gap-3 py-2 px-4 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition-colors"
-                href="/privacy-policy"
-                onClick={() => setIsMenuOpen(false)}
-              >
+              <MobileMenuLink href="/privacy-policy" onClick={() => setIsMenuOpen(false)}>
                 <ShieldCheck size={18} />
                 Privacy policy
-              </a>
+              </MobileMenuLink>
             </li>
             <li>
-              <button
-                className="flex items-center gap-3 py-2 px-4 rounded hover:bg-slate-800 w-full text-left text-slate-300 hover:text-white transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
+              <MobileMenuButton onClick={() => setIsMenuOpen(false)}>
                 <X size={18} />
                 Close
-              </button>
+              </MobileMenuButton>
             </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+          </MobileMenuList>
+        </MobileMenuPanel>
+      </MobileMenuOverlay>
+    </NavBar>
   )
 }
 
