@@ -14,10 +14,7 @@ describe('403 error page', () => {
   it('should render ServerErrorMessage', () => {
     const expectedTitle = '403: Forbidden'
     render(<Forbidden />)
-    expect(ServerErrorMessage).toHaveBeenCalledWith(
-      expect.objectContaining({ title: expectedTitle }),
-      expect.anything(),
-    )
+    expect(ServerErrorMessage).toHaveBeenCalledWith(expect.objectContaining({ title: expectedTitle }), undefined)
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
 

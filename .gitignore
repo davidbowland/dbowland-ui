@@ -50,6 +50,7 @@ Thumbs.db
 
 .claude/
 .kiro/specs/
+.superpowers/
 .vscode
 .worktrees/
 docs/

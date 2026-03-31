@@ -39,6 +39,7 @@
       "error",
       { "children": "never", "propElementValues": "always", "props": "never" }
     ],
+    "react/prop-types": "off",
     "react/jsx-sort-props": ["error"],
     "semi": ["error", "never"],
     "sort-vars": ["error"]

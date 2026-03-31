@@ -82,9 +82,11 @@ const config: Config = {
     '^@assets/(.*)$': '<rootDir>/src/assets/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
     '^@config/(.*)$': '<rootDir>/src/config/$1',
+    '^@data/(.*)$': '<rootDir>/src/data/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@test/(.*)$': '<rootDir>/test/$1',
     '@fontsource/(.*)$': '<rootDir>/__mocks__/file-mock.js',
+    '^@heroui/react$': '<rootDir>/__mocks__/@heroui/react.js',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

@@ -1,17 +1,17 @@
+import {
+  Accordion,
+  AccordionBody,
+  AccordionHeading,
+  AccordionItem,
+  AccordionPanel,
+  AccordionTrigger,
+  Card,
+  CardContent,
+  Chip,
+  Separator,
+} from '@heroui/react'
+import { ChevronDown } from 'lucide-react'
 import React, { useEffect, useMemo, useState } from 'react'
-
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import Accordion from '@mui/material/Accordion'
-import AccordionDetails from '@mui/material/AccordionDetails'
-import AccordionSummary from '@mui/material/AccordionSummary'
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Chip from '@mui/material/Chip'
-import Divider from '@mui/material/Divider'
-import Grid from '@mui/material/Grid'
-import Link from '@mui/material/Link'
-import Typography from '@mui/material/Typography'
 
 const MARRIAGE_DATE = '2025-09-20T17:00:00-05:00'
 const PROPOSAL_VIDEO_ID = '1QjF6bZjeD2k4OKReS_Okm7xX0W_l9n52'
@@ -156,32 +156,23 @@ const VideoCard = ({ title, videoId }: { title: string; videoId: string }) => {
   return (
     <Card>
       <CardContent>
-        <Typography component="h3" gutterBottom variant="h6">
-          {title}
-        </Typography>
+        <h3 className="text-xl font-medium mb-2">{title}</h3>
 
-        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-          <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', mb: 2 }}>
+        <div className="hidden md:block">
+          <div className="relative pb-[56.25%] h-0 overflow-hidden mb-4">
             <iframe
               src={`https://drive.google.com/file/d/${videoId}/preview`}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                border: 'none',
-              }}
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
               title={title}
             />
-          </Box>
-        </Box>
+          </div>
+        </div>
 
-        <Box>
-          <Link href={driveUrl} rel="noopener noreferrer" target="_blank" variant="body2">
+        <div>
+          <a className="text-sm" href={driveUrl} rel="noopener noreferrer" target="_blank">
             Open in Google Drive
-          </Link>
-        </Box>
+          </a>
+        </div>
       </CardContent>
     </Card>
   )
@@ -189,13 +180,9 @@ const VideoCard = ({ title, videoId }: { title: string; videoId: string }) => {
 
 const StatCard = ({ title, value }: { title: string; value: number }) => (
   <Card>
-    <CardContent sx={{ textAlign: 'center' }}>
-      <Typography color="primary" component="div" variant="h4">
-        {value.toLocaleString()}
-      </Typography>
-      <Typography component="div" gutterBottom variant="h6">
-        {title}
-      </Typography>
+    <CardContent className="text-center">
+      <div className="text-4xl font-normal text-primary mb-1">{value.toLocaleString()}</div>
+      <div className="text-xl font-medium">{title}</div>
     </CardContent>
   </Card>
 )
@@ -219,13 +206,7 @@ const MilestoneSection = ({
       const targetDate = calculateTargetDate(marriageDate, milestone)
       const achieved = now >= targetDate
       const remainingText = calculateRemainingText(now, targetDate, milestone)
-
-      return {
-        ...milestone,
-        achieved,
-        targetDate,
-        remainingText,
-      }
+      return { ...milestone, achieved, targetDate, remainingText }
     }).sort((a, b) => a.targetDate.getTime() - b.targetDate.getTime())
 
     const achieved = processedMilestones.filter((m) => m.achieved)
@@ -236,213 +217,174 @@ const MilestoneSection = ({
   }, [years, days, hours, minutes])
 
   return (
-    <Box sx={{ mb: 4 }}>
-      <Typography component="h2" gutterBottom sx={{ mb: 3, textAlign: 'center' }} variant="h5">
-        Milestones
-      </Typography>
+    <div className="mb-8">
+      <h2 className="text-2xl text-center mb-6">Milestones</h2>
 
-      <Card sx={{ backgroundColor: 'success.light', color: 'success.contrastText', mb: 3 }}>
+      <Card className="bg-success-100 dark:bg-success-900 mb-6">
         <CardContent>
-          <Typography gutterBottom sx={{ textAlign: 'center' }} variant="h6">
-            Achieved 🎉
-          </Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, justifyContent: 'center' }}>
+          <h6 className="text-xl font-medium text-center mb-3">Achieved 🎉</h6>
+          <div className="flex flex-wrap gap-2 justify-center">
             {milestoneData.achieved.map((milestone) => (
-              <Chip
-                color="success"
-                key={milestone.name}
-                label={`${milestone.emoji} ${milestone.name}`}
-                sx={{ backgroundColor: 'success.dark' }}
-                variant="filled"
-              />
+              <Chip color="success" key={milestone.name} variant="primary">
+                {milestone.emoji} {milestone.name}
+              </Chip>
             ))}
-          </Box>
+          </div>
         </CardContent>
       </Card>
 
       {milestoneData.next && (
-        <Card sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText', mb: 2 }}>
-          <CardContent sx={{ textAlign: 'center' }}>
-            <Typography gutterBottom variant="h6">
-              Next Milestone
-            </Typography>
-            <Typography sx={{ mb: 1 }} variant="h5">
+        <Card className="bg-primary mb-4">
+          <CardContent className="text-center">
+            <h6 className="text-xl font-medium mb-2">Next Milestone</h6>
+            <div className="text-2xl mb-2">
               {milestoneData.next.emoji} {milestoneData.next.name}
-            </Typography>
-            <Typography variant="body1">{milestoneData.next.remainingText} to go!</Typography>
+            </div>
+            <p>{milestoneData.next.remainingText} to go!</p>
           </CardContent>
         </Card>
       )}
 
       {milestoneData.upcoming.length > 0 && (
-        <Card sx={{ backgroundColor: 'grey.600', mb: 2 }}>
+        <Card className="bg-default-400 mb-4">
           <CardContent>
-            <Typography color="text.primary" gutterBottom sx={{ textAlign: 'center' }} variant="h6">
-              Coming Up
-            </Typography>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, justifyContent: 'center' }}>
+            <h6 className="text-xl font-medium text-center mb-3">Coming Up</h6>
+            <div className="flex flex-wrap gap-2 justify-center">
               {milestoneData.upcoming.map((milestone) => (
-                <Chip
-                  key={milestone.name}
-                  label={`${milestone.emoji} ${milestone.name}`}
-                  sx={{ borderColor: 'grey.800', color: 'text.primary' }}
-                  variant="outlined"
-                />
+                <Chip key={milestone.name} variant="secondary">
+                  {milestone.emoji} {milestone.name}
+                </Chip>
               ))}
-            </Box>
+            </div>
           </CardContent>
         </Card>
       )}
-    </Box>
+    </div>
   )
 }
 
 const RecipeAccordion = () => (
-  <Accordion sx={{ backgroundColor: 'error.dark' }}>
-    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-      <Typography variant="h6">Our Perfect Recipe For Love 👨‍🍳👩‍🍳</Typography>
-    </AccordionSummary>
-    <AccordionDetails>
-      <Box sx={{ mb: 3 }}>
-        <Typography gutterBottom variant="h6">
-          Ingredients:
-        </Typography>
-        <Box component="ul" sx={{ pl: 2, mb: 2 }}>
-          <Typography component="li" variant="body2">
-            1 lonely man
-          </Typography>
-          <Typography component="li" variant="body2">
-            1 lonely woman
-          </Typography>
-          <Typography component="li" variant="body2">
-            1 adorable chiweenie (for binding)
-          </Typography>
-          <Typography component="li" variant="body2">
-            2 separate households (to be combined)
-          </Typography>
-          <Typography component="li" variant="body2">
-            313 collaborative cooking sessions
-          </Typography>
-          <Typography component="li" variant="body2">
-            1 collection of magical memories (Vegas and Chicago varieties)
-          </Typography>
-          <Typography component="li" variant="body2">
-            Multiple St. Louis day-trip seasonings
-          </Typography>
-          <Typography component="li" variant="body2">
-            730 days of careful preparation time
-          </Typography>
-          <Typography component="li" variant="body2">
-            2 festive holiday celebrations
-          </Typography>
-          <Typography component="li" variant="body2">
-            A generous helping of commitment and love
-          </Typography>
-        </Box>
-      </Box>
-
-      <Box>
-        <Typography gutterBottom variant="h6">
-          Instructions:
-        </Typography>
-        <Typography paragraph variant="body2">
-          Start by introducing your lonely man and lonely woman in a cozy restaurant setting, allowing them to blend
-          naturally. Add the adorable chiweenie as a binding agent - this will help hold everything together
-          beautifully.
-        </Typography>
-        <Typography paragraph variant="body2">
-          Slowly incorporate 313 collaborative cooking sessions, stirring frequently to build teamwork and shared
-          tastes. Season the mixture with magical memories from Vegas and Chicago, plus regular applications of St.
-          Louis day-trip flavoring for local charm.
-        </Typography>
-        <Typography paragraph variant="body2">
-          Carefully fold in 2 separate households, combining gradually to avoid lumps. This process requires patience
-          and lots of love. Allow the entire mixture to develop over exactly 730 days, celebrating progress with festive
-          holiday gatherings.
-        </Typography>
-        <Typography variant="body2">
-          The final result should be perfectly seasoned, well-combined, and ready to serve a lifetime of happiness!
-        </Typography>
-      </Box>
-    </AccordionDetails>
-  </Accordion>
+  <div className="bg-red-900 rounded-xl">
+    <Accordion className="bg-transparent">
+      <AccordionItem>
+        <AccordionHeading>
+          <AccordionTrigger>
+            <ChevronDown />
+            <span className="text-xl font-medium">Our Perfect Recipe For Love 👨‍🍳👩‍🍳</span>
+          </AccordionTrigger>
+        </AccordionHeading>
+        <AccordionPanel>
+          <AccordionBody className="bg-transparent text-white">
+            <div className="mb-6">
+              <h6 className="text-xl font-medium mb-2">Ingredients:</h6>
+              <ul className="list-disc pl-6 mb-4 text-sm">
+                <li>1 lonely man</li>
+                <li>1 lonely woman</li>
+                <li>1 adorable chiweenie (for binding)</li>
+                <li>2 separate households (to be combined)</li>
+                <li>313 collaborative cooking sessions</li>
+                <li>1 collection of magical memories (Vegas and Chicago varieties)</li>
+                <li>Multiple St. Louis day-trip seasonings</li>
+                <li>730 days of careful preparation time</li>
+                <li>2 festive holiday celebrations</li>
+                <li>A generous helping of commitment and love</li>
+              </ul>
+            </div>
+            <div>
+              <h6 className="text-xl font-medium mb-2">Instructions:</h6>
+              <p className="text-sm mb-3">
+                Start by introducing your lonely man and lonely woman in a cozy restaurant setting, allowing them to
+                blend naturally. Add the adorable chiweenie as a binding agent - this will help hold everything together
+                beautifully.
+              </p>
+              <p className="text-sm mb-3">
+                Slowly incorporate 313 collaborative cooking sessions, stirring frequently to build teamwork and shared
+                tastes. Season the mixture with magical memories from Vegas and Chicago, plus regular applications of
+                St. Louis day-trip flavoring for local charm.
+              </p>
+              <p className="text-sm mb-3">
+                Carefully fold in 2 separate households, combining gradually to avoid lumps. This process requires
+                patience and lots of love. Allow the entire mixture to develop over exactly 730 days, celebrating
+                progress with festive holiday gatherings.
+              </p>
+              <p className="text-sm">
+                The final result should be perfectly seasoned, well-combined, and ready to serve a lifetime of
+                happiness!
+              </p>
+            </div>
+          </AccordionBody>
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  </div>
 )
 
-export const MarriageStats = (): JSX.Element => {
-  const [, setCurrentTime] = useState(new Date())
+export const MarriageStats = (): React.JSX.Element => {
+  const [marriageStats, setMarriageStats] = useState<ReturnType<typeof calculateTimeSince> | null>(null)
 
   useEffect(() => {
+    setMarriageStats(calculateTimeSince(MARRIAGE_DATE))
     const timer = setInterval(() => {
-      setCurrentTime(new Date())
+      setMarriageStats(calculateTimeSince(MARRIAGE_DATE))
     }, 1_000)
-
     return () => clearInterval(timer)
   }, [])
 
-  const marriageStats = calculateTimeSince(MARRIAGE_DATE)
   const formattedDate = useMemo(() => formatMarriageDate(MARRIAGE_DATE), [])
 
   return (
-    <Box sx={{ p: 3 }}>
-      <Box sx={{ textAlign: 'center', mb: 4 }}>
-        <Typography component="h1" gutterBottom variant="h3">
-          David & Tandi Bowland
-        </Typography>
-        <Typography color="text.secondary" gutterBottom variant="h5">
-          Established
-        </Typography>
-        <Typography color="primary" variant="h6">
-          {formattedDate}
-        </Typography>
-      </Box>
+    <div className="p-6">
+      <div className="text-center mb-8">
+        <h1 className="text-5xl font-normal mb-2">David &amp; Tandi Bowland</h1>
+        <h5 className="text-2xl text-default-500 mb-2">Established</h5>
+        <h6 className="text-xl text-primary">{formattedDate}</h6>
+      </div>
 
-      <Divider sx={{ mb: 4 }} />
+      <Separator className="mb-8" />
 
-      <Grid container spacing={3} sx={{ mb: 4 }}>
-        {marriageStats.years >= 1 && (
-          <Grid item md={2.4} sm={6} xs={12}>
-            <StatCard title="Years of Bliss" value={marriageStats.years} />
-          </Grid>
-        )}
-        <Grid item md={marriageStats.years >= 1 ? 2.4 : 3} sm={6} xs={12}>
-          <StatCard title="Days Married" value={marriageStats.days} />
-        </Grid>
-        <Grid item md={marriageStats.years >= 1 ? 2.4 : 3} sm={6} xs={12}>
-          <StatCard title="Hours Together" value={marriageStats.hours} />
-        </Grid>
-        <Grid item md={marriageStats.years >= 1 ? 2.4 : 3} sm={6} xs={12}>
-          <StatCard title="Minutes of Love" value={marriageStats.minutes} />
-        </Grid>
-        <Grid item md={marriageStats.years >= 1 ? 2.4 : 3} sm={6} xs={12}>
-          <StatCard title="Seconds of Joy" value={marriageStats.seconds} />
-        </Grid>
-      </Grid>
+      {marriageStats && (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            {marriageStats.years >= 1 && (
+              <div>
+                <StatCard title="Years of Bliss" value={marriageStats.years} />
+              </div>
+            )}
+            <div>
+              <StatCard title="Days Married" value={marriageStats.days} />
+            </div>
+            <div>
+              <StatCard title="Hours Together" value={marriageStats.hours} />
+            </div>
+            <div>
+              <StatCard title="Minutes of Love" value={marriageStats.minutes} />
+            </div>
+            <div>
+              <StatCard title="Seconds of Joy" value={marriageStats.seconds} />
+            </div>
+          </div>
 
-      <MilestoneSection
-        days={marriageStats.days}
-        hours={marriageStats.hours}
-        minutes={marriageStats.minutes}
-        years={marriageStats.years}
-      />
+          <MilestoneSection
+            days={marriageStats.days}
+            hours={marriageStats.hours}
+            minutes={marriageStats.minutes}
+            years={marriageStats.years}
+          />
+        </>
+      )}
 
       <RecipeAccordion />
 
-      <Divider sx={{ mb: 4 }} />
+      <Separator className="mb-8 mt-4" />
 
-      <Box sx={{ mb: 4 }}>
-        <Typography component="h2" gutterBottom variant="h5">
-          Our Story
-        </Typography>
-        <Grid container spacing={3}>
-          <Grid item md={6} xs={12}>
-            <VideoCard title="The Proposal" videoId={PROPOSAL_VIDEO_ID} />
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <VideoCard title="The Wedding" videoId={WEDDING_VIDEO_ID} />
-          </Grid>
-        </Grid>
-      </Box>
-    </Box>
+      <div className="mb-8">
+        <h2 className="text-2xl mb-4">Our Story</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <VideoCard title="The Proposal" videoId={PROPOSAL_VIDEO_ID} />
+          <VideoCard title="The Wedding" videoId={WEDDING_VIDEO_ID} />
+        </div>
+      </div>
+    </div>
   )
 }
 

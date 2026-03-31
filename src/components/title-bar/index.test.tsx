@@ -10,7 +10,7 @@ describe('Title bar component', () => {
     it('should render title in output', () => {
       render(<TitleBar />)
 
-      expect(screen.queryAllByText('dbowland.com').length).toEqual(2)
+      expect(screen.queryAllByText('dbowland.com').length).toEqual(3)
     })
 
     it('should display menu items when clicking menu', async () => {
@@ -37,7 +37,7 @@ describe('Title bar component', () => {
     it('should render title in output', () => {
       render(<TitleBar />)
 
-      expect(screen.queryAllByText('dbowland.com').length).toEqual(2)
+      expect(screen.queryAllByText('dbowland.com').length).toEqual(3)
     })
 
     it('should contain menu items', () => {

@@ -1,291 +1,182 @@
+import { contact, education, jobs, profile, skillGroups } from '@data/resume'
 import Image from 'next-export-optimize-images/image'
 import React from 'react'
 
-import Divider from '@mui/material/Divider'
-import Grid from '@mui/material/Grid'
-import Stack from '@mui/material/Stack'
-
 import {
-  ResultSubDetails,
   ResumeAnchor,
-  ResumeContactDetailsList,
-  ResumeContactDetailsListItem,
   ResumeContainer,
-  ResumeDownloadHeader,
-  ResumeImageStyles,
   ResumeJobDescription,
   ResumeJobDescriptionDetail,
   ResumeLink,
-  ResumeNameSectionName,
-  ResumeNameSectionTitle,
   ResumeSectionContentTitle,
   ResumeSectionTitleHeader,
+  ResultSubDetails,
 } from './elements'
 import headshot from '@assets/images/David-2023-05-10.jpg'
 
 const resumePdf = '/assets/pdf/david-bowland-resume.pdf'
 
-const ResumeSection = ({ children, title }: { children: JSX.Element | JSX.Element[]; title: string }): JSX.Element => (
-  <>
-    <Grid container sx={{ p: '0.5em 0' }}>
-      <Grid item sm={3} sx={{ p: '0.5em' }} xs={12}>
-        <ResumeSectionTitleHeader>{title}</ResumeSectionTitleHeader>
-      </Grid>
+const chipGold =
+  'px-2.5 py-0.5 text-sm rounded-full bg-[#cf8a05]/10 text-[#cf8a05] border border-[#cf8a05]/25 font-medium'
+const chipNeutral =
+  'px-2.5 py-0.5 text-sm rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-medium'
 
-      <Grid item sm={9} sx={{ p: '1em' }} xs={12}>
-        {children}
-      </Grid>
-    </Grid>
-  </>
+const SkillGroup = ({ gold = false, label, skills }: { gold?: boolean; label: string; skills: string[] }) => (
+  <div>
+    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500 mb-2 m-0">
+      {label}
+    </p>
+    <div className="flex flex-wrap gap-2">
+      {skills.map((skill) => (
+        <span className={gold ? chipGold : chipNeutral} key={skill}>
+          {skill}
+        </span>
+      ))}
+    </div>
+  </div>
 )
 
-const Resume = (): JSX.Element => {
-  const renderSkillsGrid = (...args: string[]): JSX.Element => (
-    <Grid container spacing={1}>
-      {args.map((value, index) => (
-        <Grid item key={index} md={4} sm={6} xs={12}>
-          {value}
-        </Grid>
-      ))}
-    </Grid>
-  )
+const TimelineDot = () => (
+  <div
+    className="absolute w-2.5 h-2.5 rounded-full bg-[#cf8a05] ring-2 ring-[#cf8a05]/15 top-1.5 z-10"
+    style={{ left: '-1.875rem' }}
+  />
+)
 
+const ResumeSection = ({
+  children,
+  title,
+}: {
+  children: React.JSX.Element | React.JSX.Element[]
+  title: string
+}): React.JSX.Element => (
+  <div className="grid grid-cols-12 py-[0.5em]">
+    <div className="col-span-12 sm:col-span-3 p-[0.5em]">
+      <ResumeSectionTitleHeader>{title}</ResumeSectionTitleHeader>
+    </div>
+    <div className="col-span-12 sm:col-span-9 p-[1em]">{children}</div>
+  </div>
+)
+
+const Resume = (): React.JSX.Element => {
   return (
     <ResumeContainer>
-      <Grid container sx={{ borderBottom: '2px solid #cf8a05' }}>
-        <Grid item sm={2} sx={{ margin: '1.5em auto', p: '0.5em', textAlign: 'center' }} xs={12}>
-          <Image alt="Picture of David Bowland" src={headshot} style={ResumeImageStyles} />
-        </Grid>
+      {/* HERO */}
+      <div className="px-6 sm:px-10 py-10 sm:py-14 border-b-2 border-[#cf8a05]">
+        <div className="flex flex-col sm:flex-row items-start justify-between gap-8">
+          <div className="flex-1 min-w-0">
+            <h1 className="text-[clamp(2.6rem,7vw,5rem)] font-bold tracking-tighter leading-[0.9] m-0">
+              {contact.name}
+            </h1>
+            <p className="mt-3 text-sm font-semibold tracking-[0.25em] uppercase text-slate-500 dark:text-slate-400 m-0">
+              {contact.title}
+            </p>
+            <div className="mt-5 flex flex-col gap-1.5 text-sm text-slate-600 dark:text-slate-400">
+              <span>
+                e: <ResumeAnchor href={`mailto:${contact.email}`}>{contact.email}</ResumeAnchor>
+              </span>
+              <span>
+                w: <ResumeAnchor href={contact.website}>{contact.website.replace('https://', '')}</ResumeAnchor>
+              </span>
+              <span>
+                m: <ResumeAnchor href={contact.phone.href}>{contact.phone.display}</ResumeAnchor>
+              </span>
+            </div>
+            <ResumeLink
+              className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[#cf8a05] hover:text-[#e0a020] transition-colors"
+              href={resumePdf}
+            >
+              ↓ Download Resume
+            </ResumeLink>
+          </div>
+          <div className="shrink-0 print:hidden">
+            <Image
+              alt="Picture of David Bowland"
+              src={headshot}
+              style={{ borderRadius: '12px', height: 'auto', width: '150px' }}
+            />
+          </div>
+        </div>
+      </div>
 
-        <Grid item md={7} sm={6} sx={{ p: '0.5em', textAlign: { sm: 'left', xs: 'center' } }} xs={12}>
-          <ResumeNameSectionName>David Bowland</ResumeNameSectionName>
-          <ResumeNameSectionTitle>Software Developer</ResumeNameSectionTitle>
-          <ResumeDownloadHeader>
-            <ResumeLink href={resumePdf}>Download Resume</ResumeLink>
-          </ResumeDownloadHeader>
-        </Grid>
-
-        <Grid item md={3} sm={4} sx={{ p: '0.5em', textAlign: { sm: 'left', xs: 'center' } }} xs={12}>
-          <ResumeContactDetailsList>
-            <ResumeContactDetailsListItem>
-              e: <ResumeAnchor href="mailto:david@dbowland.com">david@dbowland.com</ResumeAnchor>
-            </ResumeContactDetailsListItem>
-            <ResumeContactDetailsListItem>
-              w: <ResumeAnchor href="https://dbowland.com">dbowland.com</ResumeAnchor>
-            </ResumeContactDetailsListItem>
-            <ResumeContactDetailsListItem>
-              m: <ResumeAnchor href="tel:+14178940079">417.894.0079</ResumeAnchor>
-            </ResumeContactDetailsListItem>
-          </ResumeContactDetailsList>
-        </Grid>
-      </Grid>
-
-      <Stack spacing={1}>
+      {/* SECTIONS */}
+      <div className="flex flex-col px-2 sm:px-4">
         <ResumeSection title="Personal Profile">
           <ResumeJobDescription>
-            <ResumeJobDescriptionDetail>
-              Developer of robust solutions on scalable architecture
-            </ResumeJobDescriptionDetail>
-            <ResumeJobDescriptionDetail>Effective translator between geek and English</ResumeJobDescriptionDetail>
-            <ResumeJobDescriptionDetail>Connoisseur of groan-inducing dad jokes</ResumeJobDescriptionDetail>
+            {profile.map((bullet) => (
+              <ResumeJobDescriptionDetail key={bullet}>{bullet}</ResumeJobDescriptionDetail>
+            ))}
           </ResumeJobDescription>
         </ResumeSection>
-        <Divider />
+        <hr className="border-t border-[#cf8a05]/20" />
 
+        {/* Experience */}
         <ResumeSection title="Experience">
-          <Stack spacing={2}>
-            <div>
-              <ResumeSectionContentTitle>
-                Lead Engineer at{' '}
-                <ResumeAnchor href="https://www.productplan.com/" rel="noopener noreferrer">
-                  ProductPlan
-                </ResumeAnchor>
-              </ResumeSectionContentTitle>
-              <ResultSubDetails>July&nbsp;2024 - Present</ResultSubDetails>
-              <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>
-                  Brought in by ownership to evaluate and enhance the company&apos;s development practices
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Work on a monorepo consisting Ruby on Rails and React, automatically deployed daily
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Lead a team of five, consisting of both feature development and platform work
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>Assist in mentoring junior developers</ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Use Agile methodology with hints of Shape Up methodology in two-week sprints organized on Shortcut
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>Manage four direct reports</ResumeJobDescriptionDetail>
-              </ResumeJobDescription>
-            </div>
-
-            <div>
-              <ResumeSectionContentTitle>
-                Technical Lead at{' '}
-                <ResumeAnchor href="https://www.talentreef.com/" rel="noopener noreferrer">
-                  TalentReef
-                </ResumeAnchor>
-              </ResumeSectionContentTitle>
-              <ResultSubDetails>April&nbsp;2021 - July&nbsp;2024</ResultSubDetails>
-              <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>
-                  Led the highest performing feature team, a title earned six months after I took over a formerly
-                  production support team
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Planned architecture for new design, heavily leveraging Spring Boot in ECS, Node Lambdas, Postgres in
-                  RDS, and other AWS services
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Mentored developers in best practices and established procedures to enforce those practices
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Mentored other leads in effective leadership and value delivery
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Assisted with DevOps using CloudFormation, Terraform, and especially Shell scripting to automate
-                  repetitive tasks
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Used Agile methodology with two-week sprints organized on Jira
-                </ResumeJobDescriptionDetail>
-              </ResumeJobDescription>
-            </div>
-
-            <div>
-              <ResumeSectionContentTitle>
-                Software Developer at{' '}
-                <ResumeAnchor href="https://www.carfax.com/" rel="noopener noreferrer">
-                  Carfax
-                </ResumeAnchor>
-              </ResumeSectionContentTitle>
-              <ResultSubDetails>March&nbsp;2020 - April&nbsp;2021</ResultSubDetails>
-              <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>
-                  Developed Spring Boot / Spring Batch apps in Groovy and Java 8
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Developed Node.js apps, using React with webpack for frontend
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Deployed apps using Jenkins, either Docker images to Kubernetes on AWS or RPMs to DC 3.0 on-premise
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Went from new hire to acting team leader in less than 10 months
-                </ResumeJobDescriptionDetail>
-              </ResumeJobDescription>
-            </div>
-
-            <div>
-              <ResumeSectionContentTitle>
-                Senior Programmer Analyst at{' '}
-                <ResumeAnchor href="https://www.showmeboone.com/" rel="noopener noreferrer">
-                  Boone County Government
-                </ResumeAnchor>
-              </ResumeSectionContentTitle>
-              <ResultSubDetails>November&nbsp;2014 - March&nbsp;2020</ResultSubDetails>
-              <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>
-                  Developed full-stack web applications using CSS, HTML, and vanilla JavaScript with ASP, ASP.NET, or
-                  Java backend
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Developed COBOL and IBM CL applications on IBM System i midrange
-                </ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>Acted as project manager for two major projects</ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>
-                  Earned three performance-based increases outside annual review
-                </ResumeJobDescriptionDetail>
-              </ResumeJobDescription>
-            </div>
-          </Stack>
+          <div className="relative border-l-2 border-[#cf8a05]/20 pl-6 flex flex-col gap-8">
+            {jobs.map((job) => (
+              <div className="relative" key={job.company}>
+                <TimelineDot />
+                <span className="text-xs font-mono text-[#cf8a05] tracking-wide">{job.dates}</span>
+                <ResumeSectionContentTitle>
+                  {job.title} at{' '}
+                  <ResumeAnchor href={job.companyUrl} rel="noopener noreferrer">
+                    {job.company}
+                  </ResumeAnchor>
+                </ResumeSectionContentTitle>
+                <ResumeJobDescription>
+                  {job.bullets.map((bullet) => (
+                    <ResumeJobDescriptionDetail key={bullet}>{bullet}</ResumeJobDescriptionDetail>
+                  ))}
+                </ResumeJobDescription>
+              </div>
+            ))}
+          </div>
         </ResumeSection>
-        <Divider />
+        <hr className="border-t border-[#cf8a05]/20" />
 
+        {/* Skills */}
         <ResumeSection title="Skills">
-          <Stack spacing={2}>
-            <div>
-              <ResumeSectionContentTitle>Languages</ResumeSectionContentTitle>
-              <ResultSubDetails>Proficient in</ResultSubDetails>
-              {renderSkillsGrid('TypeScript', 'Java', 'Groovy', 'JavaScript', 'Python')}
-              <ResultSubDetails>Familiar with</ResultSubDetails>
-              {renderSkillsGrid('Terraform', 'Ruby', 'ASP/ASP.NET', 'C++', 'PHP', 'COBOL')}
-            </div>
-
-            <div>
-              <ResumeSectionContentTitle>SQL</ResumeSectionContentTitle>
-              {renderSkillsGrid('PostgreSQL', 'Microsoft SQL Server', 'DB2', 'MySQL', 'Oracle Database')}
-            </div>
-
-            <div>
-              <ResumeSectionContentTitle>NoSQL</ResumeSectionContentTitle>
-              {renderSkillsGrid('DynamoDB')}
-            </div>
-
-            <div>
-              <ResumeSectionContentTitle>Technologies</ResumeSectionContentTitle>
-              {renderSkillsGrid(
-                'Argo',
-                'CircleCI',
-                'Docker',
-                'Git',
-                'Kibana',
-                'Kubernetes',
-                'Jenkins',
-                'Jira',
-                'NewRelic',
-                'Splunk',
-              )}
-            </div>
-
-            <div>
-              <ResumeSectionContentTitle>AWS</ResumeSectionContentTitle>
-              {renderSkillsGrid(
-                'Athena',
-                'CloudFormation',
-                'CloudWatch',
-                'ECS',
-                'Lambda',
-                'QuickSight',
-                'RDS',
-                'S3',
-                'SES',
-                'SNS',
-                'SQS',
-                'Secrets Manager',
-              )}
-            </div>
-          </Stack>
+          <div className="flex flex-col gap-5">
+            {skillGroups.map((group) => (
+              <SkillGroup gold={group.gold} key={group.label} label={group.label} skills={group.skills} />
+            ))}
+          </div>
         </ResumeSection>
-        <Divider />
+        <hr className="border-t border-[#cf8a05]/20" />
 
+        {/* Education */}
         <ResumeSection title="Education">
-          <Stack spacing={2}>
-            <div>
-              <ResumeSectionContentTitle>
-                <ResumeAnchor href="https://ccis.edu/" rel="noopener noreferrer">
-                  Columbia College &mdash; Columbia,&nbsp;MO
-                </ResumeAnchor>
-              </ResumeSectionContentTitle>
-              <ResultSubDetails>Bachelor of Science &mdash; GPA&nbsp;3.68</ResultSubDetails>
-              <ResultSubDetails>Major:&nbsp;Computer Science &mdash; Minor:&nbsp;Business</ResultSubDetails>
-              <ResumeJobDescription>
-                <ResumeJobDescriptionDetail>Graduated cum laude with a GPA of 3.68/4.0</ResumeJobDescriptionDetail>
-                <ResumeJobDescriptionDetail>Earned an A in all computer science classes</ResumeJobDescriptionDetail>
-              </ResumeJobDescription>
-            </div>
-
-            <div>
-              <ResumeSectionContentTitle>
-                <ResumeAnchor href="https://www.cpsk12.org/HHS" rel="noopener noreferrer">
-                  David H. Hickman High School &mdash; Columbia,&nbsp;MO
-                </ResumeAnchor>
-              </ResumeSectionContentTitle>
-            </div>
-          </Stack>
+          <div className="relative border-l-2 border-[#cf8a05]/20 pl-6 flex flex-col gap-6">
+            {education.map((edu) => (
+              <div className="relative" key={edu.institution}>
+                <TimelineDot />
+                <ResumeSectionContentTitle>
+                  <ResumeAnchor href={edu.url} rel="noopener noreferrer">
+                    {edu.institution} &mdash; {edu.location}
+                  </ResumeAnchor>
+                </ResumeSectionContentTitle>
+                {edu.degree && (
+                  <ResultSubDetails>
+                    {edu.degree} &mdash; GPA&nbsp;{edu.gpa}
+                  </ResultSubDetails>
+                )}
+                {edu.major && (
+                  <ResultSubDetails>
+                    Major:&nbsp;{edu.major} &mdash; Minor:&nbsp;{edu.minor}
+                  </ResultSubDetails>
+                )}
+                {edu.bullets && (
+                  <ResumeJobDescription>
+                    {edu.bullets.map((bullet) => (
+                      <ResumeJobDescriptionDetail key={bullet}>{bullet}</ResumeJobDescriptionDetail>
+                    ))}
+                  </ResumeJobDescription>
+                )}
+              </div>
+            ))}
+          </div>
         </ResumeSection>
-      </Stack>
+      </div>
     </ResumeContainer>
   )
 }

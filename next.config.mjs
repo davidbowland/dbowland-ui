@@ -9,9 +9,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const nextConfig = withExportImages({
   output: 'export',
   trailingSlash: true,
-  compiler: {
-    styledComponents: true,
-  },
   pageExtensions: ['tsx', 'ts'],
   sassOptions: {
     includePaths: [path.join(__dirname, 'src')],

@@ -2,32 +2,23 @@ import PrivacyLink from '@components/privacy-link'
 import Link from 'next/link'
 import React from 'react'
 
-import Grid from '@mui/material/Grid'
-import Typography from '@mui/material/Typography'
-
 export interface ServerErrorProps {
   children: React.ReactNode
   title: string
 }
 
-const ServerErrorMessage = ({ children, title }: ServerErrorProps): JSX.Element => {
+const ServerErrorMessage = ({ children, title }: ServerErrorProps): React.JSX.Element => {
   return (
-    <>
-      <Grid container justifyContent="center">
-        <Grid container direction="column" item padding={4} spacing={2} sx={{ maxWidth: '900px' }}>
-          <Grid item xs>
-            <Typography variant="h1">{title}</Typography>
-          </Grid>
-          <Grid item xs>
-            {children}
-          </Grid>
-          <Grid item xs>
-            <Link href="/">Go home</Link>
-            <PrivacyLink />
-          </Grid>
-        </Grid>
-      </Grid>
-    </>
+    <div className="flex justify-center">
+      <div className="flex flex-col gap-4 p-8 w-full max-w-[900px]">
+        <h1 className="text-5xl font-light">{title}</h1>
+        <div>{children}</div>
+        <div>
+          <Link href="/">Go home</Link>
+          <PrivacyLink />
+        </div>
+      </div>
+    </div>
   )
 }
 

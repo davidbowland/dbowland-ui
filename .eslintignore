@@ -1,9 +1,11 @@
 __mocks__/
 __snapshots__/
 .cache/
+.next/
 coverage/
 deploy/
 node_modules/
+out/
 public/
 static/
 *.min.*

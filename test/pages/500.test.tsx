@@ -14,10 +14,7 @@ describe('500 error page', () => {
   it('should render ServerErrorMessage', () => {
     const expectedTitle = '500: Internal Server Error'
     render(<InternalServerError />)
-    expect(ServerErrorMessage).toHaveBeenCalledWith(
-      expect.objectContaining({ title: expectedTitle }),
-      expect.anything(),
-    )
+    expect(ServerErrorMessage).toHaveBeenCalledWith(expect.objectContaining({ title: expectedTitle }), undefined)
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
 

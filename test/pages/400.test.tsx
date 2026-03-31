@@ -14,10 +14,7 @@ describe('400 error page', () => {
   it('should render ServerErrorMessage', () => {
     const expectedTitle = '400: Bad Request'
     render(<BadRequest />)
-    expect(ServerErrorMessage).toHaveBeenCalledWith(
-      expect.objectContaining({ title: expectedTitle }),
-      expect.anything(),
-    )
+    expect(ServerErrorMessage).toHaveBeenCalledWith(expect.objectContaining({ title: expectedTitle }), undefined)
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
 

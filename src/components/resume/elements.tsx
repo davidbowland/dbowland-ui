@@ -1,110 +1,91 @@
 import Link from 'next/link'
-import styled, { CSSProperties } from 'styled-components'
+import React from 'react'
 
-export const ResumeAnchor = styled.a`
-  transition: all 0.2s ease-in;
+export const ResumeAnchor = ({
+  children,
+  className,
+  ...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>): React.JSX.Element => (
+  <a {...props} className={`transition-colors duration-200 ease-in hover:text-[#cf8a05] ${className ?? ''}`}>
+    {children}
+  </a>
+)
 
-  &:hover {
-    color: #cf8a05;
-  }
-`
+export const ResumeContainer = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
+  <div {...props} className={`text-base font-normal w-full print:w-full ${className ?? ''}`}>
+    {children}
+  </div>
+)
 
-export const ResumeContactDetailsList = styled.ul`
-  font-size: 0.9em;
-  list-style-type: none;
-  margin-top: 2px;
-  padding: 0;
-`
+export const ResumeJobDescription = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLUListElement>): React.JSX.Element => (
+  <ul {...props} className={`m-0 p-0 list-disc pl-5 ${className ?? ''}`}>
+    {children}
+  </ul>
+)
 
-export const ResumeContactDetailsListItem = styled.li`
-  margin-bottom: 6px;
-`
+export const ResumeJobDescriptionDetail = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLLIElement>): React.JSX.Element => (
+  <li {...props} className={`my-[2px] ${className ?? ''}`}>
+    {children}
+  </li>
+)
 
-export const ResumeContainer = styled.div`
-  font-size: 16px;
-  font-weight: 400;
-  margin: 0 auto;
-  width: 90%;
+export const ResumeLink = ({ children, className, ...props }: React.ComponentProps<typeof Link>): React.JSX.Element => (
+  <Link {...props} className={`transition-colors duration-200 ease-in hover:text-[#cf8a05] ${className ?? ''}`}>
+    {children}
+  </Link>
+)
 
-  @media all and (max-width: 601px) {
-    margin: 10px auto;
-    min-width: 280px;
-    width: 95%;
-  }
+const ResumeParagraph = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>): React.JSX.Element => (
+  <p {...props} className={`text-base leading-[1.4em] mb-[10px] ${className ?? ''}`}>
+    {children}
+  </p>
+)
 
-  @media print {
-    width: 100%;
-  }
-`
+export const ResumeSectionContentTitle = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLHeadingElement>): React.JSX.Element => (
+  <h2 {...props} className={`text-[1.3em] font-semibold m-0 mb-[4px] ${className ?? ''}`}>
+    {children}
+  </h2>
+)
 
-export const ResumeDownloadHeader = styled.h4`
-  margin: 10px 0;
+export const ResumeSectionTitleHeader = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLHeadingElement>): React.JSX.Element => (
+  <h1
+    {...props}
+    className={`text-[#cf8a05] text-[0.85em] font-semibold uppercase tracking-[0.14em] m-0 mx-[0.5em] mt-2 ${className ?? ''}`}
+  >
+    {children}
+  </h1>
+)
 
-  @media all and (max-width: 601px) {
-    margin: 20px 0;
-  }
-`
-
-export const ResumeImageStyles: CSSProperties = {
-  borderRadius: '25px',
-  height: 'auto',
-  maxWidth: '10em',
-  width: '100%',
-}
-
-export const ResumeJobDescription = styled.ul`
-  margin: 0;
-  padding: 0;
-`
-
-export const ResumeJobDescriptionDetail = styled.li`
-  margin: 2px 0;
-`
-
-export const ResumeLink = styled(Link)`
-  transition: all 0.2s ease-in;
-
-  &:hover {
-    color: #cf8a05;
-  }
-`
-
-export const ResumeNameSectionName = styled.h1`
-  font-size: 2.5em;
-  font-weight: 700;
-  margin: 0 0 -6px 0;
-
-  @media all and (max-width: 480px) {
-    line-height: 0.8em;
-    margin: 0 0 4px 0;
-  }
-`
-
-export const ResumeNameSectionTitle = styled.h2`
-  font-size: 2em;
-  margin: 0 0 0 2px;
-`
-
-export const ResumeParagraph = styled.p`
-  font-size: 1em;
-  line-height: 1.4em;
-  margin-bottom: 10px;
-`
-
-export const ResumeSectionContentTitle = styled.h2`
-  font-size: 1.5em;
-  margin: 0 0 4px 0;
-`
-
-export const ResumeSectionTitleHeader = styled.h1`
-  color: #cf8a05;
-  font-size: 1.5em;
-  font-style: italic;
-  margin: 0 0.5em;
-`
-
-export const ResultSubDetails = styled(ResumeParagraph)`
-  font-size: 0.9em;
-  font-style: italic;
-  margin: 1em 0;
-`
+export const ResultSubDetails = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>): React.JSX.Element => (
+  <ResumeParagraph {...props} className={`text-[0.9em] italic my-[1em] ${className ?? ''}`}>
+    {children}
+  </ResumeParagraph>
+)

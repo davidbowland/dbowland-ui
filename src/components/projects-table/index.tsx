@@ -1,37 +1,13 @@
+import { Button } from '@heroui/react'
+import { ChevronsUp } from 'lucide-react'
 import Image from 'next-export-optimize-images/image'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 
-import KeyboardDoubleArrowUpRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowUpRounded'
-import Box from '@mui/material/Box'
-import Divider from '@mui/material/Divider'
-import Fab from '@mui/material/Fab'
-import Grid from '@mui/material/Grid'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
-
+import { ProjectCard, ProjectNavButton, ProjectSectionHeading, ProjectSourceLink } from './elements'
 import chooseeDiagram from '@assets/images/choosee-diagram.png'
 import emailsDiagram from '@assets/images/emails-diagram.png'
 import jokesDiagram from '@assets/images/jokes-diagram.png'
-
-const Project = ({ children, title }: { children: JSX.Element | JSX.Element[]; title: string }): JSX.Element => (
-  <>
-    <Grid item sm={3} sx={{ textAlign: { sm: 'left', xs: 'center' } }} xs={12}>
-      <Typography sx={{ color: '#cf8a05', paddingTop: { sm: '1em', xs: 0 } }} variant="h4">
-        {title}
-      </Typography>
-    </Grid>
-    <Grid item sm={9} xs={12}>
-      <Stack padding={2} spacing={2}>
-        {children}
-      </Stack>
-    </Grid>
-  </>
-)
 
 const ProjectsTable = (): JSX.Element => {
   const chooseeRef = useRef<HTMLDivElement>(null)
@@ -49,340 +25,307 @@ const ProjectsTable = (): JSX.Element => {
   }, [])
 
   return (
-    <Stack margin="auto" padding={4} spacing={2}>
-      <Grid container ref={contentsRef}>
-        <Project title="Contents">
-          <Typography variant="h5">Introduction:</Typography>
-          <Typography>
-            My professional life intersects with some cool technologies such as{' '}
-            <Link href="https://reactjs.org/">React</Link>,{' '}
-            <Link href="https://spring.io/projects/spring-boot">Spring Boot</Link>, and a panoply of AWS services, but I
-            wanted to expand my horizons by completing a few side projects. The following side projects required setting
-            up my own AWS and GCP accounts, registering a couple of domains, and even creating an Alexa skill! I&apos;m
-            pleased to report I was able to use them to generate some innovative ideas in professional contexts, as
-            well.
-          </Typography>
-          <Box>
-            <Typography variant="h5">Personal Projects:</Typography>
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton onClick={() => rootRef.current && rootRef.current.scrollIntoView()}>
-                  <ListItemText primary="Root - Infrastructure" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton onClick={() => emailsRef.current && emailsRef.current.scrollIntoView()}>
-                  <ListItemText primary="Email Forwarding - DynamoDB, Lambda, SES, SQS" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton onClick={() => jokesRef.current && jokesRef.current.scrollIntoView()}>
-                  <ListItemText primary="Jokes - DynamoDB, Lambda, Polly, React" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton onClick={() => chooseeRef.current && chooseeRef.current.scrollIntoView()}>
-                  <ListItemText primary="Choosee - DynamoDB, Lambda, React" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton onClick={() => otherRef.current && otherRef.current.scrollIntoView()}>
-                  <ListItemText primary="Other - Lambda, React, SQS" />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Box>
-        </Project>
-      </Grid>
-      <Divider />
-      <Grid container ref={rootRef}>
-        <Project title="Root">
-          <Typography variant="h5">Objectives:</Typography>
-          <Typography>
-            This project was created to set up my AWS environment. Originally, I used{' '}
-            <Link href="https://www.pulumi.com/">Pulumi</Link> to manage my infrastructure as code. It is a terrific
-            product, but when I started using{' '}
-            <Link href="https://aws.amazon.com/serverless/sam/">AWS Serverless Application Model (SAM)</Link>, I became
-            familiar with <Link href="https://aws.amazon.com/cloudformation/">AWS CloudFormation</Link>. After some
-            thought, I made the decision that it would be easier for all infrastructure to use the same technology, so I
-            converted this project to CloudFormation.
-          </Typography>
-          <Typography>
-            Users including my own user are managed by this project. It also contains an infrastructure user for every
-            project, including itself, so that credentials are not shared and{' '}
-            <Link href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">
-              permission boundaries
-            </Link>{' '}
-            can be applied.
-          </Typography>
-          <Typography variant="h5">Lessons:</Typography>
-          <Typography>
-            It was very enjoyable learning Pulumi and more about the concept of infrastructure as code. CloudFormation,
-            likewise, is decently easy to use while accomplishing most of what I need. I&apos;m thankful these projects
-            have given me exposure to it.
-          </Typography>
-          <Box>
-            <Typography variant="h5">Source:</Typography>
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/root-infrastructure">
-                  <ListItemText primary="root-infrastructure (CloudFormation)" />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Box>
-        </Project>
-      </Grid>
-      <Divider />
-      <Grid container ref={emailsRef}>
-        <Project title="Email Forwarding">
-          <Typography variant="h5">Objectives:</Typography>
-          <Typography>
-            I was using <Link href="https://www.godaddy.com/">GoDaddy</Link> as a host, but it is expensive for my needs
-            and I wanted a project to test my AWS skills. Unfortunately, one thing stopping me from switching was an
-            email alias I set up for my parents on my GoDaddy site. That alias automatically forwarded both of them any
-            email it received. Therefore, I had to recreate that functionality before I could migrate providers. As a
-            handy side effect, having an endpoint that allows me to send emails could be useful for future projects.
-          </Typography>
-          <Typography variant="h5">Technologies:</Typography>
-          <Typography>
-            For this project, I elected to use <Link href="https://aws.amazon.com/ses/">AWS SES</Link> to send and
-            receive emails, since that&apos;s the AWS solution. I decided on{' '}
-            <Link href="https://aws.amazon.com/serverless/sam/">AWS Serverless Application Model (SAM)</Link> to create
-            NodeJS lambdas to power the project, a practice that worked so well I was able to bring into my professional
-            life. Lambdas are perfect for this project since they work so well with elastic demand and processing speed
-            isn&apos;t very relevant.
-          </Typography>
-          <Typography variant="h5">Lessons:</Typography>
-          <Typography>
-            Perhaps the most useful thing I learned in this project was how to register and manage a website with{' '}
-            <Link href="https://aws.amazon.com/route53/">AWS Route53</Link>. In addition to using Route 53 to set up MX
-            DNS records for email traffic, I created an <Link href="https://aws.amazon.com/sqs/">AWS SQS</Link> queue to
-            hold emails while they wait to be sent by a lambda. With this project complete, I was able to eventually
-            migrate my GoDaddy domain, meaning I now have both a production and a test domain.
-          </Typography>
-          <Typography variant="h5">Diagram:</Typography>
-          <Box style={{ margin: '1em 2em' }}>
-            <Image
-              alt="Diagram of emails project"
-              src={emailsDiagram}
-              style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
-            />
-          </Box>
-          <Box>
-            <Typography variant="h5">Source:</Typography>
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/emails-account-api">
-                  <ListItemText primary="emails-accounts-api (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/emails-inbound-service">
-                  <ListItemText primary="emails-inbound-service (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/emails-infrastructure">
-                  <ListItemText primary="emails-infrastructure (CloudFormation)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/emails-queue-api">
-                  <ListItemText primary="emails-queue-api (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/emails-queue-service">
-                  <ListItemText primary="emails-queue-service (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Box>
-        </Project>
-      </Grid>
-      <Divider />
-      <Grid container ref={jokesRef}>
-        <Project title="Jokes">
-          <Typography variant="h5">
-            URL: <Link href={`https://jokes.${hostname}`}>{`https://jokes.${hostname}`}</Link>
-          </Typography>
-          <Typography variant="h5">Objectives:</Typography>
-          <Typography>
-            This project was my first to utilize a UI. I made a number of key decisions, including choosing{' '}
-            <Link href="https://nextjs.org/">Next.js</Link> as my static site generator. It has excellent support for
-            static export, a large ecosystem, and I have had a positive experience with it on past projects.
-          </Typography>
-          <Typography variant="h5">Technologies:</Typography>
-          <Typography>
-            All UI projects leverage the material UI library <Link href="https://mui.com/">MUI</Link> and use either{' '}
-            <Link href="https://emotion.sh/docs/styled">Emotion</Link> or{' '}
-            <Link href="https://styled-components.com/">styled-components</Link>. Using a library helps drive
-            accessibility in addition to providing a familiar experience. Icons from the MUI library are used in all UI
-            projects, as well.
-          </Typography>
-          <Typography variant="h5">Lessons:</Typography>
-          <Typography>
-            I learned to use stencils writing this project and designed the loading button I would later use in other
-            projects. I also spent a lot of time thinking about how to uniformly pass both data and associated ID
-            information when requesting a set of records, something I think this project does notably well. Plus, I got
-            to build my first Alexa skill and use <Link href="https://aws.amazon.com/polly/">AWS Polly</Link> for
-            text-to-speech!
-          </Typography>
-          <Typography variant="h5">Diagram:</Typography>
-          <Box style={{ margin: '1em 2em' }}>
-            <Image
-              alt="Diagram of jokes project"
-              src={jokesDiagram}
-              style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
-            />
-          </Box>
-          <Box>
-            <Typography variant="h5">Source:</Typography>
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/jokes-api">
-                  <ListItemText primary="jokes-api (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/jokes-infrastructure">
-                  <ListItemText primary="jokes-infrastructure (CloudFormation)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/jokes-skill">
-                  <ListItemText primary="jokes-skill (AWS ASK SDK/NodeJS)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/jokes-ui">
-                  <ListItemText primary="jokes-ui (React/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Box>
-        </Project>
-      </Grid>
-      <Divider />
-      <Grid container ref={chooseeRef}>
-        <Project title="Choosee">
-          <Typography variant="h5">
-            URL: <Link href={`https://choosee.${hostname}`}>{`https://choosee.${hostname}`}</Link>
-          </Typography>
-          <Typography variant="h5">Objectives:</Typography>
-          <Typography>
-            A friend of mine suggested this project. Most noteworthy, several other projects were created to build up to
-            this one, including technology such as lambda back-ends, React front-ends, SMS messaging, Cognito
-            authentication, and more.
-          </Typography>
-          <Typography variant="h5">Lessons:</Typography>
-          <Typography>
-            This project was great because I hadn&apos;t worked with{' '}
-            <Link href="https://cloud.google.com/">Google Cloud Platform</Link>, let alone{' '}
-            <Link href="https://developers.google.com/maps/documentation/places/web-service">Places API</Link>, in the
-            past, so I got to set up an account and learn how to interact with that service. On the AWS side, this
-            project allowed me to iterate on concepts learned in previous projects.
-          </Typography>
-          <Typography variant="h5">Diagram:</Typography>
-          <Box style={{ margin: '1em 2em' }}>
-            <Image
-              alt="Diagram of choosee project"
-              src={chooseeDiagram}
-              style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
-            />
-          </Box>
-          <Box>
-            <Typography variant="h5">Source:</Typography>
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/choosee-infrastructure">
-                  <ListItemText primary="choosee-infrastructure (CloudFormation)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/choosee-api">
-                  <ListItemText primary="choosee-api (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/choosee-ui">
-                  <ListItemText primary="choosee-ui (React/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Box>
-        </Project>
-      </Grid>
-      <Divider />
-      <Grid container ref={otherRef}>
-        <Project title="Other">
-          <Typography variant="h5">
-            URL: <Link href={`https://${hostname}`}>{`https://${hostname}`}</Link>
-          </Typography>
-          <Typography variant="h5">Objectives:</Typography>
-          <Typography>
-            This project includes this website and a few miscellaneous repositories including those that send SMS
-            messages and a log subscriber, which watches for errors in{' '}
-            <Link href="https://aws.amazon.com/cloudwatch/">AWS CloudWatch</Link> and alerts me via SMS when an error
-            occurs.
-          </Typography>
-          <Typography variant="h5">Lessons:</Typography>
-          <Typography>
-            Creating these repositories taught me about using{' '}
-            <Link href="https://aws.amazon.com/pinpoint/">AWS Pinpoint</Link>, both for analytics and for sending SMS
-            messages. Further, it made me become more familiar with log{' '}
-            <Link href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html">
-              subscription filters
-            </Link>{' '}
-            and other mechanisms for monitoring for errors.
-          </Typography>
-          <Box>
-            <Typography variant="h5">Source:</Typography>
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/dbowland-infrastructure">
-                  <ListItemText primary="dbowland-infrastructure (CloudFormation)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/dbowland-ui">
-                  <ListItemText primary="dbowland-ui (React/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/log-subscriber">
-                  <ListItemText primary="log-subscriber (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/scheduler-service">
-                  <ListItemText primary="scheduler-service (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/sms-queue-api">
-                  <ListItemText primary="sms-queue-api (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton component="a" href="https://github.com/davidbowland/sms-queue-service">
-                  <ListItemText primary="sms-queue-service (AWS SAM/TypeScript)" />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Box>
-        </Project>
-      </Grid>
-      <Fab
+    <div className="flex flex-col gap-4 py-2">
+      {/* Contents */}
+      <ProjectCard cardRef={contentsRef} title="Contents">
+        <p className="text-sm leading-relaxed">
+          Work keeps me busy with React, Spring Boot, and a healthy slice of AWS — but side projects are where I get to
+          choose the problem. The work below involved standing up my own AWS and GCP accounts, registering domains,
+          wiring up an Alexa skill, and generally learning by doing. More than once, something I built here found its
+          way into a professional context.
+        </p>
+        <div>
+          <ProjectSectionHeading>Personal Projects</ProjectSectionHeading>
+          <ul className="list-none p-0 m-0 flex flex-col">
+            <li>
+              <ProjectNavButton onPress={() => rootRef.current && rootRef.current.scrollIntoView()}>
+                Root - Infrastructure
+              </ProjectNavButton>
+            </li>
+            <li>
+              <ProjectNavButton onPress={() => emailsRef.current && emailsRef.current.scrollIntoView()}>
+                Email Forwarding - DynamoDB, Lambda, SES, SQS
+              </ProjectNavButton>
+            </li>
+            <li>
+              <ProjectNavButton onPress={() => jokesRef.current && jokesRef.current.scrollIntoView()}>
+                Jokes - DynamoDB, Lambda, Polly, React
+              </ProjectNavButton>
+            </li>
+            <li>
+              <ProjectNavButton onPress={() => chooseeRef.current && chooseeRef.current.scrollIntoView()}>
+                Choosee - DynamoDB, Lambda, React
+              </ProjectNavButton>
+            </li>
+            <li>
+              <ProjectNavButton onPress={() => otherRef.current && otherRef.current.scrollIntoView()}>
+                Other - Lambda, React, SQS
+              </ProjectNavButton>
+            </li>
+          </ul>
+        </div>
+      </ProjectCard>
+
+      {/* Root */}
+      <ProjectCard cardRef={rootRef} title="Root">
+        <ProjectSectionHeading>Objectives</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          Every project needs a foundation. This one provisions my AWS environment — IAM users, permission boundaries,
+          and the shared infrastructure everything else builds on. I started with{' '}
+          <Link href="https://www.pulumi.com/">Pulumi</Link>, which I genuinely liked, but once I adopted{' '}
+          <Link href="https://aws.amazon.com/serverless/sam/">AWS SAM</Link> for Lambda work, I was already writing{' '}
+          <Link href="https://aws.amazon.com/cloudformation/">CloudFormation</Link>. Consolidating on one tool made more
+          sense than maintaining two.
+        </p>
+        <p className="text-sm leading-relaxed">
+          Each project gets its own IAM user with scoped credentials and{' '}
+          <Link href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">
+            permission boundaries
+          </Link>
+          , so a compromised key can&apos;t become a full account breach.
+        </p>
+        <ProjectSectionHeading>Lessons</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          Pulumi is excellent — expressive, well-documented, and a pleasure to use. CloudFormation is more verbose, but
+          it covers everything I need and keeps the toolchain uniform. Either way, having infrastructure in version
+          control is one of those practices that quickly becomes non-negotiable.
+        </p>
+        <ProjectSectionHeading>Source</ProjectSectionHeading>
+        <ul className="list-none p-0 m-0">
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/root-infrastructure">
+              root-infrastructure (CloudFormation)
+            </ProjectSourceLink>
+          </li>
+        </ul>
+      </ProjectCard>
+
+      {/* Email Forwarding */}
+      <ProjectCard cardRef={emailsRef} title="Email Forwarding">
+        <ProjectSectionHeading>Objectives</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          I wanted to move off GoDaddy — overpriced for what I needed — but one thing was in the way: an email alias I
+          had set up for my parents that forwarded everything to both of them. Before I could migrate, I had to rebuild
+          that. The upside was a reusable email-sending API that I could call from other projects down the road.
+        </p>
+        <ProjectSectionHeading>Technologies</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          <Link href="https://aws.amazon.com/ses/">AWS SES</Link> handles both inbound and outbound email.{' '}
+          <Link href="https://aws.amazon.com/sqs/">SQS</Link> buffers outgoing messages so delivery is decoupled from
+          the trigger, and Node.js Lambdas via <Link href="https://aws.amazon.com/serverless/sam/">AWS SAM</Link> do the
+          actual work. Serverless is a natural fit here: traffic is bursty, latency requirements are relaxed, and
+          there&apos;s nothing to keep warm between messages.
+        </p>
+        <ProjectSectionHeading>Lessons</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          Managing DNS properly — MX records, SPF, DKIM — turned out to be the most educational part. I also got
+          comfortable with <Link href="https://aws.amazon.com/route53/">Route 53</Link> for domain management, which
+          came up again in every project that followed. The migration succeeded; I now have separate production and test
+          domains, and my parents still get their forwarded emails.
+        </p>
+        <ProjectSectionHeading>Diagram</ProjectSectionHeading>
+        <Image
+          alt="Diagram of emails project"
+          src={emailsDiagram}
+          style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
+        />
+        <ProjectSectionHeading>Source</ProjectSectionHeading>
+        <ul className="list-none p-0 m-0">
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/emails-account-api">
+              emails-accounts-api (AWS SAM/TypeScript)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/emails-inbound-service">
+              emails-inbound-service (AWS SAM/TypeScript)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/emails-infrastructure">
+              emails-infrastructure (CloudFormation)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/emails-queue-api">
+              emails-queue-api (AWS SAM/TypeScript)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/emails-queue-service">
+              emails-queue-service (AWS SAM/TypeScript)
+            </ProjectSourceLink>
+          </li>
+        </ul>
+      </ProjectCard>
+
+      {/* Jokes */}
+      <ProjectCard cardRef={jokesRef} title="Jokes">
+        <p className="text-sm">
+          URL: <Link href={`https://jokes.${hostname}`}>{`https://jokes.${hostname}`}</Link>
+        </p>
+        <ProjectSectionHeading>Objectives</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          This was my first project with a real UI. The domain was simple — a jokes app — which made it a good sandbox
+          for settling on a frontend stack. I started with <Link href="https://www.gatsbyjs.com/">Gatsby</Link>, which
+          is a easy way to get a simple site going, but eventually converted it to the more popular{' '}
+          <Link href="https://nextjs.org/">Next.js</Link>.
+        </p>
+        <ProjectSectionHeading>Technologies</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          All UI projects use <Link href="https://nextjs.org/">Next.js</Link>,{' '}
+          <Link href="https://www.heroui.com/">HeroUI</Link> for components, and{' '}
+          <Link href="https://tailwindcss.com/">Tailwind CSS</Link> for styling. A component library pulls its weight in
+          accessibility and consistency; Tailwind handles everything the library leaves to you. Icons throughout come
+          from <Link href="https://lucide.dev/">Lucide</Link>.
+        </p>
+        <ProjectSectionHeading>Lessons</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          Designing consistent data-fetching patterns across DynamoDB records was worth the effort — those conventions
+          carried forward into later projects. The real treat was building my first Alexa skill and wiring up{' '}
+          <Link href="https://aws.amazon.com/polly/">AWS Polly</Link> for text-to-speech, which still makes me smile
+          every time someone asks Alexa to tell them a joke.
+        </p>
+        <ProjectSectionHeading>Diagram</ProjectSectionHeading>
+        <Image
+          alt="Diagram of jokes project"
+          src={jokesDiagram}
+          style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
+        />
+        <ProjectSectionHeading>Source</ProjectSectionHeading>
+        <ul className="list-none p-0 m-0">
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/jokes-api">
+              jokes-api (AWS SAM/TypeScript)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/jokes-infrastructure">
+              jokes-infrastructure (CloudFormation)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/jokes-skill">
+              jokes-skill (AWS ASK SDK/NodeJS)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/jokes-ui">
+              jokes-ui (React/TypeScript)
+            </ProjectSourceLink>
+          </li>
+        </ul>
+      </ProjectCard>
+
+      {/* Choosee */}
+      <ProjectCard cardRef={chooseeRef} title="Choosee">
+        <p className="text-sm">
+          URL: <Link href={`https://choosee.${hostname}`}>{`https://choosee.${hostname}`}</Link>
+        </p>
+        <ProjectSectionHeading>Objectives</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          A friend suggested this one: an app that helps a group decide where to eat by presenting restaurant options
+          one at a time until everyone agrees. It drew on everything built before it — Lambda backends, React frontends,
+          SMS messaging, and Cognito authentication — and pushed into new territory on top.
+        </p>
+        <ProjectSectionHeading>Lessons</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          Choosee was my first time working with <Link href="https://cloud.google.com/">Google Cloud Platform</Link> and
+          the <Link href="https://developers.google.com/maps/documentation/places/web-service">Places API</Link>.
+          Setting up a GCP account, learning the billing model, and integrating a non-AWS service into an otherwise
+          AWS-native stack was a useful exercise in not assuming everything lives in one cloud.
+        </p>
+        <ProjectSectionHeading>Diagram</ProjectSectionHeading>
+        <Image
+          alt="Diagram of choosee project"
+          src={chooseeDiagram}
+          style={{ height: 'auto', maxHeight: '300px', objectFit: 'contain', width: '100%' }}
+        />
+        <ProjectSectionHeading>Source</ProjectSectionHeading>
+        <ul className="list-none p-0 m-0">
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/choosee-infrastructure">
+              choosee-infrastructure (CloudFormation)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/choosee-api">
+              choosee-api (AWS SAM/TypeScript)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/choosee-ui">
+              choosee-ui (React/TypeScript)
+            </ProjectSourceLink>
+          </li>
+        </ul>
+      </ProjectCard>
+
+      {/* Other */}
+      <ProjectCard cardRef={otherRef} title="Other">
+        <p className="text-sm">
+          URL: <Link href={`https://${hostname}`}>{`https://${hostname}`}</Link>
+        </p>
+        <ProjectSectionHeading>Objectives</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          The catch-all for things that didn&apos;t fit neatly elsewhere: this site, an SMS messaging service, and a log
+          subscriber that watches <Link href="https://aws.amazon.com/cloudwatch/">CloudWatch</Link> for errors and texts
+          me when something goes wrong.
+        </p>
+        <ProjectSectionHeading>Lessons</ProjectSectionHeading>
+        <p className="text-sm leading-relaxed">
+          <Link href="https://aws.amazon.com/pinpoint/">AWS Pinpoint</Link> powers the SMS delivery, and{' '}
+          <Link href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html">
+            CloudWatch subscription filters
+          </Link>{' '}
+          route log events to the alert Lambda in near-real time. Small projects, but they made observability feel real
+          rather than theoretical.
+        </p>
+        <ProjectSectionHeading>Source</ProjectSectionHeading>
+        <ul className="list-none p-0 m-0">
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/dbowland-infrastructure">
+              dbowland-infrastructure (CloudFormation)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/dbowland-ui">
+              dbowland-ui (React/TypeScript)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/log-subscriber">
+              log-subscriber (AWS SAM/TypeScript)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/scheduler-service">
+              scheduler-service (AWS SAM/TypeScript)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/sms-queue-api">
+              sms-queue-api (AWS SAM/TypeScript)
+            </ProjectSourceLink>
+          </li>
+          <li>
+            <ProjectSourceLink href="https://github.com/davidbowland/sms-queue-service">
+              sms-queue-service (AWS SAM/TypeScript)
+            </ProjectSourceLink>
+          </li>
+        </ul>
+      </ProjectCard>
+
+      <Button
         aria-label="Scroll to top"
-        color="primary"
-        onClick={() => contentsRef.current && contentsRef.current.scrollIntoView()}
-        sx={{ bottom: 16, position: 'fixed', right: 16 }}
+        className="fixed bottom-4 right-4 rounded-full"
+        isIconOnly
+        onPress={() => contentsRef.current && contentsRef.current.scrollIntoView()}
+        variant="primary"
       >
-        <KeyboardDoubleArrowUpRoundedIcon />
-      </Fab>
-    </Stack>
+        <ChevronsUp />
+      </Button>
+    </div>
   )
 }
 

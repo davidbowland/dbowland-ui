@@ -1,15 +1,16 @@
-import styled from 'styled-components'
+import React from 'react'
 
-export const ExampleCell = styled.div`
-  display: table-cell;
-  background-color: ${(props: any) => (props['data-shaded'] ? '#d3d3d3' : '#fff')};
-  padding-top: 2.5em;
-  text-align: center;
-`
+export interface ExampleCellProps extends React.HTMLAttributes<HTMLDivElement> {
+  'data-shaded'?: boolean
+}
 
-export const ExampleRow = styled.div`
-  display: table;
-  height: 100vh;
-  table-layout: fixed;
-  width: 300vh;
-`
+export const ExampleCell = ({ 'data-shaded': shaded, className, ...props }: ExampleCellProps): React.JSX.Element => (
+  <div
+    {...props}
+    className={`table-cell ${shaded ? 'bg-[#d3d3d3]' : 'bg-white'} pt-10 text-center text-black ${className ?? ''}`}
+  />
+)
+
+export const ExampleRow = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
+  <div {...props} className={`table h-screen [table-layout:fixed] w-[300vh] ${className ?? ''}`} />
+)

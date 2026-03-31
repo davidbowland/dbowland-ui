@@ -14,10 +14,7 @@ describe('404 error page', () => {
   it('should render ServerErrorMessage', () => {
     const expectedTitle = '404: Not Found'
     render(<NotFound />)
-    expect(ServerErrorMessage).toHaveBeenCalledWith(
-      expect.objectContaining({ title: expectedTitle }),
-      expect.anything(),
-    )
+    expect(ServerErrorMessage).toHaveBeenCalledWith(expect.objectContaining({ title: expectedTitle }), undefined)
     expect(ServerErrorMessage).toHaveBeenCalledTimes(1)
   })
 

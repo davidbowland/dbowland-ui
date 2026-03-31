@@ -3,8 +3,6 @@ import TitleBar from '@components/title-bar'
 import Head from 'next/head'
 import React from 'react'
 
-import Paper from '@mui/material/Paper'
-
 const PrivacyPage = (): JSX.Element => {
   return (
     <>
@@ -16,9 +14,9 @@ const PrivacyPage = (): JSX.Element => {
           <TitleBar />
         </nav>
         <section>
-          <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px' }}>
+          <div className="mx-auto max-w-[900px] shadow-md">
             <PrivacyPolicy />
-          </Paper>
+          </div>
         </section>
       </main>
     </>

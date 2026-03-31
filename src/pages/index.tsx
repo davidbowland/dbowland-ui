@@ -4,8 +4,6 @@ import TitleBar from '@components/title-bar'
 import Head from 'next/head'
 import React from 'react'
 
-import Paper from '@mui/material/Paper'
-
 const HomePage = (): JSX.Element => {
   return (
     <>
@@ -16,11 +14,13 @@ const HomePage = (): JSX.Element => {
         <nav>
           <TitleBar />
         </nav>
-        <section>
-          <Paper elevation={3} sx={{ margin: 'auto', maxWidth: '900px' }}>
-            <Resume />
-            <PrivacyLink />
-          </Paper>
+        <section className="bg-slate-50 dark:bg-slate-950 min-h-screen">
+          <div className="mx-auto max-w-5xl px-4 sm:px-8 py-6">
+            <div className="bg-white dark:bg-slate-900 shadow-sm rounded-xl overflow-hidden">
+              <Resume />
+              <PrivacyLink />
+            </div>
+          </div>
         </section>
       </main>
     </>
