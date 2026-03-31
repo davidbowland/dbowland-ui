@@ -126,7 +126,7 @@ export const AchievedCard = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
-  <Card className={`bg-success-100 dark:bg-success-900 mb-6 ${className ?? ''}`} {...props}>
+  <Card className={`bg-success-100 dark:bg-success-700 mb-6 ${className ?? ''}`} {...props}>
     <CardContent>
       <AchievedHeading>Achieved 🎉</AchievedHeading>
       <ChipRow>{children}</ChipRow>
@@ -151,7 +151,7 @@ const ChipRow = ({ children, className, ...props }: React.HTMLAttributes<HTMLDiv
 )
 
 export const AchievedChip = ({ name, emoji }: { name: string; emoji: string }): React.JSX.Element => (
-  <Chip color="success" variant="primary">
+  <Chip color="success" size="lg" variant="primary">
     {emoji} {name}
   </Chip>
 )
@@ -171,7 +171,7 @@ export const NextMilestoneCard = ({
       <NextMilestoneValue>
         {emoji} {name}
       </NextMilestoneValue>
-      <p>{remainingText} to go!</p>
+      <p className="text-center">{remainingText} to go!</p>
     </CardContent>
   </Card>
 )
@@ -197,7 +197,7 @@ const NextMilestoneValue = ({
 )
 
 export const UpcomingCard = ({ children }: { children: React.ReactNode }): React.JSX.Element => (
-  <Card className="bg-default-400 mb-4">
+  <Card className="bg-default-300 dark:bg-default-600 mb-4">
     <CardContent>
       <UpcomingHeading>Coming Up</UpcomingHeading>
       <ChipRow>{children}</ChipRow>
@@ -216,7 +216,7 @@ const UpcomingHeading = ({
 )
 
 export const UpcomingChip = ({ name, emoji }: { name: string; emoji: string }): React.JSX.Element => (
-  <Chip variant="secondary">
+  <Chip size="lg" variant="secondary">
     {emoji} {name}
   </Chip>
 )
