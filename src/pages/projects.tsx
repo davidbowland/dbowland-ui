@@ -2,9 +2,16 @@ import PrivacyLink from '@components/privacy-link'
 import ProjectsTable from '@components/projects-table'
 import TitleBar from '@components/title-bar'
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Projects = (): JSX.Element => {
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth'
+    return () => {
+      document.documentElement.style.scrollBehavior = ''
+    }
+  }, [])
+
   return (
     <>
       <Head>

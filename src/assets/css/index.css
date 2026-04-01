@@ -1,9 +1,5 @@
 @import '@heroui/styles';
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: 'Outfit', 'Helvetica', sans-serif;
 }
