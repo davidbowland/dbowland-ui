@@ -1,6 +1,6 @@
 export const contact = {
   name: 'David Bowland',
-  title: 'Manager, Engineering',
+  title: 'Director of Engineering',
   email: 'david@dbowland.com',
   website: 'https://dbowland.com',
   phone: { display: '417.894.0079', href: 'tel:+14178940079' },
@@ -26,13 +26,14 @@ export const jobs: Job[] = [
     company: 'ProductPlan',
     companyUrl: 'https://www.productplan.com/',
     dates: 'Jul 2024 \u2013 Present',
-    title: 'Manager, Engineering',
+    title: 'Director of Engineering',
     bullets: [
       "Recruited by ownership to evaluate and strengthen the company's engineering practices",
-      'Work across a Ruby on Rails and React monorepo, shipped continuously via daily deploys',
-      'Lead a team spanning both feature development and platform work',
       'Built the foundational AI infrastructure for the product, including an in-app chat assistant and several internal Slack bots',
-      'Mentor developers and manage two direct reports',
+      'Champion AI in the SDLC and PDLC',
+      'Lead teams spanning both feature development and platform work',
+      'Work across a Ruby on Rails and React monorepo, shipped continuously via daily deploys',
+      'Mentor developers and manage direct reports',
     ],
   },
   {
