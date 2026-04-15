@@ -1,3 +1,4 @@
+import { Button, type ButtonRootProps, Link as HeroLink, type LinkRootProps, Separator } from '@heroui/react'
 import React from 'react'
 
 export const NavBar = ({ children, className, ...props }: React.HTMLAttributes<HTMLElement>): React.JSX.Element => (
@@ -22,34 +23,33 @@ export const MobileHeader = ({
 export const HamburgerButton = ({
   children,
   className,
+  onPress,
   ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>): React.JSX.Element => (
-  <button {...props} className={`p-2 rounded hover:bg-slate-800 transition-colors ${className ?? ''}`}>
+}: Omit<ButtonRootProps, 'onClick'> & { onPress: () => void }): React.JSX.Element => (
+  <Button
+    {...props}
+    className={`p-2 rounded hover:bg-slate-800 transition-colors min-w-0 ${className ?? ''}`}
+    isIconOnly
+    onPress={onPress}
+    variant="ghost"
+  >
     {children}
-  </button>
+  </Button>
 )
 
-export const BrandLink = ({
-  children,
-  className,
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>): React.JSX.Element => (
-  <a {...props} className={`font-semibold tracking-wide text-[#cf8a05] ${className ?? ''}`}>
+export const BrandLink = ({ children, className, ...props }: LinkRootProps): React.JSX.Element => (
+  <HeroLink {...props} className={`font-semibold tracking-wide text-[#cf8a05] ${className ?? ''}`}>
     {children}
-  </a>
+  </HeroLink>
 )
 
-export const DesktopBrandLink = ({
-  children,
-  className,
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>): React.JSX.Element => (
-  <a
+export const DesktopBrandLink = ({ children, className, ...props }: LinkRootProps): React.JSX.Element => (
+  <HeroLink
     {...props}
     className={`font-semibold tracking-wide text-[#cf8a05] hover:text-[#e0a020] transition-colors ${className ?? ''}`}
   >
     {children}
-  </a>
+  </HeroLink>
 )
 
 export const DesktopBrand = ({
@@ -72,17 +72,13 @@ export const DesktopNav = ({
   </div>
 )
 
-export const DesktopNavLink = ({
-  children,
-  className,
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>): React.JSX.Element => (
-  <a
+export const DesktopNavLink = ({ children, className, ...props }: LinkRootProps): React.JSX.Element => (
+  <HeroLink
     {...props}
     className={`py-1.5 px-3 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded transition-colors ${className ?? ''}`}
   >
     {children}
-  </a>
+  </HeroLink>
 )
 
 export const MobileMenuOverlay = ({
@@ -146,30 +142,29 @@ export const MobileMenuList = ({
   </ul>
 )
 
-export const MobileMenuLink = ({
-  children,
-  className,
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>): React.JSX.Element => (
-  <a
+export const MobileMenuLink = ({ children, className, ...props }: LinkRootProps): React.JSX.Element => (
+  <HeroLink
     {...props}
     className={`flex items-center gap-3 py-2 px-4 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition-colors ${className ?? ''}`}
   >
     {children}
-  </a>
+  </HeroLink>
 )
 
 export const MobileMenuButton = ({
   children,
   className,
+  onPress,
   ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>): React.JSX.Element => (
-  <button
+}: Omit<ButtonRootProps, 'onClick'> & { onPress: () => void }): React.JSX.Element => (
+  <Button
     {...props}
-    className={`flex items-center gap-3 py-2 px-4 rounded hover:bg-slate-800 w-full text-left text-slate-300 hover:text-white transition-colors ${className ?? ''}`}
+    className={`flex items-center gap-3 py-2 px-4 w-full justify-start text-slate-300 hover:text-white ${className ?? ''}`}
+    onPress={onPress}
+    variant="ghost"
   >
     {children}
-  </button>
+  </Button>
 )
 
-export const MobileMenuDivider = (): React.JSX.Element => <hr className="my-2 border-slate-700" />
+export const MobileMenuDivider = (): React.JSX.Element => <Separator className="my-2 border-slate-700" />

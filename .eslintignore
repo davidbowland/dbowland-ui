@@ -2,12 +2,13 @@ __mocks__/
 __snapshots__/
 .cache/
 .next/
+*.min.*
 coverage/
 deploy/
+jest.*.*
+next-env.d.ts
 node_modules/
 out/
+package-lock.json
 public/
 static/
-*.min.*
-jest.*.*
-package-lock.json

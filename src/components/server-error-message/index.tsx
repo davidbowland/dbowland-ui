@@ -1,5 +1,5 @@
 import PrivacyLink from '@components/privacy-link'
-import Link from 'next/link'
+import { Link } from '@heroui/react'
 import React from 'react'
 
 import { ErrorPageContent, ErrorPageLayout, ErrorPageTitle } from './elements'

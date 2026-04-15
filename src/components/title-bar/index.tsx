@@ -42,7 +42,7 @@ const TitleBar = (): JSX.Element => {
     <NavBar>
       {/* Mobile: hamburger */}
       <MobileHeader>
-        <HamburgerButton aria-label="amenu" onClick={() => setIsMenuOpen(true)}>
+        <HamburgerButton aria-label="amenu" onPress={() => setIsMenuOpen(true)}>
           <Menu />
         </HamburgerButton>
         <Link href="/" legacyBehavior>
@@ -90,7 +90,7 @@ const TitleBar = (): JSX.Element => {
               </MobileMenuLink>
             </li>
             <li>
-              <MobileMenuButton onClick={() => setIsMenuOpen(false)}>
+              <MobileMenuButton onPress={() => setIsMenuOpen(false)}>
                 <X size={18} />
                 Close
               </MobileMenuButton>

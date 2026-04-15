@@ -8,6 +8,8 @@ import {
   Card,
   CardContent,
   Chip,
+  Link,
+  type LinkRootProps,
   Separator,
 } from '@heroui/react'
 import { ChevronDown } from 'lucide-react'
@@ -273,14 +275,10 @@ const VideoIframeContainer = ({
   </div>
 )
 
-const VideoLink = ({
-  children,
-  className,
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>): React.JSX.Element => (
-  <a {...props} className={`text-sm ${className ?? ''}`}>
+const VideoLink = ({ children, className, ...props }: LinkRootProps): React.JSX.Element => (
+  <Link {...props} className={`text-sm ${className ?? ''}`}>
     {children}
-  </a>
+  </Link>
 )
 
 export const RecipeAccordionWrapper = (): React.JSX.Element => (

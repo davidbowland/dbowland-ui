@@ -1,14 +1,11 @@
+import { Button, Chip, Link as HeroLink, type LinkRootProps, Separator } from '@heroui/react'
 import Link from 'next/link'
 import React from 'react'
 
-export const ResumeAnchor = ({
-  children,
-  className,
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>): React.JSX.Element => (
-  <a {...props} className={`transition-colors duration-200 ease-in hover:text-[#cf8a05] ${className ?? ''}`}>
+export const ResumeAnchor = ({ children, className, ...props }: LinkRootProps): React.JSX.Element => (
+  <HeroLink {...props} className={`transition-colors duration-200 ease-in hover:text-[#cf8a05] ${className ?? ''}`}>
     {children}
-  </a>
+  </HeroLink>
 )
 
 export const ResumeContainer = ({
@@ -85,11 +82,10 @@ export const ResumeDownloadLink = ({
   className,
   ...props
 }: React.ComponentProps<typeof Link>): React.JSX.Element => (
-  <Link
-    {...props}
-    className={`mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[#cf8a05] hover:text-[#e0a020] transition-colors ${className ?? ''}`}
-  >
-    {children}
+  <Link {...props} className="mt-5 inline-flex">
+    <Button className={`text-sm font-medium text-[#cf8a05] hover:text-[#e0a020] ${className ?? ''}`} variant="ghost">
+      {children}
+    </Button>
   </Link>
 )
 
@@ -111,12 +107,6 @@ export const ResumeJobDescriptionDetail = ({
   <li {...props} className={`my-[2px] ${className ?? ''}`}>
     {children}
   </li>
-)
-
-export const ResumeLink = ({ children, className, ...props }: React.ComponentProps<typeof Link>): React.JSX.Element => (
-  <Link {...props} className={`transition-colors duration-200 ease-in hover:text-[#cf8a05] ${className ?? ''}`}>
-    {children}
-  </Link>
 )
 
 const ResumeParagraph = ({
@@ -202,7 +192,7 @@ export const ResumeSectionContent = ({
   </div>
 )
 
-export const ResumeDivider = (): React.JSX.Element => <hr className="border-t border-[#cf8a05]/20" />
+export const ResumeDivider = (): React.JSX.Element => <Separator className="border-[#cf8a05]/20" />
 
 export const ResumeTimeline = ({
   children,
@@ -254,28 +244,12 @@ export const ResumeSkillGroupLabel = ({
   </p>
 )
 
-export const ResumeChipGold = ({
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLSpanElement>): React.JSX.Element => (
-  <span
-    {...props}
-    className={`px-2.5 py-0.5 text-sm rounded-full bg-[#cf8a05]/10 text-[#cf8a05] border border-[#cf8a05]/25 font-medium ${className ?? ''}`}
-  >
+export const ResumeChipGold = ({ children }: { children: React.ReactNode }): React.JSX.Element => (
+  <Chip className="bg-[#cf8a05]/10 text-[#cf8a05] border-[#cf8a05]/25" variant="secondary">
     {children}
-  </span>
+  </Chip>
 )
 
-export const ResumeChipNeutral = ({
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLSpanElement>): React.JSX.Element => (
-  <span
-    {...props}
-    className={`px-2.5 py-0.5 text-sm rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-medium ${className ?? ''}`}
-  >
-    {children}
-  </span>
+export const ResumeChipNeutral = ({ children }: { children: React.ReactNode }): React.JSX.Element => (
+  <Chip variant="secondary">{children}</Chip>
 )
