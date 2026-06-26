@@ -59,6 +59,7 @@ jobs:
         run: npm run build
         env:
           DEVELOPMENT: true
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
       - name: Install AWS SAM
         uses: aws-actions/setup-sam@v2
@@ -107,6 +108,7 @@ jobs:
         run: npm run build
         env:
           DEVELOPMENT: true
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
       - name: Install AWS SAM
         uses: aws-actions/setup-sam@v2
@@ -153,6 +155,8 @@ jobs:
           node-version: 24.x
       - name: Build Next.js site
         run: npm run build
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
       - name: Install AWS SAM
         uses: aws-actions/setup-sam@v2
