@@ -1,4 +1,7 @@
+import '@fontsource/cormorant-garamond/400.css'
+import '@fontsource/cormorant-garamond/600.css'
 import '@fontsource/outfit'
+import '@fontsource/pinyon-script'
 import type { AppProps } from 'next/app'
 import Router from 'next/router'
 import React, { useEffect } from 'react'

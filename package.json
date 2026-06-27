@@ -30,8 +30,10 @@
     "update": "npx update-browserslist-db@latest && ncu --doctor --target minor --upgrade && npm audit fix --audit-level=none && npm run test && npm dedupe"
   },
   "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.2.11",
     "@fontsource/fira-code": "^5.2.7",
     "@fontsource/outfit": "^5.2.8",
+    "@fontsource/pinyon-script": "^5.2.8",
     "@heroui/react": "^3.2.1",
     "framer-motion": "^12.42.0",
     "husky": "^9.1.7",

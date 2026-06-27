@@ -203,6 +203,11 @@ body{
   transition:opacity 700ms var(--eprem),transform 700ms var(--eprem);
 }
 .entry.vis{opacity:1;transform:translateY(0)}
+.entry.linked .eb{animation:link-glow 2s var(--eout) forwards}
+@keyframes link-glow{
+  0%,20%{border-color:var(--gold);box-shadow:0 0 0 1px rgba(196,144,48,.2),0 0 24px rgba(196,144,48,.12)}
+  100%{border-color:var(--bdr);box-shadow:none}
+}
 
 /* Double-bezel */
 .eb{/* outer bezel */
@@ -2076,8 +2081,11 @@ const FEATURED=[
   {word:'ACHIEVEMENT',def:'<span class="pos">n.</span> The death of endeavor and the birth of disgust.'},
 ];
 
+// ── Slug ────────────────────────────────────────────────────────────────────
+function slugify(w){return w.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+
 // ── State ───────────────────────────────────────────────────────────────────
-let curLetter='A', srch='', obs=null;
+let curLetter='A', srch='', obs=null, linkObs=null;
 
 // ── DOM refs ────────────────────────────────────────────────────────────────
 const $=id=>document.getElementById(id);
@@ -2154,7 +2162,7 @@ function renderEntries(){
   }
 
   entriesEl.innerHTML=list.map(function(e,i){
-    return '<article class="entry" style="transition-delay:'+
+    return '<article class="entry" id="e-'+slugify(e.word)+'" style="transition-delay:'+
       Math.min(i*45,700)+'ms" role="listitem">'+
       '<div class="eb"><div class="ei">'+
       '<h2 class="ew">'+e.word+'</h2>'+
@@ -2167,12 +2175,21 @@ function renderEntries(){
 
 function setupObs(){
   if(obs)obs.disconnect();
+  if(linkObs)linkObs.disconnect();
   obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}
     });
   },{threshold:.03,rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('.entry:not(.vis)').forEach(function(el){obs.observe(el);});
+  linkObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting)history.replaceState(null,'','#'+e.target.id.slice(2));
+    });
+  },{threshold:0,rootMargin:'-30% 0px -60% 0px'});
+  document.querySelectorAll('.entry').forEach(function(el){
+    if(!el.classList.contains('vis'))obs.observe(el);
+    linkObs.observe(el);
+  });
 }
 
 // ── Random ──────────────────────────────────────────────────────────────────
@@ -2187,12 +2204,14 @@ function goRandom(){
   curLetterEl.textContent=l;
   letterBgEl.textContent=l;
   countEl.textContent='— '+e.word;
+  const slug=slugify(e.word);
   entriesEl.innerHTML=
-    '<article class="entry vis" role="listitem">'+
+    '<article class="entry vis" id="e-'+slug+'" role="listitem">'+
     '<div class="eb"><div class="ei">'+
     '<h2 class="ew">'+e.word+'</h2>'+
     '<div class="ed">'+e.def+'</div>'+
     '</div></div></article>';
+  history.replaceState(null,'','#'+slug);
   $('dictionary').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
@@ -2225,10 +2244,39 @@ if(modalBd)modalBd.addEventListener('click',closeModal);
 if(modalClose)modalClose.addEventListener('click',closeModal);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 
+// ── Deep link ────────────────────────────────────────────────────────────────
+function scrollToEntry(slug){
+  const el=document.getElementById('e-'+slug);
+  if(!el)return;
+  el.classList.add('vis','linked');
+  document.documentElement.style.scrollBehavior='auto';
+  el.scrollIntoView({behavior:'instant',block:'center'});
+  document.documentElement.style.scrollBehavior='';
+}
+
+function handleHash(){
+  const hash=location.hash.slice(1);
+  if(!hash)return;
+  const slug=slugify(decodeURIComponent(hash));
+  let found=null,foundLetter=null;
+  LETTERS.forEach(function(l){
+    if(found)return;
+    parseEntries(DATA[l]||[]).forEach(function(e){
+      if(!found&&slugify(e.word)===slug){found=e;foundLetter=l;}
+    });
+  });
+  if(!found)return;
+  curLetter=foundLetter;
+  updateAlpha();
+  renderEntries();
+  scrollToEntry(slug);
+}
+
 // ── Init ─────────────────────────────────────────────────────────────────────
 renderHeroQuote();
 buildAlpha();
 renderEntries();
+handleHash();
 
 // Animate hero on load
 window.addEventListener('load',function(){

@@ -87,6 +87,7 @@ const config: Config = {
     '^@test/(.*)$': '<rootDir>/test/$1',
     '@fontsource/(.*)$': '<rootDir>/__mocks__/file-mock.js',
     '^@heroui/react$': '<rootDir>/__mocks__/@heroui/react.js',
+    '^framer-motion$': '<rootDir>/__mocks__/framer-motion.js',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

@@ -1,5 +1,64 @@
 @import '@heroui/styles';
 
 body {
-  font-family: 'Outfit', 'Helvetica', sans-serif;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ── Marriage page design tokens — exact wedding palette ── */
+/* Navy #2c3461 · Plum #6a3f6c · Teal #28798b · Berry #9a3b51 · Forest #3d6a48 */
+
+:root {
+  --romance-page-bg: #fdfbf7;
+  --romance-card-shell: #e8e2ef;
+  --romance-card-surface: #f4f1fa;
+  /* Wedding accent colors (exact) */
+  --romance-rose: #6a3f6c; /* plum */
+  --romance-rose-mid: #9a3b51; /* berry */
+  --romance-blush: #ddd5f0; /* light plum — countdown text on dark card */
+  --romance-gold: #28798b; /* teal */
+  --romance-forest: #3d6a48; /* forest green — achieved milestones */
+  --romance-forest-light: #cce0d0;
+  --romance-forest-surface: #e6f4ea;
+  /* Typography */
+  --romance-deep-text: #2c3461; /* navy */
+  --romance-muted-text: #6a6885;
+  --romance-hairline: rgba(44, 52, 97, 0.14);
+  --romance-inset: rgba(255, 255, 255, 0.72);
+  /* Hero stat card (Days Married) — plum tint */
+  --romance-hero-shell: #d6cceb;
+  --romance-hero-surface: #ece8f6;
+  /* Anniversary stat card (Years of Bliss) — teal tint */
+  --romance-ann-shell: #c0d8e4;
+  --romance-ann-surface: #d8eef6;
+  /* Recipe accordion — deep navy */
+  --romance-recipe-outer: #0c1025;
+  --romance-recipe-inner: #141832;
+  --romance-recipe-text: rgba(210, 205, 235, 0.8);
+  --romance-recipe-title: #c4a0d8;
+  /* Next milestone card — deep plum */
+  --romance-next-outer: #361848;
+  --romance-next-inner: #451e58;
+  /* Light text on dark overlay cards */
+  --romance-overlay-text: #f0ecfc;
+  --romance-chip-text: #f0ecfc;
+
+  /* Triple-section redesign tokens */
+  --sec-a-bg: #fdfbf7;
+  --sec-b-bg: #2c3461;
+  --sec-c-bg: #1e0a2e;
+  --sec-navy: #2c3461;
+  --sec-purple: #7a4a7c;
+  --sec-teal: #28798b;
+  --sec-berry: #9a3b51;
+  --sec-forest: #3d6a48;
+  --sec-cream: #fdfbf7;
+  --sec-ivory: #f0ecd8;
+  --sec-parchment: #f5edd8;
+  --sec-blush: #e8c8d4;
+  --sec-deep-plum: #1e0a2e;
+}
+
+/* Header floral decoration */
+.romance-deco {
+  opacity: 0.72;
 }
