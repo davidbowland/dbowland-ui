@@ -66,44 +66,23 @@ const Section = ({
   </div>
 )
 
-const Chip = ({ isGold = false, label }: { isGold?: boolean; label: string }) => (
-  <span
-    style={{
-      display: 'inline-block',
-      padding: '2px 8px',
-      fontSize: '9.5px',
-      fontWeight: 500,
-      borderRadius: '999px',
-      border: `1px solid ${isGold ? GOLD_BORDER : NEUTRAL_BORDER}`,
-      background: isGold ? GOLD_BG : NEUTRAL_BG,
-      color: isGold ? GOLD : NEUTRAL_TEXT,
-      marginRight: '4px',
-      marginBottom: '4px',
-    }}
-  >
-    {label}
-  </span>
-)
-
 const SkillGroup = ({ isGold = false, label, skills }: { isGold?: boolean; label: string; skills: string[] }) => (
-  <div style={{ marginBottom: '7px' }}>
+  <div style={{ display: 'flex', gap: '10px', marginBottom: '5px', alignItems: 'baseline' }}>
     <div
       style={{
+        width: '100px',
+        flexShrink: 0,
         fontSize: '8.5px',
         fontWeight: 600,
         letterSpacing: '0.1em',
         textTransform: 'uppercase',
         color: MUTED,
-        marginBottom: '4px',
+        paddingTop: '1px',
       }}
     >
       {label}
     </div>
-    <div>
-      {skills.map((s) => (
-        <Chip isGold={isGold} key={s} label={s} />
-      ))}
-    </div>
+    <div style={{ fontSize: '10.5px', color: isGold ? GOLD : NEUTRAL_TEXT }}>{skills.join(' · ')}</div>
   </div>
 )
 
@@ -227,6 +206,19 @@ const ResumePdfContent = (): React.JSX.Element => (
                 {job.company}
               </a>
             </div>
+            {job.progression && (
+              <div
+                style={{
+                  fontFamily: 'monospace',
+                  fontSize: '9px',
+                  color: MUTED,
+                  letterSpacing: '0.04em',
+                  marginBottom: '3px',
+                }}
+              >
+                {job.progression.join('  ·  ')}
+              </div>
+            )}
             <ul style={{ margin: 0, paddingLeft: '15px', listStyleType: 'disc' }}>
               {job.bullets.map((bullet) => (
                 <li key={bullet} style={{ marginBottom: '1px' }}>

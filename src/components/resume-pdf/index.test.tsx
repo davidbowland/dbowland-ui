@@ -35,7 +35,7 @@ describe('ResumePdfContent component', () => {
   it('should render skills and education', () => {
     render(<ResumePdfContent />)
 
-    expect(screen.getByText('TypeScript')).toBeInTheDocument()
+    expect(screen.getByText(/TypeScript/)).toBeInTheDocument()
     expect(screen.getByText(/Columbia College/i)).toBeInTheDocument()
   })
 })
