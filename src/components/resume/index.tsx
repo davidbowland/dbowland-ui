@@ -66,7 +66,7 @@ const ResumeSection = ({
 )
 
 const Resume = (): React.JSX.Element => {
-  const resumePdf = `/assets/pdf/david-bowland-resume-v${process.env.NEXT_PUBLIC_APP_VERSION}.pdf`
+  const resumePdf = `/assets/pdf/david-bowland-resume-${process.env.NEXT_PUBLIC_APP_VERSION}.pdf`
   return (
     <ResumeContainer>
       {/* HERO */}

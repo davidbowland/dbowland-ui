@@ -1,3 +1,4 @@
+import { execSync } from 'child_process'
 import fs from 'fs'
 import http from 'http'
 import path from 'path'
@@ -110,8 +111,8 @@ const server = http.createServer((req, res) => {
   const pdfDir = path.join(outDir, 'assets', 'pdf')
   fs.mkdirSync(pdfDir, { recursive: true })
 
-  const version = process.env.npm_package_version
-  const pdfFilename = `david-bowland-resume-v${version}.pdf`
+  const gitHash = execSync('git rev-parse --short HEAD').toString().trim()
+  const pdfFilename = `david-bowland-resume-${gitHash}.pdf`
 
   await page.pdf({
     format: 'Letter',

@@ -1,4 +1,5 @@
 // @ts-check
+import { execSync } from 'child_process'
 import withExportImages from 'next-export-optimize-images'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -14,7 +15,7 @@ const nextConfig = withExportImages({
     includePaths: [path.join(__dirname, 'src')],
   },
   env: {
-    NEXT_PUBLIC_APP_VERSION: process.env.npm_package_version ?? '',
+    NEXT_PUBLIC_APP_VERSION: execSync('git rev-parse --short HEAD').toString().trim(),
   },
 })
 

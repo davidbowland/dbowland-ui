@@ -7,11 +7,11 @@ import Resume from './index'
 describe('Resume component', () => {
   const consoleWarn = console.warn
   const emailAddress = 'david@dbowland.com'
-  const appVersion = '1.2.3'
-  const pdfFilename = `david-bowland-resume-v${appVersion}.pdf`
+  const buildHash = 'abc1234'
+  const pdfFilename = `david-bowland-resume-${buildHash}.pdf`
 
   beforeAll(() => {
-    process.env.NEXT_PUBLIC_APP_VERSION = appVersion
+    process.env.NEXT_PUBLIC_APP_VERSION = buildHash
     console.warn = jest.fn()
   })
 
