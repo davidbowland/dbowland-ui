@@ -21,9 +21,10 @@ describe('ProjectsTable component', () => {
 
   it.each([
     /Root - Infrastructure/i,
-    /Email Forwarding - DynamoDB, Lambda, SES, SQS/i,
-    /Jokes - DynamoDB, Lambda, Polly, React/i,
+    /Email - SES, Lambda, DynamoDB/i,
     /Choosee - DynamoDB, Lambda, React/i,
+    /Connections - AI, DynamoDB, Lambda, React/i,
+    /StreetLogic AI - AI, Lambda, React/i,
     /Other - Lambda, React, SQS/i,
   ])('should scroll view when clicking %s option', async (text) => {
     const user = userEvent.setup()

@@ -16,10 +16,6 @@ describe('Redirect component', () => {
     })
   })
 
-  beforeEach(() => {
-    mockLocationReplace.mockClear()
-  })
-
   it('should redirect to drive file URL', () => {
     render(<Redirect id={testId} type={DriveFileRedirect} />)
 

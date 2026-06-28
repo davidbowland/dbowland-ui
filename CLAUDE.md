@@ -32,19 +32,18 @@ it('sets createdAt', () => {
 
 ## Module Aliases
 
-| Alias         | Path             |
-| ------------- | ---------------- |
-| `@config`     | `src/config.ts`  |
-| `@errors`     | `src/errors.ts`  |
-| `@types`      | `src/types.ts`   |
-| `@data/*`     | `src/data/*`     |
-| `@handlers/*` | `src/handlers/*` |
-| `@services/*` | `src/services/*` |
-| `@utils/*`    | `src/utils/*`    |
+| Alias           | Path               |
+| --------------- | ------------------ |
+| `@assets/*`     | `src/assets/*`     |
+| `@components/*` | `src/components/*` |
+| `@config/*`     | `src/config/*`     |
+| `@data/*`       | `src/data/*`       |
+| `@pages/*`      | `src/pages/*`      |
+| `@test/*`       | `test/*`           |
 
 ## Commands
 
 - `npm test` — run tests with coverage
 - `npm run typecheck` — TypeScript check
 - `npm run lint` — format + lint
-- `npm start` — run locally via SAM
+- `npm start` — run locally via Next.js dev server

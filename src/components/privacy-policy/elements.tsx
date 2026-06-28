@@ -5,9 +5,22 @@ export const PolicyLayout = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
-  <div {...props} className={`flex flex-col gap-4 p-8 ${className ?? ''}`}>
+  <div {...props} className={`flex flex-col p-8 text-[var(--ink-soft)] ${className ?? ''}`}>
     {children}
   </div>
+)
+
+export const PolicyEyebrow = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>): React.JSX.Element => (
+  <p
+    {...props}
+    className={`text-[10px] font-semibold tracking-[0.2em] uppercase text-[var(--accent)] mb-3 ${className ?? ''}`}
+  >
+    {children}
+  </p>
 )
 
 export const PolicyTitle = ({
@@ -15,9 +28,19 @@ export const PolicyTitle = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>): React.JSX.Element => (
-  <h4 {...props} className={`text-3xl font-normal ${className ?? ''}`}>
+  <h1 {...props} className={`text-4xl font-normal text-[var(--ink)] mb-4 ${className ?? ''}`}>
     {children}
-  </h4>
+  </h1>
+)
+
+export const PolicySection = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element => (
+  <div {...props} className={`py-6 border-t border-[var(--rule)] ${className ?? ''}`}>
+    {children}
+  </div>
 )
 
 export const PolicySectionTitle = ({
@@ -25,9 +48,12 @@ export const PolicySectionTitle = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>): React.JSX.Element => (
-  <h6 {...props} className={`text-xl font-medium ${className ?? ''}`}>
+  <h2
+    {...props}
+    className={`text-[10px] font-semibold tracking-[0.2em] uppercase text-[var(--accent)] mb-3 ${className ?? ''}`}
+  >
     {children}
-  </h6>
+  </h2>
 )
 
 export const PolicyList = ({

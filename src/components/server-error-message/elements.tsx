@@ -1,4 +1,3 @@
-import { Card, CardContent } from '@heroui/react'
 import React from 'react'
 
 export const ErrorPageLayout = ({
@@ -12,9 +11,9 @@ export const ErrorPageLayout = ({
 )
 
 export const ErrorPageContent = ({ children }: { children: React.ReactNode }): React.JSX.Element => (
-  <Card className="w-full max-w-[900px] m-8">
-    <CardContent className="flex flex-col gap-4 p-8">{children}</CardContent>
-  </Card>
+  <div className="w-full max-w-[900px] m-8 bg-[var(--surface)] border border-[var(--rule)] rounded-2xl flex flex-col gap-4 p-8">
+    {children}
+  </div>
 )
 
 export const ErrorPageTitle = ({
@@ -22,7 +21,7 @@ export const ErrorPageTitle = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>): React.JSX.Element => (
-  <h1 {...props} className={`text-5xl font-light ${className ?? ''}`}>
+  <h1 {...props} className={`text-5xl font-light text-[var(--ink)] ${className ?? ''}`}>
     {children}
   </h1>
 )

@@ -21,8 +21,8 @@ const Projects = (): JSX.Element => {
         <nav>
           <TitleBar />
         </nav>
-        <section className="bg-slate-50 dark:bg-slate-950 min-h-screen">
-          <div className="mx-auto max-w-5xl px-4 sm:px-8 py-6">
+        <section className="min-h-[100dvh]">
+          <div className="mx-auto max-w-5xl px-4 sm:px-8">
             <ProjectsTable />
             <PrivacyLink />
           </div>

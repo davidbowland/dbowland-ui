@@ -1,5 +1,5 @@
 import PrivacyLink from '@components/privacy-link'
-import { Link } from '@heroui/react'
+import NextLink from 'next/link'
 import React from 'react'
 
 import { ErrorPageContent, ErrorPageLayout, ErrorPageTitle } from './elements'
@@ -14,9 +14,14 @@ const ServerErrorMessage = ({ children, title }: ServerErrorProps): React.JSX.El
     <ErrorPageLayout>
       <ErrorPageContent>
         <ErrorPageTitle>{title}</ErrorPageTitle>
-        <div>{children}</div>
+        <div className="text-[var(--ink-soft)]">{children}</div>
         <div>
-          <Link href="/">Go home</Link>
+          <NextLink
+            className="text-[var(--accent)] no-underline border-b border-transparent hover:border-[var(--accent)] transition-all duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
+            href="/"
+          >
+            Go home
+          </NextLink>
           <PrivacyLink />
         </div>
       </ErrorPageContent>

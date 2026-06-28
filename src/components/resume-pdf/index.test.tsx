@@ -26,7 +26,7 @@ describe('ResumePdfContent component', () => {
   it('should render all four jobs', () => {
     render(<ResumePdfContent />)
 
-    expect(screen.getByText(/ProductPlan/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/ProductPlan/i)[0]).toBeInTheDocument()
     expect(screen.getByText(/TalentReef/i)).toBeInTheDocument()
     expect(screen.getByText(/Carfax/i)).toBeInTheDocument()
     expect(screen.getByText(/Boone County/i)).toBeInTheDocument()
