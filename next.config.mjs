@@ -13,6 +13,9 @@ const nextConfig = withExportImages({
   sassOptions: {
     includePaths: [path.join(__dirname, 'src')],
   },
+  env: {
+    NEXT_PUBLIC_APP_VERSION: process.env.npm_package_version ?? '',
+  },
 })
 
 export default nextConfig

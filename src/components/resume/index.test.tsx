@@ -7,9 +7,11 @@ import Resume from './index'
 describe('Resume component', () => {
   const consoleWarn = console.warn
   const emailAddress = 'david@dbowland.com'
-  const pdfFilename = 'david-bowland-resume.pdf'
+  const appVersion = '1.2.3'
+  const pdfFilename = `david-bowland-resume-v${appVersion}.pdf`
 
   beforeAll(() => {
+    process.env.NEXT_PUBLIC_APP_VERSION = appVersion
     console.warn = jest.fn()
   })
 

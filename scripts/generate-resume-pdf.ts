@@ -110,15 +110,18 @@ const server = http.createServer((req, res) => {
   const pdfDir = path.join(outDir, 'assets', 'pdf')
   fs.mkdirSync(pdfDir, { recursive: true })
 
+  const version = process.env.npm_package_version
+  const pdfFilename = `david-bowland-resume-v${version}.pdf`
+
   await page.pdf({
     format: 'Letter',
     margin: { top: 0, right: 0, bottom: 0, left: 0 },
-    path: path.join(pdfDir, 'david-bowland-resume.pdf'),
+    path: path.join(pdfDir, pdfFilename),
     printBackground: true,
   })
 
   await browser.close()
   server.close()
 
-  console.log(`Resume PDF generated: ${path.join(pdfDir, 'david-bowland-resume.pdf')}`)
+  console.log(`Resume PDF generated: ${path.join(pdfDir, pdfFilename)}`)
 })()

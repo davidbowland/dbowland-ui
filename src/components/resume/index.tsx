@@ -30,8 +30,6 @@ import {
 } from './elements'
 import headshot from '@assets/images/David-2023-05-10.jpg'
 
-const resumePdf = '/assets/pdf/david-bowland-resume.pdf'
-
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -68,6 +66,7 @@ const ResumeSection = ({
 )
 
 const Resume = (): React.JSX.Element => {
+  const resumePdf = `/assets/pdf/david-bowland-resume-v${process.env.NEXT_PUBLIC_APP_VERSION}.pdf`
   return (
     <ResumeContainer>
       {/* HERO */}
