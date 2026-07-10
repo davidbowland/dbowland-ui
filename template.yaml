@@ -24,6 +24,9 @@ Mappings:
       domain: bowland.link
       zoneId: Z01312547RGU1BYKIJXY
 
+Conditions:
+  IsProd: !Equals [!Ref Environment, prod]
+
 Resources:
   # CDN
 
@@ -56,7 +59,6 @@ Resources:
 
   UiBucketPolicy:
     Type: AWS::S3::BucketPolicy
-    DependsOn: UiBucket
     Properties:
       Bucket: !Ref UiBucket
       PolicyDocument:
@@ -154,7 +156,6 @@ Resources:
 
   DomainDns:
     Type: AWS::Route53::RecordSet
-    DependsOn: UiCloudfrontDistribution
     Properties:
       AliasTarget:
         DNSName: !GetAtt UiCloudfrontDistribution.DomainName
@@ -191,7 +192,6 @@ Resources:
 
   RedirectBucketPolicy:
     Type: AWS::S3::BucketPolicy
-    DependsOn: RedirectBucket
     Properties:
       Bucket: !Ref RedirectBucket
       PolicyDocument:
@@ -253,7 +253,6 @@ Resources:
 
   RedirectDns:
     Type: AWS::Route53::RecordSet
-    DependsOn: RedirectCloudfrontDistribution
     Properties:
       AliasTarget:
         DNSName: !GetAtt RedirectCloudfrontDistribution.DomainName
@@ -263,4 +262,77 @@ Resources:
       Name: !Sub
         - 'www.${Domain}'
         - Domain: !FindInMap [EnvironmentMap, !Ref Environment, domain]
+      Type: A
+
+  # davidbowland.com redirect (prod only)
+
+  DavidBowlandCloudfrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Condition: IsProd
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - davidbowland.com
+          - www.davidbowland.com
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - 'GET'
+            - 'HEAD'
+            - 'OPTIONS'
+          CachePolicyId: '658327ea-f89d-4fab-a63d-7e88639e58f6' # Managed-CachingOptimized
+          Compress: true
+          DefaultTTL: 0
+          TargetOriginId: S3RedirectOrigin
+          ViewerProtocolPolicy: 'redirect-to-https'
+        Enabled: true
+        HttpVersion: http2
+        IPV6Enabled: true
+        Origins:
+          - ConnectionAttempts: 3
+            ConnectionTimeout: 10
+            CustomOriginConfig:
+              HTTPPort: 80
+              HTTPSPort: 443
+              OriginKeepaliveTimeout: 5
+              OriginProtocolPolicy: 'http-only'
+              OriginReadTimeout: 30
+              OriginSSLProtocols:
+                - 'TLSv1.2'
+            DomainName: !Sub '${RedirectBucket}.s3-website.us-east-2.amazonaws.com'
+            Id: S3RedirectOrigin
+        PriceClass: 'PriceClass_100'
+        ViewerCertificate:
+          AcmCertificateArn: 'arn:aws:acm:us-east-1:494887012091:certificate/4c6d6eeb-6137-481f-b898-595efe3d7f08' # davidbowland.com, *.davidbowland.com
+          MinimumProtocolVersion: 'TLSv1.2_2021'
+          SslSupportMethod: 'sni-only'
+      Tags:
+        - Key: 'created-by'
+          Value: 'dbowland-ui'
+        - Key: 'created-for'
+          Value: 'dbowland'
+        - Key: 'environment'
+          Value: !Ref Environment
+
+  DavidBowlandDns:
+    Type: AWS::Route53::RecordSet
+    Condition: IsProd
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt DavidBowlandCloudfrontDistribution.DomainName
+        EvaluateTargetHealth: false
+        HostedZoneId: Z2FDTNDATAQYW2 # CloudFront resources HostedZoneId
+      HostedZoneId: Z030236819D5DPAEE4WKN
+      Name: davidbowland.com
+      Type: A
+
+  DavidBowlandWwwDns:
+    Type: AWS::Route53::RecordSet
+    Condition: IsProd
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt DavidBowlandCloudfrontDistribution.DomainName
+        EvaluateTargetHealth: false
+        HostedZoneId: Z2FDTNDATAQYW2 # CloudFront resources HostedZoneId
+      HostedZoneId: Z030236819D5DPAEE4WKN
+      Name: www.davidbowland.com
       Type: A
