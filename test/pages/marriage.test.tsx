@@ -33,4 +33,32 @@ describe('Marriage page', () => {
     render(<MarriagePage />)
     expect(document.title).toEqual('Marriage Statistics | David & Tandi Bowland')
   })
+
+  it('renders marriage-specific favicon links', () => {
+    render(<MarriagePage />)
+    expect(document.querySelector('link[rel="icon"][sizes="32x32"]')).toHaveAttribute(
+      'href',
+      '/marriage-favicon-32x32.png',
+    )
+    expect(document.querySelector('link[rel="icon"][sizes="16x16"]')).toHaveAttribute(
+      'href',
+      '/marriage-favicon-16x16.png',
+    )
+    expect(document.querySelector('link[rel="apple-touch-icon"]')).toHaveAttribute(
+      'href',
+      '/marriage-apple-touch-icon.png',
+    )
+  })
+
+  it('renders marriage-specific Open Graph image', () => {
+    render(<MarriagePage />)
+    expect(document.querySelector('meta[property="og:image"]')).toHaveAttribute(
+      'content',
+      'https://dbowland.com/marriage-og-image.png',
+    )
+    expect(document.querySelector('meta[name="twitter:image"]')).toHaveAttribute(
+      'content',
+      'https://dbowland.com/marriage-og-image.png',
+    )
+  })
 })
