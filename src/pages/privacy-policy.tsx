@@ -1,14 +1,16 @@
 import PrivacyPolicy from '@components/privacy-policy'
+import SeoHead from '@components/seo-head'
 import TitleBar from '@components/title-bar'
-import Head from 'next/head'
 import React from 'react'
 
 const PrivacyPage = (): JSX.Element => {
   return (
     <>
-      <Head>
-        <title>Privacy Policy -- dbowland.com</title>
-      </Head>
+      <SeoHead
+        description="Privacy policy for dbowland.com."
+        path="/privacy-policy/"
+        title="Privacy Policy -- dbowland.com"
+      />
       <main>
         <nav>
           <TitleBar />

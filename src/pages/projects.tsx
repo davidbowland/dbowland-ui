@@ -1,7 +1,7 @@
 import PrivacyLink from '@components/privacy-link'
 import ProjectsTable from '@components/projects-table'
+import SeoHead from '@components/seo-head'
 import TitleBar from '@components/title-bar'
-import Head from 'next/head'
 import React, { useEffect } from 'react'
 
 const Projects = (): JSX.Element => {
@@ -14,9 +14,11 @@ const Projects = (): JSX.Element => {
 
   return (
     <>
-      <Head>
-        <title>Projects | dbowland.com</title>
-      </Head>
+      <SeoHead
+        description="A collection of software projects built by David Bowland."
+        path="/projects/"
+        title="Projects | dbowland.com"
+      />
       <main>
         <nav>
           <TitleBar />

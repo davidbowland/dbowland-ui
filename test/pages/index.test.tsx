@@ -1,5 +1,6 @@
 import PrivacyLink from '@components/privacy-link'
 import Resume from '@components/resume'
+import SeoHead from '@components/seo-head'
 import TitleBar from '@components/title-bar'
 import HomePage from '@pages/index'
 import '@testing-library/jest-dom'
@@ -8,12 +9,14 @@ import React from 'react'
 
 jest.mock('@components/privacy-link')
 jest.mock('@components/resume')
+jest.mock('@components/seo-head')
 jest.mock('@components/title-bar')
 
 describe('Home page (index)', () => {
   beforeAll(() => {
     jest.mocked(PrivacyLink).mockReturnValue(<></>)
     jest.mocked(Resume).mockReturnValue(<></>)
+    jest.mocked(SeoHead).mockReturnValue(<></>)
     jest.mocked(TitleBar).mockReturnValue(<></>)
   })
 
@@ -32,8 +35,11 @@ describe('Home page (index)', () => {
     expect(TitleBar).toHaveBeenCalledTimes(1)
   })
 
-  it('renders with correct title', () => {
+  it('renders SeoHead with correct title and path', () => {
     render(<HomePage />)
-    expect(document.title).toEqual('David Bowland | Software Developer')
+    expect(SeoHead).toHaveBeenCalledWith(
+      expect.objectContaining({ path: '/', title: 'David Bowland | Director of Engineering' }),
+      undefined,
+    )
   })
 })
