@@ -47,7 +47,6 @@
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-is": "^19.2.7",
-    "sass": "^1.101.0",
     "tailwindcss": "^4.3.2",
     "typescript": "^5.9.3"
   },
