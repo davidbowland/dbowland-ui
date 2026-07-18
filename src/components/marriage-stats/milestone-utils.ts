@@ -73,19 +73,19 @@ export const MILESTONES: Milestone[] = [
 const calculateTargetDate = (marriageDate: Date, milestone: Milestone): Date => {
   const target = new Date(marriageDate)
   switch (milestone.type) {
-  case 'years':
-    target.setFullYear(target.getFullYear() + milestone.target)
-    return target
-  case 'hours':
-    target.setHours(target.getHours() + milestone.target)
-    return target
-  case 'minutes':
-    target.setMinutes(target.getMinutes() + milestone.target)
-    return target
-  case 'days':
-  default:
-    target.setDate(target.getDate() + milestone.target)
-    return target
+    case 'years':
+      target.setFullYear(target.getFullYear() + milestone.target)
+      return target
+    case 'hours':
+      target.setHours(target.getHours() + milestone.target)
+      return target
+    case 'minutes':
+      target.setMinutes(target.getMinutes() + milestone.target)
+      return target
+    case 'days':
+    default:
+      target.setDate(target.getDate() + milestone.target)
+      return target
   }
 }
 

@@ -1,10 +1,11 @@
+import React from 'react'
+
 import PrivacyPolicy from '@components/privacy-policy'
 import SeoHead from '@components/seo-head'
 import TitleBar from '@components/title-bar'
 import PrivacyPage from '@pages/privacy-policy'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import React from 'react'
 
 jest.mock('@components/privacy-policy')
 jest.mock('@components/seo-head')

@@ -1,4 +1,3 @@
-import { contact, education, jobs, profile, skillGroups } from '@data/resume'
 import { motion } from 'framer-motion'
 import Image from 'next-export-optimize-images/image'
 import React from 'react'
@@ -29,6 +28,7 @@ import {
   ResultSubDetails,
 } from './elements'
 import headshot from '@assets/images/David-2023-05-10.jpg'
+import { contact, education, jobs, profile, skillGroups } from '@data/resume'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },

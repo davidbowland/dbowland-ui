@@ -1,9 +1,9 @@
-import '@testing-library/jest-dom'
-import { act, render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import React from 'react'
 
 import TitleBar from './index'
+import '@testing-library/jest-dom'
+import { act, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 describe('Title bar component', () => {
   describe('mobile', () => {

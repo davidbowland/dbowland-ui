@@ -1,9 +1,5 @@
 {
-  "importOrder": [
-    "<THIRD_PARTY_MODULES>",
-    "^@mui",
-    "^(\\.+/|@assets|@config|@events|@handlers|@services|@types|@utils)"
-  ],
+  "importOrder": ["<THIRD_PARTY_MODULES>", "^(\\.+/|@assets|@components|@config|@data|@pages|@test)"],
   "importOrderCaseInsensitive": true,
   "importOrderSeparation": true,
   "plugins": ["@trivago/prettier-plugin-sort-imports"],

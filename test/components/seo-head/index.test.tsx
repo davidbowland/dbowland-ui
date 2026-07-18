@@ -1,7 +1,8 @@
+import React from 'react'
+
 import SeoHead from '@components/seo-head'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import React from 'react'
 
 const getMetaContent = (selector: string): string | null =>
   document.querySelector(selector)?.getAttribute('content') ?? null

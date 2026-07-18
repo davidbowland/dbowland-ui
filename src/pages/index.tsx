@@ -1,9 +1,10 @@
+import React from 'react'
+
 import PrivacyLink from '@components/privacy-link'
 import Resume from '@components/resume'
 import SeoHead from '@components/seo-head'
 import TitleBar from '@components/title-bar'
 import { contact, profile } from '@data/resume'
-import React from 'react'
 
 const HomePage = (): JSX.Element => {
   return (

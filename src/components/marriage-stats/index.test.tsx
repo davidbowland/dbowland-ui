@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
 import React from 'react'
 
 import { ChampagneSection } from './elements-champagne'
@@ -7,6 +5,8 @@ import { InvitationSection } from './elements-invitation'
 import { DiamondRingIcon, FloralDivider, FlowerIcon, LaurelIcon, RoseIcon, WeddingRingsIcon } from './icons'
 import MarriageStats from './index'
 import { type MarriageStatsData, type MilestoneData } from './milestone-utils'
+import '@testing-library/jest-dom'
+import { render, screen } from '@testing-library/react'
 
 const MOCK_STATS: MarriageStatsData = {
   years: 0,

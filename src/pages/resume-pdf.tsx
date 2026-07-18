@@ -1,6 +1,7 @@
-import ResumePdfContent from '@components/resume-pdf'
 import Head from 'next/head'
 import React from 'react'
+
+import ResumePdfContent from '@components/resume-pdf'
 
 const ResumePdf = (): React.JSX.Element => (
   <>

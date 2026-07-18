@@ -1,8 +1,8 @@
-import '@testing-library/jest-dom'
-import { render } from '@testing-library/react'
 import React from 'react'
 
 import Redirect, { DriveFileRedirect, RedirectHead } from './index'
+import '@testing-library/jest-dom'
+import { render } from '@testing-library/react'
 
 describe('Redirect component', () => {
   const mockLocationReplace = jest.fn()

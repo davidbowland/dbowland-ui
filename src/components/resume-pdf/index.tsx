@@ -1,8 +1,8 @@
-import { contact, education, jobs, profile, skillGroups } from '@data/resume'
 import Image from 'next-export-optimize-images/image'
 import React from 'react'
 
 import headshot from '@assets/images/David-2023-05-10.jpg'
+import { contact, education, jobs, profile, skillGroups } from '@data/resume'
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 

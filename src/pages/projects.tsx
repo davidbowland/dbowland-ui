@@ -1,8 +1,9 @@
+import React, { useEffect } from 'react'
+
 import PrivacyLink from '@components/privacy-link'
 import ProjectsTable from '@components/projects-table'
 import SeoHead from '@components/seo-head'
 import TitleBar from '@components/title-bar'
-import React, { useEffect } from 'react'
 
 const Projects = (): JSX.Element => {
   useEffect(() => {

@@ -1,8 +1,9 @@
-import FormSubmitExample from '@components/form-submit'
 import '@fontsource/fira-code'
 import Head from 'next/head'
 import Script from 'next/script'
 import React, { useEffect } from 'react'
+
+import FormSubmitExample from '@components/form-submit'
 
 const FormSubmit = (): JSX.Element => {
   useEffect(() => {

@@ -1,8 +1,9 @@
-import SmoothScrollExample from '@components/smooth-scroll'
 import '@fontsource/fira-code'
 import Head from 'next/head'
 import Script from 'next/script'
 import React from 'react'
+
+import SmoothScrollExample from '@components/smooth-scroll'
 
 const SmoothScroll = (): JSX.Element => {
   return (

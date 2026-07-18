@@ -1,8 +1,8 @@
-import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
 import React from 'react'
 
 import SmoothScrollExample from './index'
+import '@testing-library/jest-dom'
+import { render, screen } from '@testing-library/react'
 
 describe('smooth-scroll example component', () => {
   it('should render nine cells', () => {

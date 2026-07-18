@@ -1,7 +1,8 @@
+import React from 'react'
+
 import PrivacyPolicy from '@components/privacy-policy'
 import SeoHead from '@components/seo-head'
 import TitleBar from '@components/title-bar'
-import React from 'react'
 
 const PrivacyPage = (): JSX.Element => {
   return (

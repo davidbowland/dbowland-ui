@@ -10,10 +10,10 @@ export interface RedirectProps {
 
 const buildRedirectUrl = (type: RedirectType, id: string): string => {
   switch (type) {
-  case DriveFileRedirect:
-    return `https://drive.google.com/file/d/${id}/view?usp=sharing`
-  default:
-    throw new Error(`Unsupported redirect type: ${type}`)
+    case DriveFileRedirect:
+      return `https://drive.google.com/file/d/${id}/view?usp=sharing`
+    default:
+      throw new Error(`Unsupported redirect type: ${type}`)
   }
 }
 

@@ -1,6 +1,7 @@
-import ServerErrorMessage from '@components/server-error-message'
 import Head from 'next/head'
 import React from 'react'
+
+import ServerErrorMessage from '@components/server-error-message'
 
 const Forbidden = (): JSX.Element => {
   return (

@@ -1,10 +1,11 @@
+import React from 'react'
+
 import GenographicInfographic from '@components/genographic-infographic'
 import PrivacyLink from '@components/privacy-link'
 import TitleBar from '@components/title-bar'
 import Genographic from '@pages/genographic'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import React from 'react'
 
 jest.mock('@components/genographic-infographic')
 jest.mock('@components/privacy-link')

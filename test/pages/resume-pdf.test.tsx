@@ -1,8 +1,9 @@
+import React from 'react'
+
 import ResumePdfContent from '@components/resume-pdf'
 import ResumePdfPage from '@pages/resume-pdf'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import React from 'react'
 
 jest.mock('@components/resume-pdf')
 

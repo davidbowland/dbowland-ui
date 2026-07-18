@@ -1,8 +1,8 @@
-import PrivacyLink from '@components/privacy-link'
 import NextLink from 'next/link'
 import React from 'react'
 
 import { ErrorPageContent, ErrorPageLayout, ErrorPageTitle } from './elements'
+import PrivacyLink from '@components/privacy-link'
 
 export interface ServerErrorProps {
   children: React.ReactNode

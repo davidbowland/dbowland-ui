@@ -1,8 +1,8 @@
-import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
 import React from 'react'
 
 import GenographicInfographic from './index'
+import '@testing-library/jest-dom'
+import { render, screen } from '@testing-library/react'
 
 jest.mock('next-export-optimize-images/image', () => ({
   __esModule: true,

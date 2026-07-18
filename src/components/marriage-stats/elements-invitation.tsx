@@ -672,13 +672,13 @@ export const InvitationSection = ({
   }> = [
     ...(hasYears
       ? [
-        {
-          label: 'Years of Bliss',
-          value: stats.years.toLocaleString(),
-          color: TEAL,
-          icon: <DoveIcon />,
-        },
-      ]
+          {
+            label: 'Years of Bliss',
+            value: stats.years.toLocaleString(),
+            color: TEAL,
+            icon: <DoveIcon />,
+          },
+        ]
       : []),
     {
       label: 'Hours Together',

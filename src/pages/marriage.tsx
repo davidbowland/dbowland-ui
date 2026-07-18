@@ -1,8 +1,8 @@
-import MarriageStats from '@components/marriage-stats'
-import PrivacyLink from '@components/privacy-link'
 import Head from 'next/head'
 import React from 'react'
 
+import MarriageStats from '@components/marriage-stats'
+import PrivacyLink from '@components/privacy-link'
 import { siteUrl } from '@config/urls'
 
 const title = 'Marriage Statistics | David & Tandi Bowland'

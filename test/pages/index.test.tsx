@@ -1,3 +1,5 @@
+import React from 'react'
+
 import PrivacyLink from '@components/privacy-link'
 import Resume from '@components/resume'
 import SeoHead from '@components/seo-head'
@@ -5,7 +7,6 @@ import TitleBar from '@components/title-bar'
 import HomePage from '@pages/index'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import React from 'react'
 
 jest.mock('@components/privacy-link')
 jest.mock('@components/resume')
