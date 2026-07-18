@@ -45,35 +45,27 @@ npm run lint
 
 ### Deploying to Production
 
-This project automatically deploys to production when a merge to `master` is made via a pull request.
+Deploys run via GitHub Actions (`.github/workflows/pipeline.yaml`): a push builds and tests the site, deploys to the test environment, then promotes to production on `master`. AWS SAM manages the CloudFront/S3/Route53 infrastructure (`template.yaml`), and `scripts/copyToS3.sh` syncs the exported static site to the target bucket.
 
-## Workflow
+### Manual / Local Deploy
 
-In order to execute or test the workflow locally, the `GITHUB_TOKEN` environment variables must be defined. Use the [GitHub token page](https://github.com/settings/tokens) to generate a new token, if necessary.
-
-### Deploy Script
-
-In extreme cases, the UI can be deployed with:
+In extreme cases, the UI can be deployed directly with:
 
 ```bash
-npm run deploy
+./scripts/deploy.sh
 ```
 
-The `developer` role and [AWS SAM CLI](https://aws.amazon.com/serverless/sam/) are required to deploy this project.
+The `developer` role and [AWS SAM CLI](https://aws.amazon.com/serverless/sam/) are required to deploy this project. See `scripts/assumeDeveloperRole.sh` for local role assumption.
 
 ### Testing the Workflow
 
-Use [act](https://github.com/nektos/act) to test the GitHub workflow. Install it with:
+Use [act](https://github.com/nektos/act) to test the GitHub workflow locally. Install it with:
 
 ```bash
 brew install act
 ```
 
-When running locally, workflow needs some secret values specified. If the necessary environment variables are declared, the secrets can be specified with:
-
-```bash
-npm run workflow
-```
+Running it locally requires the same secrets used by `.github/workflows/pipeline.yaml` (AWS credentials, `GIT_EMAIL`, etc.) to be supplied via act's `-s`/`--secret-file` options.
 
 ## Additional Documentation
 
@@ -87,18 +79,10 @@ npm run workflow
 
 - [API Reference](https://nextjs.org/docs/pages/api-reference)
 
-### Additional Deploy Documentation
-
-- [SSH2 module](https://www.npmjs.com/package/ssh2)
-
-- [SFTP stream methods](https://github.com/mscdex/ssh2-streams/blob/master/SFTPStream.md#sftpstream-methods)
-
 ### Additional Workflow Documentation
 
 - [Workflow Syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions)
 
-- [actions/setup_node](https://github.com/actions/setup-node)
+- [actions/setup-node](https://github.com/actions/setup-node)
 
 - [actions/checkout](https://github.com/actions/checkout)
-
-- [ad-m/github-push-action](https://github.com/ad-m/github-push-action)
