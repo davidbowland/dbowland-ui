@@ -22,7 +22,7 @@
     "generate-resume": "ts-node scripts/generate-resume-pdf.ts",
     "lint": "prettier --write . && eslint --fix .",
     "postbuild": "next-export-optimize-images && next-sitemap && npm run generate-resume",
-    "prepare": "husky",
+    "prepare": "husky || true",
     "serve": "next build --webpack && npx serve out",
     "start": "next dev --webpack",
     "test": "jest --colors",
