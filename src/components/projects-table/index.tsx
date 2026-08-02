@@ -377,14 +377,16 @@ const ProjectsTable = (): JSX.Element => {
             </ProjectUrl>
             <ProjectSectionHeading>Objectives</ProjectSectionHeading>
             <ProjectDescription>
-              The catch-all for things that didn&apos;t fit neatly elsewhere: this site, an SMS messaging service, and a
-              log subscriber that watches <Link href="https://aws.amazon.com/cloudwatch/">CloudWatch</Link> for errors
-              and texts me when something goes wrong. The word-game utility is a Python tool that scores letters by
-              frequency to surface the highest-value guesses.
+              The catch-all for things that didn&apos;t fit neatly elsewhere: this site, a since-retired SMS messaging
+              service, and a log subscriber that watches{' '}
+              <Link href="https://aws.amazon.com/cloudwatch/">CloudWatch</Link> for errors and emails me when something
+              goes wrong. The word-game utility is a Python tool that scores letters by frequency to surface the
+              highest-value guesses.
             </ProjectDescription>
             <ProjectSectionHeading>Lessons</ProjectSectionHeading>
             <ProjectDescription>
-              <Link href="https://aws.amazon.com/pinpoint/">AWS Pinpoint</Link> powers the SMS delivery, and{' '}
+              <Link href="https://aws.amazon.com/pinpoint/">AWS Pinpoint</Link> handled SMS delivery for the messaging
+              service before it was retired, and{' '}
               <Link href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html">
                 CloudWatch subscription filters
               </Link>{' '}

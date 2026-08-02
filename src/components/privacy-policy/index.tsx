@@ -8,40 +8,45 @@ const PrivacyPolicy = (): React.JSX.Element => {
       <PolicyEyebrow>Legal</PolicyEyebrow>
       <PolicyTitle>Privacy Policy</PolicyTitle>
       <p className="mb-2 text-sm leading-relaxed">
-        This policy describes how <strong className="font-semibold text-[var(--ink)]">dbowland.com</strong> handles your
-        data. The short version: we collect very little, we keep it briefly, and we never sell it.
+        This policy explains what <strong className="font-semibold text-[var(--ink)]">dbowland.com</strong> does with
+        your data. Short version: we don&apos;t track you, and we have nothing to sell.
       </p>
 
       <PolicySection>
         <PolicySectionTitle>What We Collect</PolicySectionTitle>
         <p className="text-sm leading-relaxed">
-          Our servers automatically log your IP address, browser type, and the pages you visit. We use these logs to
-          detect abuse and keep the site running. That&apos;s everything we collect.
+          Nothing. There&apos;s no sign-in, no account, and no contact form. We run no analytics, and we keep no access
+          log — so we have no record that you were here, not your IP address, not your browser, not the pages you
+          opened.
         </p>
-      </PolicySection>
-
-      <PolicySection>
-        <PolicySectionTitle>Why We Collect It</PolicySectionTitle>
-        <p className="text-sm leading-relaxed">
-          We process server log data under legitimate interests — operating a secure, functional website. We don&apos;t
-          rely on your consent, and we don&apos;t use your data for advertising or profiling.
+        <p className="text-sm leading-relaxed mt-3">
+          We set no cookies and store nothing in your browser. The form on the <em>form-submit</em> page is a demo of a
+          JavaScript library: fill it in and nothing is sent anywhere, and what you typed is gone when you close the
+          tab.
         </p>
       </PolicySection>
 
       <PolicySection>
         <PolicySectionTitle>What We Don&apos;t Do</PolicySectionTitle>
         <p className="text-sm leading-relaxed">
-          We don&apos;t sell your data. We don&apos;t share it with advertisers. We don&apos;t build profiles. We
-          intentionally don&apos;t collect contact information or anything personally identifying beyond what appears in
-          a standard server log.
+          We don&apos;t sell your data. We don&apos;t share it with advertisers. We don&apos;t build profiles. There are
+          no tracking scripts and no advertising anywhere on this site.
         </p>
       </PolicySection>
 
       <PolicySection>
-        <PolicySectionTitle>When We Share Your Data</PolicySectionTitle>
+        <PolicySectionTitle>Who Else Is Involved</PolicySectionTitle>
         <p className="text-sm leading-relaxed">
-          We share data only when legally required — for example, in response to a valid court order or law enforcement
-          request.
+          Amazon Web Services hosts the site, so your browser connects to Amazon to load any page. What Amazon records
+          about that connection is governed by its privacy policy rather than this one.
+        </p>
+        <p className="text-sm leading-relaxed mt-3">
+          A few unlisted pages embed video that&apos;s hosted elsewhere. If you open one, your browser fetches the video
+          from its host, which sees that request and may set its own cookies, the way any video site does. We send it
+          nothing about you. Nothing else on dbowland.com loads content from anyone.
+        </p>
+        <p className="text-sm leading-relaxed mt-3">
+          We share data beyond this only when the law requires it — for example, a valid court order.
         </p>
       </PolicySection>
 
@@ -59,7 +64,7 @@ const PrivacyPolicy = (): React.JSX.Element => {
 
       <PolicySection>
         <PolicySectionTitle>Data Retention</PolicySectionTitle>
-        <p className="text-sm leading-relaxed">Server logs are kept for up to 90 days, then deleted.</p>
+        <p className="text-sm leading-relaxed">We keep no logs and no records of your visit, so nothing accumulates.</p>
       </PolicySection>
 
       <PolicySection>
@@ -81,17 +86,14 @@ const PrivacyPolicy = (): React.JSX.Element => {
           Questions about this policy? Email{' '}
           <a className="text-[var(--accent)] underline underline-offset-2" href="mailto:privacy@dbowland.com">
             privacy@dbowland.com
-          </a>{' '}
-          or write to:
-        </p>
-        <p className="text-sm leading-relaxed mt-3">
-          dbowland.com Privacy
-          <br />
-          P.O. Box 81226, Seattle, WA 98108–1226
+          </a>
+          .
         </p>
       </PolicySection>
 
-      <div className="pt-4 border-t border-[var(--rule)] text-xs text-[var(--ink-whisper)]">Last updated June 2026</div>
+      <div className="pt-4 border-t border-[var(--rule)] text-xs text-[var(--ink-whisper)]">
+        Effective August 5, 2026
+      </div>
     </PolicyLayout>
   )
 }

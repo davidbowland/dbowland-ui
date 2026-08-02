@@ -171,40 +171,45 @@ Resources:
 
   # Redirect
 
-  RedirectBucket:
-    Type: AWS::S3::Bucket
+  RedirectFunction:
+    Type: AWS::CloudFront::Function
     Properties:
-      AccessControl: PublicRead
-      BucketEncryption:
-        ServerSideEncryptionConfiguration:
-          - ServerSideEncryptionByDefault:
-              SSEAlgorithm: AES256
-      BucketName: !Sub
-        - '${BucketName}-redirect'
-        - BucketName: !FindInMap [EnvironmentMap, !Ref Environment, bucketName]
-      Tags:
-        - Key: 'created-by'
-          Value: 'dbowland-ui'
-        - Key: 'created-for'
-          Value: 'dbowland'
-        - Key: 'environment'
-          Value: !Ref Environment
-      WebsiteConfiguration:
-        RedirectAllRequestsTo:
-          HostName: !FindInMap [EnvironmentMap, !Ref Environment, domain]
-          Protocol: https
+      AutoPublish: true
+      # Runs on viewer-request and returns the redirect itself, so the origin is
+      # never contacted. The distributions below still need an origin declared,
+      # but no request ever reaches it.
+      FunctionCode: !Sub
+        - |
+          function handler(event) {
+            var request = event.request;
 
-  RedirectBucketPolicy:
-    Type: AWS::S3::BucketPolicy
-    Properties:
-      Bucket: !Ref RedirectBucket
-      PolicyDocument:
-        Statement:
-          - Action: 's3:Get*'
-            Effect: Allow
-            Resource: !Sub 'arn:aws:s3:::${RedirectBucket}/*'
-            Principal:
-              CanonicalUser: !GetAtt OriginAccessIdentity.S3CanonicalUserId
+            var params = [];
+            for (var key in request.querystring) {
+              var param = request.querystring[key];
+              var values = param.multiValue || [param];
+              for (var i = 0; i < values.length; i++) {
+                params.push(values[i].value === '' ? key : key + '=' + values[i].value);
+              }
+            }
+            var query = params.length ? '?' + params.join('&') : '';
+
+            return {
+              statusCode: 301,
+              statusDescription: 'Moved Permanently',
+              headers: {
+                location: { value: 'https://${Domain}' + request.uri + query },
+              },
+            };
+          }
+        - Domain: !FindInMap [EnvironmentMap, !Ref Environment, domain]
+      FunctionConfig:
+        Comment: !Sub
+          - 'Permanent redirect to ${Domain}'
+          - Domain: !FindInMap [EnvironmentMap, !Ref Environment, domain]
+        Runtime: cloudfront-js-2.0
+      Name: !Sub
+        - '${Environment}-dbowland-ui-redirect'
+        - Environment: !Ref Environment
 
   RedirectCloudfrontDistribution:
     Type: AWS::CloudFront::Distribution
@@ -222,24 +227,22 @@ Resources:
           CachePolicyId: '658327ea-f89d-4fab-a63d-7e88639e58f6' # Managed-CachingOptimized
           Compress: true
           DefaultTTL: 0
-          TargetOriginId: S3RedirectOrigin
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN: !GetAtt RedirectFunction.FunctionARN
+          TargetOriginId: S3Origin
           ViewerProtocolPolicy: 'redirect-to-https'
         Enabled: true
         HttpVersion: http2
         IPV6Enabled: true
         Origins:
-          - ConnectionAttempts: 3
-            ConnectionTimeout: 10
-            CustomOriginConfig:
-              HTTPPort: 80
-              HTTPSPort: 443
-              OriginKeepaliveTimeout: 5
-              OriginProtocolPolicy: 'http-only'
-              OriginReadTimeout: 30
-              OriginSSLProtocols:
-                - 'TLSv1.2'
-            DomainName: !Sub '${RedirectBucket}.s3-website.us-east-2.amazonaws.com'
-            Id: S3RedirectOrigin
+          # Never contacted -- RedirectFunction answers every request at the edge.
+          - DomainName: !GetAtt UiBucket.RegionalDomainName
+            Id: S3Origin
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub
+                - 'origin-access-identity/cloudfront/${Identity}'
+                - Identity: !Ref OriginAccessIdentity
         PriceClass: 'PriceClass_100'
         ViewerCertificate:
           AcmCertificateArn: !Sub
@@ -286,24 +289,22 @@ Resources:
           CachePolicyId: '658327ea-f89d-4fab-a63d-7e88639e58f6' # Managed-CachingOptimized
           Compress: true
           DefaultTTL: 0
-          TargetOriginId: S3RedirectOrigin
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN: !GetAtt RedirectFunction.FunctionARN
+          TargetOriginId: S3Origin
           ViewerProtocolPolicy: 'redirect-to-https'
         Enabled: true
         HttpVersion: http2
         IPV6Enabled: true
         Origins:
-          - ConnectionAttempts: 3
-            ConnectionTimeout: 10
-            CustomOriginConfig:
-              HTTPPort: 80
-              HTTPSPort: 443
-              OriginKeepaliveTimeout: 5
-              OriginProtocolPolicy: 'http-only'
-              OriginReadTimeout: 30
-              OriginSSLProtocols:
-                - 'TLSv1.2'
-            DomainName: !Sub '${RedirectBucket}.s3-website.us-east-2.amazonaws.com'
-            Id: S3RedirectOrigin
+          # Never contacted -- RedirectFunction answers every request at the edge.
+          - DomainName: !GetAtt UiBucket.RegionalDomainName
+            Id: S3Origin
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub
+                - 'origin-access-identity/cloudfront/${Identity}'
+                - Identity: !Ref OriginAccessIdentity
         PriceClass: 'PriceClass_100'
         ViewerCertificate:
           AcmCertificateArn: 'arn:aws:acm:us-east-1:494887012091:certificate/4c6d6eeb-6137-481f-b898-595efe3d7f08' # davidbowland.com, *.davidbowland.com
