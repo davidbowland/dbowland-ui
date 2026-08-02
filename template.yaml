@@ -102,18 +102,22 @@ Resources:
         Aliases:
           - !FindInMap [EnvironmentMap, !Ref Environment, domain]
         CustomErrorResponses:
+          # The static export writes 400/403/500 as directories (trailingSlash: true),
+          # so only 404.html exists as a bare file. CloudFront fetches error pages
+          # directly from the origin, bypassing the URL-rewrite function, so these
+          # paths must name the exported index.html explicitly.
           - ErrorCode: 400
             ResponseCode: 400
-            ResponsePagePath: /400.html
+            ResponsePagePath: /400/index.html
           - ErrorCode: 403
             ResponseCode: 403
-            ResponsePagePath: /403.html
+            ResponsePagePath: /403/index.html
           - ErrorCode: 404
             ResponseCode: 404
             ResponsePagePath: /404.html
           - ErrorCode: 500
             ResponseCode: 500
-            ResponsePagePath: /500.html
+            ResponsePagePath: /500/index.html
         DefaultCacheBehavior:
           AllowedMethods:
             - 'GET'
