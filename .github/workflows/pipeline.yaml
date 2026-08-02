@@ -30,9 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Install Node 24
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24.x
 
@@ -50,10 +50,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install Node 24
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24.x
       - name: Build Next.js site
@@ -63,7 +63,7 @@ jobs:
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
       - name: Install AWS SAM
-        uses: aws-actions/setup-sam@v2
+        uses: aws-actions/setup-sam@v3
         with:
           use-installer: true
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -99,10 +99,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install Node 24
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24.x
       - name: Build Next.js site
@@ -112,7 +112,7 @@ jobs:
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
       - name: Install AWS SAM
-        uses: aws-actions/setup-sam@v2
+        uses: aws-actions/setup-sam@v3
         with:
           use-installer: true
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -148,10 +148,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install Node 24
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24.x
       - name: Build Next.js site
@@ -160,7 +160,7 @@ jobs:
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
       - name: Install AWS SAM
-        uses: aws-actions/setup-sam@v2
+        uses: aws-actions/setup-sam@v3
         with:
           use-installer: true
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -196,9 +196,9 @@ jobs:
       contents: write
     steps:
       - name: Checkout latest code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Install Node 24
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24.x
 
