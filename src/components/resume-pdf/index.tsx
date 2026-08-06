@@ -8,7 +8,7 @@ import { contact, education, jobs, profile, skillGroups } from '@data/resume'
 
 const GOLD = '#cf8a05'
 const GOLD_BORDER = 'rgba(207, 138, 5, 0.25)'
-const GOLD_BG = '#fef9ec' // solid equivalent of gold/8 for PDF colour accuracy
+const GOLD_BG = '#fef9ec' // solid equivalent of gold/8 for PDF color accuracy
 const TIMELINE_LINE = 'rgba(207, 138, 5, 0.22)'
 const BODY = '#1e293b'
 const MUTED = '#64748b'

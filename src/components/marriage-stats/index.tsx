@@ -13,7 +13,7 @@ import {
   VideoCardWrapper,
   VideoGrid,
 } from './elements'
-import { ProgrammeSection } from './elements-programme'
+import { ProgramSection } from './elements-program'
 import { calculateTimeSince, processMilestones, type MarriageStatsData, type MilestoneData } from './milestone-utils'
 
 const MARRIAGE_DATE = '2025-09-20T17:00:00-05:00'
@@ -66,7 +66,7 @@ export const MarriageStats = (): React.JSX.Element => {
 
       <SectionDivider />
 
-      {stats && <ProgrammeSection milestoneData={milestoneData} stats={stats} />}
+      {stats && <ProgramSection milestoneData={milestoneData} stats={stats} />}
 
       <MarriageSeparator />
 

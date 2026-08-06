@@ -11,7 +11,7 @@ const SERIF = "'Cormorant Garamond', 'Georgia', serif"
 const SCRIPT = "'Pinyon Script', cursive"
 const SANS = "'Outfit', sans-serif"
 
-// ─── Colour palette (deep plum / engraved invitation) ────────────────────────
+// ─── Color palette (deep plum / engraved invitation) ────────────────────────
 const BG = '#1e0a2e'
 const CARD_BG = '#120520'
 const BERRY = '#9a3b51'
@@ -315,7 +315,7 @@ const ChampagneIcon = (): React.JSX.Element => (
   </svg>
 )
 
-// Minutes of Love — clock face with 5-petal rose at the centre
+// Minutes of Love — clock face with 5-petal rose at the center
 const ClockRoseIcon = (): React.JSX.Element => {
   const markers = Array.from({ length: 12 }, (_, i) => {
     const major = i % 3 === 0
@@ -415,7 +415,7 @@ const TitleFlourish = ({ flip = false }: { flip?: boolean }): React.JSX.Element 
 )
 
 // ─── Milestone icons ──────────────────────────────────────────────────────────
-// Achieved — heraldic seal (circle + cross dividers + filled centre disc)
+// Achieved — heraldic seal (circle + cross dividers + filled center disc)
 const HeraldSeal = (): React.JSX.Element => (
   <svg
     aria-hidden="true"
@@ -580,7 +580,7 @@ const BotanicalBorder = (): React.JSX.Element => (
     <path d="M3,50 L5,48.2 L7,50 L5,51.8 Z" fill="rgba(232,200,212,0.4)" />
     <path d="M93,50 L95,48.2 L97,50 L95,51.8 Z" fill="rgba(232,200,212,0.4)" />
 
-    {/* Small 5-petal rosette at top-centre mid-point */}
+    {/* Small 5-petal rosette at top-center mid-point */}
     {([0, 72, 144, 216, 288] as const).map((deg, i) => (
       <ellipse
         cx="50"

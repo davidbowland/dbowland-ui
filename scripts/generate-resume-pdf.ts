@@ -103,7 +103,7 @@ const server = http.createServer((req, res) => {
     )
   })
 
-  // Ensure background colours render in PDF
+  // Ensure background colors render in PDF
   await page.addStyleTag({
     content: '* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }',
   })

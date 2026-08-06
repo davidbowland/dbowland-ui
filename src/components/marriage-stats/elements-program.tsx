@@ -9,7 +9,7 @@ const SERIF = "'Cormorant Garamond', 'Georgia', serif"
 const SCRIPT = "'Pinyon Script', cursive"
 const SANS = "'Outfit', sans-serif"
 
-// ─── Colour palette (cream / editorial) ──────────────────────────────────────
+// ─── Color palette (cream / editorial) ──────────────────────────────────────
 const BERRY = '#823a52'
 const NAVY = '#2e3260'
 const TEAL = '#2e7878'
@@ -79,7 +79,7 @@ const CornerFlourish = ({ flip = false }: { flip?: boolean }) => (
 )
 
 // ─── Internal section divider (CornerFlourish pair) ──────────────────────────
-const ProgrammeDivider = (): React.JSX.Element => (
+const ProgramDivider = (): React.JSX.Element => (
   <motion.div
     className="flex justify-between items-center"
     initial={{ opacity: 0 }}
@@ -180,7 +180,7 @@ const SecondIcon = () => (
   </svg>
 )
 
-// ─── SVG: Clock with rose centre — Minutes column ────────────────────────────
+// ─── SVG: Clock with rose center — Minutes column ────────────────────────────
 const MinuteIcon = () => {
   const ticks = Array.from({ length: 12 }, (_, i) => {
     const angle = (i * 30 * Math.PI) / 180
@@ -204,13 +204,13 @@ const MinuteIcon = () => {
       <line stroke={FOREST} strokeLinecap="round" strokeWidth="1.5" x1="16" x2="10" y1="16" y2="9" />
       {/* Minute hand (2 position) */}
       <line stroke={FOREST} strokeLinecap="round" strokeWidth="1.2" x1="16" x2="22" y1="16" y2="8" />
-      {/* Rose petals: 5 at 72° increments, each ellipse rotated around centre */}
+      {/* Rose petals: 5 at 72° increments, each ellipse rotated around center */}
       {[0, 72, 144, 216, 288].map((deg) => (
         <g key={deg} transform={`rotate(${deg}, 16, 16)`}>
           <ellipse cx="16" cy="13" fill={FOREST} fillOpacity="0.6" rx="1.5" ry="3" />
         </g>
       ))}
-      {/* Rose centre */}
+      {/* Rose center */}
       <circle cx="16" cy="16" fill={FOREST} r="2" />
     </svg>
   )
@@ -411,8 +411,8 @@ const IndexRecipeCard = (): React.JSX.Element => (
 // "Minutes of Love", "Seconds of Joy", "Years of Bliss", "Milestones",
 // "Milestones Reached", "Next Milestone", "Coming Up", individual milestone
 // names, and "Our Perfect Recipe for Love") live exclusively in the
-// ProgrammeSection to keep getByText assertions unique.
-export const ProgrammeSection = ({
+// ProgramSection to keep getByText assertions unique.
+export const ProgramSection = ({
   stats,
   milestoneData,
 }: {
@@ -570,7 +570,7 @@ export const ProgrammeSection = ({
             viewport={{ once: true, margin: '-60px' }}
             whileInView={{ opacity: 1 }}
           >
-            <ProgrammeDivider />
+            <ProgramDivider />
             <motion.h2
               className="text-center mb-8 font-normal"
               initial={{ opacity: 0, y: 16 }}
@@ -779,7 +779,7 @@ export const ProgrammeSection = ({
         )}
 
         {/* ── Recipe divider ────────────────────────────────────────── */}
-        <ProgrammeDivider />
+        <ProgramDivider />
 
         {/* ── Index card recipe (Section A exclusive) ───────────────── */}
         <motion.div
