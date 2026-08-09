@@ -10,6 +10,7 @@ const Genographic = (): JSX.Element => {
     <>
       <Head>
         <title>Genographic Information | dbowland.com</title>
+        <meta content="noindex, nofollow" name="robots" />
       </Head>
       <main>
         <nav>

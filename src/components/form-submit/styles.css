@@ -1,6 +1,6 @@
 body,
 input {
-  font-family: 'Fira Code';
+  font-family: 'Fira Code', ui-monospace, 'Courier New', monospace;
 }
 form ~ form {
   margin-top: 1.5em;

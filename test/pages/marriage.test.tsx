@@ -35,6 +35,11 @@ describe('Marriage page', () => {
     expect(document.title).toEqual('Marriage Statistics | David & Tandi Bowland')
   })
 
+  it('excludes the page from search indexes', () => {
+    render(<MarriagePage />)
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow')
+  })
+
   it('renders marriage-specific favicon links', () => {
     render(<MarriagePage />)
     expect(document.querySelector('link[rel="icon"][sizes="32x32"]')).toHaveAttribute(

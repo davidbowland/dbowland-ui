@@ -15,6 +15,7 @@ const MarriagePage = (): JSX.Element => {
     <>
       <Head>
         <title>{title}</title>
+        <meta content="noindex, nofollow" name="robots" />
         <meta content={description} name="description" />
         <link href="/marriage-favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
         <link href="/marriage-favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
@@ -30,7 +31,7 @@ const MarriagePage = (): JSX.Element => {
         <meta content={description} name="twitter:description" />
         <meta content={ogImageUrl} name="twitter:image" />
       </Head>
-      <main className="min-h-screen" style={{ backgroundColor: 'var(--romance-page-bg)' }}>
+      <main className="romance-scope min-h-screen" style={{ backgroundColor: 'var(--romance-page-bg)' }}>
         <section>
           <div className="mx-auto max-w-[960px]">
             <MarriageStats />

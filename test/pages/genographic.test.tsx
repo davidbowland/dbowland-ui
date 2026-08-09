@@ -32,4 +32,9 @@ describe('Genographic page', () => {
     render(<Genographic />)
     expect(document.title).toEqual('Genographic Information | dbowland.com')
   })
+
+  it('excludes the page from search indexes', () => {
+    render(<Genographic />)
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow')
+  })
 })

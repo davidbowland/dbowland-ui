@@ -16,7 +16,7 @@ const TEAL = '#2e7878'
 const FOREST = '#4a7a5a'
 const PURPLE = '#6b4a7e'
 const CREAM = '#fdfbf7'
-const MUTED = 'rgba(46,50,96,0.5)'
+const MUTED = 'rgba(46,50,96,0.72)' // WCAG AA: 5.04:1 over CREAM
 const HAIRLINE = 'rgba(46,50,96,0.12)'
 
 // ─── Easing ───────────────────────────────────────────────────────────────────
@@ -340,7 +340,7 @@ const IndexRecipeCard = (): React.JSX.Element => (
         {/* Ingredients section */}
         <p
           style={{
-            color: 'rgba(44,52,97,0.45)',
+            color: 'rgba(44,52,97,0.72)',
             fontFamily: SANS,
             fontSize: '8px',
             letterSpacing: '0.32em',
@@ -374,7 +374,7 @@ const IndexRecipeCard = (): React.JSX.Element => (
         {/* Method section */}
         <p
           style={{
-            color: 'rgba(44,52,97,0.45)',
+            color: 'rgba(44,52,97,0.72)',
             fontFamily: SANS,
             fontSize: '8px',
             letterSpacing: '0.32em',
@@ -759,7 +759,7 @@ export const ProgramSection = ({
                     >
                       <p
                         style={{
-                          color: 'rgba(130,58,82,0.75)',
+                          color: 'rgba(130,58,82,0.82)', // WCAG AA: 4.92:1 over CREAM
                           fontFamily: SANS,
                           fontSize: '9px',
                           lineHeight: 1.2,

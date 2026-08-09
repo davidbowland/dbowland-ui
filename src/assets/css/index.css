@@ -10,7 +10,8 @@
   --bg: #fafaf7;
   --ink: #111111;
   --ink-soft: #5a5a5a;
-  --ink-whisper: #9a9a9a;
+  /* WCAG AA: 5.17:1 on --bg, 4.83:1 on --surface */
+  --ink-whisper: #6a6a6a;
   --accent: #1b3d5a;
   --accent-warm: #b5561a;
   --rule: #e4e2da;
@@ -21,7 +22,8 @@
   --bg: #111110;
   --ink: #ede8e1;
   --ink-soft: #9a9286;
-  --ink-whisper: #78726a;
+  /* WCAG AA: 5.11:1 on --bg, 4.79:1 on --surface */
+  --ink-whisper: #8b847b;
   --accent: #4d9ab8;
   --accent-warm: #c86e32;
   --rule: #2e2b27;
@@ -95,6 +97,18 @@ body {
   --sec-parchment: #f5edd8;
   --sec-blush: #e8c8d4;
   --sec-deep-plum: #1e0a2e;
+}
+
+/* The marriage page always renders on the cream romance palette, even when the OS
+   prefers dark, so pin the light-theme ink tokens for anything nested inside it. */
+.romance-scope {
+  --bg: var(--romance-page-bg);
+  --ink: #111111;
+  --ink-soft: #5a5a5a;
+  --ink-whisper: #6a6a6a;
+  --accent: #1b3d5a;
+  --rule: #e4e2da;
+  --surface: #f4f2ed;
 }
 
 /* Header floral decoration */

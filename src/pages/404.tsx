@@ -8,6 +8,7 @@ const NotFound = (): JSX.Element => {
     <>
       <Head>
         <title>404: Not Found -- dbowland.com</title>
+        <meta content="noindex, nofollow" name="robots" />
       </Head>
       <ServerErrorMessage title="404: Not Found">
         The resource you requested is unavailable. If you feel you have reached this page in error, please contact the

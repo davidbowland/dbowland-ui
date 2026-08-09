@@ -21,4 +21,9 @@ describe('form-submit example', () => {
     render(<FormSubmit />)
     expect(document.title).toEqual('form-submit example page | github.com/davidbowland/form-submit')
   })
+
+  it('excludes the page from search indexes', () => {
+    render(<FormSubmit />)
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow')
+  })
 })

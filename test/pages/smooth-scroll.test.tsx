@@ -21,4 +21,9 @@ describe('smooth-scroll example', () => {
     render(<SmoothScroll />)
     expect(document.title).toEqual('smooth-scroll example page | github.com/davidbowland/smooth-scroll')
   })
+
+  it('excludes the page from search indexes', () => {
+    render(<SmoothScroll />)
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow')
+  })
 })

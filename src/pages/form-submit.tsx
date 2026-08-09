@@ -20,6 +20,7 @@ const FormSubmit = (): JSX.Element => {
     <>
       <Head>
         <title>form-submit example page | github.com/davidbowland/form-submit</title>
+        <meta content="noindex, nofollow" name="robots" />
       </Head>
       <Script src="/form-submit.js" strategy="afterInteractive" />
       <main style={{ fontFamily: 'Fira Code' }} suppressHydrationWarning>

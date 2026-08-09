@@ -10,6 +10,7 @@ const SmoothScroll = (): JSX.Element => {
     <>
       <Head>
         <title>smooth-scroll example page | github.com/davidbowland/smooth-scroll</title>
+        <meta content="noindex, nofollow" name="robots" />
       </Head>
       <Script src="/smooth-scroll.js" strategy="afterInteractive" />
       <main>

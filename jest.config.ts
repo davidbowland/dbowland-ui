@@ -154,7 +154,9 @@ const config: Config = {
   // testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ['node_modules', '\\.cache', '<rootDir>.*/out'],
+  // These are regexes, not globs. '<rootDir>.*/out' (no trailing slash) also matches any test whose
+  // name starts with "out" (outbox.test.tsx, output.test.tsx), silently skipping it.
+  testPathIgnorePatterns: ['node_modules', '\\.cache', '<rootDir>.*/out/'],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
