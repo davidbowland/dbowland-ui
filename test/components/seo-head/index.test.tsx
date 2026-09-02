@@ -18,6 +18,13 @@ describe('SeoHead', () => {
     expect(getMetaContent('meta[name="description"]')).toEqual('A description')
   })
 
+  it('renders a canonical link pointing at the production origin', () => {
+    render(<SeoHead description="A description" path="/example/" title="Example | dbowland.com" />)
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toEqual(
+      'https://dbowland.com/example/',
+    )
+  })
+
   it('renders Open Graph tags with an absolute url and image', () => {
     render(<SeoHead description="A description" path="/example/" title="Example | dbowland.com" />)
     expect(getMetaContent('meta[property="og:title"]')).toEqual('Example | dbowland.com')
